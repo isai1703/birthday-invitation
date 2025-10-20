@@ -497,10 +497,9 @@
         </div>
     </div>
 
-    <audio id="bgMusic" loop>
+    <audio id="bgMusic" loop autoplay muted>
         <source src="golden_spanish.mp3" type="audio/mpeg">
     </audio>
-
     <script>
         function createParticles() {
             const container = document.getElementById('particles');
@@ -564,8 +563,10 @@
         window.addEventListener('load', () => {
             createParticles();
             setTimeout(() => {
-                document.getElementById('bgMusic').play().catch(() => {
-                    console.log('Autoplay no disponible');
+                const audio = document.getElementById('bgMusic');
+                audio.muted = false;
+                audio.play().catch(() => {
+                    console.log('Autoplay no disponible - usuario puede hacer click en reproducir');
                 });
             }, 500);
         });
