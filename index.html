@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Invitación Cumpleaños Ailany - 5 Años</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fce7f3 0%, #e9d5ff 50%, #fbcfe8 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #fce7f3, #e9d5ff, #fbcfe8, #fcd34d, #fce7f3);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            z-index: -2;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .magic-particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #ec4899, #f472b6);
+            border-radius: 50%;
+            filter: blur(1px);
+            box-shadow: 0 0 10px rgba(236, 72, 153, 0.8);
+        }
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(30px);
+            border-radius: 40px;
+            padding: 60px 40px;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(236, 72, 153, 0.35), 0 0 120px rgba(249, 168, 212, 0.2);
+            border: 3px solid rgba(236, 72, 153, 0.3);
+            position: relative;
+            animation: cardFloat 3s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .crown-top {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 100px;
+            animation: crownSpin 4s linear infinite, crownFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(236, 72, 153, 0.9));
+            z-index: 20;
+        }
+
+        @keyframes crownSpin {
+            from { transform: translateX(-50%) rotate(0deg); }
+            to { transform: translateX(-50%) rotate(360deg); }
+        }
+
+        @keyframes crownFloat {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-20px); }
+        }
+
+        .title-main {
+            text-align: center;
+            font-size: 3.5em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ec4899, #f43f5e, #f97316, #ec4899);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            animation: titlePulse 3s ease-in-out infinite;
+            letter-spacing: 2px;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(236, 72, 153, 0.4)); }
+            50% { filter: drop-shadow(0 0 30px rgba(244, 63, 94, 0.8)); }
+        }
+
+        .subtitle-text {
+            text-align: center;
+            color: #c084fc;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+            animation: slideIn 0.8s ease-out 0.3s both;
+        }
+
+        .name-birthday {
+            text-align: center;
+            font-size: 2.8em;
+            font-weight: 900;
+            color: #be185d;
+            margin: 15px 0;
+            animation: slideIn 0.8s ease-out 0.5s both;
+        }
+
+        .age-display {
+            text-align: center;
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #f43f5e;
+            margin-bottom: 40px;
+            animation: slideIn 0.8s ease-out 0.7s both;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .enchanted-castle {
+            text-align: center;
+            font-size: 120px;
+            margin: 30px 0;
+            animation: castleFloat 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 25px rgba(236, 72, 153, 0.5));
+        }
+
+        @keyframes castleFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-40px) scale(1.08); }
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(252, 231, 243, 0.8), rgba(230, 230, 250, 0.6));
+            border-radius: 30px;
+            padding: 40px;
+            margin: 35px 0;
+            border: 2px solid #ec4899;
+            animation: infoSlide 0.8s ease-out 0.9s both;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes infoSlide {
+            from { transform: translateY(40px) scaleY(0.9); opacity: 0; }
+            to { transform: translateY(0) scaleY(1); opacity: 1; }
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 22px 0;
+            font-size: 1.15em;
+        }
+
+        .info-icon {
+            font-size: 2.5em;
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+
+        .info-row:nth-child(1) .info-icon { animation-delay: 0s; }
+        .info-row:nth-child(2) .info-icon { animation-delay: 0.2s; }
+        .info-row:nth-child(3) .info-icon { animation-delay: 0.4s; }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .info-text h3 {
+            color: #ec4899;
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .info-text p {
+            color: #be185d;
+            font-size: 1.2em;
+            font-weight: 900;
+        }
+
+        .info-text small {
+            color: #ec4899;
+            font-size: 0.8em;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .floating-decor {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 0;
+            font-size: 4em;
+            gap: 10px;
+        }
+
+        .decor-item {
+            animation: magicFloat 3.5s ease-in-out infinite;
+        }
+
+        .decor-item:nth-child(1) { animation-delay: 0s; }
+        .decor-item:nth-child(2) { animation-delay: 0.3s; }
+        .decor-item:nth-child(3) { animation-delay: 0.6s; }
+        .decor-item:nth-child(4) { animation-delay: 0.9s; }
+        .decor-item:nth-child(5) { animation-delay: 1.2s; }
+
+        @keyframes magicFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.15); }
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            padding: 16px 32px;
+            font-size: 1em;
+            font-weight: 900;
+            border: none;
+            border-radius: 35px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-confirm {
+            background: linear-gradient(135deg, #ec4899, #f43f5e);
+            color: white;
+            animation: buttonPulse 2s ease-in-out infinite;
+        }
+
+        .btn-audio {
+            background: linear-gradient(135deg, #f472b6, #fb7185);
+            color: white;
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #20ba58);
+            color: white;
+        }
+
+        .btn-form {
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+            color: white;
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 12px 30px rgba(236, 72, 153, 0.6);
+            }
+        }
+
+        .modal-confirm {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-confirm.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            padding: 50px;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 20px 60px rgba(236, 72, 153, 0.5);
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-content h2 {
+            font-size: 2.5em;
+            color: #ec4899;
+            margin-bottom: 20px;
+        }
+
+        .modal-content p {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .modal-content small {
+            display: block;
+            font-size: 0.85em;
+            color: #999;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ec4899;
+            pointer-events: none;
+            animation: confettiFall 3s ease-in forwards;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .music-info {
+            text-align: center;
+            font-size: 0.9em;
+            color: #ec4899;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .title-main { font-size: 2.5em; }
+            .name-birthday { font-size: 2em; }
+            .age-display { font-size: 1.8em; }
+            .enchanted-castle { font-size: 80px; }
+            .floating-decor { font-size: 2.5em; }
+            .main-card { padding: 40px 20px; }
+            button { padding: 12px 20px; font-size: 0.9em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="magic-particles" id="particles"></div>
+
+    <div class="container">
+        <div class="main-card">
+            <div class="crown-top">👑</div>
+            
+            <h1 class="title-main">¡ESTÁS INVITADO!</h1>
+            <p class="subtitle-text">Una Fiesta Mágica para</p>
+            <h2 class="name-birthday">AILANY ZULEY IZQUIERDO ROJAS</h2>
+            <p class="age-display">Cumple 5 Años ✨</p>
+
+            <div class="enchanted-castle">🏰</div>
+
+            <div class="info-box">
+                <div class="info-row">
+                    <div class="info-icon">📅</div>
+                    <div class="info-text">
+                        <h3>Fecha</h3>
+                        <p>23 de Noviembre 2025</p>
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-icon">🕐</div>
+                    <div class="info-text">
+                        <h3>Hora</h3>
+                        <p>4:00 PM</p>
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-icon">📍</div>
+                    <div class="info-text">
+                        <h3>Lugar</h3>
+                        <p>Salón Jardín Joss Mary</p>
+                        <small>C. Rio Atoyac Sur 513, Santiago Momoxpan, Rafael Avila Camacho (Manantiales), 72760 Heroica Puebla de Zaragoza, Pue</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="floating-decor">
+                <div class="decor-item">🦄</div>
+                <div class="decor-item">🦋</div>
+                <div class="decor-item">🌸</div>
+                <div class="decor-item">✨</div>
+                <div class="decor-item">🎀</div>
+            </div>
+
+            <div class="button-container">
+                <div class="button-row">
+                    <button class="btn-audio" onclick="playMusic()">🔊 Reproducir Música</button>
+                    <button class="btn-audio" onclick="pauseMusic()">⏸️ Pausar</button>
+                </div>
+                <div class="button-row">
+                    <button class="btn-form" onclick="openForm()">📋 Confirmar Asistencia</button>
+                    <button class="btn-confirm" onclick="confirmAssistance()">✅ ¡YO VOY! 🎉</button>
+                </div>
+            </div>
+
+            <div class="music-info">
+                🎵 Dorada - Golden (Versión en Español)
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-confirm" id="modalConfirm">
+        <div class="modal-content">
+            <h2>¡Gracias! 🎉</h2>
+            <p>Tu asistencia ha sido confirmada.</p>
+            <p>Se están enviando mensajes a los organizadores...</p>
+            <small>📲 Los mensajes llegarán a ambos contactos de WhatsApp</small>
+            <button class="btn-confirm" onclick="closeModal()" style="width: 100%; margin-top: 20px;">¡Excelente!</button>
+        </div>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="https://p.scdn.co/mp3-preview/c6e9c5e9e9e9e9e9e9e9e9e9e9e9e9e9?cid=774b29d4f13844c99f6a582c5be47ac6" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 3 + 's';
+                particle.style.animation = `float ${3 + Math.random() * 4}s ease-in-out infinite`;
+                container.appendChild(particle);
+            }
+        }
+
+        function playMusic() {
+            document.getElementById('bgMusic').play();
+        }
+
+        function pauseMusic() {
+            document.getElementById('bgMusic').pause();
+        }
+
+        function confirmAssistance() {
+            createConfetti();
+            document.getElementById('modalConfirm').classList.add('active');
+            
+            const message = encodeURIComponent('🎉 ¡CONFIRMÉ MI ASISTENCIA! Estaré en el cumpleaños de Ailany Zuley.\n\n📅 23 de Noviembre 2025\n🕐 4:00 PM\n📍 Salón Jardín Joss Mary');
+            const phone1 = '522229656962';
+            const phone2 = '522221012336';
+            
+            setTimeout(() => {
+                window.open(`https://wa.me/${phone1}?text=${message}`, '_blank');
+                setTimeout(() => {
+                    window.open(`https://wa.me/${phone2}?text=${message}`, '_blank');
+                }, 500);
+            }, 1000);
+            
+            console.log('Confirmación enviada a ambos números:', new Date().toISOString());
+        }
+
+        function closeModal() {
+            document.getElementById('modalConfirm').classList.remove('active');
+        }
+
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-10px';
+                confetti.style.background = ['#ec4899', '#f43f5e', '#f97316', '#fbbf24'][Math.floor(Math.random() * 4)];
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+
+        function openForm() {
+            window.open('https://forms.gle/TU_FORMULARIO_AQUI', '_blank');
+        }
+
+        window.addEventListener('load', () => {
+            createParticles();
+            setTimeout(() => {
+                document.getElementById('bgMusic').play().catch(() => {
+                    console.log('Autoplay no disponible');
+                });
+            }, 500);
+        });
+
+        document.getElementById('modalConfirm').addEventListener('click', (e) => {
+            if (e.target.id === 'modalConfirm') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
