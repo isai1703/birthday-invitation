@@ -22,31 +22,36 @@
             position: relative;
         }
 
-        /* Partículas de fondo mejoradas */
+        /* Partículas mejoradas - 50 partículas */
         .sparkle {
             position: fixed;
-            width: 8px;
-            height: 8px;
-            background: rgba(255, 215, 0, 0.8);
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 215, 0, 0.9);
             border-radius: 50%;
             pointer-events: none;
-            animation: sparkleFloat 6s infinite;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+            animation: sparkleFloat 8s infinite ease-in-out;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.9), 0 0 30px rgba(255, 215, 0, 0.5);
+            filter: blur(0.5px);
         }
 
         @keyframes sparkleFloat {
             0%, 100% {
-                transform: translateY(0) rotate(0deg);
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
                 opacity: 0;
             }
-            10% {
+            5% {
                 opacity: 1;
             }
-            90% {
+            50% {
+                transform: translateY(-50vh) translateX(20px) rotate(180deg) scale(1.2);
+                opacity: 1;
+            }
+            95% {
                 opacity: 1;
             }
             100% {
-                transform: translateY(-100vh) rotate(360deg);
+                transform: translateY(-100vh) translateX(-20px) rotate(360deg) scale(0.8);
                 opacity: 0;
             }
         }
@@ -210,6 +215,41 @@
             font-weight: bold;
         }
 
+        /* Contador de confirmaciones */
+        .confirmation-counter {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .confirmation-counter h3 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .counter-number {
+            font-size: 48px;
+            color: white;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .counter-label {
+            color: white;
+            font-size: 18px;
+            margin-top: 5px;
+        }
+
         /* Información del evento */
         .info-box {
             background: linear-gradient(135deg, #FFB6C1, #DDA0DD);
@@ -233,7 +273,14 @@
             font-size: 24px;
         }
 
-        /* Cuenta regresiva mejorada */
+        .info-section {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        /* Cuenta regresiva */
         .countdown-section {
             background: linear-gradient(135deg, #FFD700, #FFA500);
             border-radius: 20px;
@@ -325,7 +372,103 @@
             margin-bottom: 10px;
         }
 
-        /* Botones mejorados */
+        /* Galería de fotos */
+        .photo-gallery-section {
+            background: linear-gradient(135deg, #FFB6C1, #FF69B4);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo-gallery-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .upload-reminder {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 18px;
+            animation: reminderPulse 3s infinite;
+        }
+
+        @keyframes reminderPulse {
+            0%, 100% { transform: scale(1); background: rgba(255, 255, 255, 0.3); }
+            50% { transform: scale(1.05); background: rgba(255, 255, 255, 0.5); }
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-slide {
+            display: none;
+            width: 100%;
+            animation: slideIn 0.5s;
+        }
+
+        .carousel-slide.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .placeholder-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #DDA0DD, #FFB6C1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            border-radius: 15px;
+        }
+
+        .upload-photo-btn {
+            background: white;
+            color: #FF69B4;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .upload-photo-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .photo-input {
+            display: none;
+        }
+
+        /* Botones */
         .btn {
             background: linear-gradient(135deg, #FF69B4, #FFB6C1);
             color: white;
@@ -339,7 +482,6 @@
             transition: all 0.3s;
             font-weight: bold;
             position: relative;
-            overflow: hidden;
         }
 
         .btn:hover {
@@ -357,18 +499,35 @@
             transform: none;
         }
 
+        .btn-loading {
+            position: relative;
+            padding-right: 60px;
+        }
+
         .btn-loading::after {
-            content: '⏳';
-            margin-left: 10px;
+            content: '';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border: 3px solid white;
+            border-top-color: transparent;
+            border-radius: 50%;
             animation: spin 1s linear infinite;
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to { transform: translateY(-50%) rotate(360deg); }
         }
 
         .location-btn {
             background: linear-gradient(135deg, #DDA0DD, #BA55D3);
+        }
+
+        .calendar-btn {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
         }
 
         /* Modal mejorado */
@@ -442,17 +601,17 @@
             transform: scale(1.1);
         }
 
-        /* Confetti */
+        /* Confetti mejorado */
         .confetti {
             position: fixed;
-            width: 10px;
-            height: 10px;
-            background: #FFD700;
+            width: 12px;
+            height: 12px;
             pointer-events: none;
             z-index: 99999;
+            border-radius: 50%;
         }
 
-        /* Audio control mejorado */
+        /* Audio control */
         .audio-control {
             position: fixed;
             bottom: 20px;
@@ -482,6 +641,9 @@
             .btn { padding: 15px 30px; font-size: 18px; }
             .container { padding: 25px; }
             .crown { font-size: 60px; }
+            .counter-number { font-size: 36px; }
+            .placeholder-image { height: 250px; font-size: 48px; }
+            .carousel-slide img { height: 250px; }
         }
     </style>
 </head>
@@ -512,22 +674,48 @@
         <h1>¡Ailany Zuley<br>cumple 5 años!</h1>
         <p class="subtitle">🎂 ¡Ven a celebrar con nosotros! 🎉</p>
 
+        <!-- Contador de confirmaciones -->
+        <div class="confirmation-counter">
+            <h3>👥 Confirmaciones Recibidas</h3>
+            <div class="counter-number" id="totalConfirmations">0</div>
+            <div class="counter-label">personas confirmadas</div>
+        </div>
+
         <div class="info-box">
-            <div class="info-item">
-                <span>📅</span>
-                <div><strong>Fecha:</strong> 23 de Noviembre 2025</div>
+            <!-- Misa -->
+            <div class="info-section">
+                <div class="info-item">
+                    <span>⛪</span>
+                    <div><strong>Misa de Acción de Gracias</strong></div>
+                </div>
+                <div class="info-item" style="font-size: 18px;">
+                    <span>⏰</span>
+                    <div>1:00 PM - Iglesia Santo Entierro</div>
+                </div>
             </div>
-            <div class="info-item">
-                <span>⏰</span>
-                <div><strong>Hora:</strong> 4:00 PM</div>
-            </div>
-            <div class="info-item">
-                <span>📍</span>
-                <div><strong>Lugar:</strong> Salón Jardín Joss Mary</div>
-            </div>
-            <div class="info-item" style="font-size: 16px;">
-                <span>🗺️</span>
-                <div>C. Rio Atoyac Sur 513, Santiago Momoxpan, Puebla</div>
+
+            <!-- Fiesta -->
+            <div class="info-section">
+                <div class="info-item">
+                    <span>🎉</span>
+                    <div><strong>Celebración</strong></div>
+                </div>
+                <div class="info-item">
+                    <span>📅</span>
+                    <div><strong>Fecha:</strong> 23 de Noviembre 2025</div>
+                </div>
+                <div class="info-item">
+                    <span>⏰</span>
+                    <div><strong>Hora:</strong> 4:00 PM</div>
+                </div>
+                <div class="info-item">
+                    <span>📍</span>
+                    <div><strong>Lugar:</strong> Salón Jardín Joss Mary</div>
+                </div>
+                <div class="info-item" style="font-size: 16px;">
+                    <span>🗺️</span>
+                    <div>C. Rio Atoyac Sur 513, Santiago Momoxpan, Puebla</div>
+                </div>
             </div>
         </div>
 
@@ -571,9 +759,35 @@
             </div>
         </div>
 
+        <!-- Galería de fotos -->
+        <div class="photo-gallery-section">
+            <h2>📸 Galería de Fotos 📸</h2>
+            <div class="upload-reminder">
+                💝 ¡No se te olvide subir tus fotos de mi fiesta! 💝<br>
+                🎈 ¡Quiero ver todos los momentos especiales! 🎈
+            </div>
+            
+            <div class="carousel-container">
+                <div class="carousel-slide active">
+                    <div class="placeholder-image">📷</div>
+                </div>
+                <div id="photoCarousel"></div>
+            </div>
+
+            <label class="upload-photo-btn" for="photoInput">
+                📤 Subir Fotos
+            </label>
+            <input type="file" id="photoInput" class="photo-input" accept="image/*" multiple>
+            <p style="margin-top: 10px; font-size: 14px;">Selecciona múltiples fotos para compartir</p>
+        </div>
+
         <!-- Botones -->
         <button class="btn" id="confirmBtn" onclick="confirmAssistance()">
-            ✨ ¡YO VOY! ✨
+            ✨ ¡CONFIRMAR ASISTENCIA! ✨
+        </button>
+
+        <button class="btn calendar-btn" onclick="addToCalendar()">
+            📅 Agregar al Calendario
         </button>
 
         <div>
@@ -604,14 +818,20 @@
     <script>
         // Variables globales
         const eventDate = new Date('2025-11-23T16:00:00').getTime();
-        const whatsappNumbers = ['522221012336'];
+        const whatsappNumber = '522221012336';
         const locations = {
             salon: 'https://maps.app.goo.gl/HQFveCpJPBgvzVdg7',
             church: 'https://maps.app.goo.gl/5As1RXhWszN19Xin9'
         };
 
+        // Familias VIP con capacidad de 8 personas
+        const vipFamilies = ['garcía', 'rodríguez', 'martínez', 'lópez'];
+
         let musicPlaying = false;
         let confirmationInProgress = false;
+        let currentSlide = 0;
+        let uploadedPhotos = [];
+        let carouselInterval;
 
         // Inicialización
         document.addEventListener('DOMContentLoaded', function() {
@@ -620,20 +840,35 @@
             setInterval(updateCountdown, 1000);
             setupEnvelope();
             setupAudioControl();
+            setupPhotoUpload();
+            loadConfirmations();
+            loadPhotos();
+            startCarousel();
         });
 
-        // Partículas flotantes
+        // Partículas flotantes - 50 partículas
         function createSparkles() {
-            const sparkleCount = 30;
+            const sparkleCount = 50;
+            const colors = [
+                'rgba(255, 215, 0, 0.9)',
+                'rgba(255, 223, 0, 0.9)',
+                'rgba(255, 185, 0, 0.9)',
+                'rgba(255, 200, 50, 0.9)',
+                'rgba(255, 230, 100, 0.9)'
+            ];
+
             for (let i = 0; i < sparkleCount; i++) {
                 setTimeout(() => {
                     const sparkle = document.createElement('div');
                     sparkle.className = 'sparkle';
                     sparkle.style.left = Math.random() * 100 + '%';
-                    sparkle.style.animationDelay = Math.random() * 5 + 's';
-                    sparkle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                    sparkle.style.width = (Math.random() * 6 + 6) + 'px';
+                    sparkle.style.height = sparkle.style.width;
+                    sparkle.style.animationDelay = Math.random() * 8 + 's';
+                    sparkle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                    sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
                     document.body.appendChild(sparkle);
-                }, i * 100);
+                }, i * 50);
             }
         }
 
@@ -694,7 +929,7 @@
             document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
         }
 
-        // Confirmación mejorada con validación
+        // Confirmación con validaciones robustas
         function confirmAssistance() {
             if (confirmationInProgress) {
                 alert('⏳ Por favor espera, procesando confirmación...');
@@ -709,7 +944,7 @@
             // Solicitar nombre
             let name = prompt('👤 Por favor ingresa tu nombre completo:');
             
-            // Validar nombre
+            // Validar nombre (mínimo 3 caracteres)
             if (!name || name.trim().length < 3) {
                 alert('❌ Por favor ingresa un nombre válido (mínimo 3 caracteres)');
                 resetConfirmButton(btn);
@@ -718,42 +953,72 @@
             name = name.trim();
 
             // Solicitar número de personas
-            let people = prompt('👥 ¿Cuántas personas asistirán? (1-3):');
+            let people = prompt('👥 ¿Cuántas personas asistirán?\n\n💡 Mínimo 3 personas\n⭐ Familias VIP: hasta 8 personas');
             
-            // Validar número de personas
+            // Validar que se ingresó algo
             if (!people || people.trim() === '') {
-                alert('❌ Por favor indica el número de personas');
+                alert('❌ Por favor indica el número de personas que asistirán');
                 resetConfirmButton(btn);
                 return;
             }
 
             const peopleNum = parseInt(people);
-            if (isNaN(peopleNum) || peopleNum < 1 || peopleNum > 3) {
-                alert('❌ Por favor ingresa un número válido entre 1 y 3');
+            
+            // Validar que sea un número válido
+            if (isNaN(peopleNum)) {
+                alert('❌ Por favor ingresa un número válido');
                 resetConfirmButton(btn);
                 return;
             }
 
+            // Verificar si es familia VIP
+            const isVIP = vipFamilies.some(family => 
+                name.toLowerCase().includes(family)
+            );
+
+            // Validación según tipo de familia
+            if (isVIP) {
+                // Familias VIP: entre 3 y 8 personas
+                if (peopleNum < 3) {
+                    alert('❌ El mínimo es 3 personas');
+                    resetConfirmButton(btn);
+                    return;
+                }
+                if (peopleNum > 8) {
+                    alert('❌ Para familia VIP el máximo es 8 personas\n\n⭐ Tu familia tiene cupo especial de hasta 8 personas');
+                    resetConfirmButton(btn);
+                    return;
+                }
+            } else {
+                // Familias normales: exactamente 3 personas
+                if (peopleNum !== 3) {
+                    alert('❌ Solo se permiten 3 personas por familia\n\n💡 Si necesitas más cupo, contacta con los organizadores');
+                    resetConfirmButton(btn);
+                    return;
+                }
+            }
+
             // Mensaje de WhatsApp mejorado
+            const vipBadge = isVIP ? '⭐ FAMILIA VIP ⭐\n' : '';
             const message = `🎉 *CONFIRMACIÓN DE ASISTENCIA* 🎉
 
-👤 *Nombre:* ${name}
+${vipBadge}👤 *Nombre:* ${name}
 👥 *Personas:* ${peopleNum}
 📅 *Evento:* Cumpleaños de Ailany Zuley
 🎂 *Edad:* 5 años
-📆 *Fecha:* 23 de Noviembre 2025
-⏰ *Hora:* 4:00 PM
+
+⛪ *Misa:* 1:00 PM - Iglesia Santo Entierro
+🎉 *Celebración:* 4:00 PM
 📍 *Lugar:* Salón Jardín Joss Mary
 
 ¡Nos vemos en la fiesta! 👑✨`;
 
-            // Enviar a ambos números de WhatsApp
-            whatsappNumbers.forEach((number, index) => {
-                setTimeout(() => {
-                    const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
-                    window.open(url, '_blank');
-                }, index * 500);
-            });
+            // Enviar a WhatsApp
+            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+
+            // Guardar confirmación
+            saveConfirmation(name, peopleNum);
 
             // Mostrar modal y confetti
             setTimeout(() => {
@@ -767,6 +1032,94 @@
             btn.disabled = false;
             btn.classList.remove('btn-loading');
             confirmationInProgress = false;
+        }
+
+        // Guardar confirmaciones en localStorage
+        function saveConfirmation(name, people) {
+            try {
+                let confirmations = JSON.parse(localStorage.getItem('confirmations') || '[]');
+                confirmations.push({
+                    name: name,
+                    people: people,
+                    timestamp: new Date().toISOString()
+                });
+                localStorage.setItem('confirmations', JSON.stringify(confirmations));
+                updateConfirmationCounter();
+            } catch (e) {
+                console.log('Error guardando confirmación:', e);
+            }
+        }
+
+        // Cargar confirmaciones
+        function loadConfirmations() {
+            updateConfirmationCounter();
+        }
+
+        // Actualizar contador
+        function updateConfirmationCounter() {
+            try {
+                const confirmations = JSON.parse(localStorage.getItem('confirmations') || '[]');
+                const total = confirmations.reduce((sum, conf) => sum + conf.people, 0);
+                document.getElementById('totalConfirmations').textContent = total;
+            } catch (e) {
+                document.getElementById('totalConfirmations').textContent = '0';
+            }
+        }
+
+        // Agregar al calendario
+        function addToCalendar() {
+            const title = 'Cumpleaños de Ailany Zuley - 5 años';
+            const description = `🎉 Celebración del cumpleaños de Ailany Zuley
+
+⛪ Misa: 1:00 PM - Iglesia Santo Entierro
+🎉 Fiesta: 4:00 PM - Salón Jardín Joss Mary
+
+📍 Dirección: C. Rio Atoyac Sur 513, Santiago Momoxpan, Puebla
+
+🎁 Mesa de regalos: Efectivo o regalo sorpresa
+👑 ¡No faltes!`;
+
+            const location = 'Salón Jardín Joss Mary, C. Rio Atoyac Sur 513, Santiago Momoxpan, Puebla';
+            
+            // Fechas en formato iCal
+            const startDate = '20251123T160000';
+            const endDate = '20251123T220000';
+            
+            // Crear evento iCal
+            const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cumpleaños Ailany//ES
+BEGIN:VEVENT
+DTSTART:${startDate}
+DTEND:${endDate}
+SUMMARY:${title}
+DESCRIPTION:${description.replace(/\n/g, '\\n')}
+LOCATION:${location}
+STATUS:CONFIRMED
+SEQUENCE:0
+BEGIN:VALARM
+TRIGGER:-P1D
+DESCRIPTION:Recordatorio: Cumpleaños de Ailany mañana
+ACTION:DISPLAY
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+DESCRIPTION:Recordatorio: Cumpleaños de Ailany en 2 horas
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+END:VCALENDAR`;
+
+            // Crear blob y descargar
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'cumpleanos_ailany_zuley.ics';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            alert('📅 ¡Evento descargado!\n\nAbre el archivo para agregarlo a tu calendario.\n\n⏰ Incluye recordatorios:\n• 1 día antes\n• 2 horas antes');
         }
 
         // Ubicaciones
@@ -786,36 +1139,154 @@
             document.getElementById('confirmModal').classList.remove('show');
         }
 
-        // Confetti mejorado
+        // Confetti mejorado al 100%
         function createConfetti() {
-            const colors = ['#FFD700', '#FF69B4', '#DDA0DD', '#FFB6C1', '#FFA500'];
-            const confettiCount = 100;
+            const colors = ['#FFD700', '#FF69B4', '#DDA0DD', '#FFB6C1', '#FFA500', '#FF1493', '#DA70D6'];
+            const shapes = ['circle', 'square'];
+            const confettiCount = 150;
 
             for (let i = 0; i < confettiCount; i++) {
                 setTimeout(() => {
                     const confetti = document.createElement('div');
                     confetti.className = 'confetti';
                     confetti.style.left = Math.random() * 100 + '%';
-                    confetti.style.top = '-10px';
+                    confetti.style.top = '-20px';
                     confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    
+                    const size = Math.random() * 8 + 8;
+                    confetti.style.width = size + 'px';
+                    confetti.style.height = size + 'px';
+                    
+                    if (shapes[Math.floor(Math.random() * shapes.length)] === 'square') {
+                        confetti.style.borderRadius = '0';
+                    }
+                    
                     document.body.appendChild(confetti);
 
                     const animDuration = Math.random() * 2 + 2;
                     const animDelay = Math.random() * 0.5;
+                    const rotations = Math.random() * 720 + 360;
+                    const drift = (Math.random() - 0.5) * 200;
                     
                     confetti.animate([
-                        { transform: `translateY(0) rotate(0deg)`, opacity: 1 },
-                        { transform: `translateY(100vh) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+                        { 
+                            transform: `translateY(0) translateX(0) rotate(0deg) scale(1)`, 
+                            opacity: 1 
+                        },
+                        { 
+                            transform: `translateY(50vh) translateX(${drift/2}px) rotate(${rotations/2}deg) scale(1.1)`, 
+                            opacity: 1,
+                            offset: 0.5
+                        },
+                        { 
+                            transform: `translateY(100vh) translateX(${drift}px) rotate(${rotations}deg) scale(0.8)`, 
+                            opacity: 0 
+                        }
                     ], {
                         duration: animDuration * 1000,
                         delay: animDelay * 1000,
                         easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
                     });
 
-                    setTimeout(() => confetti.remove(), (animDuration + animDelay) * 1000);
-                }, i * 30);
+                    setTimeout(() => confetti.remove(), (animDuration + animDelay) * 1000 + 100);
+                }, i * 15);
             }
+        }
+
+        // Sistema de fotos
+        function setupPhotoUpload() {
+            const input = document.getElementById('photoInput');
+            input.addEventListener('change', handlePhotoUpload);
+        }
+
+        function handlePhotoUpload(e) {
+            const files = e.target.files;
+            if (!files.length) return;
+
+            for (let file of files) {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const photoData = e.target.result;
+                        uploadedPhotos.push(photoData);
+                        savePhotos();
+                        displayPhotos();
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+
+            alert(`📸 ${files.length} foto(s) subida(s) exitosamente!\n\n✨ Gracias por compartir tus momentos especiales`);
+        }
+
+        function savePhotos() {
+            try {
+                localStorage.setItem('eventPhotos', JSON.stringify(uploadedPhotos));
+            } catch (e) {
+                console.log('Error guardando fotos:', e);
+                if (e.name === 'QuotaExceededError') {
+                    alert('⚠️ Límite de almacenamiento alcanzado\n\nSe han guardado las fotos hasta el límite disponible');
+                }
+            }
+        }
+
+        function loadPhotos() {
+            try {
+                const saved = localStorage.getItem('eventPhotos');
+                if (saved) {
+                    uploadedPhotos = JSON.parse(saved);
+                    displayPhotos();
+                }
+            } catch (e) {
+                console.log('Error cargando fotos:', e);
+            }
+        }
+
+        function displayPhotos() {
+            const carousel = document.getElementById('photoCarousel');
+            carousel.innerHTML = '';
+
+            uploadedPhotos.forEach((photo, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'carousel-slide';
+                const img = document.createElement('img');
+                img.src = photo;
+                img.alt = `Foto ${index + 1}`;
+                slide.appendChild(img);
+                carousel.appendChild(slide);
+            });
+
+            if (uploadedPhotos.length > 0) {
+                currentSlide = 0;
+                showSlide(0);
+            }
+        }
+
+        function startCarousel() {
+            carouselInterval = setInterval(() => {
+                if (uploadedPhotos.length > 0) {
+                    nextSlide();
+                }
+            }, 4000);
+        }
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index + 1) { // +1 porque el placeholder es el primero
+                    slide.classList.add('active');
+                }
+            });
+
+            if (uploadedPhotos.length === 0) {
+                slides[0].classList.add('active');
+            }
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % uploadedPhotos.length;
+            showSlide(currentSlide);
         }
 
         // Cerrar modal al hacer clic fuera
