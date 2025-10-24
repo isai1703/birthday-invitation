@@ -22,7 +22,6 @@
             position: relative;
         }
 
-        /* Partículas mejoradas - 50 partículas */
         .sparkle {
             position: fixed;
             width: 10px;
@@ -56,7 +55,6 @@
             }
         }
 
-        /* Sobre animado */
         .envelope-wrapper {
             position: fixed;
             top: 0;
@@ -163,7 +161,6 @@
             50% { opacity: 0.3; }
         }
 
-        /* Contenedor principal */
         .container {
             max-width: 800px;
             width: 95%;
@@ -182,17 +179,136 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* Corona animada */
-        .crown {
-            font-size: 80px;
-            animation: crownRotate 3s infinite;
-            display: inline-block;
-            filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.6));
+        .event-title {
+            color: #FF69B4;
+            font-size: 36px;
+            margin: 20px 0 10px 0;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: titleShine 3s infinite;
         }
 
-        @keyframes crownRotate {
-            0%, 100% { transform: rotate(-10deg); }
-            50% { transform: rotate(10deg); }
+        @keyframes titleShine {
+            0%, 100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); }
+            50% { text-shadow: 0 0 20px rgba(255, 105, 180, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.2); }
+        }
+
+        .crown-container {
+            position: relative;
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        .crown-top {
+            font-size: 100px;
+            position: absolute;
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: crownFloat 3s infinite ease-in-out;
+            filter: drop-shadow(0 8px 20px rgba(255, 215, 0, 0.8));
+            z-index: 10;
+        }
+
+        @keyframes crownFloat {
+            0%, 100% { 
+                transform: translateX(-50%) translateY(0) rotate(-5deg);
+            }
+            50% { 
+                transform: translateX(-50%) translateY(-15px) rotate(5deg);
+            }
+        }
+
+        .name-container {
+            position: relative;
+            display: inline-block;
+            padding-top: 60px;
+        }
+
+        .name-ailany {
+            color: #FF69B4;
+            font-size: 72px;
+            font-weight: bold;
+            position: relative;
+            display: inline-block;
+            animation: nameFloat 4s infinite ease-in-out, nameSparkle 2s infinite;
+            text-shadow: 
+                0 0 10px rgba(255, 105, 180, 0.8),
+                0 0 20px rgba(255, 105, 180, 0.6),
+                0 0 30px rgba(255, 105, 180, 0.4),
+                3px 3px 6px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #FF69B4, #FFB6C1, #FF1493, #FF69B4);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: nameFloat 4s infinite ease-in-out, nameSparkle 2s infinite, gradientShift 3s infinite;
+        }
+
+        @keyframes nameFloat {
+            0%, 100% { 
+                transform: translateY(0) scale(1);
+            }
+            50% { 
+                transform: translateY(-20px) scale(1.05);
+            }
+        }
+
+        @keyframes nameSparkle {
+            0%, 100% { 
+                filter: brightness(1) drop-shadow(0 0 20px rgba(255, 105, 180, 0.6));
+            }
+            50% { 
+                filter: brightness(1.3) drop-shadow(0 0 40px rgba(255, 105, 180, 1));
+            }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .name-ailany::before {
+            content: '✨';
+            position: absolute;
+            left: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            animation: sparkleLeft 2s infinite;
+        }
+
+        .name-ailany::after {
+            content: '✨';
+            position: absolute;
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            animation: sparkleRight 2s infinite;
+        }
+
+        @keyframes sparkleLeft {
+            0%, 100% { 
+                opacity: 0.5;
+                transform: translateY(-50%) rotate(0deg) scale(1);
+            }
+            50% { 
+                opacity: 1;
+                transform: translateY(-50%) rotate(180deg) scale(1.3);
+            }
+        }
+
+        @keyframes sparkleRight {
+            0%, 100% { 
+                opacity: 1;
+                transform: translateY(-50%) rotate(0deg) scale(1.3);
+            }
+            50% { 
+                opacity: 0.5;
+                transform: translateY(-50%) rotate(-180deg) scale(1);
+            }
         }
 
         h1 {
@@ -200,12 +316,6 @@
             font-size: 48px;
             margin: 20px 0;
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
-            animation: titleFloat 3s infinite;
-        }
-
-        @keyframes titleFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
         }
 
         .subtitle {
@@ -215,7 +325,6 @@
             font-weight: bold;
         }
 
-        /* Contador de confirmaciones */
         .confirmation-counter {
             background: linear-gradient(135deg, #FFD700, #FFA500);
             border-radius: 20px;
@@ -250,7 +359,6 @@
             margin-top: 5px;
         }
 
-        /* Información del evento */
         .info-box {
             background: linear-gradient(135deg, #FFB6C1, #DDA0DD);
             border-radius: 20px;
@@ -280,7 +388,6 @@
             margin: 15px 0;
         }
 
-        /* Cuenta regresiva */
         .countdown-section {
             background: linear-gradient(135deg, #FFD700, #FFA500);
             border-radius: 20px;
@@ -328,7 +435,6 @@
             margin-top: 5px;
         }
 
-        /* Mesa de regalos */
         .gift-table-section {
             background: linear-gradient(135deg, #DDA0DD, #FFB6C1);
             border-radius: 20px;
@@ -372,7 +478,6 @@
             margin-bottom: 10px;
         }
 
-        /* Galería de fotos */
         .photo-gallery-section {
             background: linear-gradient(135deg, #FFB6C1, #FF69B4);
             border-radius: 20px;
@@ -468,7 +573,6 @@
             display: none;
         }
 
-        /* Botones */
         .btn {
             background: linear-gradient(135deg, #FF69B4, #FFB6C1);
             color: white;
@@ -530,7 +634,6 @@
             background: linear-gradient(135deg, #FFD700, #FFA500);
         }
 
-        /* Modal mejorado */
         .modal {
             display: none;
             position: fixed;
@@ -601,7 +704,6 @@
             transform: scale(1.1);
         }
 
-        /* Confetti mejorado */
         .confetti {
             position: fixed;
             width: 12px;
@@ -611,7 +713,6 @@
             border-radius: 50%;
         }
 
-        /* Audio control */
         .audio-control {
             position: fixed;
             bottom: 20px;
@@ -632,15 +733,18 @@
             transform: scale(1.1);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
+            .event-title { font-size: 28px; }
+            .name-ailany { font-size: 48px; }
+            .crown-top { font-size: 70px; top: -60px; }
+            .name-ailany::before,
+            .name-ailany::after { font-size: 30px; }
             h1 { font-size: 36px; }
             .subtitle { font-size: 22px; }
             .countdown-number { font-size: 28px; }
             .info-item { font-size: 16px; }
             .btn { padding: 15px 30px; font-size: 18px; }
             .container { padding: 25px; }
-            .crown { font-size: 60px; }
             .counter-number { font-size: 36px; }
             .placeholder-image { height: 250px; font-size: 48px; }
             .carousel-slide img { height: 250px; }
@@ -648,7 +752,6 @@
     </style>
 </head>
 <body>
-    <!-- Sobre animado -->
     <div class="envelope-wrapper" id="envelopeWrapper">
         <div class="envelope" id="envelope">
             <div class="envelope-flap"></div>
@@ -662,19 +765,24 @@
         <div class="click-hint">👆 HAZ CLIC AQUÍ 👆</div>
     </div>
 
-    <!-- Audio -->
     <audio id="backgroundMusic" loop>
         <source src="golden_spanish.mp3" type="audio/mpeg">
     </audio>
     <button class="audio-control" id="audioToggle" title="Música">🎵</button>
 
-    <!-- Contenedor principal -->
     <div class="container">
-        <div class="crown">👑</div>
-        <h1>¡Ailany Zuley<br>cumple 5 años!</h1>
+        <h2 class="event-title">💖 Mis Mini XV Años 💖</h2>
+        
+        <div class="crown-container">
+            <div class="crown-top">👑</div>
+            <div class="name-container">
+                <div class="name-ailany">Ailany</div>
+            </div>
+        </div>
+
+        <h1>cumple 5 años!</h1>
         <p class="subtitle">🎂 ¡Ven a celebrar con nosotros! 🎉</p>
 
-        <!-- Contador de confirmaciones -->
         <div class="confirmation-counter">
             <h3>👥 Confirmaciones Recibidas</h3>
             <div class="counter-number" id="totalConfirmations">0</div>
@@ -682,7 +790,6 @@
         </div>
 
         <div class="info-box">
-            <!-- Misa -->
             <div class="info-section">
                 <div class="info-item">
                     <span>⛪</span>
@@ -694,7 +801,6 @@
                 </div>
             </div>
 
-            <!-- Fiesta -->
             <div class="info-section">
                 <div class="info-item">
                     <span>🎉</span>
@@ -719,7 +825,6 @@
             </div>
         </div>
 
-        <!-- Cuenta regresiva -->
         <div class="countdown-section">
             <div class="countdown-title">⏰ Faltan solo... ⏰</div>
             <div class="countdown" id="countdown">
@@ -742,7 +847,6 @@
             </div>
         </div>
 
-        <!-- Mesa de regalos -->
         <div class="gift-table-section">
             <h2>🎁 Mesa de Regalos 🎁</h2>
             <div class="gift-options">
@@ -759,7 +863,6 @@
             </div>
         </div>
 
-        <!-- Galería de fotos -->
         <div class="photo-gallery-section">
             <h2>📸 Galería de Fotos 📸</h2>
             <div class="upload-reminder">
@@ -781,7 +884,6 @@
             <p style="margin-top: 10px; font-size: 14px;">Selecciona múltiples fotos para compartir</p>
         </div>
 
-        <!-- Botones -->
         <button class="btn" id="confirmBtn" onclick="confirmAssistance()">
             ✨ ¡CONFIRMAR ASISTENCIA! ✨
         </button>
@@ -791,7 +893,7 @@
         </button>
 
         <div>
-            <button class="btn location-btn" onclick="openLocation('salon')">
+            <button class="btnlocation-btn" onclick="openLocation('salon')">
                 📍 Ubicación Salón
             </button>
             <button class="btn location-btn" onclick="openLocation('church')">
@@ -804,7 +906,6 @@
         </p>
     </div>
 
-    <!-- Modal de confirmación -->
     <div class="modal" id="confirmModal">
         <div class="modal-content">
             <h2>🎉 ¡Confirmación Exitosa! 🎉</h2>
@@ -816,7 +917,6 @@
     </div>
 
     <script>
-        // Variables globales
         const eventDate = new Date('2025-11-23T16:00:00').getTime();
         const whatsappNumber = '522221012336';
         const locations = {
@@ -824,8 +924,9 @@
             church: 'https://maps.app.goo.gl/5As1RXhWszN19Xin9'
         };
 
-        // Familias VIP con capacidad de 8 personas
-        const vipFamilies = ['garcía', 'rodríguez', 'martínez', 'lópez'];
+        // ⭐ FAMILIAS VIP - DESACTIVADO (Activar cuando sea necesario)
+        // const vipFamilies = ['garcía', 'rodríguez', 'martínez', 'lópez'];
+        // const VIP_ENABLED = false; // Cambiar a true para activar familias VIP
 
         let musicPlaying = false;
         let confirmationInProgress = false;
@@ -833,7 +934,6 @@
         let uploadedPhotos = [];
         let carouselInterval;
 
-        // Inicialización
         document.addEventListener('DOMContentLoaded', function() {
             createSparkles();
             updateCountdown();
@@ -846,7 +946,6 @@
             startCarousel();
         });
 
-        // Partículas flotantes - 50 partículas
         function createSparkles() {
             const sparkleCount = 50;
             const colors = [
@@ -872,7 +971,6 @@
             }
         }
 
-        // Sobre animado
         function setupEnvelope() {
             const wrapper = document.getElementById('envelopeWrapper');
             const envelope = document.getElementById('envelope');
@@ -889,7 +987,6 @@
             });
         }
 
-        // Control de audio
         function setupAudioControl() {
             const toggle = document.getElementById('audioToggle');
             const music = document.getElementById('backgroundMusic');
@@ -907,7 +1004,6 @@
             });
         }
 
-        // Cuenta regresiva
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = eventDate - now;
@@ -929,7 +1025,6 @@
             document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
         }
 
-        // Confirmación con validaciones robustas
         function confirmAssistance() {
             if (confirmationInProgress) {
                 alert('⏳ Por favor espera, procesando confirmación...');
@@ -941,10 +1036,8 @@
             btn.classList.add('btn-loading');
             confirmationInProgress = true;
 
-            // Solicitar nombre
             let name = prompt('👤 Por favor ingresa tu nombre completo:');
             
-            // Validar nombre (mínimo 3 caracteres)
             if (!name || name.trim().length < 3) {
                 alert('❌ Por favor ingresa un nombre válido (mínimo 3 caracteres)');
                 resetConfirmButton(btn);
@@ -952,10 +1045,8 @@
             }
             name = name.trim();
 
-            // Solicitar número de personas
-            let people = prompt('👥 ¿Cuántas personas asistirán?\n\n💡 Mínimo 3 personas\n⭐ Familias VIP: hasta 8 personas');
+            let people = prompt('👥 ¿Cuántas personas asistirán en total?\n\n💡 Mínimo 4 personas por familia');
             
-            // Validar que se ingresó algo
             if (!people || people.trim() === '') {
                 alert('❌ Por favor indica el número de personas que asistirán');
                 resetConfirmButton(btn);
@@ -964,46 +1055,56 @@
 
             const peopleNum = parseInt(people);
             
-            // Validar que sea un número válido
             if (isNaN(peopleNum)) {
                 alert('❌ Por favor ingresa un número válido');
                 resetConfirmButton(btn);
                 return;
             }
 
-            // Verificar si es familia VIP
-            const isVIP = vipFamilies.some(family => 
-                name.toLowerCase().includes(family)
-            );
-
-            // Validación según tipo de familia
-            if (isVIP) {
-                // Familias VIP: entre 3 y 8 personas
-                if (peopleNum < 3) {
-                    alert('❌ El mínimo es 3 personas');
-                    resetConfirmButton(btn);
-                    return;
-                }
-                if (peopleNum > 8) {
-                    alert('❌ Para familia VIP el máximo es 8 personas\n\n⭐ Tu familia tiene cupo especial de hasta 8 personas');
-                    resetConfirmButton(btn);
-                    return;
-                }
-            } else {
-                // Familias normales: exactamente 3 personas
-                if (peopleNum !== 3) {
-                    alert('❌ Solo se permiten 3 personas por familia\n\n💡 Si necesitas más cupo, contacta con los organizadores');
-                    resetConfirmButton(btn);
-                    return;
-                }
+            if (peopleNum < 4) {
+                alert('❌ El mínimo es 4 personas por familia');
+                resetConfirmButton(btn);
+                return;
             }
 
-            // Mensaje de WhatsApp mejorado
-            const vipBadge = isVIP ? '⭐ FAMILIA VIP ⭐\n' : '';
-            const message = `🎉 *CONFIRMACIÓN DE ASISTENCIA* 🎉
+            let children = prompt(`👶 De las ${peopleNum} personas, ¿cuántos son niños menores de 7 años?\n\n💡 Si no hay niños menores de 7 años, escribe 0`);
+            
+            if (children === null || children.trim() === '') {
+                alert('❌ Por favor indica cuántos niños menores de 7 años asistirán (0 si no hay)');
+                resetConfirmButton(btn);
+                return;
+            }
 
-${vipBadge}👤 *Nombre:* ${name}
-👥 *Personas:* ${peopleNum}
+            const childrenNum = parseInt(children);
+            
+            if (isNaN(childrenNum)) {
+                alert('❌ Por favor ingresa un número válido para los niños');
+                resetConfirmButton(btn);
+                return;
+            }
+
+            if (childrenNum < 0) {
+                alert('❌ El número de niños no puede ser negativo');
+                resetConfirmButton(btn);
+                return;
+            }
+
+            if (childrenNum > peopleNum) {
+                alert('❌ El número de niños no puede ser mayor al total de personas');
+                resetConfirmButton(btn);
+                return;
+            }
+
+            const adultsNum = peopleNum - childrenNum;
+
+            const message = `🎉 *CONFIRMACIÓN DE ASISTENCIA* 🎉
+💖 *Mis Mini XV Años* 💖
+
+👤 *Nombre:* ${name}
+👥 *Total de personas:* ${peopleNum}
+👨‍👩‍👧 *Adultos:* ${adultsNum}
+👶 *Niños menores de 7 años:* ${childrenNum}
+
 📅 *Evento:* Cumpleaños de Ailany Zuley
 🎂 *Edad:* 5 años
 
@@ -1013,14 +1114,11 @@ ${vipBadge}👤 *Nombre:* ${name}
 
 ¡Nos vemos en la fiesta! 👑✨`;
 
-            // Enviar a WhatsApp
             const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
 
-            // Guardar confirmación
-            saveConfirmation(name, peopleNum);
+            saveConfirmation(name, peopleNum, childrenNum, adultsNum);
 
-            // Mostrar modal y confetti
             setTimeout(() => {
                 showModal();
                 createConfetti();
@@ -1034,13 +1132,14 @@ ${vipBadge}👤 *Nombre:* ${name}
             confirmationInProgress = false;
         }
 
-        // Guardar confirmaciones en localStorage
-        function saveConfirmation(name, people) {
+        function saveConfirmation(name, people, children, adults) {
             try {
                 let confirmations = JSON.parse(localStorage.getItem('confirmations') || '[]');
                 confirmations.push({
                     name: name,
                     people: people,
+                    children: children,
+                    adults: adults,
                     timestamp: new Date().toISOString()
                 });
                 localStorage.setItem('confirmations', JSON.stringify(confirmations));
@@ -1050,12 +1149,10 @@ ${vipBadge}👤 *Nombre:* ${name}
             }
         }
 
-        // Cargar confirmaciones
         function loadConfirmations() {
             updateConfirmationCounter();
         }
 
-        // Actualizar contador
         function updateConfirmationCounter() {
             try {
                 const confirmations = JSON.parse(localStorage.getItem('confirmations') || '[]');
@@ -1066,10 +1163,10 @@ ${vipBadge}👤 *Nombre:* ${name}
             }
         }
 
-        // Agregar al calendario
         function addToCalendar() {
-            const title = 'Cumpleaños de Ailany Zuley - 5 años';
-            const description = `🎉 Celebración del cumpleaños de Ailany Zuley
+            const title = 'Cumpleaños de Ailany Zuley - Mis Mini XV Años';
+            const description = `💖 Mis Mini XV Años 💖
+🎉 Celebración del cumpleaños de Ailany Zuley
 
 ⛪ Misa: 1:00 PM - Iglesia Santo Entierro
 🎉 Fiesta: 4:00 PM - Salón Jardín Joss Mary
@@ -1081,11 +1178,9 @@ ${vipBadge}👤 *Nombre:* ${name}
 
             const location = 'Salón Jardín Joss Mary, C. Rio Atoyac Sur 513, Santiago Momoxpan, Puebla';
             
-            // Fechas en formato iCal
             const startDate = '20251123T160000';
             const endDate = '20251123T220000';
             
-            // Crear evento iCal
             const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Cumpleaños Ailany//ES
@@ -1110,7 +1205,6 @@ END:VALARM
 END:VEVENT
 END:VCALENDAR`;
 
-            // Crear blob y descargar
             const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
@@ -1122,7 +1216,6 @@ END:VCALENDAR`;
             alert('📅 ¡Evento descargado!\n\nAbre el archivo para agregarlo a tu calendario.\n\n⏰ Incluye recordatorios:\n• 1 día antes\n• 2 horas antes');
         }
 
-        // Ubicaciones
         function openLocation(type) {
             const url = locations[type];
             if (url) {
@@ -1130,7 +1223,6 @@ END:VCALENDAR`;
             }
         }
 
-        // Modal
         function showModal() {
             document.getElementById('confirmModal').classList.add('show');
         }
@@ -1139,7 +1231,6 @@ END:VCALENDAR`;
             document.getElementById('confirmModal').classList.remove('show');
         }
 
-        // Confetti mejorado al 100%
         function createConfetti() {
             const colors = ['#FFD700', '#FF69B4', '#DDA0DD', '#FFB6C1', '#FFA500', '#FF1493', '#DA70D6'];
             const shapes = ['circle', 'square'];
@@ -1193,7 +1284,6 @@ END:VCALENDAR`;
             }
         }
 
-        // Sistema de fotos
         function setupPhotoUpload() {
             const input = document.getElementById('photoInput');
             input.addEventListener('change', handlePhotoUpload);
@@ -1274,7 +1364,7 @@ END:VCALENDAR`;
             const slides = document.querySelectorAll('.carousel-slide');
             slides.forEach((slide, i) => {
                 slide.classList.remove('active');
-                if (i === index + 1) { // +1 porque el placeholder es el primero
+                if (i === index + 1) {
                     slide.classList.add('active');
                 }
             });
@@ -1289,7 +1379,6 @@ END:VCALENDAR`;
             showSlide(currentSlide);
         }
 
-        // Cerrar modal al hacer clic fuera
         document.getElementById('confirmModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeModal();
