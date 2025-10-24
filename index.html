@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>✨ Cumpleaños de Ailany Zuley ✨</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Parisienne&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -172,6 +174,63 @@
             position: relative;
             margin: 20px;
             animation: fadeIn 1s;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '👸';
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            font-size: 80px;
+            opacity: 0.08;
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
+        .container::after {
+            content: '👑';
+            position: absolute;
+            bottom: 15%;
+            right: 8%;
+            font-size: 70px;
+            opacity: 0.08;
+            transform: rotate(20deg);
+            pointer-events: none;
+        }
+
+        .bg-decoration {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.06;
+        }
+
+        .princess-1 {
+            top: 30%;
+            right: 5%;
+            font-size: 90px;
+            transform: rotate(10deg);
+        }
+
+        .princess-2 {
+            bottom: 25%;
+            left: 3%;
+            font-size: 85px;
+            transform: rotate(-12deg);
+        }
+
+        .crown-1 {
+            top: 50%;
+            left: 10%;
+            font-size: 60px;
+            transform: rotate(-25deg);
+        }
+
+        .crown-2 {
+            top: 70%;
+            right: 12%;
+            font-size: 65px;
+            transform: rotate(15deg);
         }
 
         @keyframes fadeIn {
@@ -180,29 +239,47 @@
         }
 
         .event-title {
+            font-family: 'Parisienne', cursive;
             color: #FF69B4;
-            font-size: 36px;
+            font-size: 56px;
             margin: 20px 0 10px 0;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: normal;
+            text-shadow: 
+                0 0 10px rgba(255, 105, 180, 0.8),
+                0 0 20px rgba(255, 105, 180, 0.6),
+                2px 2px 4px rgba(0, 0, 0, 0.2);
             animation: titleShine 3s infinite;
+            position: relative;
+            z-index: 10;
+            font-style: italic;
         }
 
         @keyframes titleShine {
-            0%, 100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); }
-            50% { text-shadow: 0 0 20px rgba(255, 105, 180, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.2); }
+            0%, 100% { 
+                text-shadow: 
+                    0 0 10px rgba(255, 105, 180, 0.8),
+                    0 0 20px rgba(255, 105, 180, 0.6),
+                    2px 2px 4px rgba(0, 0, 0, 0.2);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 20px rgba(255, 105, 180, 1),
+                    0 0 40px rgba(255, 105, 180, 0.8),
+                    0 0 60px rgba(255, 105, 180, 0.6),
+                    2px 2px 4px rgba(0, 0, 0, 0.2);
+            }
         }
 
         .crown-container {
             position: relative;
             display: inline-block;
-            margin: 20px 0;
+            margin: 10px 0 5px 0;
         }
 
         .crown-top {
-            font-size: 100px;
+            font-size: 80px;
             position: absolute;
-            top: -80px;
+            top: -50px;
             left: 50%;
             transform: translateX(-50%);
             animation: crownFloat 3s infinite ease-in-out;
@@ -215,34 +292,90 @@
                 transform: translateX(-50%) translateY(0) rotate(-5deg);
             }
             50% { 
-                transform: translateX(-50%) translateY(-15px) rotate(5deg);
+                transform: translateX(-50%) translateY(-12px) rotate(5deg);
             }
         }
 
         .name-container {
             position: relative;
             display: inline-block;
-            padding-top: 60px;
+            padding-top: 40px;
         }
 
         .name-ailany {
+            font-family: 'Georgia', serif;
             color: #FF69B4;
-            font-size: 72px;
+            font-size: 82px;
             font-weight: bold;
             position: relative;
             display: inline-block;
-            animation: nameFloat 4s infinite ease-in-out, nameSparkle 2s infinite;
+            letter-spacing: 3px;
+            
+            /* Efecto neón premium */
             text-shadow: 
-                0 0 10px rgba(255, 105, 180, 0.8),
-                0 0 20px rgba(255, 105, 180, 0.6),
-                0 0 30px rgba(255, 105, 180, 0.4),
-                3px 3px 6px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(45deg, #FF69B4, #FFB6C1, #FF1493, #FF69B4);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: nameFloat 4s infinite ease-in-out, nameSparkle 2s infinite, gradientShift 3s infinite;
+                /* Contorno blanco grueso */
+                -3px -3px 0 #fff,
+                3px -3px 0 #fff,
+                -3px 3px 0 #fff,
+                3px 3px 0 #fff,
+                -4px 0 0 #fff,
+                4px 0 0 #fff,
+                0 -4px 0 #fff,
+                0 4px 0 #fff,
+                /* Neón rosa interior */
+                0 0 20px #FF69B4,
+                0 0 40px #FF69B4,
+                0 0 60px #FF69B4,
+                0 0 80px #FF1493,
+                0 0 100px #FF1493,
+                /* Neón exterior brillante */
+                0 0 120px rgba(255, 105, 180, 0.8),
+                0 0 140px rgba(255, 105, 180, 0.6),
+                /* Sombra de profundidad */
+                5px 5px 10px rgba(0, 0, 0, 0.3);
+            
+            animation: neonPulse 2s ease-in-out infinite, nameFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% {
+                text-shadow: 
+                    -3px -3px 0 #fff,
+                    3px -3px 0 #fff,
+                    -3px 3px 0 #fff,
+                    3px 3px 0 #fff,
+                    -4px 0 0 #fff,
+                    4px 0 0 #fff,
+                    0 -4px 0 #fff,
+                    0 4px 0 #fff,
+                    0 0 20px #FF69B4,
+                    0 0 40px #FF69B4,
+                    0 0 60px #FF69B4,
+                    0 0 80px #FF1493,
+                    0 0 100px #FF1493,
+                    0 0 120px rgba(255, 105, 180, 0.8),
+                    0 0 140px rgba(255, 105, 180, 0.6),
+                    5px 5px 10px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                text-shadow: 
+                    -3px -3px 0 #fff,
+                    3px -3px 0 #fff,
+                    -3px 3px 0 #fff,
+                    3px 3px 0 #fff,
+                    -4px 0 0 #fff,
+                    4px 0 0 #fff,
+                    0 -4px 0 #fff,
+                    0 4px 0 #fff,
+                    0 0 30px #FF69B4,
+                    0 0 60px #FF69B4,
+                    0 0 90px #FF69B4,
+                    0 0 120px #FF1493,
+                    0 0 150px #FF1493,
+                    0 0 180px rgba(255, 105, 180, 1),
+                    0 0 210px rgba(255, 105, 180, 0.9),
+                    5px 5px 10px rgba(0, 0, 0, 0.3);
+            }
         }
 
         @keyframes nameFloat {
@@ -250,23 +383,8 @@
                 transform: translateY(0) scale(1);
             }
             50% { 
-                transform: translateY(-20px) scale(1.05);
+                transform: translateY(-15px) scale(1.02);
             }
-        }
-
-        @keyframes nameSparkle {
-            0%, 100% { 
-                filter: brightness(1) drop-shadow(0 0 20px rgba(255, 105, 180, 0.6));
-            }
-            50% { 
-                filter: brightness(1.3) drop-shadow(0 0 40px rgba(255, 105, 180, 1));
-            }
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
 
         .name-ailany::before {
@@ -277,6 +395,7 @@
             transform: translateY(-50%);
             font-size: 40px;
             animation: sparkleLeft 2s infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
         }
 
         .name-ailany::after {
@@ -287,6 +406,7 @@
             transform: translateY(-50%);
             font-size: 40px;
             animation: sparkleRight 2s infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
         }
 
         @keyframes sparkleLeft {
@@ -311,17 +431,10 @@
             }
         }
 
-        h1 {
-            color: #FF69B4;
-            font-size: 48px;
-            margin: 20px 0;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
-        }
-
         .subtitle {
             color: #DDA0DD;
             font-size: 28px;
-            margin: 15px 0;
+            margin: 25px 0;
             font-weight: bold;
         }
 
@@ -332,6 +445,13 @@
             margin: 20px 0;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             animation: pulse 2s infinite;
+            position: relative;
+            z-index: 5;
+            display: none; /* OCULTO PARA INVITADOS */
+        }
+
+        .confirmation-counter.admin-view {
+            display: block; /* Solo visible para admin */
         }
 
         @keyframes pulse {
@@ -366,6 +486,8 @@
             margin: 30px 0;
             color: white;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 5;
         }
 
         .info-item {
@@ -386,6 +508,58 @@
             border-radius: 15px;
             padding: 15px;
             margin: 15px 0;
+            position: relative;
+        }
+
+        .location-buttons-inline {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .location-btn-small {
+            background: linear-gradient(135deg, #BA55D3, #DDA0DD, #BA55D3);
+            background-size: 200% 200%;
+            animation: gradientMove 3s ease infinite;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(186, 85, 211, 0.4);
+            transition: all 0.3s;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-btn-small::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            animation: shimmer 2s infinite;
+        }
+
+        .location-btn-small:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(186, 85, 211, 0.6);
+        }
+
+        @keyframes gradientMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(50%, 50%) rotate(360deg); }
         }
 
         .countdown-section {
@@ -394,6 +568,8 @@
             padding: 30px;
             margin: 30px 0;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 5;
         }
 
         .countdown-title {
@@ -442,6 +618,8 @@
             margin: 30px 0;
             color: white;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 5;
         }
 
         .gift-table-section h2 {
@@ -485,6 +663,8 @@
             margin: 30px 0;
             color: white;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 5;
         }
 
         .photo-gallery-section h2 {
@@ -626,10 +806,6 @@
             to { transform: translateY(-50%) rotate(360deg); }
         }
 
-        .location-btn {
-            background: linear-gradient(135deg, #DDA0DD, #BA55D3);
-        }
-
         .calendar-btn {
             background: linear-gradient(135deg, #FFD700, #FFA500);
         }
@@ -733,13 +909,28 @@
             transform: scale(1.1);
         }
 
+        /* Admin toggle button */
+        .admin-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(186, 85, 211, 0.9);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 1001;
+            font-size: 14px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
         @media (max-width: 768px) {
-            .event-title { font-size: 28px; }
-            .name-ailany { font-size: 48px; }
-            .crown-top { font-size: 70px; top: -60px; }
+            .event-title { font-size: 42px; }
+            .name-ailany { font-size: 58px; letter-spacing: 2px; }
+            .crown-top { font-size: 60px; top: -40px; }
             .name-ailany::before,
-            .name-ailany::after { font-size: 30px; }
-            h1 { font-size: 36px; }
+            .name-ailany::after { font-size:30px; left: -40px; right: -40px; }
             .subtitle { font-size: 22px; }
             .countdown-number { font-size: 28px; }
             .info-item { font-size: 16px; }
@@ -748,10 +939,17 @@
             .counter-number { font-size: 36px; }
             .placeholder-image { height: 250px; font-size: 48px; }
             .carousel-slide img { height: 250px; }
+            .bg-decoration { font-size: 60px !important; }
+            .princess-1, .princess-2 { font-size: 70px !important; }
+            .crown-1, .crown-2 { font-size: 50px !important; }
+            .location-btn-small { padding: 10px 20px; font-size: 14px; }
         }
     </style>
 </head>
 <body>
+    <!-- Botón Admin (solo para desarrollo) -->
+    <button class="admin-toggle" id="adminToggle" onclick="toggleAdmin()">👤 Admin</button>
+
     <div class="envelope-wrapper" id="envelopeWrapper">
         <div class="envelope" id="envelope">
             <div class="envelope-flap"></div>
@@ -771,7 +969,12 @@
     <button class="audio-control" id="audioToggle" title="Música">🎵</button>
 
     <div class="container">
-        <h2 class="event-title">💖 Mis Mini XV Años 💖</h2>
+        <div class="bg-decoration princess-1">👸</div>
+        <div class="bg-decoration princess-2">👸</div>
+        <div class="bg-decoration crown-1">👑</div>
+        <div class="bg-decoration crown-2">👑</div>
+
+        <h2 class="event-title">💖 Mis V Años 💖</h2>
         
         <div class="crown-container">
             <div class="crown-top">👑</div>
@@ -780,10 +983,10 @@
             </div>
         </div>
 
-        <h1>cumple 5 años!</h1>
-        <p class="subtitle">🎂 ¡Ven a celebrar con nosotros! 🎉</p>
+        <p class="subtitle">🎂 ¡Ven a celebrar conmigo! 🎉</p>
 
-        <div class="confirmation-counter">
+        <!-- Contador solo visible para admin -->
+        <div class="confirmation-counter" id="confirmationCounter">
             <h3>👥 Confirmaciones Recibidas</h3>
             <div class="counter-number" id="totalConfirmations">0</div>
             <div class="counter-label">personas confirmadas</div>
@@ -798,6 +1001,11 @@
                 <div class="info-item" style="font-size: 18px;">
                     <span>⏰</span>
                     <div>1:00 PM - Iglesia Santo Entierro</div>
+                </div>
+                <div class="location-buttons-inline">
+                    <button class="location-btn-small" onclick="openLocation('church')">
+                        ⛪ Ver Ubicación
+                    </button>
                 </div>
             </div>
 
@@ -821,6 +1029,11 @@
                 <div class="info-item" style="font-size: 16px;">
                     <span>🗺️</span>
                     <div>C. Rio Atoyac Sur 513, Santiago Momoxpan, Puebla</div>
+                </div>
+                <div class="location-buttons-inline">
+                    <button class="location-btn-small" onclick="openLocation('salon')">
+                        📍 Ver Ubicación
+                    </button>
                 </div>
             </div>
         </div>
@@ -892,15 +1105,6 @@
             📅 Agregar al Calendario
         </button>
 
-        <div>
-            <button class="btnlocation-btn" onclick="openLocation('salon')">
-                📍 Ubicación Salón
-            </button>
-            <button class="btn location-btn" onclick="openLocation('church')">
-                ⛪ Ubicación Iglesia
-            </button>
-        </div>
-
         <p style="margin-top: 30px; color: #DDA0DD; font-size: 18px;">
             🌟 ¡Esperamos verte para celebrar juntos! 🌟
         </p>
@@ -926,13 +1130,14 @@
 
         // ⭐ FAMILIAS VIP - DESACTIVADO (Activar cuando sea necesario)
         // const vipFamilies = ['garcía', 'rodríguez', 'martínez', 'lópez'];
-        // const VIP_ENABLED = false; // Cambiar a true para activar familias VIP
+        // const VIP_ENABLED = false;
 
         let musicPlaying = false;
         let confirmationInProgress = false;
         let currentSlide = 0;
         let uploadedPhotos = [];
         let carouselInterval;
+        let isAdminMode = false;
 
         document.addEventListener('DOMContentLoaded', function() {
             createSparkles();
@@ -1025,6 +1230,22 @@
             document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
         }
 
+        function toggleAdmin() {
+            isAdminMode = !isAdminMode;
+            const counter = document.getElementById('confirmationCounter');
+            const btn = document.getElementById('adminToggle');
+            
+            if (isAdminMode) {
+                counter.classList.add('admin-view');
+                btn.textContent = '👁️ Modo Admin';
+                btn.style.background = 'rgba(50, 205, 50, 0.9)';
+            } else {
+                counter.classList.remove('admin-view');
+                btn.textContent = '👤 Admin';
+                btn.style.background = 'rgba(186, 85, 211, 0.9)';
+            }
+        }
+
         function confirmAssistance() {
             if (confirmationInProgress) {
                 alert('⏳ Por favor espera, procesando confirmación...');
@@ -1098,7 +1319,7 @@
             const adultsNum = peopleNum - childrenNum;
 
             const message = `🎉 *CONFIRMACIÓN DE ASISTENCIA* 🎉
-💖 *Mis Mini XV Años* 💖
+💖 *Mis V Años de Ailany* 💖
 
 👤 *Nombre:* ${name}
 👥 *Total de personas:* ${peopleNum}
@@ -1106,7 +1327,6 @@
 👶 *Niños menores de 7 años:* ${childrenNum}
 
 📅 *Evento:* Cumpleaños de Ailany Zuley
-🎂 *Edad:* 5 años
 
 ⛪ *Misa:* 1:00 PM - Iglesia Santo Entierro
 🎉 *Celebración:* 4:00 PM
@@ -1164,8 +1384,8 @@
         }
 
         function addToCalendar() {
-            const title = 'Cumpleaños de Ailany Zuley - Mis Mini XV Años';
-            const description = `💖 Mis Mini XV Años 💖
+            const title = 'Cumpleaños de Ailany Zuley - Mis V Años';
+            const description = `💖 Mis V Años de Ailany 💖
 🎉 Celebración del cumpleaños de Ailany Zuley
 
 ⛪ Misa: 1:00 PM - Iglesia Santo Entierro
