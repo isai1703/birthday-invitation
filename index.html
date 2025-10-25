@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>✨ Cumpleaños de Ailany Zuley ✨</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Parisienne&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Parisienne&family=Ballet&display=swap');
 
         * {
             margin: 0;
@@ -177,60 +177,37 @@
             overflow: hidden;
         }
 
-        .container::before {
-            content: '👸';
-            position: absolute;
-            top: 10%;
-            left: 5%;
-            font-size: 80px;
-            opacity: 0.08;
-            transform: rotate(-15deg);
-            pointer-events: none;
-        }
-
-        .container::after {
-            content: '👑';
-            position: absolute;
-            bottom: 15%;
-            right: 8%;
-            font-size: 70px;
-            opacity: 0.08;
-            transform: rotate(20deg);
-            pointer-events: none;
-        }
-
         .bg-decoration {
             position: absolute;
             pointer-events: none;
-            opacity: 0.06;
+            opacity: 0.04;
+            font-size: 120px;
         }
 
-        .princess-1 {
-            top: 30%;
-            right: 5%;
+        .princess-bg-1 {
+            top: 8%;
+            right: 3%;
+            transform: rotate(12deg);
+        }
+
+        .princess-bg-2 {
+            bottom: 20%;
+            left: 2%;
+            transform: rotate(-15deg);
+        }
+
+        .crown-bg-1 {
+            top: 45%;
+            left: 5%;
             font-size: 90px;
-            transform: rotate(10deg);
+            transform: rotate(-30deg);
         }
 
-        .princess-2 {
-            bottom: 25%;
-            left: 3%;
+        .crown-bg-2 {
+            top: 65%;
+            right: 8%;
             font-size: 85px;
-            transform: rotate(-12deg);
-        }
-
-        .crown-1 {
-            top: 50%;
-            left: 10%;
-            font-size: 60px;
-            transform: rotate(-25deg);
-        }
-
-        .crown-2 {
-            top: 70%;
-            right: 12%;
-            font-size: 65px;
-            transform: rotate(15deg);
+            transform: rotate(25deg);
         }
 
         @keyframes fadeIn {
@@ -238,53 +215,68 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        .event-title {
-            font-family: 'Parisienne', cursive;
-            color: #FF69B4;
-            font-size: 56px;
-            margin: 20px 0 10px 0;
-            font-weight: normal;
-            text-shadow: 
-                0 0 10px rgba(255, 105, 180, 0.8),
-                0 0 20px rgba(255, 105, 180, 0.6),
-                2px 2px 4px rgba(0, 0, 0, 0.2);
-            animation: titleShine 3s infinite;
+        .event-title-wrapper {
             position: relative;
-            z-index: 10;
-            font-style: italic;
+            margin: 30px 0 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
         }
 
-        @keyframes titleShine {
-            0%, 100% { 
-                text-shadow: 
-                    0 0 10px rgba(255, 105, 180, 0.8),
-                    0 0 20px rgba(255, 105, 180, 0.6),
-                    2px 2px 4px rgba(0, 0, 0, 0.2);
-            }
-            50% { 
-                text-shadow: 
-                    0 0 20px rgba(255, 105, 180, 1),
-                    0 0 40px rgba(255, 105, 180, 0.8),
-                    0 0 60px rgba(255, 105, 180, 0.6),
-                    2px 2px 4px rgba(0, 0, 0, 0.2);
-            }
+        .title-heart {
+            font-size: 50px;
+            animation: heartBeat 1.5s infinite;
+            filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.8));
         }
 
-        .crown-container {
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .event-title {
+            font-family: 'Ballet', cursive;
+            font-size: 68px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #FF1493, #FF69B4, #FFB6C1, #FF69B4, #FF1493);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientFlow 4s ease infinite;
+            position: relative;
+            text-shadow: 
+                3px 3px 0 rgba(255, 20, 147, 0.3),
+                6px 6px 0 rgba(255, 105, 180, 0.2),
+                9px 9px 0 rgba(255, 182, 193, 0.1);
+            filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.6))
+                    drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+            z-index: 15;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .name-container {
             position: relative;
             display: inline-block;
-            margin: 10px 0 5px 0;
+            margin: 25px 0;
+            z-index: 10;
         }
 
         .crown-top {
-            font-size: 80px;
+            font-size: 70px;
             position: absolute;
-            top: -50px;
+            top: -65px;
             left: 50%;
             transform: translateX(-50%);
             animation: crownFloat 3s infinite ease-in-out;
             filter: drop-shadow(0 8px 20px rgba(255, 215, 0, 0.8));
-            z-index: 10;
+            z-index: 20;
         }
 
         @keyframes crownFloat {
@@ -296,137 +288,112 @@
             }
         }
 
-        .name-container {
-            position: relative;
-            display: inline-block;
-            padding-top: 40px;
-        }
-
         .name-ailany {
             font-family: 'Georgia', serif;
-            color: #FF69B4;
-            font-size: 82px;
+            font-size: 90px;
             font-weight: bold;
+            letter-spacing: 4px;
             position: relative;
             display: inline-block;
-            letter-spacing: 3px;
             
-            /* Efecto neón premium */
+            /* NEÓN REAL MEJORADO */
+            color: #FF1493;
             text-shadow: 
                 /* Contorno blanco grueso */
-                -3px -3px 0 #fff,
-                3px -3px 0 #fff,
-                -3px 3px 0 #fff,
-                3px 3px 0 #fff,
-                -4px 0 0 #fff,
-                4px 0 0 #fff,
-                0 -4px 0 #fff,
-                0 4px 0 #fff,
-                /* Neón rosa interior */
-                0 0 20px #FF69B4,
+                -4px -4px 0 #fff,
+                4px -4px 0 #fff,
+                -4px 4px 0 #fff,
+                4px 4px 0 #fff,
+                -5px 0 0 #fff,
+                5px 0 0 #fff,
+                0 -5px 0 #fff,
+                0 5px 0 #fff,
+                /* Neón rosa brillante */
+                0 0 10px #FF1493,
+                0 0 20px #FF1493,
+                0 0 30px #FF1493,
                 0 0 40px #FF69B4,
                 0 0 60px #FF69B4,
-                0 0 80px #FF1493,
+                0 0 80px #FF69B4,
                 0 0 100px #FF1493,
-                /* Neón exterior brillante */
-                0 0 120px rgba(255, 105, 180, 0.8),
-                0 0 140px rgba(255, 105, 180, 0.6),
+                0 0 120px #FF1493,
+                /* Resplandor exterior */
+                0 0 150px rgba(255, 20, 147, 0.8),
+                0 0 180px rgba(255, 105, 180, 0.6),
                 /* Sombra de profundidad */
-                5px 5px 10px rgba(0, 0, 0, 0.3);
+                8px 8px 15px rgba(0, 0, 0, 0.4);
             
-            animation: neonPulse 2s ease-in-out infinite, nameFloat 4s ease-in-out infinite;
+            animation: neonFlicker 3s ease-in-out infinite, nameFloat 4s ease-in-out infinite;
         }
 
-        @keyframes neonPulse {
+        @keyframes neonFlicker {
             0%, 100% {
                 text-shadow: 
-                    -3px -3px 0 #fff,
-                    3px -3px 0 #fff,
-                    -3px 3px 0 #fff,
-                    3px 3px 0 #fff,
-                    -4px 0 0 #fff,
-                    4px 0 0 #fff,
-                    0 -4px 0 #fff,
-                    0 4px 0 #fff,
-                    0 0 20px #FF69B4,
-                    0 0 40px #FF69B4,
-                    0 0 60px #FF69B4,
-                    0 0 80px #FF1493,
-                    0 0 100px #FF1493,
-                    0 0 120px rgba(255, 105, 180, 0.8),
-                    0 0 140px rgba(255, 105, 180, 0.6),
-                    5px 5px 10px rgba(0, 0, 0, 0.3);
+                    -4px -4px 0 #fff, 4px -4px 0 #fff, -4px 4px 0 #fff, 4px 4px 0 #fff,
+                    -5px 0 0 #fff, 5px 0 0 #fff, 0 -5px 0 #fff, 0 5px 0 #fff,
+                    0 0 10px #FF1493, 0 0 20px #FF1493, 0 0 30px #FF1493,
+                    0 0 40px #FF69B4, 0 0 60px #FF69B4, 0 0 80px #FF69B4,
+                    0 0 100px #FF1493, 0 0 120px #FF1493,
+                    0 0 150px rgba(255, 20, 147, 0.8), 0 0 180px rgba(255, 105, 180, 0.6),
+                    8px 8px 15px rgba(0, 0, 0, 0.4);
             }
             50% {
                 text-shadow: 
-                    -3px -3px 0 #fff,
-                    3px -3px 0 #fff,
-                    -3px 3px 0 #fff,
-                    3px 3px 0 #fff,
-                    -4px 0 0 #fff,
-                    4px 0 0 #fff,
-                    0 -4px 0 #fff,
-                    0 4px 0 #fff,
-                    0 0 30px #FF69B4,
-                    0 0 60px #FF69B4,
-                    0 0 90px #FF69B4,
-                    0 0 120px #FF1493,
-                    0 0 150px #FF1493,
-                    0 0 180px rgba(255, 105, 180, 1),
-                    0 0 210px rgba(255, 105, 180, 0.9),
-                    5px 5px 10px rgba(0, 0, 0, 0.3);
+                    -4px -4px 0 #fff, 4px -4px 0 #fff, -4px 4px 0 #fff, 4px 4px 0 #fff,
+                    -5px 0 0 #fff, 5px 0 0 #fff, 0 -5px 0 #fff, 0 5px 0 #fff,
+                    0 0 20px #FF1493, 0 0 40px #FF1493, 0 0 60px #FF1493,
+                    0 0 80px #FF69B4, 0 0 100px #FF69B4, 0 0 140px #FF69B4,
+                    0 0 180px #FF1493, 0 0 220px #FF1493,
+                    0 0 250px rgba(255, 20, 147, 1), 0 0 300px rgba(255, 105, 180, 0.9),
+                    8px 8px 15px rgba(0, 0, 0, 0.4);
             }
         }
 
         @keyframes nameFloat {
-            0%, 100% { 
-                transform: translateY(0) scale(1);
-            }
-            50% { 
-                transform: translateY(-15px) scale(1.02);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
         }
 
         .name-ailany::before {
             content: '✨';
             position: absolute;
-            left: -50px;
+            left: -55px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 40px;
+            font-size: 45px;
             animation: sparkleLeft 2s infinite;
-            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1));
         }
 
         .name-ailany::after {
             content: '✨';
             position: absolute;
-            right: -50px;
+            right: -55px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 40px;
+            font-size: 45px;
             animation: sparkleRight 2s infinite;
-            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1));
         }
 
         @keyframes sparkleLeft {
             0%, 100% { 
-                opacity: 0.5;
+                opacity: 0.6;
                 transform: translateY(-50%) rotate(0deg) scale(1);
             }
             50% { 
                 opacity: 1;
-                transform: translateY(-50%) rotate(180deg) scale(1.3);
+                transform: translateY(-50%) rotate(180deg) scale(1.4);
             }
         }
 
         @keyframes sparkleRight {
             0%, 100% { 
                 opacity: 1;
-                transform: translateY(-50%) rotate(0deg) scale(1.3);
+                transform: translateY(-50%) rotate(0deg) scale(1.4);
             }
             50% { 
-                opacity: 0.5;
+                opacity: 0.6;
                 transform: translateY(-50%) rotate(-180deg) scale(1);
             }
         }
@@ -434,7 +401,7 @@
         .subtitle {
             color: #DDA0DD;
             font-size: 28px;
-            margin: 25px 0;
+            margin: 20px 0;
             font-weight: bold;
         }
 
@@ -447,11 +414,11 @@
             animation: pulse 2s infinite;
             position: relative;
             z-index: 5;
-            display: none; /* OCULTO PARA INVITADOS */
+            display: none;
         }
 
         .confirmation-counter.admin-view {
-            display: block; /* Solo visible para admin */
+            display: block;
         }
 
         @keyframes pulse {
@@ -560,6 +527,18 @@
         @keyframes shimmer {
             0% { transform: translate(-50%, -50%) rotate(0deg); }
             100% { transform: translate(50%, 50%) rotate(360deg); }
+        }
+
+        .entertainment-item {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
         .countdown-section {
@@ -806,10 +785,6 @@
             to { transform: translateY(-50%) rotate(360deg); }
         }
 
-        .calendar-btn {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-        }
-
         .modal {
             display: none;
             position: fixed;
@@ -909,7 +884,6 @@
             transform: scale(1.1);
         }
 
-        /* Admin toggle button */
         .admin-toggle {
             position: fixed;
             top: 20px;
@@ -926,11 +900,12 @@
         }
 
         @media (max-width: 768px) {
-            .event-title { font-size: 42px; }
-            .name-ailany { font-size: 58px; letter-spacing: 2px; }
-            .crown-top { font-size: 60px; top: -40px; }
+            .event-title { font-size: 48px; }
+            .title-heart { font-size: 35px; }
+            .name-ailany { font-size: 62px; letter-spacing:2px; }
+            .crown-top { font-size: 55px; top: -50px; }
             .name-ailany::before,
-            .name-ailany::after { font-size:30px; left: -40px; right: -40px; }
+            .name-ailany::after { font-size: 32px; left: -42px; right: -42px; }
             .subtitle { font-size: 22px; }
             .countdown-number { font-size: 28px; }
             .info-item { font-size: 16px; }
@@ -939,15 +914,13 @@
             .counter-number { font-size: 36px; }
             .placeholder-image { height: 250px; font-size: 48px; }
             .carousel-slide img { height: 250px; }
-            .bg-decoration { font-size: 60px !important; }
-            .princess-1, .princess-2 { font-size: 70px !important; }
-            .crown-1, .crown-2 { font-size: 50px !important; }
+            .bg-decoration { font-size: 80px !important; }
             .location-btn-small { padding: 10px 20px; font-size: 14px; }
+            .entertainment-item { font-size: 16px; padding: 10px; }
         }
     </style>
 </head>
 <body>
-    <!-- Botón Admin (solo para desarrollo) -->
     <button class="admin-toggle" id="adminToggle" onclick="toggleAdmin()">👤 Admin</button>
 
     <div class="envelope-wrapper" id="envelopeWrapper">
@@ -969,23 +942,24 @@
     <button class="audio-control" id="audioToggle" title="Música">🎵</button>
 
     <div class="container">
-        <div class="bg-decoration princess-1">👸</div>
-        <div class="bg-decoration princess-2">👸</div>
-        <div class="bg-decoration crown-1">👑</div>
-        <div class="bg-decoration crown-2">👑</div>
+        <div class="bg-decoration princess-bg-1">👸</div>
+        <div class="bg-decoration princess-bg-2">👸</div>
+        <div class="bg-decoration crown-bg-1">👑</div>
+        <div class="bg-decoration crown-bg-2">👑</div>
 
-        <h2 class="event-title">💖 Mis V Años 💖</h2>
+        <div class="event-title-wrapper">
+            <div class="title-heart">💖</div>
+            <h2 class="event-title">Mis V Años</h2>
+            <div class="title-heart">💖</div>
+        </div>
         
-        <div class="crown-container">
+        <div class="name-container">
             <div class="crown-top">👑</div>
-            <div class="name-container">
-                <div class="name-ailany">Ailany</div>
-            </div>
+            <div class="name-ailany">Ailany</div>
         </div>
 
         <p class="subtitle">🎂 ¡Ven a celebrar conmigo! 🎉</p>
 
-        <!-- Contador solo visible para admin -->
         <div class="confirmation-counter" id="confirmationCounter">
             <h3>👥 Confirmaciones Recibidas</h3>
             <div class="counter-number" id="totalConfirmations">0</div>
@@ -1030,6 +1004,14 @@
                     <span>🗺️</span>
                     <div>C. Rio Atoyac Sur 513, Santiago Momoxpan, Puebla</div>
                 </div>
+                
+                <div class="entertainment-item">
+                    🎨 <strong>Pinta Carita:</strong> 4:30 PM - 6:30 PM
+                </div>
+                <div class="entertainment-item">
+                    🤡 <strong>Payaso:</strong> 7:00 PM
+                </div>
+                
                 <div class="location-buttons-inline">
                     <button class="location-btn-small" onclick="openLocation('salon')">
                         📍 Ver Ubicación
@@ -1101,10 +1083,6 @@
             ✨ ¡CONFIRMAR ASISTENCIA! ✨
         </button>
 
-        <button class="btn calendar-btn" onclick="addToCalendar()">
-            📅 Agregar al Calendario
-        </button>
-
         <p style="margin-top: 30px; color: #DDA0DD; font-size: 18px;">
             🌟 ¡Esperamos verte para celebrar juntos! 🌟
         </p>
@@ -1115,6 +1093,7 @@
             <h2>🎉 ¡Confirmación Exitosa! 🎉</h2>
             <p>✅ Tu asistencia ha sido registrada</p>
             <p>📱 Revisa WhatsApp para enviar tu confirmación</p>
+            <p>📅 El evento se agregará a tu calendario automáticamente</p>
             <p>💖 ¡Nos vemos en la fiesta!</p>
             <button class="close-modal" onclick="closeModal()">Cerrar</button>
         </div>
@@ -1127,10 +1106,6 @@
             salon: 'https://maps.app.goo.gl/HQFveCpJPBgvzVdg7',
             church: 'https://maps.app.goo.gl/5As1RXhWszN19Xin9'
         };
-
-        // ⭐ FAMILIAS VIP - DESACTIVADO (Activar cuando sea necesario)
-        // const vipFamilies = ['garcía', 'rodríguez', 'martínez', 'lópez'];
-        // const VIP_ENABLED = false;
 
         let musicPlaying = false;
         let confirmationInProgress = false;
@@ -1332,12 +1307,16 @@
 🎉 *Celebración:* 4:00 PM
 📍 *Lugar:* Salón Jardín Joss Mary
 
+🎨 *Pinta Carita:* 4:30 PM - 6:30 PM
+🤡 *Payaso:* 7:00 PM
+
 ¡Nos vemos en la fiesta! 👑✨`;
 
             const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
 
             saveConfirmation(name, peopleNum, childrenNum, adultsNum);
+            addToCalendarAuto();
 
             setTimeout(() => {
                 showModal();
@@ -1383,13 +1362,15 @@
             }
         }
 
-        function addToCalendar() {
+        function addToCalendarAuto() {
             const title = 'Cumpleaños de Ailany Zuley - Mis V Años';
             const description = `💖 Mis V Años de Ailany 💖
 🎉 Celebración del cumpleaños de Ailany Zuley
 
 ⛪ Misa: 1:00 PM - Iglesia Santo Entierro
 🎉 Fiesta: 4:00 PM - Salón Jardín Joss Mary
+🎨 Pinta Carita: 4:30 PM - 6:30 PM
+🤡 Payaso: 7:00 PM
 
 📍 Dirección: C. Rio Atoyac Sur 513, Santiago Momoxpan, Puebla
 
@@ -1432,8 +1413,6 @@ END:VCALENDAR`;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-
-            alert('📅 ¡Evento descargado!\n\nAbre el archivo para agregarlo a tu calendario.\n\n⏰ Incluye recordatorios:\n• 1 día antes\n• 2 horas antes');
         }
 
         function openLocation(type) {
