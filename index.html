@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✨ Cumpleaños de Ailany Zuley ✨</title>
+    <title>Mis V Años - Ailany 👑</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ballet:wght@400&family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Parisienne&family=Ballet&display=swap');
-
         * {
             margin: 0;
             padding: 0;
@@ -14,777 +13,354 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #FFB6C1 0%, #DDA0DD 50%, #FFD700 100%);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffd1dc 0%, #ffb6c1 50%, #ff69b4 100%);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        .sparkle {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 215, 0, 0.9);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: sparkleFloat 8s infinite ease-in-out;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.9), 0 0 30px rgba(255, 215, 0, 0.5);
-            filter: blur(0.5px);
-        }
-
-        @keyframes sparkleFloat {
-            0%, 100% {
-                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
-                opacity: 0;
-            }
-            5% {
-                opacity: 1;
-            }
-            50% {
-                transform: translateY(-50vh) translateX(20px) rotate(180deg) scale(1.2);
-                opacity: 1;
-            }
-            95% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(-20px) rotate(360deg) scale(0.8);
-                opacity: 0;
-            }
-        }
-
-        .envelope-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            cursor: pointer;
-            transition: opacity 0.5s;
-        }
-
-        .envelope-wrapper.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .envelope {
-            position: relative;
-            width: 300px;
-            height: 200px;
-            animation: envelopePulse 2s infinite;
-        }
-
-        @keyframes envelopePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .envelope-body {
-            width: 100%;
-            height: 100%;
-            background: #FFD700;
-            border: 3px solid #DAA520;
-            border-radius: 10px;
-            position: relative;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .envelope-flap {
-            position: absolute;
-            top: -2px;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            clip-path: polygon(0 0, 50% 100%, 100% 0);
-            transform-origin: top;
-            transition: transform 0.6s;
-            border: 3px solid #DAA520;
-            z-index: 2;
-        }
-
-        .envelope.open .envelope-flap {
-            transform: rotateX(180deg);
-        }
-
-        .envelope-letter {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 85%;
-            background: white;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            transition: transform 0.6s 0.3s;
-        }
-
-        .envelope.open .envelope-letter {
-            transform: translateX(-50%) translateY(-30px);
-        }
-
-        .envelope-letter h3 {
-            color: #FF69B4;
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-
-        .envelope-letter p {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .click-hint {
-            position: absolute;
-            bottom: -60px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 18px;
-            animation: blink 1.5s infinite;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        .container {
-            max-width: 800px;
-            width: 95%;
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 30px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            text-align: center;
             position: relative;
-            margin: 20px;
-            animation: fadeIn 1s;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
-        .bg-decoration {
-            position: absolute;
-            pointer-events: none;
+        /* Siluetas de fondo sutiles */
+        body::before,
+        body::after {
+            content: '👸';
+            position: fixed;
+            font-size: 200px;
             opacity: 0.04;
-            font-size: 120px;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        .princess-bg-1 {
-            top: 8%;
-            right: 3%;
-            transform: rotate(12deg);
-        }
-
-        .princess-bg-2 {
-            bottom: 20%;
-            left: 2%;
+        body::before {
+            top: 10%;
+            left: -50px;
             transform: rotate(-15deg);
         }
 
+        body::after {
+            bottom: 10%;
+            right: -50px;
+            transform: rotate(15deg);
+        }
+
+        .crown-bg-1,
+        .crown-bg-2 {
+            position: fixed;
+            font-size: 150px;
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 0;
+        }
+
         .crown-bg-1 {
-            top: 45%;
-            left: 5%;
-            font-size: 90px;
-            transform: rotate(-30deg);
+            top: 30%;
+            right: 5%;
         }
 
         .crown-bg-2 {
-            top: 65%;
-            right: 8%;
-            font-size: 85px;
-            transform: rotate(25deg);
+            bottom: 30%;
+            left: 5%;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
+        /* Botón Admin */
+        .admin-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
         }
 
-        .event-title-wrapper {
+        .admin-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
             position: relative;
-            margin: 30px 0 20px 0;
+            z-index: 1;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ffd1dc 0%, #ffb6c1 100%);
+            padding: 50px 20px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Título "Mis V Años" MEJORADO - MÁS LEGIBLE */
+        .title-container {
+            position: relative;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
         }
 
-        .title-heart {
-            font-size: 50px;
-            animation: heartBeat 1.5s infinite;
-            filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.8));
-        }
-
-        @keyframes heartBeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-        }
-
-        .event-title {
+        .title {
             font-family: 'Ballet', cursive;
-            font-size: 68px;
-            font-weight: bold;
-            background: linear-gradient(45deg, #FF1493, #FF69B4, #FFB6C1, #FF69B4, #FF1493);
-            background-size: 300% 300%;
+            font-size: 52px;
+            font-weight: 400;
+            background: linear-gradient(45deg, #ff1493, #ff69b4, #ff1493);
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: gradientFlow 4s ease infinite;
-            position: relative;
+            animation: gradientFlow 3s ease infinite;
             text-shadow: 
-                3px 3px 0 rgba(255, 20, 147, 0.3),
-                6px 6px 0 rgba(255, 105, 180, 0.2),
-                9px 9px 0 rgba(255, 182, 193, 0.1);
-            filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.6))
-                    drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
-            z-index: 15;
+                2px 2px 0px rgba(255, 20, 147, 0.3),
+                4px 4px 0px rgba(255, 105, 180, 0.2),
+                6px 6px 10px rgba(255, 20, 147, 0.1);
+            filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.5));
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        /* Corazones laterales animados */
+        .heart-left,
+        .heart-right {
+            font-size: 36px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            filter: drop-shadow(0 4px 8px rgba(255, 20, 147, 0.4));
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
         }
 
         @keyframes gradientFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .name-container {
-            position: relative;
-            display: inline-block;
-            margin: 25px 0;
-            z-index: 10;
-        }
-
-        .crown-top {
-            font-size: 70px;
-            position: absolute;
-            top: -65px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: crownFloat 3s infinite ease-in-out;
-            filter: drop-shadow(0 8px 20px rgba(255, 215, 0, 0.8));
-            z-index: 20;
-        }
-
-        @keyframes crownFloat {
-            0%, 100% { 
-                transform: translateX(-50%) translateY(0) rotate(-5deg);
-            }
-            50% { 
-                transform: translateX(-50%) translateY(-12px) rotate(5deg);
-            }
-        }
-
-        .name-ailany {
-            font-family: 'Georgia', serif;
-            font-size: 90px;
-            font-weight: bold;
-            letter-spacing: 4px;
-            position: relative;
-            display: inline-block;
-            
-            /* NEÓN REAL MEJORADO */
-            color: #FF1493;
-            text-shadow: 
-                /* Contorno blanco grueso */
-                -4px -4px 0 #fff,
-                4px -4px 0 #fff,
-                -4px 4px 0 #fff,
-                4px 4px 0 #fff,
-                -5px 0 0 #fff,
-                5px 0 0 #fff,
-                0 -5px 0 #fff,
-                0 5px 0 #fff,
-                /* Neón rosa brillante */
-                0 0 10px #FF1493,
-                0 0 20px #FF1493,
-                0 0 30px #FF1493,
-                0 0 40px #FF69B4,
-                0 0 60px #FF69B4,
-                0 0 80px #FF69B4,
-                0 0 100px #FF1493,
-                0 0 120px #FF1493,
-                /* Resplandor exterior */
-                0 0 150px rgba(255, 20, 147, 0.8),
-                0 0 180px rgba(255, 105, 180, 0.6),
-                /* Sombra de profundidad */
-                8px 8px 15px rgba(0, 0, 0, 0.4);
-            
-            animation: neonFlicker 3s ease-in-out infinite, nameFloat 4s ease-in-out infinite;
-        }
-
-        @keyframes neonFlicker {
-            0%, 100% {
-                text-shadow: 
-                    -4px -4px 0 #fff, 4px -4px 0 #fff, -4px 4px 0 #fff, 4px 4px 0 #fff,
-                    -5px 0 0 #fff, 5px 0 0 #fff, 0 -5px 0 #fff, 0 5px 0 #fff,
-                    0 0 10px #FF1493, 0 0 20px #FF1493, 0 0 30px #FF1493,
-                    0 0 40px #FF69B4, 0 0 60px #FF69B4, 0 0 80px #FF69B4,
-                    0 0 100px #FF1493, 0 0 120px #FF1493,
-                    0 0 150px rgba(255, 20, 147, 0.8), 0 0 180px rgba(255, 105, 180, 0.6),
-                    8px 8px 15px rgba(0, 0, 0, 0.4);
-            }
-            50% {
-                text-shadow: 
-                    -4px -4px 0 #fff, 4px -4px 0 #fff, -4px 4px 0 #fff, 4px 4px 0 #fff,
-                    -5px 0 0 #fff, 5px 0 0 #fff, 0 -5px 0 #fff, 0 5px 0 #fff,
-                    0 0 20px #FF1493, 0 0 40px #FF1493, 0 0 60px #FF1493,
-                    0 0 80px #FF69B4, 0 0 100px #FF69B4, 0 0 140px #FF69B4,
-                    0 0 180px #FF1493, 0 0 220px #FF1493,
-                    0 0 250px rgba(255, 20, 147, 1), 0 0 300px rgba(255, 105, 180, 0.9),
-                    8px 8px 15px rgba(0, 0, 0, 0.4);
-            }
-        }
-
-        @keyframes nameFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
-        }
-
-        .name-ailany::before {
-            content: '✨';
-            position: absolute;
-            left: -55px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 45px;
-            animation: sparkleLeft 2s infinite;
-            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1));
-        }
-
-        .name-ailany::after {
-            content: '✨';
-            position: absolute;
-            right: -55px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 45px;
-            animation: sparkleRight 2s infinite;
-            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1));
-        }
-
-        @keyframes sparkleLeft {
-            0%, 100% { 
-                opacity: 0.6;
-                transform: translateY(-50%) rotate(0deg) scale(1);
-            }
-            50% { 
-                opacity: 1;
-                transform: translateY(-50%) rotate(180deg) scale(1.4);
-            }
-        }
-
-        @keyframes sparkleRight {
-            0%, 100% { 
-                opacity: 1;
-                transform: translateY(-50%) rotate(0deg) scale(1.4);
-            }
-            50% { 
-                opacity: 0.6;
-                transform: translateY(-50%) rotate(-180deg) scale(1);
-            }
-        }
-
-        .subtitle {
-            color: #DDA0DD;
-            font-size: 28px;
-            margin: 20px 0;
-            font-weight: bold;
-        }
-
-        .confirmation-counter {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            border-radius: 20px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            animation: pulse 2s infinite;
-            position: relative;
-            z-index: 5;
-            display: none;
-        }
-
-        .confirmation-counter.admin-view {
-            display: block;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
-
-        .confirmation-counter h3 {
-            color: white;
-            font-size: 24px;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .counter-number {
-            font-size: 48px;
-            color: white;
-            font-weight: bold;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .counter-label {
-            color: white;
-            font-size: 18px;
-            margin-top: 5px;
-        }
-
-        .info-box {
-            background: linear-gradient(135deg, #FFB6C1, #DDA0DD);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
-            color: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            position: relative;
-            z-index: 5;
-        }
-
-        .info-item {
-            margin: 15px 0;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .info-item strong {
-            font-size: 24px;
-        }
-
-        .info-section {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 15px;
-            margin: 15px 0;
-            position: relative;
-        }
-
-        .location-buttons-inline {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 15px;
-        }
-
-        .location-btn-small {
-            background: linear-gradient(135deg, #BA55D3, #DDA0DD, #BA55D3);
-            background-size: 200% 200%;
-            animation: gradientMove 3s ease infinite;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 16px;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(186, 85, 211, 0.4);
-            transition: all 0.3s;
-            font-weight: bold;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .location-btn-small::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-            animation: shimmer 2s infinite;
-        }
-
-        .location-btn-small:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 20px rgba(186, 85, 211, 0.6);
-        }
-
-        @keyframes gradientMove {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
 
-        @keyframes shimmer {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(50%, 50%) rotate(360deg); }
-        }
-
-        .entertainment-item {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 12px;
-            padding: 12px;
-            margin: 10px 0;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .countdown-section {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            border-radius: 20px;
-            padding: 30px;
+        /* Nombre "Ailany" con efecto neón CORREGIDO */
+        .name-container {
+            position: relative;
             margin: 30px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            position: relative;
-            z-index: 5;
-        }
-
-        .countdown-title {
-            color: white;
-            font-size: 28px;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .countdown-item {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            min-width: 100px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s;
-        }
-
-        .countdown-item:hover {
-            transform: scale(1.1);
-        }
-
-        .countdown-number {
-            font-size: 36px;
-            color: #FF69B4;
-            font-weight: bold;
-        }
-
-        .countdown-label {
-            font-size: 14px;
-            color: #DDA0DD;
-            margin-top: 5px;
-        }
-
-        .gift-table-section {
-            background: linear-gradient(135deg, #DDA0DD, #FFB6C1);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
-            color: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            position: relative;
-            z-index: 5;
-        }
-
-        .gift-table-section h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .gift-options {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .gift-card {
-            background: white;
-            color: #FF69B4;
-            border-radius: 15px;
-            padding: 25px;
-            flex: 1;
-            min-width: 200px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s;
-        }
-
-        .gift-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .gift-icon {
-            font-size: 50px;
-            margin-bottom: 10px;
-        }
-
-        .photo-gallery-section {
-            background: linear-gradient(135deg, #FFB6C1, #FF69B4);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
-            color: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            position: relative;
-            z-index: 5;
-        }
-
-        .photo-gallery-section h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .upload-reminder {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px 0;
-            font-size: 18px;
-            animation: reminderPulse 3s infinite;
-        }
-
-        @keyframes reminderPulse {
-            0%, 100% { transform: scale(1); background: rgba(255, 255, 255, 0.3); }
-            50% { transform: scale(1.05); background: rgba(255, 255, 255, 0.5); }
-        }
-
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin: 20px auto;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .carousel-slide {
-            display: none;
-            width: 100%;
-            animation: slideIn 0.5s;
-        }
-
-        .carousel-slide.active {
-            display: block;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(100px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 15px;
-        }
-
-        .placeholder-image {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #DDA0DD, #FFB6C1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 64px;
-            border-radius: 15px;
-        }
-
-        .upload-photo-btn {
-            background: white;
-            color: #FF69B4;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            border-radius: 50px;
-            cursor: pointer;
-            margin: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s;
-            font-weight: bold;
             display: inline-block;
         }
 
-        .upload-photo-btn:hover {
-            transform: scale(1.1);
+        /* Corona REPOSICIONADA - MÁS ARRIBA SIN OBSTRUIR */
+        .crown {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-5deg);
+            font-size: 55px;
+            animation: crownFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 8px 15px rgba(255, 215, 0, 0.6));
+            z-index: 5;
         }
 
-        .photo-input {
-            display: none;
+        @keyframes crownFloat {
+            0%, 100% { transform: translateX(-50%) translateY(0) rotate(-5deg); }
+            50% { transform: translateX(-50%) translateY(-10px) rotate(5deg); }
         }
 
-        .btn {
-            background: linear-gradient(135deg, #FF69B4, #FFB6C1);
+        .name {
+            font-family: 'Pacifico', cursive;
+            font-size: 72px;
+            color: #ff1493;
+            text-shadow: 
+                0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 30px #ff1493,
+                0 0 40px #ff1493,
+                0 0 50px #ff1493,
+                0 0 60px #ff1493,
+                0 0 70px #ff1493,
+                4px 4px 0px #fff,
+                -2px -2px 0px #fff,
+                2px -2px 0px #fff,
+                -2px 2px 0px #fff;
+            animation: neonPulse 2s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 3px;
+            font-weight: 400;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% {
+                text-shadow: 
+                    0 0 10px #fff,
+                    0 0 20px #fff,
+                    0 0 30px #ff1493,
+                    0 0 40px #ff1493,
+                    0 0 50px #ff1493,
+                    0 0 60px #ff1493,
+                    0 0 70px #ff1493,
+                    4px 4px 0px #fff,
+                    -2px -2px 0px #fff,
+                    2px -2px 0px #fff,
+                    -2px 2px 0px #fff;
+            }
+            50% {
+                text-shadow: 
+                    0 0 5px #fff,
+                    0 0 10px #fff,
+                    0 0 15px #ff1493,
+                    0 0 20px #ff1493,
+                    0 0 25px #ff1493,
+                    0 0 30px #ff1493,
+                    0 0 35px #ff1493,
+                    4px 4px 0px #fff,
+                    -2px -2px 0px #fff,
+                    2px -2px 0px #fff,
+                    -2px 2px 0px #fff;
+            }
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: #ff1493;
+            margin-top: 10px;
+            font-weight: 300;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .event-card {
+            background: linear-gradient(135deg, #ffd1dc 0%, #ffb6c1 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-card::before {
+            content: '🎀';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 100px;
+            opacity: 0.1;
+        }
+
+        .event-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .event-details {
+            font-size: 18px;
+            color: #fff;
+            line-height: 1.8;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .location-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .location-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Sección de entretenimiento */
+        .entertainment-section {
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe4e9 100%);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 2px dashed #ff69b4;
+        }
+
+        .entertainment-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff1493;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .entertainment-item {
+            font-size: 18px;
+            color: #666;
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(255, 105, 180, 0.1);
+        }
+
+        .confirm-button {
+            background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
             color: white;
             border: none;
             padding: 18px 40px;
-            font-size: 22px;
             border-radius: 50px;
+            font-size: 20px;
+            font-weight: 700;
             cursor: pointer;
-            margin: 15px;
-            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
-            transition: all 0.3s;
-            font-weight: bold;
-            position: relative;
+            width: 100%;
+            margin-top: 20px;
+            box-shadow: 0 8px 20px rgba(255, 20, 147, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(255, 105, 180, 0.6);
+        .confirm-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 20, 147, 0.6);
         }
 
-        .btn:active {
-            transform: translateY(-2px);
-        }
-
-        .btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .btn-loading {
-            position: relative;
-            padding-right: 60px;
-        }
-
-        .btn-loading::after {
-            content: '';
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
-            border: 3px solid white;
-            border-top-color: transparent;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: translateY(-50%) rotate(360deg); }
-        }
-
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -792,797 +368,439 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 9999;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
             justify-content: center;
             align-items: center;
-            animation: fadeIn 0.3s;
-        }
-
-        .modal.show {
-            display: flex;
+            padding: 20px;
         }
 
         .modal-content {
             background: white;
+            padding: 40px;
             border-radius: 30px;
-            padding: 50px;
-            text-align: center;
             max-width: 500px;
-            width: 90%;
-            position: relative;
-            animation: modalSlideIn 0.5s;
+            width: 100%;
+            text-align: center;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: modalSlideIn 0.3s ease;
         }
 
         @keyframes modalSlideIn {
             from {
-                transform: scale(0.7) translateY(-50px);
+                transform: translateY(-50px);
                 opacity: 0;
             }
             to {
-                transform: scale(1) translateY(0);
+                transform: translateY(0);
                 opacity: 1;
             }
         }
 
         .modal-content h2 {
-            color: #FF69B4;
-            font-size: 36px;
+            font-size: 32px;
+            color: #ff1493;
             margin-bottom: 20px;
         }
 
-        .modal-content p {
-            color: #666;
-            font-size: 20px;
-            line-height: 1.6;
+        .guest-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ffb6c1;
+            border-radius: 15px;
+            font-size: 16px;
             margin: 15px 0;
+            font-family: 'Poppins', sans-serif;
         }
 
-        .close-modal {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: white;
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .modal-button {
+            flex: 1;
+            padding: 15px;
             border: none;
-            padding: 15px 35px;
-            font-size: 18px;
             border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
-            margin-top: 20px;
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
         }
 
-        .close-modal:hover {
-            transform: scale(1.1);
+        .modal-button.confirm {
+            background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
         }
 
-        .confetti {
+        .modal-button.cancel {
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .modal-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            display: none;
             position: fixed;
-            width: 12px;
-            height: 12px;
-            pointer-events: none;
-            z-index: 99999;
-            border-radius: 50%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 3000;
+            overflow-y: auto;
+            padding: 20px;
         }
 
-        .audio-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(255, 215, 0, 0.9);
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s;
-            z-index: 1000;
+        .admin-content {
+            background: white;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 20px;
+            padding: 30px;
         }
 
-        .audio-control:hover {
-            transform: scale(1.1);
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #ff69b4;
+            padding-bottom: 15px;
         }
 
-        .admin-toggle {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: rgba(186, 85, 211, 0.9);
+        .close-admin {
+            background: #ff1493;
             color: white;
             border: none;
             padding: 10px 20px;
-            border-radius: 20px;
+            border-radius: 50px;
             cursor: pointer;
-            z-index: 1001;
-            font-size: 14px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            font-weight: 600;
         }
 
+        .guests-list {
+            margin-top: 20px;
+        }
+
+        .guest-item {
+            background: #f8f8f8;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid #ff69b4;
+        }
+
+        .delete-guest {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .event-title { font-size: 48px; }
-            .title-heart { font-size: 35px; }
-            .name-ailany { font-size: 62px; letter-spacing:2px; }
-            .crown-top { font-size: 55px; top: -50px; }
-            .name-ailany::before,
-            .name-ailany::after { font-size: 32px; left: -42px; right: -42px; }
-            .subtitle { font-size: 22px; }
-            .countdown-number { font-size: 28px; }
-            .info-item { font-size: 16px; }
-            .btn { padding: 15px 30px; font-size: 18px; }
-            .container { padding: 25px; }
-            .counter-number { font-size: 36px; }
-            .placeholder-image { height: 250px; font-size: 48px; }
-            .carousel-slide img { height: 250px; }
-            .bg-decoration { font-size: 80px !important; }
-            .location-btn-small { padding: 10px 20px; font-size: 14px; }
-            .entertainment-item { font-size: 16px; padding: 10px; }
+            .title {
+                font-size: 42px;
+            }
+
+            .name {
+                font-size: 56px;
+            }
+
+            .crown {
+                font-size: 48px;
+                top: -85px;
+            }
+
+            .heart-left,
+            .heart-right {
+                font-size: 28px;
+            }
+
+            .event-title {
+                font-size: 24px;
+            }
+
+            .event-details {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                border-radius: 20px;
+            }
+
+            .header {
+                padding: 40px 15px 30px;
+            }
+
+            .title {
+                font-size: 36px;
+            }
+
+            .name {
+                font-size: 48px;
+            }
+
+            .crown {
+                font-size: 42px;
+                top: -75px;
+            }
+
+            .heart-left,
+            .heart-right {
+                font-size: 24px;
+            }
+
+            .subtitle {
+                font-size: 20px;
+            }
+
+            .content {
+                padding: 25px 20px;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+            }
+
+            .admin-button {
+                padding: 10px 18px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
-    <button class="admin-toggle" id="adminToggle" onclick="toggleAdmin()">👤 Admin</button>
+    <div class="crown-bg-1">👑</div>
+    <div class="crown-bg-2">👑</div>
 
-    <div class="envelope-wrapper" id="envelopeWrapper">
-        <div class="envelope" id="envelope">
-            <div class="envelope-flap"></div>
-            <div class="envelope-body">
-                <div class="envelope-letter">
-                    <h3>✨ ¡Estás Invitado! ✨</h3>
-                    <p>Haz clic para abrir tu invitación especial</p>
-                </div>
-            </div>
-        </div>
-        <div class="click-hint">👆 HAZ CLIC AQUÍ 👆</div>
-    </div>
-
-    <audio id="backgroundMusic" loop>
-        <source src="golden_spanish.mp3" type="audio/mpeg">
-    </audio>
-    <button class="audio-control" id="audioToggle" title="Música">🎵</button>
+    <button class="admin-button" onclick="openAdmin()">
+        👤 Admin
+    </button>
 
     <div class="container">
-        <div class="bg-decoration princess-bg-1">👸</div>
-        <div class="bg-decoration princess-bg-2">👸</div>
-        <div class="bg-decoration crown-bg-1">👑</div>
-        <div class="bg-decoration crown-bg-2">👑</div>
-
-        <div class="event-title-wrapper">
-            <div class="title-heart">💖</div>
-            <h2 class="event-title">Mis V Años</h2>
-            <div class="title-heart">💖</div>
-        </div>
-        
-        <div class="name-container">
-            <div class="crown-top">👑</div>
-            <div class="name-ailany">Ailany</div>
-        </div>
-
-        <p class="subtitle">🎂 ¡Ven a celebrar conmigo! 🎉</p>
-
-        <div class="confirmation-counter" id="confirmationCounter">
-            <h3>👥 Confirmaciones Recibidas</h3>
-            <div class="counter-number" id="totalConfirmations">0</div>
-            <div class="counter-label">personas confirmadas</div>
+        <div class="header">
+            <div class="title-container">
+                <span class="heart-left">💖</span>
+                <h1 class="title">Mis V Años</h1>
+                <span class="heart-right">💖</span>
+            </div>
+            
+            <div class="name-container">
+                <div class="crown">👑</div>
+                <h2 class="name">Ailany</h2>
+            </div>
+            
+            <p class="subtitle">🎂 ¡Ven a celebrar conmigo! 🎉</p>
         </div>
 
-        <div class="info-box">
-            <div class="info-section">
-                <div class="info-item">
-                    <span>⛪</span>
-                    <div><strong>Misa de Acción de Gracias</strong></div>
-                </div>
-                <div class="info-item" style="font-size: 18px;">
-                    <span>⏰</span>
-                    <div>1:00 PM - Iglesia Santo Entierro</div>
-                </div>
-                <div class="location-buttons-inline">
-                    <button class="location-btn-small" onclick="openLocation('church')">
-                        ⛪ Ver Ubicación
-                    </button>
-                </div>
+        <div class="content">
+            <div class="event-card">
+                <h3 class="event-title">⛪ Misa de Acción de Gracias</h3>
+                <p class="event-details">🕐 1:00 PM - Iglesia Santo Entierro</p>
+                <button class="location-button" onclick="openLocation('church')">
+                    🗺️ Ver Ubicación
+                </button>
             </div>
 
-            <div class="info-section">
-                <div class="info-item">
-                    <span>🎉</span>
-                    <div><strong>Celebración</strong></div>
-                </div>
-                <div class="info-item">
-                    <span>📅</span>
-                    <div><strong>Fecha:</strong> 23 de Noviembre 2025</div>
-                </div>
-                <div class="info-item">
-                    <span>⏰</span>
-                    <div><strong>Hora:</strong> 4:00 PM</div>
-                </div>
-                <div class="info-item">
-                    <span>📍</span>
-                    <div><strong>Lugar:</strong> Salón Jardín Joss Mary</div>
-                </div>
-                <div class="info-item" style="font-size: 16px;">
-                    <span>🗺️</span>
-                    <div>C. Rio Atoyac Sur 513, Santiago Momoxpan, Puebla</div>
-                </div>
-                
+            <div class="entertainment-section">
+                <h3 class="entertainment-title">🎪 Entretenimiento</h3>
                 <div class="entertainment-item">
                     🎨 <strong>Pinta Carita:</strong> 4:30 PM - 6:30 PM
                 </div>
                 <div class="entertainment-item">
                     🤡 <strong>Payaso:</strong> 7:00 PM
                 </div>
-                
-                <div class="location-buttons-inline">
-                    <button class="location-btn-small" onclick="openLocation('salon')">
-                        📍 Ver Ubicación
-                    </button>
-                </div>
             </div>
+
+            <div class="event-card">
+                <h3 class="event-title">🎉 Celebración</h3>
+                <p class="event-details">🕖 7:00 PM - Quincho Los Abuelos</p>
+                <p class="event-details">📍 Las Américas, Villa el Salvador</p>
+                <button class="location-button" onclick="openLocation('party')">
+                    🗺️ Ver Ubicación
+                </button>
+            </div>
+
+            <button class="confirm-button" onclick="openConfirmModal()">
+                ✨ Confirmar Asistencia ✨
+            </button>
         </div>
-
-        <div class="countdown-section">
-            <div class="countdown-title">⏰ Faltan solo... ⏰</div>
-            <div class="countdown" id="countdown">
-                <div class="countdown-item">
-                    <div class="countdown-number" id="days">00</div>
-                    <div class="countdown-label">Días</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="hours">00</div>
-                    <div class="countdown-label">Horas</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="minutes">00</div>
-                    <div class="countdown-label">Minutos</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="seconds">00</div>
-                    <div class="countdown-label">Segundos</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="gift-table-section">
-            <h2>🎁 Mesa de Regalos 🎁</h2>
-            <div class="gift-options">
-                <div class="gift-card">
-                    <div class="gift-icon">💵</div>
-                    <h3>Efectivo</h3>
-                    <p>Tu aporte es bienvenido</p>
-                </div>
-                <div class="gift-card">
-                    <div class="gift-icon">🎀</div>
-                    <h3>Regalo Sorpresa</h3>
-                    <p>Lo que tu corazón elija</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="photo-gallery-section">
-            <h2>📸 Galería de Fotos 📸</h2>
-            <div class="upload-reminder">
-                💝 ¡No se te olvide subir tus fotos de mi fiesta! 💝<br>
-                🎈 ¡Quiero ver todos los momentos especiales! 🎈
-            </div>
-            
-            <div class="carousel-container">
-                <div class="carousel-slide active">
-                    <div class="placeholder-image">📷</div>
-                </div>
-                <div id="photoCarousel"></div>
-            </div>
-
-            <label class="upload-photo-btn" for="photoInput">
-                📤 Subir Fotos
-            </label>
-            <input type="file" id="photoInput" class="photo-input" accept="image/*" multiple>
-            <p style="margin-top: 10px; font-size: 14px;">Selecciona múltiples fotos para compartir</p>
-        </div>
-
-        <button class="btn" id="confirmBtn" onclick="confirmAssistance()">
-            ✨ ¡CONFIRMAR ASISTENCIA! ✨
-        </button>
-
-        <p style="margin-top: 30px; color: #DDA0DD; font-size: 18px;">
-            🌟 ¡Esperamos verte para celebrar juntos! 🌟
-        </p>
     </div>
 
-    <div class="modal" id="confirmModal">
+    <!-- Modal de Confirmación -->
+    <div id="confirmModal" class="modal">
         <div class="modal-content">
-            <h2>🎉 ¡Confirmación Exitosa! 🎉</h2>
-            <p>✅ Tu asistencia ha sido registrada</p>
-            <p>📱 Revisa WhatsApp para enviar tu confirmación</p>
-            <p>📅 El evento se agregará a tu calendario automáticamente</p>
-            <p>💖 ¡Nos vemos en la fiesta!</p>
-            <button class="close-modal" onclick="closeModal()">Cerrar</button>
+            <h2>💖 Confirma tu asistencia 💖</h2>
+            <p style="color: #666; margin-bottom: 20px;">¡Nos encantaría que nos acompañes!</p>
+            <input type="text" id="guestName" class="guest-input" placeholder="Tu nombre" />
+            <input type="number" id="guestCount" class="guest-input" placeholder="Número de personas" min="1" value="1" />
+            <div class="modal-buttons">
+                <button class="modal-button cancel" onclick="closeModal()">Cancelar</button>
+                <button class="modal-button confirm" onclick="confirmAttendance()">Confirmar 🎉</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Panel Admin -->
+    <div id="adminPanel" class="admin-panel">
+        <div class="admin-content">
+            <div class="admin-header">
+                <h2 style="color: #ff1493;">👑 Panel de Administración</h2>
+                <button class="close-admin" onclick="closeAdmin()">✖ Cerrar</button>
+            </div>
+            <h3 style="color: #666; margin-bottom: 15px;">📋 Lista de Confirmados (<span id="guestTotal">0</span> invitados)</h3>
+            <div id="guestsList" class="guests-list"></div>
         </div>
     </div>
 
     <script>
-        const eventDate = new Date('2025-11-23T16:00:00').getTime();
-        const whatsappNumber = '522221012336';
-        const locations = {
-            salon: 'https://maps.app.goo.gl/HQFveCpJPBgvzVdg7',
-            church: 'https://maps.app.goo.gl/5As1RXhWszN19Xin9'
-        };
+        // Almacenamiento local
+        let guests = JSON.parse(localStorage.getItem('guests')) || [];
 
-        let musicPlaying = false;
-        let confirmationInProgress = false;
-        let currentSlide = 0;
-        let uploadedPhotos = [];
-        let carouselInterval;
-        let isAdminMode = false;
-
-        document.addEventListener('DOMContentLoaded', function() {
-            createSparkles();
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-            setupEnvelope();
-            setupAudioControl();
-            setupPhotoUpload();
-            loadConfirmations();
-            loadPhotos();
-            startCarousel();
-        });
-
-        function createSparkles() {
-            const sparkleCount = 50;
-            const colors = [
-                'rgba(255, 215, 0, 0.9)',
-                'rgba(255, 223, 0, 0.9)',
-                'rgba(255, 185, 0, 0.9)',
-                'rgba(255, 200, 50, 0.9)',
-                'rgba(255, 230, 100, 0.9)'
-            ];
-
-            for (let i = 0; i < sparkleCount; i++) {
-                setTimeout(() => {
-                    const sparkle = document.createElement('div');
-                    sparkle.className = 'sparkle';
-                    sparkle.style.left = Math.random() * 100 + '%';
-                    sparkle.style.width = (Math.random() * 6 + 6) + 'px';
-                    sparkle.style.height = sparkle.style.width;
-                    sparkle.style.animationDelay = Math.random() * 8 + 's';
-                    sparkle.style.animationDuration = (Math.random() * 4 + 6) + 's';
-                    sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    document.body.appendChild(sparkle);
-                }, i * 50);
-            }
+        function openConfirmModal() {
+            document.getElementById('confirmModal').style.display = 'flex';
         }
 
-        function setupEnvelope() {
-            const wrapper = document.getElementById('envelopeWrapper');
-            const envelope = document.getElementById('envelope');
-            const music = document.getElementById('backgroundMusic');
-
-            wrapper.addEventListener('click', function() {
-                envelope.classList.add('open');
-                
-                setTimeout(() => {
-                    wrapper.classList.add('hidden');
-                    music.play().catch(e => console.log('Autoplay bloqueado'));
-                    musicPlaying = true;
-                }, 1000);
-            });
+        function closeModal() {
+            document.getElementById('confirmModal').style.display = 'none';
+            document.getElementById('guestName').value = '';
+            document.getElementById('guestCount').value = '1';
         }
 
-        function setupAudioControl() {
-            const toggle = document.getElementById('audioToggle');
-            const music = document.getElementById('backgroundMusic');
+        function confirmAttendance() {
+            const name = document.getElementById('guestName').value.trim();
+            const count = parseInt(document.getElementById('guestCount').value) || 1;
 
-            toggle.addEventListener('click', function() {
-                if (musicPlaying) {
-                    music.pause();
-                    toggle.textContent = '🔇';
-                    musicPlaying = false;
-                } else {
-                    music.play();
-                    toggle.textContent = '🎵';
-                    musicPlaying = true;
-                }
-            });
-        }
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = eventDate - now;
-
-            if (distance < 0) {
-                document.getElementById('countdown').innerHTML = 
-                    '<div class="countdown-item"><div class="countdown-number">🎉</div><div class="countdown-label">¡Es hoy!</div></div>';
+            if (!name) {
+                alert('Por favor ingresa tu nombre');
                 return;
             }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const guest = {
+                id: Date.now(),
+                name: name,
+                count: count,
+                date: new Date().toLocaleString()
+            };
 
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            guests.push(guest);
+            localStorage.setItem('guests', JSON.stringify(guests));
+
+            // Descargar calendario automáticamente
+            downloadCalendar();
+
+            alert(`¡Gracias ${name}! Tu asistencia ha sido confirmada. 🎉\n\nSe ha descargado el evento a tu calendario.`);
+            closeModal();
         }
 
-        function toggleAdmin() {
-            isAdminMode = !isAdminMode;
-            const counter = document.getElementById('confirmationCounter');
-            const btn = document.getElementById('adminToggle');
-            
-            if (isAdminMode) {
-                counter.classList.add('admin-view');
-                btn.textContent = '👁️ Modo Admin';
-                btn.style.background = 'rgba(50, 205, 50, 0.9)';
-            } else {
-                counter.classList.remove('admin-view');
-                btn.textContent = '👤 Admin';
-                btn.style.background = 'rgba(186, 85, 211, 0.9)';
-            }
-        }
+        function downloadCalendar() {
+            const event = {
+                title: 'Mis V Años - Ailany 👑',
+                description: 'Misa: 1:00 PM en Iglesia Santo Entierro\\nCelebración: 7:00 PM en Quincho Los Abuelos\\nEntretenimiento: Pinta Carita (4:30-6:30 PM) y Payaso (7:00 PM)',
+                location: 'Iglesia Santo Entierro / Quincho Los Abuelos, Las Américas, Villa el Salvador',
+                start: '20251025T130000',
+                end: '20251025T230000'
+            };
 
-        function confirmAssistance() {
-            if (confirmationInProgress) {
-                alert('⏳ Por favor espera, procesando confirmación...');
-                return;
-            }
-
-            const btn = document.getElementById('confirmBtn');
-            btn.disabled = true;
-            btn.classList.add('btn-loading');
-            confirmationInProgress = true;
-
-            let name = prompt('👤 Por favor ingresa tu nombre completo:');
-            
-            if (!name || name.trim().length < 3) {
-                alert('❌ Por favor ingresa un nombre válido (mínimo 3 caracteres)');
-                resetConfirmButton(btn);
-                return;
-            }
-            name = name.trim();
-
-            let people = prompt('👥 ¿Cuántas personas asistirán en total?\n\n💡 Mínimo 4 personas por familia');
-            
-            if (!people || people.trim() === '') {
-                alert('❌ Por favor indica el número de personas que asistirán');
-                resetConfirmButton(btn);
-                return;
-            }
-
-            const peopleNum = parseInt(people);
-            
-            if (isNaN(peopleNum)) {
-                alert('❌ Por favor ingresa un número válido');
-                resetConfirmButton(btn);
-                return;
-            }
-
-            if (peopleNum < 4) {
-                alert('❌ El mínimo es 4 personas por familia');
-                resetConfirmButton(btn);
-                return;
-            }
-
-            let children = prompt(`👶 De las ${peopleNum} personas, ¿cuántos son niños menores de 7 años?\n\n💡 Si no hay niños menores de 7 años, escribe 0`);
-            
-            if (children === null || children.trim() === '') {
-                alert('❌ Por favor indica cuántos niños menores de 7 años asistirán (0 si no hay)');
-                resetConfirmButton(btn);
-                return;
-            }
-
-            const childrenNum = parseInt(children);
-            
-            if (isNaN(childrenNum)) {
-                alert('❌ Por favor ingresa un número válido para los niños');
-                resetConfirmButton(btn);
-                return;
-            }
-
-            if (childrenNum < 0) {
-                alert('❌ El número de niños no puede ser negativo');
-                resetConfirmButton(btn);
-                return;
-            }
-
-            if (childrenNum > peopleNum) {
-                alert('❌ El número de niños no puede ser mayor al total de personas');
-                resetConfirmButton(btn);
-                return;
-            }
-
-            const adultsNum = peopleNum - childrenNum;
-
-            const message = `🎉 *CONFIRMACIÓN DE ASISTENCIA* 🎉
-💖 *Mis V Años de Ailany* 💖
-
-👤 *Nombre:* ${name}
-👥 *Total de personas:* ${peopleNum}
-👨‍👩‍👧 *Adultos:* ${adultsNum}
-👶 *Niños menores de 7 años:* ${childrenNum}
-
-📅 *Evento:* Cumpleaños de Ailany Zuley
-
-⛪ *Misa:* 1:00 PM - Iglesia Santo Entierro
-🎉 *Celebración:* 4:00 PM
-📍 *Lugar:* Salón Jardín Joss Mary
-
-🎨 *Pinta Carita:* 4:30 PM - 6:30 PM
-🤡 *Payaso:* 7:00 PM
-
-¡Nos vemos en la fiesta! 👑✨`;
-
-            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-
-            saveConfirmation(name, peopleNum, childrenNum, adultsNum);
-            addToCalendarAuto();
-
-            setTimeout(() => {
-                showModal();
-                createConfetti();
-                resetConfirmButton(btn);
-            }, 1000);
-        }
-
-        function resetConfirmButton(btn) {
-            btn.disabled = false;
-            btn.classList.remove('btn-loading');
-            confirmationInProgress = false;
-        }
-
-        function saveConfirmation(name, people, children, adults) {
-            try {
-                let confirmations = JSON.parse(localStorage.getItem('confirmations') || '[]');
-                confirmations.push({
-                    name: name,
-                    people: people,
-                    children: children,
-                    adults: adults,
-                    timestamp: new Date().toISOString()
-                });
-                localStorage.setItem('confirmations', JSON.stringify(confirmations));
-                updateConfirmationCounter();
-            } catch (e) {
-                console.log('Error guardando confirmación:', e);
-            }
-        }
-
-        function loadConfirmations() {
-            updateConfirmationCounter();
-        }
-
-        function updateConfirmationCounter() {
-            try {
-                const confirmations = JSON.parse(localStorage.getItem('confirmations') || '[]');
-                const total = confirmations.reduce((sum, conf) => sum + conf.people, 0);
-                document.getElementById('totalConfirmations').textContent = total;
-            } catch (e) {
-                document.getElementById('totalConfirmations').textContent = '0';
-            }
-        }
-
-        function addToCalendarAuto() {
-            const title = 'Cumpleaños de Ailany Zuley - Mis V Años';
-            const description = `💖 Mis V Años de Ailany 💖
-🎉 Celebración del cumpleaños de Ailany Zuley
-
-⛪ Misa: 1:00 PM - Iglesia Santo Entierro
-🎉 Fiesta: 4:00 PM - Salón Jardín Joss Mary
-🎨 Pinta Carita: 4:30 PM - 6:30 PM
-🤡 Payaso: 7:00 PM
-
-📍 Dirección: C. Rio Atoyac Sur 513, Santiago Momoxpan, Puebla
-
-🎁 Mesa de regalos: Efectivo o regalo sorpresa
-👑 ¡No faltes!`;
-
-            const location = 'Salón Jardín Joss Mary, C. Rio Atoyac Sur 513, Santiago Momoxpan, Puebla';
-            
-            const startDate = '20251123T160000';
-            const endDate = '20251123T220000';
-            
-            const icsContent = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Cumpleaños Ailany//ES
-BEGIN:VEVENT
-DTSTART:${startDate}
-DTEND:${endDate}
-SUMMARY:${title}
-DESCRIPTION:${description.replace(/\n/g, '\\n')}
-LOCATION:${location}
-STATUS:CONFIRMED
-SEQUENCE:0
-BEGIN:VALARM
-TRIGGER:-P1D
-DESCRIPTION:Recordatorio: Cumpleaños de Ailany mañana
-ACTION:DISPLAY
-END:VALARM
-BEGIN:VALARM
-TRIGGER:-PT2H
-DESCRIPTION:Recordatorio: Cumpleaños de Ailany en 2 horas
-ACTION:DISPLAY
-END:VALARM
-END:VEVENT
-END:VCALENDAR`;
+            const icsContent = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//Mis V Años Ailany//ES',
+                'CALSCALE:GREGORIAN',
+                'METHOD:PUBLISH',
+                'BEGIN:VEVENT',
+                `DTSTART:${event.start}`,
+                `DTEND:${event.end}`,
+                `SUMMARY:${event.title}`,
+                `DESCRIPTION:${event.description}`,
+                `LOCATION:${event.location}`,
+                'STATUS:CONFIRMED',
+                'SEQUENCE:0',
+                'BEGIN:VALARM',
+                'TRIGGER:-PT1H',
+                'DESCRIPTION:Recordatorio: Mis V Años - Ailany',
+                'ACTION:DISPLAY',
+                'END:VALARM',
+                'END:VEVENT',
+                'END:VCALENDAR'
+            ].join('\r\n');
 
             const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
             const link = document.createElement('a');
-            link.href = window.URL.createObjectURL(blob);
-            link.download = 'cumpleanos_ailany_zuley.ics';
+            link.href = URL.createObjectURL(blob);
+            link.download = 'Mis_V_Años_Ailany.ics';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
         }
 
         function openLocation(type) {
-            const url = locations[type];
-            if (url) {
-                window.open(url, '_blank');
+            if (type === 'church') {
+                window.open('https://maps.google.com/?q=Iglesia+Santo+Entierro+Lima', '_blank');
+            } else {
+                window.open('https://maps.google.com/?q=Quincho+Los+Abuelos+Villa+el+Salvador', '_blank');
             }
         }
 
-        function showModal() {
-            document.getElementById('confirmModal').classList.add('show');
+        function openAdmin() {
+            document.getElementById('adminPanel').style.display = 'block';
+            renderGuests();
         }
 
-        function closeModal() {
-            document.getElementById('confirmModal').classList.remove('show');
+        function closeAdmin() {
+            document.getElementById('adminPanel').style.display = 'none';
         }
 
-        function createConfetti() {
-            const colors = ['#FFD700', '#FF69B4', '#DDA0DD', '#FFB6C1', '#FFA500', '#FF1493', '#DA70D6'];
-            const shapes = ['circle', 'square'];
-            const confettiCount = 150;
+        function renderGuests() {
+            const guestsList = document.getElementById('guestsList');
+            const totalGuests = guests.reduce((sum, g) => sum + g.count, 0);
+            document.getElementById('guestTotal').textContent = totalGuests;
 
-            for (let i = 0; i < confettiCount; i++) {
-                setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    confetti.style.left = Math.random() * 100 + '%';
-                    confetti.style.top = '-20px';
-                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    
-                    const size = Math.random() * 8 + 8;
-                    confetti.style.width = size + 'px';
-                    confetti.style.height = size + 'px';
-                    
-                    if (shapes[Math.floor(Math.random() * shapes.length)] === 'square') {
-                        confetti.style.borderRadius = '0';
-                    }
-                    
-                    document.body.appendChild(confetti);
-
-                    const animDuration = Math.random() * 2 + 2;
-                    const animDelay = Math.random() * 0.5;
-                    const rotations = Math.random() * 720 + 360;
-                    const drift = (Math.random() - 0.5) * 200;
-                    
-                    confetti.animate([
-                        { 
-                            transform: `translateY(0) translateX(0) rotate(0deg) scale(1)`, 
-                            opacity: 1 
-                        },
-                        { 
-                            transform: `translateY(50vh) translateX(${drift/2}px) rotate(${rotations/2}deg) scale(1.1)`, 
-                            opacity: 1,
-                            offset: 0.5
-                        },
-                        { 
-                            transform: `translateY(100vh) translateX(${drift}px) rotate(${rotations}deg) scale(0.8)`, 
-                            opacity: 0 
-                        }
-                    ], {
-                        duration: animDuration * 1000,
-                        delay: animDelay * 1000,
-                        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-                    });
-
-                    setTimeout(() => confetti.remove(), (animDuration + animDelay) * 1000 + 100);
-                }, i * 15);
-            }
-        }
-
-        function setupPhotoUpload() {
-            const input = document.getElementById('photoInput');
-            input.addEventListener('change', handlePhotoUpload);
-        }
-
-        function handlePhotoUpload(e) {
-            const files = e.target.files;
-            if (!files.length) return;
-
-            for (let file of files) {
-                if (file.type.startsWith('image/')) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        const photoData = e.target.result;
-                        uploadedPhotos.push(photoData);
-                        savePhotos();
-                        displayPhotos();
-                    };
-                    reader.readAsDataURL(file);
-                }
+            if (guests.length === 0) {
+                guestsList.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">No hay confirmaciones aún</p>';
+                return;
             }
 
-            alert(`📸 ${files.length} foto(s) subida(s) exitosamente!\n\n✨ Gracias por compartir tus momentos especiales`);
+            guestsList.innerHTML = guests.map(guest => `
+                <div class="guest-item">
+                    <div>
+                        <strong>${guest.name}</strong><br>
+                        <small style="color: #999;">${guest.count} persona(s) - ${guest.date}</small>
+                    </div>
+                    <button class="delete-guest" onclick="deleteGuest(${guest.id})">🗑️ Eliminar</button>
+                </div>
+            `).join('');
         }
 
-        function savePhotos() {
-            try {
-                localStorage.setItem('eventPhotos', JSON.stringify(uploadedPhotos));
-            } catch (e) {
-                console.log('Error guardando fotos:', e);
-                if (e.name === 'QuotaExceededError') {
-                    alert('⚠️ Límite de almacenamiento alcanzado\n\nSe han guardado las fotos hasta el límite disponible');
-                }
+        function deleteGuest(id) {
+            if (confirm('¿Eliminar esta confirmación?')) {
+                guests = guests.filter(g => g.id !== id);
+                localStorage.setItem('guests', JSON.stringify(guests));
+                renderGuests();
             }
         }
-
-        function loadPhotos() {
-            try {
-                const saved = localStorage.getItem('eventPhotos');
-                if (saved) {
-                    uploadedPhotos = JSON.parse(saved);
-                    displayPhotos();
-                }
-            } catch (e) {
-                console.log('Error cargando fotos:', e);
-            }
-        }
-
-        function displayPhotos() {
-            const carousel = document.getElementById('photoCarousel');
-            carousel.innerHTML = '';
-
-            uploadedPhotos.forEach((photo, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'carousel-slide';
-                const img = document.createElement('img');
-                img.src = photo;
-                img.alt = `Foto ${index + 1}`;
-                slide.appendChild(img);
-                carousel.appendChild(slide);
-            });
-
-            if (uploadedPhotos.length > 0) {
-                currentSlide = 0;
-                showSlide(0);
-            }
-        }
-
-        function startCarousel() {
-            carouselInterval = setInterval(() => {
-                if (uploadedPhotos.length > 0) {
-                    nextSlide();
-                }
-            }, 4000);
-        }
-
-        function showSlide(index) {
-            const slides = document.querySelectorAll('.carousel-slide');
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                if (i === index + 1) {
-                    slide.classList.add('active');
-                }
-            });
-
-            if (uploadedPhotos.length === 0) {
-                slides[0].classList.add('active');
-            }
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % uploadedPhotos.length;
-            showSlide(currentSlide);
-        }
-
-        document.getElementById('confirmModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
     </script>
 </body>
 </html>
+
