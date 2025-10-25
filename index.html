@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XV Años de Ailany 👑</title>
+    <title>V Años de Ailany 👑</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ballet:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ballet:wght@400&family=Parisienne&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -26,19 +26,18 @@
 
         .princess-silhouette {
             position: fixed;
-            width: 200px;
-            height: 300px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 150"><path d="M50 10 L45 25 L40 30 L35 40 L35 80 L30 120 L35 150 L45 150 L50 140 L55 150 L65 150 L70 120 L65 80 L65 40 L60 30 L55 25 Z" fill="rgba(219,39,119,0.1)"/><circle cx="50" cy="15" r="8" fill="rgba(219,39,119,0.1)"/><path d="M45 8 L50 2 L55 8" stroke="rgba(219,39,119,0.1)" stroke-width="2" fill="none"/></svg>') no-repeat center;
-            background-size: contain;
-            opacity: 0.03;
+            width: 120px;
+            height: 120px;
+            opacity: 0.04;
             pointer-events: none;
             z-index: 1;
             animation: floatAnim 6s ease-in-out infinite;
+            font-size: 100px;
         }
 
         @keyframes floatAnim {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
         }
 
         @keyframes pulseAnim {
@@ -51,6 +50,31 @@
             100% { transform: rotate(360deg); }
         }
 
+        @keyframes heartBeatAnim {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+        }
+
+        @keyframes neonBreathAnim {
+            0%, 100% {
+                text-shadow: 
+                    0 0 5px #fff,
+                    0 0 10px #fff,
+                    0 0 20px #ec4899,
+                    0 0 40px #ec4899,
+                    0 0 80px #ec4899;
+            }
+            50% {
+                text-shadow: 
+                    0 0 10px #fff,
+                    0 0 20px #fff,
+                    0 0 40px #ec4899,
+                    0 0 60px #ec4899,
+                    0 0 120px #ec4899;
+            }
+        }
+
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -60,78 +84,108 @@
 
         .header-title {
             text-align: center;
-            font-size: 2.8em;
-            color: #db2777;
+            font-size: 3.5em;
+            color: #fff;
             margin: 30px 0;
-            font-family: 'Ballet', cursive;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-family: 'Parisienne', cursive;
+            text-shadow: 
+                0 0 10px rgba(236, 72, 153, 0.8),
+                0 0 20px rgba(236, 72, 153, 0.6),
+                0 0 30px rgba(219, 39, 119, 0.4),
+                2px 2px 4px rgba(0,0,0,0.3);
             font-weight: 400;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            animation: pulseAnim 3s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .header-title .heart {
+            font-size: 0.8em;
+            animation: heartBeatAnim 1.5s infinite;
         }
 
         .neon-container {
             position: relative;
             text-align: center;
-            margin: 50px 0;
-            min-height: 150px;
+            margin: 60px 0;
+            min-height: 180px;
         }
 
         .crown {
-            font-size: 3em;
+            font-size: 3.5em;
             position: absolute;
-            top: -50px;
+            top: -60px;
             left: 50%;
             transform: translateX(-50%);
-            animation: crownBounceAnim 2s ease-in-out infinite;
-            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+            animation: crownFloatAnim 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.9));
         }
 
-        @keyframes crownBounceAnim {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-15px); }
+        @keyframes crownFloatAnim {
+            0%, 100% { 
+                transform: translateX(-50%) translateY(0) rotate(-5deg);
+            }
+            50% { 
+                transform: translateX(-50%) translateY(-20px) rotate(5deg);
+            }
         }
 
         .neon-name {
-            font-size: 4.5em;
-            font-family: 'Ballet', cursive;
-            font-weight: 400;
+            font-size: 5em;
+            font-family: 'Parisienne', cursive;
+            font-weight: 700;
             color: #fff;
             text-shadow: 
-                0 0 10px #ec4899,
-                0 0 20px #ec4899,
+                -2px -2px 0 #fff,
+                2px -2px 0 #fff,
+                -2px 2px 0 #fff,
+                2px 2px 0 #fff,
+                0 0 10px #fff,
+                0 0 20px #fff,
                 0 0 30px #ec4899,
-                0 0 40px #db2777,
-                0 0 70px #db2777,
-                0 0 80px #db2777,
-                0 0 100px #db2777;
-            letter-spacing: 8px;
+                0 0 40px #ec4899,
+                0 0 60px #ec4899,
+                0 0 80px #db2777;
+            letter-spacing: 10px;
             display: inline-block;
             position: relative;
             margin-top: 20px;
+            animation: neonBreathAnim 2s ease-in-out infinite;
         }
 
-        .neon-letter {
-            display: inline-block;
-            animation: neonFlickerAnim 3s ease-in-out infinite;
+        .star-decoration {
+            position: absolute;
+            font-size: 2em;
+            animation: starRotateAnim 4s linear infinite;
         }
 
-        @keyframes neonFlickerAnim {
-            0%, 100% { 
-                opacity: 1;
-                text-shadow: 
-                    0 0 10px #ec4899,
-                    0 0 20px #ec4899,
-                    0 0 30px #ec4899,
-                    0 0 40px #db2777,
-                    0 0 70px #db2777;
-            }
-            50% { 
-                opacity: 0.8;
-                text-shadow: 
-                    0 0 5px #ec4899,
-                    0 0 10px #ec4899,
-                    0 0 15px #db2777;
-            }
+        .star-decoration.left {
+            left: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .star-decoration.right {
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            animation-direction: reverse;
+        }
+
+        @keyframes starRotateAnim {
+            from { transform: translateY(-50%) rotate(0deg); }
+            to { transform: translateY(-50%) rotate(360deg); }
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.5em;
+            color: #db2777;
+            margin: 20px 0 40px;
+            font-family: 'Ballet', cursive;
         }
 
         .event-section {
@@ -162,10 +216,10 @@
 
         .event-section h2 {
             color: #db2777;
-            font-size: 2em;
+            font-size: 2.2em;
             margin-bottom: 25px;
             text-align: center;
-            font-family: 'Ballet', cursive;
+            font-family: 'Parisienne', cursive;
             position: relative;
             z-index: 1;
         }
@@ -173,7 +227,7 @@
         .event-details {
             background: white;
             border-left: 5px solid #ec4899;
-            padding: 20px;
+            padding: 25px;
             margin: 15px 0;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -184,70 +238,73 @@
         .event-details h3 {
             color: #db2777;
             margin-bottom: 15px;
-            font-size: 1.3em;
-            font-family: 'Ballet', cursive;
+            font-size: 1.5em;
+            font-family: 'Parisienne', cursive;
         }
 
         .event-details p {
             color: #4a5568;
-            margin: 8px 0;
-            font-size: 1.05em;
-            line-height: 1.6;
+            margin: 10px 0;
+            font-size: 1.1em;
+            line-height: 1.8;
         }
 
         .event-details strong {
             color: #db2777;
+            font-weight: 700;
+        }
+
+        .location-btn {
+            background: linear-gradient(135deg, #BA55D3 0%, #DDA0DD 100%);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(186, 85, 211, 0.4);
+            transition: all 0.3s;
+            font-family: 'Ballet', cursive;
             font-weight: 600;
+            margin-top: 15px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .entertainment-section {
-            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
-            border-radius: 20px;
-            padding: 40px 30px;
-            margin: 30px 0;
-            box-shadow: 0 10px 40px rgba(236, 72, 153, 0.2);
+        .location-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.3) 50%,
+                transparent 70%
+            );
+            animation: shimmerAnim 2s infinite;
         }
 
-        .entertainment-section h2 {
+        .location-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(186, 85, 211, 0.5);
+        }
+
+        .entertainment-time {
+            background: #fdf2f8;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #ec4899;
+        }
+
+        .entertainment-time h4 {
             color: #db2777;
-            font-size: 2em;
-            margin-bottom: 30px;
-            text-align: center;
-            font-family: 'Ballet', cursive;
-        }
-
-        .entertainment-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-        }
-
-        .entertainment-item {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(219, 39, 119, 0.15);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .entertainment-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(219, 39, 119, 0.25);
-        }
-
-        .entertainment-item h3 {
-            color: #db2777;
-            font-size: 1.4em;
-            margin-bottom: 15px;
-            font-family: 'Ballet', cursive;
-        }
-
-        .entertainment-item p {
-            color: #4a5568;
-            font-size: 1.05em;
-            line-height: 1.6;
+            font-family: 'Parisienne', cursive;
+            font-size: 1.3em;
+            margin-bottom: 8px;
         }
 
         .btn-container {
@@ -259,16 +316,17 @@
             background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
             color: white;
             border: none;
-            padding: 18px 45px;
-            font-size: 1.2em;
+            padding: 20px 50px;
+            font-size: 1.3em;
             border-radius: 50px;
             cursor: pointer;
             box-shadow: 0 8px 25px rgba(219, 39, 119, 0.4);
             transition: all 0.3s;
-            font-family: 'Ballet', cursive;
+            font-family: 'Parisienne', cursive;
             font-weight: 600;
             margin: 10px;
             display: inline-block;
+            position: relative;
         }
 
         .btn:hover {
@@ -277,16 +335,17 @@
             background: linear-gradient(135deg, #db2777 0%, #be185d 100%);
         }
 
-        .btn:active {
-            transform: translateY(-2px);
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
         .music-btn {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 65px;
-            height: 65px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
             border: none;
@@ -297,7 +356,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8em;
+            font-size: 2em;
         }
 
         .music-btn:hover {
@@ -307,6 +366,58 @@
 
         .music-btn.playing {
             animation: pulseAnim 1.5s infinite;
+        }
+
+        .admin-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(219, 39, 119, 0.9);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9em;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .admin-toggle.active {
+            background: rgba(16, 185, 129, 0.9);
+        }
+
+        .counter-display {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            z-index: 999;
+            min-width: 200px;
+        }
+
+        .counter-display.visible {
+            display: block;
+        }
+
+        .counter-display h3 {
+            color: #db2777;
+            margin-bottom: 15px;
+            font-family: 'Parisienne', cursive;
+        }
+
+        .counter-display .stat {
+            margin: 8px 0;
+            color: #4a5568;
+            font-size: 1.1em;
+        }
+
+        .counter-display .stat strong {
+            color: #db2777;
         }
 
         .modal {
@@ -323,7 +434,7 @@
 
         .modal-content {
             background: white;
-            margin: 8% auto;
+            margin: 5% auto;
             padding: 40px;
             border-radius: 20px;
             width: 90%;
@@ -331,6 +442,8 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             position: relative;
             animation: modalSlideAnim 0.4s ease-out;
+            max-height: 85vh;
+            overflow-y: auto;
         }
 
         @keyframes modalSlideAnim {
@@ -362,64 +475,131 @@
         .modal h2 {
             color: #db2777;
             margin-bottom: 25px;
-            font-family: 'Ballet', cursive;
-            font-size: 2em;
+            font-family: 'Parisienne', cursive;
+            font-size: 2.2em;
         }
 
-        .modal input,
-        .modal select {
+        .modal input {
             width: 100%;
             padding: 15px;
             margin: 12px 0;
             border: 2px solid #fce7f3;
             border-radius: 10px;
-            font-size: 1em;
+            font-size: 1.1em;
             transition: border-color 0.3s;
             box-sizing: border-box;
         }
 
-        .modal input:focus,
-        .modal select:focus {
+        .modal input:focus {
             outline: none;
             border-color: #ec4899;
         }
 
-        .admin-panel {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin-top: 25px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .admin-panel h3 {
+        .step-indicator {
+            text-align: center;
+            margin: 20px 0;
             color: #db2777;
-            margin-bottom: 20px;
-            font-family: 'Ballet', cursive;
+            font-size: 1.1em;
+            font-weight: 600;
         }
 
-        .guest-item {
-            background: #fdf2f8;
-            padding: 15px;
-            margin: 10px 0;
+        .gallery-section {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #fce7f3;
+        }
+
+        .photo-carousel {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: #f9fafb;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .carousel-image {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .carousel-image.active {
+            display: block;
+        }
+
+        .upload-reminder {
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+            padding: 20px;
             border-radius: 10px;
-            border-left: 4px solid #ec4899;
+            text-align: center;
+            margin: 20px 0;
+            animation: pulseAnim 2s infinite;
+        }
+
+        .upload-reminder p {
+            color: #db2777;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        .confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         @media (max-width: 768px) {
+            .header-title {
+                font-size: 2.5em;
+                flex-direction: column;
+                gap: 10px;
+            }
+
             .neon-name {
                 font-size: 3em;
+                letter-spacing: 5px;
             }
 
             .crown {
                 font-size: 2.5em;
-                top: -40px;
+                top: -45px;
             }
 
-            .event-section,
-            .entertainment-section {
+            .star-decoration {
+                font-size: 1.5em;
+            }
+
+            .star-decoration.left {
+                left: -30px;
+            }
+
+            .star-decoration.right {
+                right: -30px;
+            }
+
+            .event-section {
                 padding: 25px 20px;
-                margin: 20px 0;
             }
 
             .btn {
@@ -428,70 +608,66 @@
             }
 
             .music-btn {
-                width: 55px;
-                height: 55px;
+                width: 60px;
+                height: 60px;
                 bottom: 20px;
                 right: 20px;
-                font-size: 1.5em;
+            }
+
+            .admin-toggle {
+                font-size: 0.8em;
+                padding: 10px 15px;
+            }
+
+            .counter-display {
+                font-size: 0.9em;
+                min-width: 150px;
             }
 
             .modal-content {
                 padding: 30px 20px;
                 width: 95%;
             }
-
-            .entertainment-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header-title {
-                font-size: 2em;
-            }
-
-            .neon-name {
-                font-size: 2.5em;
-            }
-
-            .crown {
-                font-size: 2em;
-                top: -35px;
-            }
-
-            .event-details,
-            .entertainment-item {
-                padding: 15px;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="princess-silhouette" style="top: 10%; left: 5%;"></div>
-    <div class="princess-silhouette" style="top: 30%; right: 8%;"></div>
-    <div class="princess-silhouette" style="bottom: 15%; left: 10%;"></div>
-    <div class="princess-silhouette" style="bottom: 25%; right: 5%;"></div>
+    <div class="princess-silhouette" style="top: 8%; left: 3%;">👸</div>
+    <div class="princess-silhouette" style="top: 25%; right: 5%;">👑</div>
+    <div class="princess-silhouette" style="bottom: 20%; left: 8%;">👸</div>
+    <div class="princess-silhouette" style="bottom: 30%; right: 3%;">👑</div>
 
     <audio id="backgroundMusic" loop>
         <source src="golden_spanish.mp3" type="audio/mpeg">
     </audio>
 
     <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+    <button class="admin-toggle" id="adminToggle" onclick="toggleAdmin()">👑 Admin</button>
+
+    <div class="counter-display" id="counterDisplay">
+        <h3>📊 Contador</h3>
+        <div class="stat">✅ <strong id="totalConfirmed">0</strong> confirmados</div>
+        <div class="stat">👥 <strong id="totalPeople">0</strong> personas</div>
+        <div class="stat">👶 <strong id="totalKids">0</strong> niños</div>
+    </div>
+
+    <canvas class="confetti-canvas" id="confettiCanvas"></canvas>
 
     <div class="container">
-        <div class="header-title">Mis V Años</div>
+        <div class="header-title">
+            <span class="heart">💖</span>
+            <span>Mis V Años</span>
+            <span class="heart">💖</span>
+        </div>
 
         <div class="neon-container">
             <div class="crown">👑</div>
-            <div class="neon-name">
-                <span class="neon-letter">A</span>
-                <span class="neon-letter">i</span>
-                <span class="neon-letter">l</span>
-                <span class="neon-letter">a</span>
-                <span class="neon-letter">n</span>
-                <span class="neon-letter">y</span>
-            </div>
+            <div class="star-decoration left">✨</div>
+            <div class="neon-name">Ailany</div>
+            <div class="star-decoration right">✨</div>
         </div>
+
+        <div class="subtitle">¡Ven a celebrar conmigo!</div>
 
         <div class="event-section">
             <h2>✨ Ceremonia Religiosa ✨</h2>
@@ -499,33 +675,37 @@
                 <h3>💒 Misa de Acción de Gracias</h3>
                 <p><strong>📅 Fecha:</strong> Sábado, 15 de Febrero de 2025</p>
                 <p><strong>🕐 Hora:</strong> 1:00 PM</p>
-                <p><strong>📍 Lugar:</strong> Iglesia San José</p>
+                <p><strong>📍 Lugar:</strong> Iglesia Santo Entierro</p>
                 <p><strong>🗺️ Dirección:</strong> Calle Principal #123, Centro</p>
+                <button class="location-btn" onclick="openLocation('misa')">
+                    ⛪ Ver Ubicación
+                </button>
             </div>
         </div>
 
         <div class="event-section">
-            <h2>🎉 Recepción 🎉</h2>
+            <h2>🎉 Celebración 🎉</h2>
             <div class="event-details">
-                <h3>🎊 Fiesta y Celebración</h3>
+                <h3>🎊 Fiesta y Diversión</h3>
                 <p><strong>📅 Fecha:</strong> Sábado, 15 de Febrero de 2025</p>
                 <p><strong>🕒 Hora:</strong> 3:00 PM</p>
                 <p><strong>📍 Lugar:</strong> Salón de Eventos "Jardín Encantado"</p>
                 <p><strong>🗺️ Dirección:</strong> Avenida de las Flores #456, Zona Norte</p>
+                <button class="location-btn" onclick="openLocation('fiesta')">
+                    📍 Ver Ubicación
+                </button>
             </div>
-        </div>
 
-        <div class="entertainment-section">
-            <h2>🎪 Entretenimiento 🎪</h2>
-            <div class="entertainment-grid">
-                <div class="entertainment-item">
-                    <h3>🎨 Pinta Carita</h3>
-                    <p>Diseños mágicos y creativos para todos los niños. ¡Conviértete en tu personaje favorito!</p>
-                </div>
-                <div class="entertainment-item">
-                    <h3>🤡 Show de Payaso</h3>
-                    <p>Risas, juegos y diversión garantizada con nuestro increíble payaso animador.</p>
-                </div>
+            <div class="entertainment-time">
+                <h4>🎨 Pinta Carita</h4>
+                <p><strong>⏰ Horario:</strong> 4:30 PM - 6:30 PM</p>
+                <p>Diseños mágicos y creativos para todos los niños</p>
+            </div>
+
+            <div class="entertainment-time">
+                <h4>🤡 Show de Payaso</h4>
+                <p><strong>⏰ Horario:</strong> 7:00 PM</p>
+                <p>Risas, juegos y diversión garantizada</p>
             </div>
         </div>
 
@@ -539,21 +719,33 @@
         </div>
 
         <div class="btn-container">
-            <button class="btn" onclick="openModal()">
+            <button class="btn" onclick="openConfirmModal()">
                 ✅ Confirmar Asistencia
             </button>
-            <button class="btn" onclick="openAdminModal()">
-                👑 Panel Admin
+        </div>
+
+        <div class="event-section">
+            <h2>📸 Galería de Fotos 📸</h2>
+            <div class="upload-reminder">
+                <p>📷 ¡No olvides subir tus fotos del evento!</p>
+                <p>Comparte los mejores momentos con todos 💖</p>
+            </div>
+            <div class="photo-carousel" id="photoCarousel">
+                <img class="carousel-image active" src="https://via.placeholder.com/800x400/ec4899/ffffff?text=Sube+tus+fotos+aquí+📸" alt="Placeholder">
+            </div>
+            <input type="file" id="photoUpload" accept="image/*" multiple style="display:none;">
+            <button class="btn" onclick="document.getElementById('photoUpload').click()">
+                📤 Subir Fotos
             </button>
         </div>
 
         <div class="event-section" style="text-align: center;">
             <h2>💖 Gracias por Acompañarme 💖</h2>
-            <p style="font-size: 1.1em; color: #4a5568; line-height: 1.8;">
+            <p style="font-size: 1.2em; color: #4a5568; line-height: 1.8;">
                 Tu presencia es el mejor regalo que puedo recibir en este día tan especial. 
                 ¡Espero celebrar junto a ti este momento mágico! ✨
             </p>
-            <p style="margin-top: 20px; color: #db2777; font-size: 1.3em; font-family: 'Ballet', cursive;">
+            <p style="margin-top: 20px; color: #db2777; font-size: 1.5em; font-family: 'Parisienne', cursive;">
                 Con cariño, Ailany 👑
             </p>
         </div>
@@ -561,235 +753,507 @@
 
     <div id="confirmModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
+            <span class="close" onclick="closeConfirmModal()">&times;</span>
             <h2>✨ Confirmar Asistencia ✨</h2>
-            <form id="confirmForm" onsubmit="submitConfirmation(event)">
+            <div class="step-indicator" id="stepIndicator">Paso 1 de 3</div>
+            
+            <div id="step1" class="step-content">
                 <input 
                     type="text" 
                     id="guestName" 
                     placeholder="Tu nombre completo" 
-                    required
+                    minlength="3"
                 >
-                <input 
-                    type="email" 
-                    id="guestEmail" 
-                    placeholder="Tu correo electrónico" 
-                    required
-                >
-                <input 
-                    type="tel" 
-                    id="guestPhone" 
-                    placeholder="Tu teléfono" 
-                    required
-                >
-                <select id="guestAttendance" required>
-                    <option value="">¿Confirmas tu asistencia?</option>
-                    <option value="Si">✅ Sí, asistiré</option>
-                    <option value="No">❌ No podré asistir</option>
-                </select>
+                <button class="btn" onclick="goToStep2()" style="width: 100%; margin-top: 15px;">
+                    Siguiente →
+                </button>
+            </div>
+
+            <div id="step2" class="step-content" style="display:none;">
                 <input 
                     type="number" 
-                    id="guestCount" 
-                    placeholder="Número de acompañantes" 
-                    min="0" 
-                    max="10"
+                    id="totalPeopleInput" 
+                    placeholder="Total de personas" 
+                    min="3"
                 >
-                <button type="submit" class="btn" style="width: 100%; margin-top: 15px;">
-                    📨 Enviar Confirmación
+                <p style="color: #666; font-size: 0.9em; margin-top: 10px;">Mínimo 3 personas</p>
+                <button class="btn" onclick="goToStep3()" style="width: 100%; margin-top: 15px;">
+                    Siguiente →
                 </button>
-            </form>
-        </div>
-    </div>
+            </div>
 
-    <div id="adminModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeAdminModal()">&times;</span>
-            <h2>👑 Panel de Administración</h2>
-            <div class="admin-panel">
-                <h3>📋 Lista de Invitados Confirmados</h3>
-                <div id="guestList"></div>
-                <button class="btn" onclick="clearGuests()" style="margin-top: 20px;">
-                    🗑️ Limpiar Lista
+            <div id="step3" class="step-content" style="display:none;">
+                <input 
+                    type="number" 
+                    id="kidsInput" 
+                    placeholder="Niños menores de 7 años (0 si no hay)" 
+                    min="0"
+                >
+                <button class="btn" id="confirmBtn" onclick="confirmAssistance()" style="width: 100%; margin-top: 15px;">
+                    📨 Enviar Confirmación
                 </button>
             </div>
         </div>
     </div>
 
     <script>
-        var guestList = [];
-        var musicPlaying = false;
-        var musicElement = document.getElementById('backgroundMusic');
-        var musicBtn = document.getElementById('musicBtn');
+        // ============================================
+        // VARIABLES GLOBALES
+        // ============================================
+        let confirmations = [];
+        let musicPlaying = false;
+        let adminMode = false;
+        let currentStep = 1;
+        let currentCarouselIndex = 0;
+        let carouselInterval;
+        let photoGallery = [];
 
-        function toggleMusic() {
-            if (musicPlaying) {
-                musicElement.pause();
-                musicBtn.textContent = '🎵';
-                musicBtn.classList.remove('playing');
-                musicPlaying = false;
-            } else {
-                musicElement.play();
-                musicBtn.textContent = '🎶';
-                musicBtn.classList.add('playing');
-                musicPlaying = true;
+        const musicElement = document.getElementById('backgroundMusic');
+        const musicBtn = document.getElementById('musicBtn');
+        const VIP_FAMILIES = ['garcía', 'rodríguez', 'martínez', 'lópez'];
+        const VIP_ENABLED = true;
+        const WHATSAPP_NUMBER = '2221012336';
+
+        // ============================================
+        // CONFETTI MEJORADO
+        // ============================================
+        class Confetti {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.particles = [];
+                this.colors = ['#ec4899', '#db2777', '#f472b6', '#fbcfe8', '#fce7f3', '#FFD700', '#FFA500'];
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
             }
-        }
 
-        function openModal() {
-            document.getElementById('confirmModal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('confirmModal').style.display = 'none';
-            document.getElementById('confirmForm').reset();
-        }
-
-        function openAdminModal() {
-            document.getElementById('adminModal').style.display = 'block';
-            displayGuestList();
-        }
-
-        function closeAdminModal() {
-            document.getElementById('adminModal').style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            var confirmModal = document.getElementById('confirmModal');
-            var adminModal = document.getElementById('adminModal');
-            if (event.target == confirmModal) {
-                closeModal();
+            resize() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
             }
-            if (event.target == adminModal) {
-                closeAdminModal();
-            }
-        }
 
-        function submitConfirmation(event) {
-            event.preventDefault();
-            
-            var name = document.getElementById('guestName').value;
-            var email = document.getElementById('guestEmail').value;
-            var phone = document.getElementById('guestPhone').value;
-            var attendance = document.getElementById('guestAttendance').value;
-            var count = document.getElementById('guestCount').value || '0';
-            
-            var guest = {
-                name: name,
-                email: email,
-                phone: phone,
-                attendance: attendance,
-                count: count,
-                date: new Date().toLocaleString()
-            };
-            
-            guestList.push(guest);
-            localStorage.setItem('guestList', JSON.stringify(guestList));
-            
-            if (attendance === 'Si') {
-                addToCalendar();
+            createParticle(x, y, isBackground = false) {
+                return {
+                    x: x || Math.random() * this.canvas.width,
+                    y: y || -10,
+                    vx: (Math.random() - 0.5) * (isBackground ? 0.5 : 8),
+                    vy: Math.random() * (isBackground ? 1 : 10) + (isBackground ? 0.5 : 2),
+                    rotation: Math.random() * 360,
+                    rotationSpeed: (Math.random() - 0.5) * (isBackground ? 2 : 10),
+                    size: Math.random() * (isBackground ? 4 : 12) + (isBackground ? 2 : 6),
+                    color: this.colors[Math.floor(Math.random() * this.colors.length)],
+                    opacity: isBackground ? 0.3 : 1,
+                    gravity: isBackground ? 0.02 : 0.3,
+                    drag: isBackground ? 0.995 : 0.98,
+                    isBackground: isBackground
+                };
             }
-            
-            alert('✅ ¡Confirmación enviada con éxito!\n\nGracias ' + name + ' por confirmar tu asistencia. 💖');
-            closeModal();
-        }
 
-        function addToCalendar() {
-            var event = {
-                title: 'XV Años de Ailany 👑',
-                description: 'Celebración de los XV años de Ailany. Ceremonia religiosa a la 1:00 PM en Iglesia San José, seguida de recepción a las 3:00 PM en Salón Jardín Encantado.',
-                location: 'Iglesia San José - Salón Jardín Encantado',
-                start: '2025-02-15T13:00:00',
-                end: '2025-02-15T21:00:00'
-            };
-            
-            var startDate = event.start.replace(/[-:]/g, '').replace('.000', '');
-            var endDate = event.end.replace(/[-:]/g, '').replace('.000', '');
-            
-            var googleCalendarUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
-                '&text=' + encodeURIComponent(event.title) +
-                '&details=' + encodeURIComponent(event.description) +
-                '&location=' + encodeURIComponent(event.location) +
-                '&dates=' + startDate + '/' + endDate;
-            
-            window.open(googleCalendarUrl, '_blank');
-        }
+            launch() {
+                // 150 partículas principales
+                for (let i = 0; i < 150; i++) {
+                    const x = this.canvas.width / 2 + (Math.random() - 0.°200;
+this.particles.push(this.createParticle(x, this.canvas.height));
+}
+// 50 partículas de fondo
+       for (let i = 0; i < 50; i++) {
+           this.particles.push(this.createParticle(null, null, true));
+       }
 
-        function displayGuestList() {
-            var storedGuests = localStorage.getItem('guestList');
-            if (storedGuests) {
-                guestList = JSON.parse(storedGuests);
-            }
-            
-            var listContainer = document.getElementById('guestList');
-            listContainer.innerHTML = '';
-            
-            if (guestList.length === 0) {
-                listContainer.innerHTML = '<p style="text-align: center; color: #999;">No hay invitados confirmados aún.</p>';
-                return;
-            }
-            
-            var confirmedCount = 0;
-            var declinedCount = 0;
-            var totalGuests = 0;
-            
-            for (var i = 0; i < guestList.length; i++) {
-                var guest = guestList[i];
-                var guestDiv = document.createElement('div');
-                guestDiv.className = 'guest-item';
+       this.animate();
+   }
+
+   animate() {
+       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+       for (let i = this.particles.length - 1; i >= 0; i--) {
+           const p = this.particles[i];
+
+           p.vy += p.gravity;
+           p.vx *= p.drag;
+           p.vy *= p.drag;
+           p.x += p.vx;
+           p.y += p.vy;
+           p.rotation += p.rotationSpeed;
+
+           if (p.y > this.canvas.height + 50) {
+               this.particles.splice(i, 1);
+               continue;
+           }
+
+           this.ctx.save();
+           this.ctx.translate(p.x, p.y);
+           this.ctx.rotate(p.rotation * Math.PI / 180);
+           this.ctx.globalAlpha = p.opacity;
+           this.ctx.fillStyle = p.color;
+
+           // Formas variadas
+           if (Math.random() > 0.5) {
+               this.ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+           } else {
+               this.ctx.beginPath();
+               this.ctx.arc(0, 0, p.size/2, 0, Math.PI * 2);
+               this.ctx.fill();
+           }
+
+           this.ctx.restore();
+       }
+
+       if (this.particles.length > 0) {
+           requestAnimationFrame(() => this.animate());
+       }
+   }
+}
+const confetti = new Confetti(document.getElementById('confettiCanvas'));
+// ============================================
+// CONTROL DE MÚSICA
+// ============================================
+function toggleMusic() {
+if (musicPlaying) {
+musicElement.pause();
+musicBtn.textContent = '🎵';
+musicBtn.classList.remove('playing');
+musicPlaying = false;
+} else {
+musicElement.play();
+musicBtn.textContent = '🎶';
+musicBtn.classList.add('playing');
+musicPlaying = true;
+}
+}
+// ============================================
+// ADMIN MODE
+// ============================================
+function toggleAdmin() {
+adminMode = !adminMode;
+const toggle = document.getElementById('adminToggle');
+const counter = document.getElementById('counterDisplay');
+if (adminMode) {
+       toggle.classList.add('active');
+       toggle.textContent = '✅ Admin ON';
+       counter.classList.add('visible');
+       updateCounter();
+   } else {
+       toggle.classList.remove('active');
+       toggle.textContent = '👑 Admin';
+       counter.classList.remove('visible');
+   }
+}
+function updateCounter() {
+const stored = localStorage.getItem('confirmations');
+if (stored) {
+confirmations = JSON.parse(stored);
+}
+let totalPeople = 0;
+   let totalKids = 0;
+
+   confirmations.forEach(c => {
+       totalPeople += c.people;
+       totalKids += c.kids;
+   });
+
+   document.getElementById('totalConfirmed').textContent = confirmations.length;
+   document.getElementById('totalPeople').textContent = totalPeople;
+   document.getElementById('totalKids').textContent = totalKids;
+}
+// ============================================
+// MODAL DE CONFIRMACIÓN - PASO A PASO
+// ============================================
+function openConfirmModal() {
+document.getElementById('confirmModal').style.display = 'block';
+currentStep = 1;
+showStep(1);
+}
+function closeConfirmModal() {
+document.getElementById('confirmModal').style.display = 'none';
+resetForm();
+}
+function resetForm() {
+document.getElementById('guestName').value = '';
+document.getElementById('totalPeopleInput').value = '';
+document.getElementById('kidsInput').value = '';
+currentStep = 1;
+showStep(1);
+}
+function showStep(step) {
+document.getElementById('step1').style.display = 'none';
+document.getElementById('step2').style.display = 'none';
+document.getElementById('step3').style.display = 'none';
+document.getElementById('step' + step).style.display = 'block';
+document.getElementById('stepIndicator').textContent = 'Paso ' + step + ' de 3';
+}
+function goToStep2() {
+const name = document.getElementById('guestName').value.trim();
+if (name.length < 3) {
+       alert('❌ El nombre debe tener al menos 3 caracteres');
+       return;
+   }
+
+   currentStep = 2;
+   showStep(2);
+}
+function goToStep3() {
+const people = parseInt(document.getElementById('totalPeopleInput').value);
+const name = document.getElementById('guestName').value.trim().toLowerCase();
+if (!people || people < 1) {
+       alert('❌ Debes ingresar el número de personas');
+       return;
+   }
+
+   // Validación VIP
+   if (VIP_ENABLED) {
+       const isVIP = VIP_FAMILIES.some(family => name.includes(family));
+
+       if (isVIP && people > 8) {
+           alert('❌ Familia VIP: máximo 8 personas');
+           return;
+       }
+
+       if (!isVIP && people < 3) {
+           alert('❌ Mínimo 3 personas por familia');
+           return;
+       }
+   } else {
+       if (people < 3) {
+           alert('❌ Mínimo 3 personas por familia');
+           return;
+       }
+   }
+
+   currentStep = 3;
+   showStep(3);
+}
+function confirmAssistance() {
+const btn = document.getElementById('confirmBtn');
+const name = document.getElementById('guestName').value.trim();
+const people = parseInt(document.getElementById('totalPeopleInput').value);
+const kids = parseInt(document.getElementById('kidsInput').value) || 0;
+// Validaciones finales
+   if (kids < 0) {
+       alert('❌ El número de niños no puede ser negativo');
+       return;
+   }
+
+   if (kids > people) {
+       alert('❌ El número de niños no puede ser mayor al total de personas');
+       return;
+   }
+
+   // Deshabilitar botón y mostrar loading
+   btn.disabled = true;
+   btn.innerHTML = '<span class="loading-spinner"></span> Enviando...';
+
+   const adults = people - kids;
+
+   // Guardar confirmación
+   const confirmation = {
+       name: name,
+       people: people,
+       adults: adults,
+       kids: kids,
+       date: new Date().toLocaleString()
+   };
+
+   confirmations.push(confirmation);
+   localStorage.setItem('confirmations', JSON.stringify(confirmations));
+
+   // Mensaje WhatsApp
+   const message = `🎉 CONFIRMACIÓN DE ASISTENCIA 🎉\n\n` +
+       `👤 Nombre: ${name}\n` +
+       `👥 Total de personas: ${people}\n` +
+       `👨‍👩‍👧 Adultos: ${adults}\n` +
+       `👶 Niños menores de 7 años: ${kids}\n\n` +
+       `📅 Evento: V Años de Ailany\n` +
+       `📍 Fecha: 15 de Febrero de 2025\n` +
+       `⏰ Hora Misa: 1:00 PM\n` +
+       `🎉 Hora Fiesta: 3:00 PM`;
+
+   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+   // Confetti
+   confetti.launch();
+
+   // Descargar calendario automático
+   setTimeout(() => {
+       downloadCalendar();
+   }, 500);
+
+   // Abrir WhatsApp
+   setTimeout(() => {
+       window.open(whatsappUrl, '_blank');
+   }, 1000);
+
+   // Cerrar modal y resetear
+   setTimeout(() => {
+       btn.disabled = false;
+       btn.innerHTML = '📨 Enviar Confirmación';
+       closeConfirmModal();
+       alert('✅ ¡Confirmación enviada con éxito!\n\n' +
+             'Se descargó el evento en tu calendario 📅\n\n' +
+             'Gracias ' + name + ' por confirmar tu asistencia. 💖');
+
+       if (adminMode) {
+           updateCounter();
+       }
+   }, 1500);
+}
+// ============================================
+// DESCARGAR CALENDARIO (.ICS)
+// ============================================
+function downloadCalendar() {
+const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//V Años Ailany//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:V Años de Ailany
+X-WR-TIMEZONE:America/Mexico_City
+BEGIN:VEVENT
+DTSTART:20250215T190000Z
+DTEND:20250215T200000Z
+DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z
+UID:misa-ailany-2025@vanos.com
+SUMMARY:💒 Misa de Acción de Gracias - V Años Ailany
+DESCRIPTION:Ceremonia religiosa en honor a los V años de Ailany. ¡No faltes!
+LOCATION:Iglesia Santo Entierro, Calle Principal #123, Centro
+STATUS:CONFIRMED
+SEQUENCE:0
+BEGIN:VALARM
+TRIGGER:-P1D
+DESCRIPTION:Mañana es la misa de Ailany 💖
+ACTION:DISPLAY
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+DESCRIPTION:En 2 horas comienza la misa de Ailany 💒
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20250215T210000Z
+DTEND:20250216T030000Z
+DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z
+UID:fiesta-ailany-2025@vanos.com
+SUMMARY:🎉 Fiesta V Años - Ailany
+DESCRIPTION:¡Fiesta y celebración! Pinta Carita 4:30-6:30 PM. Show de Payaso 7:00 PM. Dress code: Formal/Elegante (Rosa, Blanco, Dorado)
+LOCATION:Salón Jardín Encantado, Avenida de las Flores #456, Zona Norte
+STATUS:CONFIRMED
+SEQUENCE:0
+BEGIN:VALARM
+TRIGGER:-P1D
+DESCRIPTION:Mañana es la fiesta de Ailany 🎉
+ACTION:DISPLAY
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+DESCRIPTION:En 2 horas comienza la fiesta de Ailany 💖
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+END:VCALENDAR`;
+const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'V-Años-Ailany.ics';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    // ============================================
+    // UBICACIONES
+    // ============================================
+    function openLocation(type) {
+        if (type === 'misa') {
+            // Coordenadas de ejemplo - reemplazar con las reales
+            window.open('https://maps.google.com/?q=Iglesia+Santo+Entierro', '_blank');
+        } else if (type === 'fiesta') {
+            // Coordenadas de ejemplo - reemplazar con las reales
+            window.open('https://maps.google.com/?q=Salon+Jardin+Encantado', '_blank');
+        }
+    }
+
+    // ============================================
+    // GALERÍA DE FOTOS
+    // ============================================
+    document.getElementById('photoUpload').addEventListener('change', function(e) {
+        const files = e.target.files;
+        
+        for (let file of files) {
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
                 
-                var status = guest.attendance === 'Si' ? '✅ Confirmado' : '❌ No asistirá';
-                var statusColor = guest.attendance === 'Si' ? '#10b981' : '#ef4444';
+                reader.onload = function(event) {
+                    photoGallery.push(event.target.result);
+                    localStorage.setItem('photoGallery', JSON.stringify(photoGallery));
+                    updateCarousel();
+                };
                 
-                if (guest.attendance === 'Si') {
-                    confirmedCount++;
-                    totalGuests += parseInt(guest.count) + 1;
-                } else {
-                    declinedCount++;
-                }
-                
-                guestDiv.innerHTML = 
-                    '<strong style="color: #db2777;">' + guest.name + '</strong><br>' +
-                    '<span style="color: ' + statusColor + '; font-weight: bold;">' + status + '</span><br>' +
-                    'Email: ' + guest.email + '<br>' +
-                    'Teléfono: ' + guest.phone + '<br>' +
-                    'Acompañantes: ' + guest.count + '<br>' +
-                    '<small style="color: #999;">Registrado: ' + guest.date + '</small>';
-                
-                listContainer.appendChild(guestDiv);
+                reader.readAsDataURL(file);
             }
+        }
+    });
+
+    function updateCarousel() {
+        const carousel = document.getElementById('photoCarousel');
+        carousel.innerHTML = '';
+
+        if (photoGallery.length === 0) {
+            carousel.innerHTML = '<img class="carousel-image active" src="https://via.placeholder.com/800x400/ec4899/ffffff?text=Sube+tus+fotos+aquí+📸" alt="Placeholder">';
+            return;
+        }
+
+        photoGallery.forEach((photo, index) => {
+            const img = document.createElement('img');
+            img.src = photo;
+            img.className = 'carousel-image' + (index === 0 ? ' active' : '');
+            img.alt = 'Foto ' + (index + 1);
+            carousel.appendChild(img);
+        });
+
+        startCarousel();
+    }
+
+    function startCarousel() {
+        if (carouselInterval) {
+            clearInterval(carouselInterval);
+        }
+
+        if (photoGallery.length <= 1) return;
+
+        carouselInterval = setInterval(() => {
+            const images = document.querySelectorAll('.carousel-image');
+            images[currentCarouselIndex].classList.remove('active');
             
-            var summaryDiv = document.createElement('div');
-            summaryDiv.style.cssText = 'background: #fdf2f8; padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center;';
-            summaryDiv.innerHTML = 
-                '<h4 style="color: #db2777; margin-bottom: 10px;">📊 Resumen</h4>' +
-                '<p><strong>Total confirmados:</strong> ' + confirmedCount + ' personas</p>' +
-                '<p><strong>Total invitados:</strong> ' + totalGuests + ' (incluyendo acompañantes)</p>' +
-                '<p><strong>No asistirán:</strong> ' + declinedCount + ' personas</p>';
-            
-            listContainer.appendChild(summaryDiv);
+            currentCarouselIndex = (currentCarouselIndex + 1) % images.length;
+            images[currentCarouselIndex].classList.add('active');
+        }, 4000);
+    }
+
+    // ============================================
+    // INICIALIZACIÓN
+    // ============================================
+    window.onload = function() {
+        // Cargar confirmaciones
+        const stored = localStorage.getItem('confirmations');
+        if (stored) {
+            confirmations = JSON.parse(stored);
         }
 
-        function clearGuests() {
-            if (confirm('⚠️ ¿Estás seguro de que deseas eliminar toda la lista de invitados?')) {
-                guestList = [];
-                localStorage.removeItem('guestList');
-                displayGuestList();
-                alert('✅ Lista de invitados eliminada.');
-            }
+        // Cargar galería
+        const storedGallery = localStorage.getItem('photoGallery');
+        if (storedGallery) {
+            photoGallery = JSON.parse(storedGallery);
+            updateCarousel();
         }
+    };
 
-        window.onload = function() {
-            var storedGuests = localStorage.getItem('guestList');
-            if (storedGuests) {
-                guestList = JSON.parse(storedGuests);
-            }
-        };
-
-        var letters = document.querySelectorAll('.neon-letter');
-        for (var i = 0; i < letters.length; i++) {
-            letters[i].style.animationDelay = (i * 0.1) + 's';
+    // Cerrar modales al hacer clic fuera
+    window.onclick = function(event) {
+        const modal = document.getElementById('confirmModal');
+        if (event.target == modal) {
+            closeConfirmModal();
         }
-    </script>
+    };
+</script>
 
-</body>
-</html>
