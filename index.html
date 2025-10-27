@@ -25,6 +25,41 @@
             overflow-y: auto;
         }
 
+        /* Partículas flotantes */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.6;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
         /* Sobre de invitación */
         .envelope-container {
             position: fixed;
@@ -52,10 +87,16 @@
             height: 200px;
             cursor: pointer;
             transition: transform 0.3s;
+            animation: envelopeFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes envelopeFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         .envelope:hover {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
         .envelope-back {
@@ -64,7 +105,7 @@
             height: 100%;
             background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
             border-radius: 10px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 60px rgba(236, 72, 153, 0.8);
         }
 
         .envelope-front {
@@ -85,16 +126,17 @@
 
         .envelope-letter {
             position: absolute;
-            width: 90%;
-            height: 85%;
+            width: 85%;
+            height: 75%;
             background: white;
-            left: 5%;
-            top: 7.5%;
+            left: 7.5%;
+            top: 12.5%;
             border-radius: 8px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding: 15px;
             transition: transform 0.8s 0.3s;
             z-index: 1;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -107,15 +149,19 @@
         .envelope-letter h2 {
             color: #db2777;
             font-family: 'Parisienne', cursive;
-            font-size: 2em;
-            margin-bottom: 10px;
+            font-size: 1.8em;
+            margin-bottom: 8px;
+            animation: pulse 2s infinite;
+            text-align: center;
+            width: 100%;
         }
 
         .envelope-letter p {
             color: #4a5568;
-            font-size: 1em;
+            font-size: 0.95em;
             text-align: center;
-            padding: 0 20px;
+            width: 100%;
+            padding: 0 10px;
         }
 
         .envelope-stamp {
@@ -132,6 +178,12 @@
             justify-content: center;
             font-size: 1.5em;
             z-index: 3;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .tap-instruction {
@@ -146,8 +198,8 @@
         }
 
         @keyframes pulse {
-            0%, 100% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.1); }
+            0%, 100% { transform: translateX(-50%) scale(1); opacity: 1; }
+            50% { transform: translateX(-50%) scale(1.15); opacity: 0.8; }
         }
 
         /* Contenedor principal */
@@ -160,7 +212,7 @@
             min-height: 100vh;
         }
 
-        /* Título mejorado */
+        /* Título con efectos especiales */
         .header-title {
             text-align: center;
             font-size: 3em;
@@ -191,6 +243,16 @@
             border-radius: 20px;
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2), 0 0 20px rgba(236, 72, 153, 0.3);
+            }
+            50% {
+                box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 40px rgba(236, 72, 153, 0.6);
+            }
         }
 
         .neon-container {
@@ -198,33 +260,46 @@
             text-align: center;
             margin: 40px 0 60px;
             min-height: 200px;
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.4);
             padding: 30px;
             border-radius: 30px;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px rgba(236, 72, 153, 0.3);
+            animation: containerFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes containerFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         .crown {
             font-size: 5em;
             position: absolute;
-            top: -80px;
+            top: -90px;
             left: 50%;
             transform: translateX(-50%);
-            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.9));
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
             width: 100%;
             text-align: center;
+            animation: crownBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes crownBounce {
+            0%, 100% { 
+                transform: translateX(-50%) translateY(0) rotate(-5deg);
+            }
+            50% { 
+                transform: translateX(-50%) translateY(-20px) rotate(5deg);
+            }
         }
 
         .neon-name {
-            font-size: 4em;
+            font-size: 4.5em;
             font-family: 'Parisienne', cursive;
             font-weight: 700;
             color: #be185d;
             text-shadow: 
-                -2px -2px 0 #fff,
-                2px -2px 0 #fff,
-                -2px 2px 0 #fff,
-                2px 2px 0 #fff,
                 -3px -3px 0 #fff,
                 3px -3px 0 #fff,
                 -3px 3px 0 #fff,
@@ -233,38 +308,86 @@
                 4px -4px 0 #fff,
                 -4px 4px 0 #fff,
                 4px 4px 0 #fff,
-                0 0 10px #fff,
-                0 0 20px #fff,
-                0 0 30px #ec4899,
-                0 0 40px #ec4899,
+                0 0 15px #fff,
+                0 0 30px #fff,
+                0 0 45px #ec4899,
                 0 0 60px #ec4899,
-                5px 5px 12px rgba(0,0,0,0.6);
-            letter-spacing: 8px;
+                0 0 90px #ec4899,
+                6px 6px 15px rgba(0,0,0,0.7);
+            letter-spacing: 10px;
             display: inline-block;
             position: relative;
             margin-top: 20px;
+            animation: neonPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% {
+                text-shadow: 
+                    -3px -3px 0 #fff,
+                    3px -3px 0 #fff,
+                    -3px 3px 0 #fff,
+                    3px 3px 0 #fff,
+                    -4px -4px 0 #fff,
+                    4px -4px 0 #fff,
+                    -4px 4px 0 #fff,
+                    4px 4px 0 #fff,
+                    0 0 15px #fff,
+                    0 0 30px #fff,
+                    0 0 45px #ec4899,
+                    0 0 60px #ec4899,
+                    0 0 90px #ec4899,
+                    6px 6px 15px rgba(0,0,0,0.7);
+            }
+            50% {
+                text-shadow: 
+                    -3px -3px 0 #fff,
+                    3px -3px 0 #fff,
+                    -3px 3px 0 #fff,
+                    3px 3px 0 #fff,
+                    -4px -4px 0 #fff,
+                    4px -4px 0 #fff,
+                    -4px 4px 0 #fff,
+                    4px 4px 0 #fff,
+                    0 0 20px #fff,
+                    0 0 40px #fff,
+                    0 0 60px #ec4899,
+                    0 0 80px #ec4899,
+                    0 0 120px #ec4899,
+                    8px 8px 20px rgba(0,0,0,0.8);
+            }
         }
 
         .star-decoration {
             position: absolute;
-            font-size: 2em;
+            font-size: 2.5em;
             top: 50%;
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));
+            animation: starTwinkle 2s ease-in-out infinite;
+        }
+
+        @keyframes starTwinkle {
+            0%, 100% { 
+                transform: translateY(-50%) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            50% { 
+                transform: translateY(-50%) scale(1.3) rotate(180deg);
+                opacity: 0.7;
+            }
         }
 
         .star-decoration.left {
             left: 10px;
-            transform: translateY(-50%);
         }
 
         .star-decoration.right {
             right: 10px;
-            transform: translateY(-50%);
         }
 
         .subtitle {
             text-align: center;
-            font-size: 1.3em;
+            font-size: 1.5em;
             color: #831843;
             margin: 20px 0 40px;
             font-family: 'Parisienne', cursive;
@@ -274,23 +397,73 @@
                 1px -1px 0 #fff,
                 -1px 1px 0 #fff,
                 2px 2px 4px rgba(0,0,0,0.3);
+            animation: subtitleWave 3s ease-in-out infinite;
         }
 
-        /* Secciones */
+        @keyframes subtitleWave {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Secciones con efectos */
         .event-section {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             padding: 40px 30px;
             margin: 30px 0;
-            box-shadow: 0 10px 40px rgba(219, 39, 119, 0.3);
+            box-shadow: 0 10px 40px rgba(219, 39, 119, 0.4);
+            position: relative;
+            overflow: hidden;
+            animation: sectionFadeIn 1s ease-out;
+        }
+
+        @keyframes sectionFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .event-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(236, 72, 153, 0.1) 50%,
+                transparent 70%
+            );
+            animation: shimmer 3s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(0deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(360deg); }
         }
 
         .event-section h2 {
             color: #db2777;
-            font-size: 2em;
+            font-size: 2.2em;
             margin-bottom: 25px;
             text-align: center;
             font-family: 'Parisienne', cursive;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: headerBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes headerBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .event-details {
@@ -300,12 +473,20 @@
             margin: 15px 0;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s;
+        }
+
+        .event-details:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
         }
 
         .event-details h3 {
             color: #db2777;
             margin-bottom: 15px;
-            font-size: 1.5em;
+            font-size: 1.6em;
             font-family: 'Parisienne', cursive;
         }
 
@@ -329,47 +510,87 @@
             font-size: 1.1em;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(186, 85, 211, 0.4);
+            box-shadow: 0 8px 25px rgba(186, 85, 211, 0.5);
             transition: all 0.3s;
             font-family: 'Great Vibes', cursive;
             margin-top: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .location-btn:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .location-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(186, 85, 211, 0.5);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(186, 85, 211, 0.6);
         }
 
         .entertainment-time {
-            background: #fdf2f8;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 8px;
-            border-left: 4px solid #ec4899;
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+            padding: 18px;
+            margin: 12px 0;
+            border-radius: 10px;
+            border-left: 5px solid #ec4899;
+            transition: all 0.3s;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .entertainment-time:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
         }
 
         .entertainment-time h4 {
             color: #db2777;
             font-family: 'Parisienne', cursive;
-            font-size: 1.3em;
+            font-size: 1.4em;
             margin-bottom: 8px;
         }
 
-        /* Regalos */
+        /* Regalos con efectos */
         .gift-section {
             background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
             border-radius: 20px;
             padding: 40px 30px;
             margin: 30px 0;
-            box-shadow: 0 10px 40px rgba(236, 72, 153, 0.2);
+            box-shadow: 0 10px 40px rgba(236, 72, 153, 0.3);
+            animation: sectionFadeIn 1s ease-out;
         }
 
         .gift-section h2 {
             color: #db2777;
-            font-size: 2em;
+            font-size: 2.2em;
             margin-bottom: 30px;
             text-align: center;
             font-family: 'Parisienne', cursive;
+            animation: headerBounce 2s ease-in-out infinite;
         }
 
         .gift-options {
@@ -383,12 +604,19 @@
             background: white;
             border-radius: 15px;
             padding: 25px;
-            box-shadow: 0 5px 20px rgba(219, 39, 119, 0.15);
+            box-shadow: 0 5px 20px rgba(219, 39, 119, 0.2);
+            transition: all 0.3s;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        .gift-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(219, 39, 119, 0.4);
         }
 
         .gift-item h3 {
             color: #db2777;
-            font-size: 1.4em;
+            font-size: 1.5em;
             margin-bottom: 15px;
             font-family: 'Parisienne', cursive;
         }
@@ -401,7 +629,7 @@
         }
 
         .gift-item .size-info {
-            background: #fdf2f8;
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
             padding: 15px;
             border-radius: 8px;
             margin-top: 15px;
@@ -412,7 +640,7 @@
             color: #db2777;
         }
 
-        /* Botones */
+        /* Botones con efectos */
         .btn-container {
             text-align: center;
             margin: 40px 0;
@@ -423,19 +651,49 @@
             color: white;
             border: none;
             padding: 20px 50px;
-            font-size: 1.3em;
+            font-size: 1.4em;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(219, 39, 119, 0.4);
+            box-shadow: 0 8px 25px rgba(219, 39, 119, 0.5);
             transition: all 0.3s;
             font-family: 'Parisienne', cursive;
             font-weight: 600;
             margin: 10px;
+            position: relative;
+            overflow: hidden;
+            animation: btnPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes btnPulse {
+            0%, 100% {
+                box-shadow: 0 8px 25px rgba(219, 39, 119, 0.5);
+            }
+            50% {
+                box-shadow: 0 12px 35px rgba(219, 39, 119, 0.7);
+            }
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 400px;
+            height: 400px;
         }
 
         .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(219, 39, 119, 0.5);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(219, 39, 119, 0.6);
         }
 
         /* Música y Admin */
@@ -449,25 +707,36 @@
             background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
             border: none;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(219, 39, 119, 0.5);
+            box-shadow: 0 8px 25px rgba(219, 39, 119, 0.6);
             z-index: 1000;
             transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2em;
+            animation: musicFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes musicFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         .music-btn:hover {
-            transform: scale(1.15);
+            transform: scale(1.2) rotate(15deg);
+            box-shadow: 0 12px 35px rgba(219, 39, 119, 0.8);
+        }
+
+        .music-btn.playing {
+            animation: musicFloat 3s ease-in-out infinite, spin 2s linear infinite;
         }
 
         .admin-toggle {
             position: fixed;
             top: 20px;
             left: 20px;
-            background: rgba(156, 163, 175, 0.6);
-            color: rgba(255, 255, 255, 0.7);
+            background: rgba(156, 163, 175, 0.3);
+            color: transparent;
             border: none;
             padding: 8px 12px;
             border-radius: 25px;
@@ -475,16 +744,21 @@
             font-size: 0.75em;
             z-index: 1000;
             transition: all 0.3s;
-            opacity: 0.3;
+            opacity: 0.1;
+            width: 40px;
+            height: 40px;
         }
 
         .admin-toggle:hover {
             opacity: 1;
+            background: rgba(156, 163, 175, 0.8);
+            color: white;
         }
 
         .admin-toggle.active {
             background: rgba(16, 185, 129, 0.9);
             opacity: 1;
+            color: white;
         }
 
         .counter-display {
@@ -495,9 +769,10 @@
             background: white;
             padding: 20px;
             border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
             z-index: 999;
             min-width: 200px;
+            animation: slideIn 0.3s ease-out;
         }
 
         .counter-display.visible {
@@ -508,6 +783,7 @@
             color: #db2777;
             margin-bottom: 15px;
             font-family: 'Parisienne', cursive;
+            font-size: 1.5em;
         }
 
         .counter-display .stat {
@@ -516,7 +792,7 @@
             font-size: 1.1em;
         }
 
-        /* Modal */
+        /* Modal mejorado */
         .modal {
             display: none;
             position: fixed;
@@ -525,8 +801,15 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
             overflow-y: auto;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal-content {
@@ -536,10 +819,22 @@
             border-radius: 20px;
             width: 90%;
             max-width: 500px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             position: relative;
             max-height: 85vh;
             overflow-y: auto;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .close {
@@ -550,10 +845,12 @@
             font-size: 32px;
             font-weight: bold;
             cursor: pointer;
+            transition: all 0.3s;
         }
 
         .close:hover {
             color: #db2777;
+            transform: rotate(90deg);
         }
 
         .modal h2 {
@@ -561,6 +858,7 @@
             margin-bottom: 25px;
             font-family: 'Parisienne', cursive;
             font-size: 2.2em;
+            text-align: center;
         }
 
         .modal input,
@@ -572,6 +870,7 @@
             border: 2px solid #fce7f3;
             border-radius: 10px;
             font-size: 1em;
+            transition: all 0.3s;
         }
 
         .modal input:focus,
@@ -579,6 +878,7 @@
         .modal textarea:focus {
             outline: none;
             border-color: #ec4899;
+            box-shadow: 0 0 10px rgba(236, 72, 153, 0.3);
         }
 
         .modal label {
@@ -589,6 +889,29 @@
             margin-bottom: 5px;
         }
 
+        .error-message {
+            color: #dc2626;
+            background: #fee2e2;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: none;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
             .header-title {
                 font-size: 2em;
@@ -597,12 +920,12 @@
 
             .neon-name {
                 font-size: 2.5em;
-                letter-spacing: 4px;
+                letter-spacing: 5px;
             }
 
             .crown {
                 font-size: 3.5em;
-                top: -60px;
+                top: -70px;
             }
 
             .event-section {
@@ -621,11 +944,18 @@
                 bottom: 20px;
                 right: 20px;
             }
+
+            .star-decoration {
+                font-size: 1.5em;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Sobre -->
+    <!-- Partículas flotantes -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Sobre de invitación -->
     <div class="envelope-container" id="envelopeContainer">
         <div class="envelope" id="envelope" onclick="openEnvelope()">
             <div class="envelope-back"></div>
@@ -639,9 +969,10 @@
         <div class="tap-instruction">Toca el sobre</div>
     </div>
 
-    <!-- Admin -->
+    <!-- Botón Admin (escondido) -->
     <button class="admin-toggle" id="adminToggle" onclick="toggleAdmin()">👑</button>
     
+    <!-- Panel de contador -->
     <div class="counter-display" id="counterDisplay">
         <h3>📊 Contador</h3>
         <div class="stat">✅ <strong>Confirmados:</strong> <span id="confirmedCount">0</span></div>
@@ -649,7 +980,7 @@
         <div class="stat">👶 <strong>Niños:</strong> <span id="childCount">0</span></div>
     </div>
 
-    <!-- Contenido -->
+    <!-- Contenido principal -->
     <div class="container">
         <h1 class="header-title">
             <span>💖</span>
@@ -666,15 +997,15 @@
 
         <p class="subtitle">¡Ven a celebrar conmigo!</p>
 
-        <!-- Ceremonia -->
+        <!-- Ceremonia Religiosa -->
         <div class="event-section">
             <h2>✨ Ceremonia Religiosa ✨</h2>
             <div class="event-details">
                 <h3>🏰 Misa de Acción de Gracias</h3>
-                <p><strong>📅 Fecha:</strong> Sábado, 15 de Febrero de 2025</p>
-                <p><strong>⏰ Hora:</strong> 5:00 PM</p>
-                <p><strong>📍 Lugar:</strong> Parroquia San José</p>
-                <p><strong>🗺️ Dirección:</strong> Calle Principal #123, Centro</p>
+                <p><strong>📅 Fecha:</strong> Domingo, 23 de Noviembre de 2025</p>
+                <p><strong>⏰ Hora:</strong> 1:00 PM</p>
+                <p><strong>📍 Lugar:</strong> Iglesia del Santo Entierro o Santo Sepulcro</p>
+                <p><strong>🗺️ Dirección:</strong> 72770, Av. 8 Ote. 601, Barrio de San Miguel Tianguisnahuitl, Cholula de Rivadavia, Pue.</p>
                 <button class="location-btn" onclick="openLocation('church')">📍 Ver ubicación</button>
             </div>
         </div>
@@ -684,14 +1015,14 @@
             <h2>🎉 Recepción 🎉</h2>
             <div class="event-details">
                 <h3>🎊 Fiesta y Celebración</h3>
-                <p><strong>📅 Fecha:</strong> Sábado, 15 de Febrero de 2025</p>
-                <p><strong>⏰ Hora:</strong> 7:00 PM</p>
-                <p><strong>📍 Lugar:</strong> Salón de Fiestas "Princess Dreams"</p>
-                <p><strong>🗺️ Dirección:</strong> Avenida de las Rosas #456, Colonia Jardines</p>
+                <p><strong>📅 Fecha:</strong> Domingo, 23 de Noviembre de 2025</p>
+                <p><strong>⏰ Hora:</strong> 4:00 PM</p>
+                <p><strong>📍 Lugar:</strong> Salón Jardín Joss Mary</p>
+                <p><strong>🗺️ Dirección:</strong> C. Río Atoyac Sur 513, Santiago Momoxpan, Rafael Ávila Camacho (Manantiales), 72760 Heroica Puebla de Zaragoza, Pue.</p>
                 <button class="location-btn" onclick="openLocation('party')">📍 Ver ubicación</button>
 
                 <div style="margin-top: 25px;">
-                    <h4 style="color: #db2777; font-family: 'Parisienne', cursive; margin-bottom: 15px;">🎭 Programa de entretenimiento:</h4>
+                    <h4 style="color: #db2777; font-family: 'Parisienne', cursive; margin-bottom: 15px; font-size: 1.5em;">🎭 Programa de entretenimiento:</h4>
                     
                     <div class="entertainment-time">
                         <h4>4:30 PM - Pinta caritas</h4>
@@ -706,7 +1037,7 @@
             </div>
         </div>
 
-        <!-- Regalos -->
+        <!-- Sección de regalos -->
         <div class="gift-section">
             <h2>🎁 Sugerencia de Regalos 🎁</h2>
             <p style="text-align: center; color: #4a5568; margin-bottom: 25px; font-size: 1.1em;">
@@ -741,7 +1072,7 @@
             </div>
         </div>
 
-        <!-- Confirmación -->
+        <!-- Confirmación de asistencia -->
         <div class="btn-container">
             <button class="btn" onclick="openRSVP()">
                 ✨ Confirmar Asistencia ✨
@@ -749,7 +1080,7 @@
         </div>
 
         <!-- Mensaje final -->
-        <div style="text-align: center; margin: 40px 0 80px; padding: 30px; background: rgba(255, 255, 255, 0.7); border-radius: 20px;">
+        <div style="text-align: center; margin: 40px 0 80px; padding: 30px; background: rgba(255, 255, 255, 0.7); border-radius: 20px; box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);">
             <p style="font-size: 1.3em; color: #db2777; font-family: 'Parisienne', cursive; line-height: 1.8;">
                 ¡Será un día mágico y me encantaría compartirlo contigo!<br>
                 💖 Con cariño Ailany 💖
@@ -757,7 +1088,7 @@
         </div>
     </div>
 
-    <!-- Botón música -->
+    <!-- Botón de música -->
     <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
 
     <!-- Audio -->
@@ -765,35 +1096,40 @@
         <source src="golden_spanish.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Modal RSVP -->
+    <!-- Modal de confirmación -->
     <div id="rsvpModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeRSVP()">&times;</span>
             <h2>Confirmar Asistencia 💖</h2>
+            <div class="error-message" id="errorMessage"></div>
             <form id="rsvpForm" onsubmit="submitRSVP(event)">
                 <label>Nombre completo:</label>
                 <input type="text" id="guestName" required placeholder="Escribe tu nombre">
 
                 <label>Teléfono:</label>
-                <input type="tel" id="guestPhone" required placeholder="Tu número">
+                <input type="tel" id="guestPhone" required placeholder="Tu número de teléfono">
 
                 <label>¿Asistirás?</label>
                 <select id="attendance" required onchange="toggleGuestCount()">
-                    <option value="">Selecciona</option>
+                    <option value="">Selecciona una opción</option>
                     <option value="yes">Sí, asistiré ✨</option>
                     <option value="no">No podré asistir 😢</option>
                 </select>
 
                 <div id="guestCountSection" style="display: none;">
-                    <label>¿Cuántas personas? (adultos)</label>
-                    <input type="number" id="guestCount" min="1" value="1">
+                    <label>¿Cuántas personas asistirán? (adultos)</label>
+                    <input type="number" id="guestCount" min="1" max="4" value="1" onchange="validateTotal()">
 
                     <label>¿Cuántos niños?</label>
-                    <input type="number" id="childrenCount" min="0" value="0">
+                    <input type="number" id="childrenCount" min="0" max="4" value="0" onchange="validateTotal()">
+                    
+                    <p style="font-size: 0.9em; color: #db2777; margin-top: 10px;">
+                        <strong>Nota:</strong> Máximo 4 personas en total (adultos + niños)
+                    </p>
                 </div>
 
                 <label>Mensaje (opcional):</label>
-                <textarea id="guestMessage" rows="3" placeholder="Mensaje especial"></textarea>
+                <textarea id="guestMessage" rows="3" placeholder="Déjanos un mensaje especial"></textarea>
 
                 <div class="btn-container">
                     <button type="submit" class="btn">Enviar Confirmación 💌</button>
@@ -803,17 +1139,35 @@
     </div>
 
     <script>
+        // Crear partículas flotantes
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            const particleIcons = ['✨', '💖', '👑', '🎀', '💫', '⭐'];
+            
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.textContent = particleIcons[Math.floor(Math.random() * particleIcons.length)];
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                particles.appendChild(particle);
+            }
+        }
+
+        // Datos de ubicaciones
         const locations = {
             church: {
-                name: "Parroquia San José",
-                url: "https://maps.google.com/?q=Parroquia+San+José"
+                name: "Iglesia del Santo Entierro",
+                url: "https://maps.app.goo.gl/DuQAMKJXh8bDYJHZA"
             },
             party: {
-                name: "Salón Princess Dreams",
-                url: "https://maps.google.com/?q=Salon+de+Fiestas"
+                name: "Salón Jardín Joss Mary",
+                url: "https://maps.app.goo.gl/DL8DUH981j2BJhxc7"
             }
         };
 
+        // Contador de confirmaciones
         let confirmations = {
             confirmed: 0,
             people: 0,
@@ -821,7 +1175,9 @@
         };
 
         let isAdminMode = false;
+        let hasConfirmed = false;
 
+        // Abrir sobre y reproducir música
         function openEnvelope() {
             const envelope = document.getElementById('envelope');
             const container = document.getElementById('envelopeContainer');
@@ -832,39 +1188,75 @@
             
             setTimeout(() => {
                 container.classList.add('hidden');
-                music.play().catch(error => {
-                    console.log('Auto-play blocked:', error);
-                });
-                musicBtn.classList.add('playing');
+                
+                // Cargar el audio primero
+                music.load();
+                
+                // Intentar reproducir
+                music.play()
+                    .then(() => {
+                        console.log('Música reproduciendo exitosamente');
+                        musicBtn.innerHTML = '🎵';
+                        musicBtn.classList.add('playing');
+                    })
+                    .catch(error => {
+                        console.log('Auto-play bloqueado por el navegador:', error.name);
+                        musicBtn.innerHTML = '🔇';
+                        musicBtn.classList.remove('playing');
+                        
+                        // Mostrar mensaje al usuario
+                        setTimeout(() => {
+                            alert('Para disfrutar de la música, haz clic en el botón 🔇 en la esquina inferior derecha 🎵');
+                        }, 500);
+                    });
             }, 1500);
         }
 
+        // Toggle música mejorado
         function toggleMusic() {
             const music = document.getElementById('backgroundMusic');
             const btn = document.getElementById('musicBtn');
             
             if (music.paused) {
-                music.play();
-                btn.innerHTML = '🎵';
+                music.play()
+                    .then(() => {
+                        btn.innerHTML = '🎵';
+                        btn.classList.add('playing');
+                    })
+                    .catch(error => {
+                        console.log('Error al reproducir:', error);
+                        alert('No se pudo reproducir la música. Intenta nuevamente.');
+                    });
             } else {
                 music.pause();
                 btn.innerHTML = '🔇';
+                btn.classList.remove('playing');
             }
         }
 
+        // Abrir ubicación
         function openLocation(type) {
             const location = locations[type];
             window.open(location.url, '_blank');
         }
 
+        // Modal RSVP
         function openRSVP() {
             document.getElementById('rsvpModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
         }
 
         function closeRSVP() {
-            document.getElementById('rsvpModal').style.display = 'none';
-            document.getElementById('rsvpForm').reset();
-            document.getElementById('guestCountSection').style.display = 'none';
+            // Solo permitir cerrar si ya confirmó o canceló
+            if (hasConfirmed) {
+                document.getElementById('rsvpModal').style.display = 'none';
+                document.getElementById('rsvpForm').reset();
+                document.getElementById('guestCountSection').style.display = 'none';
+                document.getElementById('errorMessage').classList.remove('show');
+                document.body.style.overflow = 'auto';
+            } else {
+                showError('Debes confirmar tu asistencia o indicar que no podrás asistir antes de cerrar.');
+            }
         }
 
         function toggleGuestCount() {
@@ -876,6 +1268,34 @@
             } else {
                 section.style.display = 'none';
             }
+        }
+
+        function validateTotal() {
+            const adults = parseInt(document.getElementById('guestCount').value) || 0;
+            const children = parseInt(document.getElementById('childrenCount').value) || 0;
+            const total = adults + children;
+            
+            if (total > 4) {
+                showError('El máximo de personas es 4 (incluyendo adultos y niños)');
+                // Ajustar automáticamente
+                if (adults > 4) {
+                    document.getElementById('guestCount').value = 4;
+                    document.getElementById('childrenCount').value = 0;
+                } else {
+                    document.getElementById('childrenCount').value = 4 - adults;
+                }
+                return false;
+            }
+            return true;
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.classList.add('show');
+            setTimeout(() => {
+                errorDiv.classList.remove('show');
+            }, 5000);
         }
 
         function submitRSVP(event) {
@@ -891,33 +1311,61 @@
             confirmationMessage += `Teléfono: ${phone}\n`;
             
             if (attendance === 'yes') {
-                const people = document.getElementById('guestCount').value;
-                const children = document.getElementById('childrenCount').value;
+                const people = parseInt(document.getElementById('guestCount').value) || 0;
+                const children = parseInt(document.getElementById('childrenCount').value) || 0;
+                const total = people + children;
+                
+                // Validar total
+                if (total > 4) {
+                    showError('El máximo de personas es 4 en total (adultos + niños)');
+                    return;
+                }
+                
+                if (total === 0) {
+                    showError('Debes indicar al menos 1 persona');
+                    return;
+                }
                 
                 confirmationMessage += `¡Confirmo mi asistencia! ✨\n`;
                 confirmationMessage += `Adultos: ${people}\n`;
                 confirmationMessage += `Niños: ${children}\n`;
+                confirmationMessage += `Total: ${total} persona${total > 1 ? 's' : ''}\n`;
                 
+                // Actualizar contador
                 confirmations.confirmed++;
-                confirmations.people += parseInt(people);
-                confirmations.children += parseInt(children);
+                confirmations.people += people;
+                confirmations.children += children;
                 updateCounterDisplay();
             } else {
                 confirmationMessage += `Lamentablemente no podré asistir 😢\n`;
+                confirmationMessage += `\n❌ INVITACIÓN CANCELADA\n`;
             }
             
             if (message) {
                 confirmationMessage += `\nMensaje: ${message}`;
             }
             
+            // Enviar por WhatsApp
             const whatsappNumber = '522221012336';
             const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(confirmationMessage)}`;
             
             window.open(whatsappURL, '_blank');
-            closeRSVP();
-            alert('¡Gracias por confirmar! 💖\nTe esperamos en la celebración de Ailany ✨');
+            
+            // Marcar como confirmado
+            hasConfirmed = true;
+            
+            // Cerrar modal
+            setTimeout(() => {
+                closeRSVP();
+                if (attendance === 'yes') {
+                    alert('¡Gracias por confirmar! 💖\nTe esperamos en la celebración de Ailany ✨');
+                } else {
+                    alert('Gracias por avisar 😢\nTu invitación ha sido cancelada.');
+                }
+            }, 500);
         }
 
+        // Toggle Admin
         function toggleAdmin() {
             isAdminMode = !isAdminMode;
             const toggle = document.getElementById('adminToggle');
@@ -932,20 +1380,39 @@
             }
         }
 
+        // Actualizar display del contador
         function updateCounterDisplay() {
             document.getElementById('confirmedCount').textContent = confirmations.confirmed;
             document.getElementById('personCount').textContent = confirmations.people;
             document.getElementById('childCount').textContent = confirmations.children;
         }
 
+        // Prevenir cierre del modal sin confirmar
         window.onclick = function(event) {
             const modal = document.getElementById('rsvpModal');
             if (event.target == modal) {
-                closeRSVP();
+                if (!hasConfirmed) {
+                    showError('Debes confirmar tu asistencia antes de cerrar');
+                } else {
+                    closeRSVP();
+                }
             }
         }
 
+        // Prevenir tecla ESC sin confirmar
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modal = document.getElementById('rsvpModal');
+                if (modal.style.display === 'block' && !hasConfirmed) {
+                    event.preventDefault();
+                    showError('Debes confirmar tu asistencia antes de cerrar');
+                }
+            }
+        });
+
+        // Inicializar
         window.onload = function() {
+            createParticles();
             updateCounterDisplay();
         }
     </script>
