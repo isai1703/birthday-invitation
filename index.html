@@ -3,698 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V Años de Ailany 👑</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Great+Vibes&display=swap" rel="stylesheet">
-    
+    <title>Invitación</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 50%, #f9a8d4 100%);
-            min-height: 100vh;
-            padding: 0;
-            position: relative;
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-
-        /* Partículas flotantes */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            font-size: 20px;
-            opacity: 0.6;
-            animation: float 15s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) translateX(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.6;
-            }
-            90% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(50px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* CASTILLO en lugar de sobre */
-        .castle-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            transition: opacity 0.5s, visibility 0.5s;
-        }
-
-        .castle-container.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        .castle {
-            position: relative;
-            width: 300px;
-            height: 250px;
-            cursor: pointer;
-            transition: transform 0.3s;
-            animation: castleFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes castleFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .castle:hover {
-            transform: scale(1.1);
-        }
-
-        .castle-base {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 150px;
-            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
-            border-radius: 20px 20px 10px 10px;
-            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.8);
-        }
-
-        .castle-towers {
-            position: absolute;
-            bottom: 150px;
-            width: 100%;
-            height: 100px;
-            display: flex;
-            justify-content: space-around;
-            padding: 0 40px;
-        }
-
-        .castle-tower {
-            width: 60px;
-            height: 80px;
-            background: linear-gradient(135deg, #ffd700 0%, #daa520 100%);
-            border-radius: 10px 10px 0 0;
-            position: relative;
-        }
-
-        .castle-tower::before {
-            content: '';
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: #c0c0c0;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-        }
-
-        .castle-door {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 100px;
-            background: linear-gradient(135deg, #8b4513 0%, #654321 100%);
-            border-radius: 10px 10px 0 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: gold;
-            font-size: 2em;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
-        }
-
-        .invitation-text {
-            display: none;
-            color: white;
-            font-size: 28px;
-            margin-top: 30px;
-            padding: 20px 40px;
-            background: rgba(0,0,0,0.7);
-            border-radius: 15px;
-            animation: fadeIn 1s ease;
-            font-family: 'Parisienne', cursive;
-            text-align: center;
-            border: 2px solid gold;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .tap-instruction {
-            position: absolute;
-            bottom: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: gold;
-            font-size: 1.4em;
-            font-family: 'Parisienne', cursive;
-            animation: pulse 2s infinite;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: translateX(-50%) scale(1); opacity: 1; }
-            50% { transform: translateX(-50%) scale(1.15); opacity: 0.8; }
-        }
-
-        /* El resto de tus estilos se mantienen igual */
-        .container {
-            max-width: 100%;
-            margin: 0 auto;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+            margin: 0;
             padding: 20px;
-            position: relative;
-            z-index: 10;
             min-height: 100vh;
         }
-
-        .header-title {
-            text-align: center;
-            font-size: 3em;
-            color: #be185d;
-            margin: 30px 0 20px;
-            font-family: 'Parisienne', cursive;
-            text-shadow: 
-                -2px -2px 0 #fff,
-                2px -2px 0 #fff,
-                -2px 2px 0 #fff,
-                2px 2px 0 #fff,
-                -3px -3px 0 #fff,
-                3px -3px 0 #fff,
-                -3px 3px 0 #fff,
-                3px 3px 0 #fff,
-                0 0 15px rgba(255, 255, 255, 1),
-                0 0 25px rgba(255, 255, 255, 0.8),
-                4px 4px 10px rgba(0,0,0,0.5);
-            font-weight: 700;
-            letter-spacing: 3px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            background: rgba(255, 255, 255, 0.5);
-            padding: 15px 30px;
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
             border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            animation: titleGlow 3s ease-in-out infinite;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-
-        /* ... (todos los demás estilos se mantienen igual) ... */
-
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #ec4899;
+        }
+        
+        h1 {
+            color: #db2777;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #db2777;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        h3 {
+            color: #ec4899;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+        
+        .gift-item {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 2px solid #fce7f3;
+        }
+        
+        .size-info {
+            background: #fdf2f8;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #ec4899, #db2777);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #fce7f3;
+            border-radius: 10px;
+            font-size: 1em;
+            margin-top: 5px;
+        }
+        
+        .final-message {
+            text-align: center;
+            font-size: 1.3em;
+            color: #db2777;
+            margin: 30px 0;
+            padding: 20px;
+            background: #fdf2f8;
+            border-radius: 15px;
+        }
+        
+        .star {
+            color: gold;
+            font-size: 1.2em;
+        }
     </style>
 </head>
 <body>
-    <!-- Partículas flotantes -->
-    <div class="particles" id="particles"></div>
-
-    <!-- CASTILLO en lugar de sobre -->
-    <div class="castle-container" id="castleContainer">
-        <div class="castle" id="castle" onclick="openCastle()">
-            <div class="castle-base"></div>
-            <div class="castle-towers">
-                <div class="castle-tower"></div>
-                <div class="castle-tower"></div>
-                <div class="castle-tower"></div>
-            </div>
-            <div class="castle-door">🚪</div>
-        </div>
-        <div class="invitation-text" id="invitationText">
-            ¡Estás invitado a mi fiesta!
-        </div>
-        <div class="tap-instruction">Toca el castillo</div>
-    </div>
-
-    <!-- Botón Admin (escondido) -->
-    <button class="admin-toggle" id="adminToggle" onclick="toggleAdmin()">👑</button>
-    
-    <!-- Panel de contador -->
-    <div class="counter-display" id="counterDisplay">
-        <h3>📊 Contador</h3>
-        <div class="stat">✅ <strong>Confirmados:</strong> <span id="confirmedCount">0</span></div>
-        <div class="stat">👥 <strong>Personas:</strong> <span id="personCount">0</span></div>
-        <div class="stat">👶 <strong>Niños:</strong> <span id="childCount">0</span></div>
-    </div>
-
-    <!-- Contenido principal -->
     <div class="container">
-        <h1 class="header-title">
-            <span>💖</span>
-            ✨ V Años
-            <span>💖</span>
-        </h1>
-
-        <div class="neon-container">
-            <div class="crown">👑</div>
-            <div class="star-decoration left">✨</div>
-            <h2 class="neon-name">Ailany</h2>
-            <div class="star-decoration right">✨</div>
+        <!-- Entretenimiento -->
+        <div class="section">
+            <h2>Show Especial</h2>
+            <p>Show especial lleno de risas <span class="star">🌟</span></p>
         </div>
 
-        <p class="subtitle">¡Ven a celebrar conmigo!</p>
+        <!-- Regalos -->
+        <div class="section">
+            <h2>Sugerencia de Regalos <span class="star">🌟</span></h2>
+            <p>Tu presencia es nuestro mejor regalo, pero si deseas obsequiar algo, aquí algunas sugerencias: <span class="star">🌟</span></p>
 
-        <!-- Ceremonia Religiosa -->
-        <div class="event-section">
-            <h2>✨ Ceremonia Religiosa ✨</h2>
-            <div class="event-details">
-                <h3>🏰 Misa de Acción de Gracias</h3>
-                <p><strong>📅 Fecha:</strong> Domingo, 23 de Noviembre de 2025</p>
-                <p><strong>⏰ Hora:</strong> 1:00 PM</p>
-                <p><strong>📍 Lugar:</strong> Iglesia del Santo Entierro o Santo Sepulcro</p>
-                <p><strong>🗺️ Dirección:</strong> 72770, Av. 8 Ote. 601, Barrio de San Miguel Tianguisnahuitl, Cholula de Rivadavia, Pue.</p>
-                <button class="location-btn" onclick="openLocation('church')">📍 Ver ubicación</button>
+            <div class="gift-item">
+                <h3>👗 Ropa</h3>
+                <div class="size-info">
+                    <p><strong>Talla:</strong> 6 años</p>
+                    <p><strong>Zapatos:</strong> 18 MX</p>
+                </div>
+                <p>Le encantan los vestidos de princesas, ropa colorida y accesorios brillantes <span class="star">🌟</span></p>
+            </div>
+
+            <div class="gift-item">
+                <h3>🧸 Juguetes</h3>
+                <p>Sus favoritos:</p>
+                <p>• Muñecas y accesorios <span class="star">🌟</span></p>
+                <p>• Juegos de té y cocina <span class="star">🌟</span></p>
+                <p>• Sets de manualidades y arte <span class="star">🌟</span></p>
+                <p>• Libros para colorear y cuentos <span class="star">🌟</span></p>
+            </div>
+
+            <div class="gift-item">
+                <h3>💝 Sobres</h3>
+                <p>Si me obsequias dinero para mi alcancía te lo agradeceré mucho también y que dios te cuide mucho <span class="star">🌟</span></p>
             </div>
         </div>
 
-        <!-- Recepción -->
-        <div class="event-section">
-            <h2>🎉 Recepción 🎉</h2>
-            <div class="event-details">
-                <h3>🎊 Fiesta y Celebración</h3>
-                <p><strong>📅 Fecha:</strong> Domingo, 23 de Noviembre de 2025</p>
-                <p><strong>⏰ Hora:</strong> 4:00 PM</p>
-                <p><strong>📍 Lugar:</strong> Salón Jardín Joss Mary</p>
-                <p><strong>🗺️ Dirección:</strong> C. Río Atoyac Sur 513, Santiago Momoxpan, Rafael Ávila Camacho (Manantiales), 72760 Heroica Puebla de Zaragoza, Pue.</p>
-                <button class="location-btn" onclick="openLocation('party')">📍 Ver ubicación</button>
-
-                <div style="margin-top: 25px;">
-                    <h4 style="color: #db2777; font-family: 'Parisienne', cursive; margin-bottom: 15px; font-size: 1.5em;">🎭 Programa de entretenimiento:</h4>
-                    
-                    <div class="entertainment-time">
-                        <h4>4:30 PM - Pinta caritas</h4>
-                        <p>Diversión y arte para todos</p>
-                    </div>
-
-                    <div class="entertainment-time">
-                        <h4>7:00 PM - Payaso</h4>
-                        <p>Show especial lleno de risas</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sección de regalos -->
-        <div class="gift-section">
-            <h2>🎁 Sugerencia de Regalos 🎁</h2>
-            <p style="text-align: center; color: #4a5568; margin-bottom: 25px; font-size: 1.1em;">
-                Tu presencia es nuestro mejor regalo, pero si deseas obsequiar algo, aquí algunas sugerencias:
-            </p>
-
-            <div class="gift-options">
-                <div class="gift-item">
-                    <h3>👗 Ropa</h3>
-                    <div class="size-info">
-                        <p><strong>Talla:</strong> 6 años</p>
-                        <p><strong>Zapatos:</strong> 18 MX</p>
-                    </div>
-                    <p style="margin-top: 15px;">Le encantan los vestidos de princesas, ropa colorida y accesorios brillantes ✨</p>
-                </div>
-
-                <div class="gift-item">
-                    <h3>🧸 Juguetes</h3>
-                    <p>Sus favoritos:</p>
-                    <p>• Muñecas y accesorios 👸</p>
-                    <p>• Juegos de té y cocina 🍰</p>
-                    <p>• Sets de manualidades y arte 🎨</p>
-                    <p>• Libros para colorear y cuentos 📚</p>
-                </div>
-
-                <div class="gift-item">
-                    <h3>💝 Sobres</h3>
-                    <p style="text-align: center;">
-                        Si me obsequias dinero para mi alcancía te lo agradeceré mucho también y que dios te cuide mucho
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Confirmación de asistencia -->
-        <div class="btn-container">
-            <button class="btn" onclick="openRSVP()">
-                ✨ Confirmar Asistencia ✨
-            </button>
-        </div>
+        <!-- Botón de confirmación -->
+        <button class="btn" onclick="openForm()">Confirmar Asistencia <span class="star">🌟</span></button>
 
         <!-- Mensaje final -->
-        <div style="text-align: center; margin: 40px 0 80px; padding: 30px; background: rgba(255, 255, 255, 0.7); border-radius: 20px; box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);">
-            <p style="font-size: 1.3em; color: #db2777; font-family: 'Parisienne', cursive; line-height: 1.8;">
-                ¡Será un día mágico y me encantaría compartirlo contigo!<br>
-                💖 Con cariño Ailany 💖
-            </p>
+        <div class="final-message">
+            <p>¡Será un día mágico y me encantaría compartirlo contigo!</p>
+            <p>💖 Con cariño Ailany <span class="star">🌟</span></p>
         </div>
-    </div>
 
-    <!-- Botón de música -->
-    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
-
-    <!-- Audio -->
-    <audio id="backgroundMusic" loop>
-        <source src="golden_spanish.mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- Modal de confirmación -->
-    <div id="rsvpModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeRSVP()">&times;</span>
-            <h2>Confirmar Asistencia 💖</h2>
-            <div class="error-message" id="errorMessage"></div>
-            <form id="rsvpForm" onsubmit="submitRSVP(event)">
+        <!-- Formulario (inicialmente oculto) -->
+        <div id="rsvpForm" class="section" style="display: none;">
+            <h2>Confirmar Asistencia <span class="star">🌟</span></h2>
+            
+            <div class="form-group">
                 <label>Nombre completo:</label>
-                <input type="text" id="guestName" required placeholder="Escribe tu nombre">
+                <input type="text" placeholder="Escribe tu nombre">
+            </div>
 
+            <div class="form-group">
                 <label>Teléfono:</label>
-                <input type="tel" id="guestPhone" required placeholder="Tu número de teléfono">
+                <input type="tel" placeholder="Tu número de teléfono">
+            </div>
 
+            <div class="form-group">
                 <label>¿Asistirás?</label>
-                <select id="attendance" required onchange="toggleGuestCount()">
+                <select>
                     <option value="">Selecciona una opción</option>
-                    <option value="yes">Sí, asistiré ✨</option>
-                    <option value="no">No podré asistir 😢</option>
+                    <option value="yes">Sí, asistiré</option>
+                    <option value="no">No podré asistir</option>
                 </select>
+            </div>
 
-                <div id="guestCountSection" style="display: none;">
-                    <label>¿Cuántas personas asistirán? (adultos)</label>
-                    <input type="number" id="guestCount" min="1" max="4" value="1" onchange="validateTotal()">
-
-                    <label>¿Cuántos niños?</label>
-                    <input type="number" id="childrenCount" min="0" max="4" value="0" onchange="validateTotal()">
-                    
-                    <p style="font-size: 0.9em; color: #db2777; margin-top: 10px;">
-                        <strong>Nota:</strong> Máximo 4 personas en total (adultos + niños)
-                    </p>
-                </div>
-
+            <div class="form-group">
                 <label>Mensaje (opcional):</label>
-                <textarea id="guestMessage" rows="3" placeholder="Déjanos un mensaje especial"></textarea>
+                <textarea rows="3" placeholder="Déjanos un mensaje especial"></textarea>
+            </div>
 
-                <div class="btn-container">
-                    <button type="submit" class="btn">Enviar Confirmación 💌</button>
-                </div>
-            </form>
+            <button class="btn">Enviar Confirmación <span class="star">🌟</span></button>
         </div>
     </div>
 
     <script>
-        // Crear partículas flotantes
-        function createParticles() {
-            const particles = document.getElementById('particles');
-            const particleIcons = ['✨', '💖', '👑', '🎀', '💫', '⭐'];
-            
-            for (let i = 0; i < 20; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.textContent = particleIcons[Math.floor(Math.random() * particleIcons.length)];
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.fontSize = (Math.random() * 20 + 15) + 'px';
-                particles.appendChild(particle);
-            }
-        }
-
-        // Datos de ubicaciones
-        const locations = {
-            church: {
-                name: "Iglesia del Santo Entierro",
-                url: "https://maps.app.goo.gl/DuQAMKJXh8bDYJHZA"
-            },
-            party: {
-                name: "Salón Jardín Joss Mary",
-                url: "https://maps.app.goo.gl/DL8DUH981j2BJhxc7"
-            }
-        };
-
-        // Contador de confirmaciones
-        let confirmations = {
-            confirmed: 0,
-            people: 0,
-            children: 0
-        };
-
-        let isAdminMode = false;
-        let hasConfirmed = false;
-
-        // Abrir castillo y reproducir música
-        function openCastle() {
-            const invitationText = document.getElementById('invitationText');
-            const container = document.getElementById('castleContainer');
-            const music = document.getElementById('backgroundMusic');
-            const musicBtn = document.getElementById('musicBtn');
-            
-            // Mostrar texto de invitación
-            invitationText.style.display = 'block';
-            
-            // Reproducir música automáticamente
-            setTimeout(() => {
-                music.play()
-                    .then(() => {
-                        console.log('Música reproduciendo exitosamente');
-                        musicBtn.innerHTML = '🎵';
-                        musicBtn.classList.add('playing');
-                    })
-                    .catch(error => {
-                        console.log('Auto-play bloqueado:', error);
-                        musicBtn.innerHTML = '🔇';
-                        musicBtn.classList.remove('playing');
-                    });
-            }, 500);
-            
-            // Después de 2 segundos, mostrar la invitación principal
-            setTimeout(() => {
-                container.classList.add('hidden');
-            }, 2000);
-        }
-
-        // Toggle música mejorado
-        function toggleMusic() {
-            const music = document.getElementById('backgroundMusic');
-            const btn = document.getElementById('musicBtn');
-            
-            if (music.paused) {
-                music.play()
-                    .then(() => {
-                        btn.innerHTML = '🎵';
-                        btn.classList.add('playing');
-                    })
-                    .catch(error => {
-                        console.log('Error al reproducir:', error);
-                        alert('No se pudo reproducir la música. Intenta nuevamente.');
-                    });
-            } else {
-                music.pause();
-                btn.innerHTML = '🔇';
-                btn.classList.remove('playing');
-            }
-        }
-
-        // Abrir ubicación
-        function openLocation(type) {
-            const location = locations[type];
-            window.open(location.url, '_blank');
-        }
-
-        // Modal RSVP
-        function openRSVP() {
-            document.getElementById('rsvpModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeRSVP() {
-            if (hasConfirmed) {
-                document.getElementById('rsvpModal').style.display = 'none';
-                document.getElementById('rsvpForm').reset();
-                document.getElementById('guestCountSection').style.display = 'none';
-                document.getElementById('errorMessage').classList.remove('show');
-                document.body.style.overflow = 'auto';
-            } else {
-                showError('Debes confirmar tu asistencia o indicar que no podrás asistir antes de cerrar.');
-            }
-        }
-
-        function toggleGuestCount() {
-            const attendance = document.getElementById('attendance').value;
-            const section = document.getElementById('guestCountSection');
-            
-            if (attendance === 'yes') {
-                section.style.display = 'block';
-            } else {
-                section.style.display = 'none';
-            }
-        }
-
-        function validateTotal() {
-            const adults = parseInt(document.getElementById('guestCount').value) || 0;
-            const children = parseInt(document.getElementById('childrenCount').value) || 0;
-            const total = adults + children;
-            
-            if (total > 4) {
-                showError('El máximo de personas es 4 (incluyendo adultos y niños)');
-                if (adults > 4) {
-                    document.getElementById('guestCount').value = 4;
-                    document.getElementById('childrenCount').value = 0;
-                } else {
-                    document.getElementById('childrenCount').value = 4 - adults;
-                }
-                return false;
-            }
-            return true;
-        }
-
-        function showError(message) {
-            const errorDiv = document.getElementById('errorMessage');
-            errorDiv.textContent = message;
-            errorDiv.classList.add('show');
-            setTimeout(() => {
-                errorDiv.classList.remove('show');
-            }, 5000);
-        }
-
-        function submitRSVP(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('guestName').value;
-            const phone = document.getElementById('guestPhone').value;
-            const attendance = document.getElementById('attendance').value;
-            const message = document.getElementById('guestMessage').value;
-            
-            let confirmationMessage = `✨ *V Años de Ailany* 👑\n\n`;
-            confirmationMessage += `Nombre: ${name}\n`;
-            confirmationMessage += `Teléfono: ${phone}\n`;
-            
-            if (attendance === 'yes') {
-                const people = parseInt(document.getElementById('guestCount').value) || 0;
-                const children = parseInt(document.getElementById('childrenCount').value) || 0;
-                const total = people + children;
-                
-                if (total > 4) {
-                    showError('El máximo de personas es 4 en total (adultos + niños)');
-                    return;
-                }
-                
-                if (total === 0) {
-                    showError('Debes indicar al menos 1 persona');
-                    return;
-                }
-                
-                confirmationMessage += `¡Confirmo mi asistencia! ✨\n`;
-                confirmationMessage += `Adultos: ${people}\n`;
-                confirmationMessage += `Niños: ${children}\n`;
-                confirmationMessage += `Total: ${total} persona${total > 1 ? 's' : ''}\n`;
-                
-                confirmations.confirmed++;
-                confirmations.people += people;
-                confirmations.children += children;
-                updateCounterDisplay();
-            } else {
-                confirmationMessage += `Lamentablemente no podré asistir 😢\n`;
-                confirmationMessage += `\n❌ INVITACIÓN CANCELADA\n`;
-            }
-            
-            if (message) {
-                confirmationMessage += `\nMensaje: ${message}`;
-            }
-            
-            const whatsappNumber = '522221012336';
-            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(confirmationMessage)}`;
-            
-            window.open(whatsappURL, '_blank');
-            
-            hasConfirmed = true;
-            
-            setTimeout(() => {
-                closeRSVP();
-                if (attendance === 'yes') {
-                    alert('¡Gracias por confirmar! 💖\nTe esperamos en la celebración de Ailany ✨');
-                } else {
-                    alert('Gracias por avisar 😢\nTu invitación ha sido cancelada.');
-                }
-            }, 500);
-        }
-
-        // Toggle Admin
-        function toggleAdmin() {
-            isAdminMode = !isAdminMode;
-            const toggle = document.getElementById('adminToggle');
-            const display = document.getElementById('counterDisplay');
-            
-            if (isAdminMode) {
-                toggle.classList.add('active');
-                display.classList.add('visible');
-            } else {
-                toggle.classList.remove('active');
-                display.classList.remove('visible');
-            }
-        }
-
-        // Actualizar display del contador
-        function updateCounterDisplay() {
-            document.getElementById('confirmedCount').textContent = confirmations.confirmed;
-            document.getElementById('personCount').textContent = confirmations.people;
-            document.getElementById('childCount').textContent = confirmations.children;
-        }
-
-        // Prevenir cierre del modal sin confirmar
-        window.onclick = function(event) {
-            const modal = document.getElementById('rsvpModal');
-            if (event.target == modal) {
-                if (!hasConfirmed) {
-                    showError('Debes confirmar tu asistencia antes de cerrar');
-                } else {
-                    closeRSVP();
-                }
-            }
-        }
-
-        // Prevenir tecla ESC sin confirmar
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                const modal = document.getElementById('rsvpModal');
-                if (modal.style.display === 'block' && !hasConfirmed) {
-                    event.preventDefault();
-                    showError('Debes confirmar tu asistencia antes de cerrar');
-                }
-            }
-        });
-
-        // Inicializar
-        window.onload = function() {
-            createParticles();
-            updateCounterDisplay();
+        function openForm() {
+            document.getElementById('rsvpForm').style.display = 'block';
+            document.getElementById('rsvpForm').scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
