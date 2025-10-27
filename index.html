@@ -6,7 +6,7 @@
     <title>V Años de Ailany 👑</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ballet:wght@400&family=Parisienne&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Great+Vibes&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -22,13 +22,10 @@
             padding: 0;
             position: relative;
             overflow-x: hidden;
-            /* CORRECCIÓN: Permitir scroll vertical */
             overflow-y: auto;
         }
 
-        /* ============================================
-           SOBRE DE INVITACIÓN
-        ============================================ */
+        /* Sobre de invitación */
         .envelope-container {
             position: fixed;
             top: 0;
@@ -54,8 +51,7 @@
             width: 300px;
             height: 200px;
             cursor: pointer;
-            transform-style: preserve-3d;
-            transition: transform 0.6s;
+            transition: transform 0.3s;
         }
 
         .envelope:hover {
@@ -146,146 +142,55 @@
             color: white;
             font-size: 1.2em;
             font-family: 'Parisienne', cursive;
-            animation: pulseAnim 2s infinite;
+            animation: pulse 2s infinite;
         }
 
-        /* ============================================
-           SILUETAS DE FONDO
-        ============================================ */
-        .princess-silhouette {
-            position: fixed;
-            opacity: 0.15;
-            pointer-events: none;
-            z-index: 1;
-            animation: floatAnim 8s ease-in-out infinite;
-        }
-
-        .silhouette-1 {
-            top: 10%;
-            left: 5%;
-            width: 150px;
-            height: 180px;
-        }
-
-        .silhouette-2 {
-            top: 20%;
-            right: 3%;
-            width: 130px;
-            height: 160px;
-        }
-
-        .silhouette-3 {
-            bottom: 15%;
-            left: 8%;
-            width: 140px;
-            height: 170px;
-        }
-
-        .silhouette-4 {
-            bottom: 25%;
-            right: 5%;
-            width: 145px;
-            height: 175px;
-        }
-
-        .silhouette-castle {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 200px;
-            height: 200px;
-            opacity: 0.08;
-        }
-
-        @keyframes floatAnim {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(3deg); }
-        }
-
-        @keyframes pulseAnim {
+        @keyframes pulse {
             0%, 100% { transform: translateX(-50%) scale(1); }
             50% { transform: translateX(-50%) scale(1.1); }
         }
 
-        @keyframes shimmerAnim {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes heartBeatAnim {
-            0%, 100% { transform: scale(1); }
-            25% { transform: scale(1.2); }
-            50% { transform: scale(1); }
-        }
-
-        @keyframes neonBreathAnim {
-            0%, 100% {
-                text-shadow: 
-                    0 0 5px #fff,
-                    0 0 10px #fff,
-                    0 0 20px #ec4899,
-                    0 0 40px #ec4899,
-                    0 0 80px #ec4899;
-            }
-            50% {
-                text-shadow: 
-                    0 0 10px #fff,
-                    0 0 20px #fff,
-                    0 0 40px #ec4899,
-                    0 0 60px #ec4899,
-                    0 0 120px #ec4899;
-            }
-        }
-
-        /* ============================================
-           CONTENEDOR PRINCIPAL
-        ============================================ */
+        /* Contenedor principal */
         .container {
             max-width: 100%;
             margin: 0 auto;
             padding: 20px;
             position: relative;
             z-index: 10;
-            /* CORRECCIÓN: Asegurar que el contenedor permita scroll */
             min-height: 100vh;
         }
 
-        /* ============================================
-           TÍTULO Y NOMBRE - CORRECCIÓN DE CONTRASTE
-        ============================================ */
+        /* Título mejorado */
         .header-title {
             text-align: center;
             font-size: 3em;
-            /* CORRECCIÓN: Color más oscuro y visible */
-            color: #831843;
+            color: #be185d;
             margin: 30px 0 20px;
             font-family: 'Parisienne', cursive;
-            /* CORRECCIÓN: Sombra más fuerte para legibilidad */
             text-shadow: 
-                -1px -1px 0 #fff,
-                1px -1px 0 #fff,
-                -1px 1px 0 #fff,
-                1px 1px 0 #fff,
-                0 0 15px rgba(255, 255, 255, 0.9),
-                0 0 30px rgba(255, 255, 255, 0.7),
-                3px 3px 8px rgba(0,0,0,0.4);
-            font-weight: 400;
+                -2px -2px 0 #fff,
+                2px -2px 0 #fff,
+                -2px 2px 0 #fff,
+                2px 2px 0 #fff,
+                -3px -3px 0 #fff,
+                3px -3px 0 #fff,
+                -3px 3px 0 #fff,
+                3px 3px 0 #fff,
+                0 0 15px rgba(255, 255, 255, 1),
+                0 0 25px rgba(255, 255, 255, 0.8),
+                4px 4px 10px rgba(0,0,0,0.5);
+            font-weight: 700;
             letter-spacing: 3px;
-            animation: pulseAnim 3s ease-in-out infinite;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.5);
             padding: 15px 30px;
             border-radius: 20px;
             backdrop-filter: blur(10px);
-        }
-
-        .header-title .heart {
-            font-size: 0.7em;
-            animation: heartBeatAnim 1.5s infinite;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .neon-container {
@@ -305,28 +210,16 @@
             top: -80px;
             left: 50%;
             transform: translateX(-50%);
-            animation: crownFloatAnim 3s ease-in-out infinite;
             filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.9));
             width: 100%;
             text-align: center;
-        }
-
-        @keyframes crownFloatAnim {
-            0%, 100% { 
-                transform: translateX(-50%) translateY(0) rotate(-5deg);
-            }
-            50% { 
-                transform: translateX(-50%) translateY(-20px) rotate(5deg);
-            }
         }
 
         .neon-name {
             font-size: 4em;
             font-family: 'Parisienne', cursive;
             font-weight: 700;
-            /* CORRECCIÓN: Color base más oscuro y visible */
-            color: #9d174d;
-            /* CORRECCIÓN: Sombra más definida para máxima legibilidad */
+            color: #be185d;
             text-shadow: 
                 -2px -2px 0 #fff,
                 2px -2px 0 #fff,
@@ -336,23 +229,25 @@
                 3px -3px 0 #fff,
                 -3px 3px 0 #fff,
                 3px 3px 0 #fff,
+                -4px -4px 0 #fff,
+                4px -4px 0 #fff,
+                -4px 4px 0 #fff,
+                4px 4px 0 #fff,
                 0 0 10px #fff,
                 0 0 20px #fff,
                 0 0 30px #ec4899,
                 0 0 40px #ec4899,
                 0 0 60px #ec4899,
-                4px 4px 10px rgba(0,0,0,0.5);
+                5px 5px 12px rgba(0,0,0,0.6);
             letter-spacing: 8px;
             display: inline-block;
             position: relative;
             margin-top: 20px;
-            animation: neonBreathAnim 2s ease-in-out infinite;
         }
 
         .star-decoration {
             position: absolute;
             font-size: 2em;
-            animation: starRotateAnim 4s linear infinite;
             top: 50%;
             filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
         }
@@ -365,12 +260,6 @@
         .star-decoration.right {
             right: 10px;
             transform: translateY(-50%);
-            animation-direction: reverse;
-        }
-
-        @keyframes starRotateAnim {
-            from { transform: translateY(-50%) rotate(0deg); }
-            to { transform: translateY(-50%) rotate(360deg); }
         }
 
         .subtitle {
@@ -387,33 +276,13 @@
                 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* ============================================
-           SECCIONES DE EVENTOS
-        ============================================ */
+        /* Secciones */
         .event-section {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             padding: 40px 30px;
             margin: 30px 0;
             box-shadow: 0 10px 40px rgba(219, 39, 119, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .event-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                45deg,
-                transparent 30%,
-                rgba(236, 72, 153, 0.05) 50%,
-                transparent 70%
-            );
-            animation: shimmerAnim 3s infinite;
         }
 
         .event-section h2 {
@@ -422,8 +291,6 @@
             margin-bottom: 25px;
             text-align: center;
             font-family: 'Parisienne', cursive;
-            position: relative;
-            z-index: 1;
         }
 
         .event-details {
@@ -433,8 +300,6 @@
             margin: 15px 0;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 1;
         }
 
         .event-details h3 {
@@ -467,27 +332,7 @@
             box-shadow: 0 8px 25px rgba(186, 85, 211, 0.4);
             transition: all 0.3s;
             font-family: 'Great Vibes', cursive;
-            font-weight: 400;
             margin-top: 15px;
-            position: relative;
-            overflow: hidden;
-            letter-spacing: 1px;
-        }
-
-        .location-btn::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                45deg,
-                transparent 30%,
-                rgba(255, 255, 255, 0.3) 50%,
-                transparent 70%
-            );
-            animation: shimmerAnim 2s infinite;
         }
 
         .location-btn:hover {
@@ -510,9 +355,7 @@
             margin-bottom: 8px;
         }
 
-        /* ============================================
-           SECCIÓN DE REGALOS
-        ============================================ */
+        /* Regalos */
         .gift-section {
             background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
             border-radius: 20px;
@@ -569,9 +412,7 @@
             color: #db2777;
         }
 
-        /* ============================================
-           BOTONES
-        ============================================ */
+        /* Botones */
         .btn-container {
             text-align: center;
             margin: 40px 0;
@@ -590,24 +431,14 @@
             font-family: 'Parisienne', cursive;
             font-weight: 600;
             margin: 10px;
-            display: inline-block;
-            position: relative;
         }
 
         .btn:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 35px rgba(219, 39, 119, 0.5);
-            background: linear-gradient(135deg, #db2777 0%, #be185d 100%);
         }
 
-        .btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        /* ============================================
-           MÚSICA Y ADMIN - CORRECCIÓN
-        ============================================ */
+        /* Música y Admin */
         .music-btn {
             position: fixed;
             bottom: 30px;
@@ -628,15 +459,9 @@
         }
 
         .music-btn:hover {
-            transform: scale(1.15) rotate(15deg);
-            box-shadow: 0 12px 35px rgba(219, 39, 119, 0.6);
+            transform: scale(1.15);
         }
 
-        .music-btn.playing {
-            animation: pulseAnim 1.5s infinite;
-        }
-
-        /* CORRECCIÓN: Botón admin más discreto y oculto por defecto */
         .admin-toggle {
             position: fixed;
             top: 20px;
@@ -655,7 +480,6 @@
 
         .admin-toggle:hover {
             opacity: 1;
-            background: rgba(156, 163, 175, 0.8);
         }
 
         .admin-toggle.active {
@@ -663,7 +487,6 @@
             opacity: 1;
         }
 
-        /* CORRECCIÓN: Panel de contador oculto por defecto */
         .counter-display {
             display: none;
             position: fixed;
@@ -693,13 +516,7 @@
             font-size: 1.1em;
         }
 
-        .counter-display .stat strong {
-            color: #db2777;
-        }
-
-        /* ============================================
-           MODALES
-        ============================================ */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -709,7 +526,6 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
             overflow-y: auto;
         }
 
@@ -722,20 +538,8 @@
             max-width: 500px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             position: relative;
-            animation: modalSlideAnim 0.4s ease-out;
             max-height: 85vh;
             overflow-y: auto;
-        }
-
-        @keyframes modalSlideAnim {
-            from {
-                transform: translateY(-100px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
         }
 
         .close {
@@ -746,7 +550,6 @@
             font-size: 32px;
             font-weight: bold;
             cursor: pointer;
-            transition: color 0.3s;
         }
 
         .close:hover {
@@ -769,7 +572,6 @@
             border: 2px solid #fce7f3;
             border-radius: 10px;
             font-size: 1em;
-            transition: border 0.3s;
         }
 
         .modal input:focus,
@@ -787,9 +589,6 @@
             margin-bottom: 5px;
         }
 
-        /* ============================================
-           RESPONSIVE
-        ============================================ */
         @media (max-width: 768px) {
             .header-title {
                 font-size: 2em;
@@ -822,72 +621,27 @@
                 bottom: 20px;
                 right: 20px;
             }
-
-            .admin-toggle {
-                font-size: 0.7em;
-                padding: 6px 10px;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Siluetas de fondo -->
-    <div class="princess-silhouette silhouette-1">
-        <svg viewBox="0 0 100 120" fill="currentColor" style="color: #f9a8d4;">
-            <ellipse cx="50" cy="30" rx="15" ry="20"/>
-            <path d="M35,50 Q35,45 50,45 Q65,45 65,50 L65,80 Q65,95 50,95 Q35,95 35,80 Z"/>
-            <path d="M35,80 L25,110 L35,110 M65,80 L75,110 L65,110"/>
-        </svg>
-    </div>
-    <div class="princess-silhouette silhouette-2">
-        <svg viewBox="0 0 100 120" fill="currentColor" style="color: #f9a8d4;">
-            <ellipse cx="50" cy="30" rx="15" ry="20"/>
-            <path d="M35,50 Q35,45 50,45 Q65,45 65,50 L65,80 Q65,95 50,95 Q35,95 35,80 Z"/>
-            <path d="M35,80 L25,110 L35,110 M65,80 L75,110 L65,110"/>
-        </svg>
-    </div>
-    <div class="princess-silhouette silhouette-3">
-        <svg viewBox="0 0 100 120" fill="currentColor" style="color: #f9a8d4;">
-            <ellipse cx="50" cy="30" rx="15" ry="20"/>
-            <path d="M35,50 Q35,45 50,45 Q65,45 65,50 L65,80 Q65,95 50,95 Q35,95 35,80 Z"/>
-            <path d="M35,80 L25,110 L35,110 M65,80 L75,110 L65,110"/>
-        </svg>
-    </div>
-    <div class="princess-silhouette silhouette-4">
-        <svg viewBox="0 0 100 120" fill="currentColor" style="color: #f9a8d4;">
-            <ellipse cx="50" cy="30" rx="15" ry="20"/>
-            <path d="M35,50 Q35,45 50,45 Q65,45 65,50 L65,80 Q65,95 50,95 Q35,95 35,80 Z"/>
-            <path d="M35,80 L25,110 L35,110 M65,80 L75,110 L65,110"/>
-        </svg>
-    </div>
-    <div class="princess-silhouette silhouette-castle">
-        <svg viewBox="0 0 200 200" fill="currentColor" style="color: #f9a8d4;">
-            <rect x="60" y="80" width="80" height="100"/>
-            <polygon points="60,80 100,40 140,80"/>
-            <rect x="70" y="120" width="20" height="60"/>
-            <rect x="110" y="120" width="20" height="60"/>
-            <circle cx="100" cy="70" r="15"/>
-        </svg>
-    </div>
-
-    <!-- Sobre de invitación -->
+    <!-- Sobre -->
     <div class="envelope-container" id="envelopeContainer">
         <div class="envelope" id="envelope" onclick="openEnvelope()">
             <div class="envelope-back"></div>
             <div class="envelope-front"></div>
             <div class="envelope-letter">
                 <h2>¡Estás invitado!</h2>
-                <p>Toca para abrir la invitación</p>
+                <p>Toca para abrir</p>
             </div>
             <div class="envelope-stamp">👑</div>
         </div>
         <div class="tap-instruction">Toca el sobre</div>
     </div>
 
-    <!-- Botón Admin (discreto) -->
+    <!-- Admin -->
     <button class="admin-toggle" id="adminToggle" onclick="toggleAdmin()">👑</button>
     
-    <!-- Panel de contador (solo visible para admin) -->
     <div class="counter-display" id="counterDisplay">
         <h3>📊 Contador</h3>
         <div class="stat">✅ <strong>Confirmados:</strong> <span id="confirmedCount">0</span></div>
@@ -895,16 +649,14 @@
         <div class="stat">👶 <strong>Niños:</strong> <span id="childCount">0</span></div>
     </div>
 
-    <!-- Contenedor principal -->
+    <!-- Contenido -->
     <div class="container">
-        <!-- Título -->
         <h1 class="header-title">
-            <span class="heart">💖</span>
+            <span>💖</span>
             ✨ V Años
-            <span class="heart">💖</span>
+            <span>💖</span>
         </h1>
 
-        <!-- Nombre con efecto neón mejorado -->
         <div class="neon-container">
             <div class="crown">👑</div>
             <div class="star-decoration left">✨</div>
@@ -914,7 +666,7 @@
 
         <p class="subtitle">¡Ven a celebrar conmigo!</p>
 
-        <!-- Ceremonia Religiosa -->
+        <!-- Ceremonia -->
         <div class="event-section">
             <h2>✨ Ceremonia Religiosa ✨</h2>
             <div class="event-details">
@@ -942,47 +694,19 @@
                     <h4 style="color: #db2777; font-family: 'Parisienne', cursive; margin-bottom: 15px;">🎭 Programa de entretenimiento:</h4>
                     
                     <div class="entertainment-time">
-                        <h4>7:00 PM - Recepción</h4>
-                        <p>Bienvenida y cóctel</p>
+                        <h4>4:30 PM - Pinta caritas</h4>
+                        <p>Diversión y arte para todos</p>
                     </div>
 
                     <div class="entertainment-time">
-                        <h4>7:30 PM - Cena</h4>
-                        <p>Delicioso banquete</p>
-                    </div>
-
-                    <div class="entertainment-time">
-                        <h4>8:30 PM - Show de Princesas</h4>
-                        <p>Presentación especial con las princesas favoritas</p>
-                    </div>
-
-                    <div class="entertainment-time">
-                        <h4>9:00 PM - Baile y Diversión</h4>
-                        <p>DJ, juegos y actividades para todos</p>
-                    </div>
-
-                    <div class="entertainment-time">
-                        <h4>10:00 PM - Pastel</h4>
-                        <p>Partir el pastel y cantar las mañanitas</p>
+                        <h4>7:00 PM - Payaso</h4>
+                        <p>Show especial lleno de risas</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Código de Vestimenta -->
-        <div class="event-section">
-            <h2>👗 Código de Vestimenta 👔</h2>
-            <div class="event-details">
-                <p style="font-size: 1.2em; text-align: center;">
-                    <strong>Formal / Elegante</strong>
-                </p>
-                <p style="text-align: center; margin-top: 15px;">
-                    Te sugerimos vestir con tus mejores galas para esta ocasión especial
-                </p>
-            </div>
-        </div>
-
-        <!-- Sección de regalos -->
+        <!-- Regalos -->
         <div class="gift-section">
             <h2>🎁 Sugerencia de Regalos 🎁</h2>
             <p style="text-align: center; color: #4a5568; margin-bottom: 25px; font-size: 1.1em;">
@@ -993,7 +717,7 @@
                 <div class="gift-item">
                     <h3>👗 Ropa</h3>
                     <div class="size-info">
-                        <p><strong>Talla:</strong> 5 años</p>
+                        <p><strong>Talla:</strong> 6 años</p>
                         <p><strong>Zapatos:</strong> 18 MX</p>
                     </div>
                     <p style="margin-top: 15px;">Le encantan los vestidos de princesas, ropa colorida y accesorios brillantes ✨</p>
@@ -1011,13 +735,13 @@
                 <div class="gift-item">
                     <h3>💝 Sobres</h3>
                     <p style="text-align: center;">
-                        También aceptamos obsequios en efectivo que serán destinados para su alcancía y futuro
+                        Si me obsequias dinero para mi alcancía te lo agradeceré mucho también y que dios te cuide mucho
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- Confirmación de asistencia -->
+        <!-- Confirmación -->
         <div class="btn-container">
             <button class="btn" onclick="openRSVP()">
                 ✨ Confirmar Asistencia ✨
@@ -1025,23 +749,23 @@
         </div>
 
         <!-- Mensaje final -->
-        <div style="text-align: center; margin: 40px 0; padding: 30px; background: rgba(255, 255, 255, 0.7); border-radius: 20px;">
+        <div style="text-align: center; margin: 40px 0 80px; padding: 30px; background: rgba(255, 255, 255, 0.7); border-radius: 20px;">
             <p style="font-size: 1.3em; color: #db2777; font-family: 'Parisienne', cursive; line-height: 1.8;">
-                ¡Será un día mágico y nos encantaría compartirlo contigo!<br>
-                💖 Con cariño, la familia de Ailany 💖
+                ¡Será un día mágico y me encantaría compartirlo contigo!<br>
+                💖 Con cariño Ailany 💖
             </p>
         </div>
     </div>
 
-    <!-- Botón de música -->
+    <!-- Botón música -->
     <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
 
-    <!-- Audio (música de fondo) -->
+    <!-- Audio -->
     <audio id="backgroundMusic" loop>
-        <source src="https://www.bensound.com/bensound-music/bensound-littleidea.mp3" type="audio/mpeg">
+        <source src="golden_spanish.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Modal de confirmación -->
+    <!-- Modal RSVP -->
     <div id="rsvpModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeRSVP()">&times;</span>
@@ -1051,17 +775,17 @@
                 <input type="text" id="guestName" required placeholder="Escribe tu nombre">
 
                 <label>Teléfono:</label>
-                <input type="tel" id="guestPhone" required placeholder="Tu número de teléfono">
+                <input type="tel" id="guestPhone" required placeholder="Tu número">
 
                 <label>¿Asistirás?</label>
                 <select id="attendance" required onchange="toggleGuestCount()">
-                    <option value="">Selecciona una opción</option>
+                    <option value="">Selecciona</option>
                     <option value="yes">Sí, asistiré ✨</option>
                     <option value="no">No podré asistir 😢</option>
                 </select>
 
                 <div id="guestCountSection" style="display: none;">
-                    <label>¿Cuántas personas asistirán? (adultos)</label>
+                    <label>¿Cuántas personas? (adultos)</label>
                     <input type="number" id="guestCount" min="1" value="1">
 
                     <label>¿Cuántos niños?</label>
@@ -1069,7 +793,7 @@
                 </div>
 
                 <label>Mensaje (opcional):</label>
-                <textarea id="guestMessage" rows="3" placeholder="Déjanos un mensaje especial"></textarea>
+                <textarea id="guestMessage" rows="3" placeholder="Mensaje especial"></textarea>
 
                 <div class="btn-container">
                     <button type="submit" class="btn">Enviar Confirmación 💌</button>
@@ -1079,7 +803,6 @@
     </div>
 
     <script>
-        // Datos de ubicaciones (coordenadas de ejemplo)
         const locations = {
             church: {
                 name: "Parroquia San José",
@@ -1091,51 +814,49 @@
             }
         };
 
-        // Contador de confirmaciones
         let confirmations = {
             confirmed: 0,
             people: 0,
             children: 0
         };
 
-        // Estado del admin
         let isAdminMode = false;
 
-        // Abrir sobre
         function openEnvelope() {
             const envelope = document.getElementById('envelope');
             const container = document.getElementById('envelopeContainer');
+            const music = document.getElementById('backgroundMusic');
+            const musicBtn = document.getElementById('musicBtn');
             
             envelope.classList.add('open');
             
             setTimeout(() => {
                 container.classList.add('hidden');
+                music.play().catch(error => {
+                    console.log('Auto-play blocked:', error);
+                });
+                musicBtn.classList.add('playing');
             }, 1500);
         }
 
-        // Toggle música
         function toggleMusic() {
             const music = document.getElementById('backgroundMusic');
             const btn = document.getElementById('musicBtn');
             
             if (music.paused) {
                 music.play();
-                btn.classList.add('playing');
                 btn.innerHTML = '🎵';
             } else {
                 music.pause();
-                btn.classList.remove('playing');
                 btn.innerHTML = '🔇';
             }
         }
 
-        // Abrir ubicación
         function openLocation(type) {
             const location = locations[type];
             window.open(location.url, '_blank');
         }
 
-        // Modal RSVP
         function openRSVP() {
             document.getElementById('rsvpModal').style.display = 'block';
         }
@@ -1177,7 +898,6 @@
                 confirmationMessage += `Adultos: ${people}\n`;
                 confirmationMessage += `Niños: ${children}\n`;
                 
-                // Actualizar contador
                 confirmations.confirmed++;
                 confirmations.people += parseInt(people);
                 confirmations.children += parseInt(children);
@@ -1190,19 +910,14 @@
                 confirmationMessage += `\nMensaje: ${message}`;
             }
             
-            // Enviar por WhatsApp (reemplaza con el número real)
-            const whatsappNumber = '1234567890'; // Cambiar por el número real
+            const whatsappNumber = '522221012336';
             const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(confirmationMessage)}`;
             
             window.open(whatsappURL, '_blank');
-            
             closeRSVP();
-            
-            // Mostrar agradecimiento
             alert('¡Gracias por confirmar! 💖\nTe esperamos en la celebración de Ailany ✨');
         }
 
-        // Toggle Admin
         function toggleAdmin() {
             isAdminMode = !isAdminMode;
             const toggle = document.getElementById('adminToggle');
@@ -1217,14 +932,12 @@
             }
         }
 
-        // Actualizar display del contador
         function updateCounterDisplay() {
             document.getElementById('confirmedCount').textContent = confirmations.confirmed;
             document.getElementById('personCount').textContent = confirmations.people;
             document.getElementById('childCount').textContent = confirmations.children;
         }
 
-        // Cerrar modal al hacer clic fuera
         window.onclick = function(event) {
             const modal = document.getElementById('rsvpModal');
             if (event.target == modal) {
@@ -1232,7 +945,6 @@
             }
         }
 
-        // Inicializar
         window.onload = function() {
             updateCounterDisplay();
         }
