@@ -133,7 +133,7 @@
         /* Título con estrellas y efecto 3D */
         .titulo-principal {
             font-family: 'Playball', cursive;
-            font-size: 46px;
+            font-size: 52px;
             margin-bottom: 10px;
             color: var(--morado);
             text-shadow: 
@@ -142,7 +142,7 @@
                 0 0 15px rgba(255, 105, 180, 0.5);
             position: relative;
             display: inline-block;
-            padding: 0 60px;
+            padding: 0 70px;
             animation: float 4s ease-in-out infinite;
             z-index: 10;
             background: linear-gradient(45deg, #ff69b4, #ffb6c1, #ff69b4);
@@ -174,7 +174,7 @@
             margin-bottom: 5px;
             position: relative;
             z-index: 10;
-            animation: rotate 8s infinite linear;
+            animation: rotateY 6s infinite linear;
         }
 
         .crown {
@@ -202,7 +202,7 @@
             position: relative;
             z-index: 10;
             animation: float 3s ease-in-out infinite;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
 
         /* Información de eventos */
@@ -402,6 +402,10 @@
         }
 
         @keyframes rotate {
+@keyframes rotateY {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+}
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
@@ -614,10 +618,24 @@
         </div>
         
         <!-- Sugerencias de Regalo -->
-        <div class="seccion">
-            <h2 class="titulo-seccion">Sugerencias de Regalo</h2>
-            <p>Tu presencia es el mejor regalo, pero si deseas obsequiarme algo, te sugiero:</p>
-            <div class="sugerencias">
+<div class="seccion">
+    <h2 class="titulo-seccion">Sugerencias de Regalo</h2>
+    <p>Tu presencia es el mejor regalo, pero si deseas obsequiarme algo, te sugiero:</p>
+    <div class="sugerencias">
+        <div class="sugerencia">Sobres (Dinero)</div>
+        <div class="sugerencia">Ropa Talla 8</div>
+        <div class="sugerencia">Tennis Talla 18</div>
+        <div class="sugerencia">Muñecas</div>
+        <div class="sugerencia">Material para Pintar</div>
+        <div class="sugerencia">Memoramas</div>
+        <div class="sugerencia">Rompecabezas</div>
+        <div class="sugerencia">Dominó</div>
+        <div class="sugerencia">Faldas y Vestidos</div>
+        <div class="sugerencia">Bolsitas</div>
+        <div class="sugerencia">Mochilitas</div>
+    </div>
+    <p style="margin-top: 15px; font-style: italic;">Agradezco de antemano tu cariño y generosidad. ¡Dios te bendiga hoy y siempre!</p>
+</div>
                 <div class="sugerencia">Sobres (Dinero)</div>
                 <div class="sugerencia">Juguetes Educativos</div>
                 <div class="sugerencia">Libros</div>
@@ -708,7 +726,7 @@
         const inicio = document.getElementById('inicio');
         const contenidoPrincipal = document.getElementById('contenido-principal');
         const textoInvitacion = document.querySelector('.texto-invitacion');
-        const audio = new Audio('golen_spanish.mp3');
+        const audio = new Audio('golden_spanish.mp3');
         
         // Variables para administrador
         let confirmaciones = [];
