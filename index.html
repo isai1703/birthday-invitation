@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V Años de Ailany 👑</title>
+    <title>Mis V Años 👑</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Great+Vibes&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -24,20 +24,20 @@
             overflow-x: hidden;
         }
 
-        /* CASTILLO ROSA */
+        /* CASTILLO ROSA MEJORADO */
         .castle-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 10000;
-            transition: opacity 0.5s, visibility 0.5s;
+            transition: opacity 0.8s, visibility 0.8s;
         }
 
         .castle-container.hidden {
@@ -48,60 +48,91 @@
 
         .castle {
             position: relative;
-            width: 300px;
-            height: 280px;
+            width: 350px;
+            height: 320px;
             cursor: pointer;
             transition: transform 0.3s;
-            animation: castleFloat 3s ease-in-out infinite;
+            animation: castleFloat 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(255, 105, 180, 0.6));
         }
 
         @keyframes castleFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(1deg); }
+            50% { transform: translateY(-25px) rotate(0deg); }
+            75% { transform: translateY(-15px) rotate(-1deg); }
         }
 
         .castle:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 40px rgba(255, 105, 180, 0.8));
         }
 
         .castle-base {
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 160px;
-            background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 100%);
-            border-radius: 20px 20px 10px 10px;
-            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.8);
+            height: 180px;
+            background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 50%, #ff1493 100%);
+            border-radius: 25px 25px 15px 15px;
+            box-shadow: 
+                0 20px 60px rgba(255, 105, 180, 0.8),
+                inset 0 -10px 20px rgba(199, 21, 133, 0.4),
+                inset 0 10px 20px rgba(255, 255, 255, 0.3);
+            border: 3px solid #ff69b4;
         }
 
         .castle-towers {
             position: absolute;
-            bottom: 160px;
+            bottom: 180px;
             width: 100%;
-            height: 100px;
+            height: 120px;
             display: flex;
             justify-content: space-around;
-            padding: 0 40px;
+            padding: 0 50px;
         }
 
         .castle-tower {
-            width: 60px;
-            height: 80px;
-            background: linear-gradient(135deg, #ffc0cb 0%, #ff69b4 100%);
-            border-radius: 10px 10px 0 0;
+            width: 70px;
+            height: 100px;
+            background: linear-gradient(135deg, #ffc0cb 0%, #ff69b4 50%, #db7093 100%);
+            border-radius: 15px 15px 0 0;
             position: relative;
+            box-shadow: 
+                0 10px 30px rgba(219, 112, 147, 0.5),
+                inset 0 -5px 10px rgba(199, 21, 133, 0.3);
+            border: 2px solid #ff69b4;
         }
 
         .castle-tower::before {
             content: '';
             position: absolute;
-            top: -15px;
+            top: -20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: #ffb6c1;
+            width: 25px;
+            height: 25px;
+            background: linear-gradient(135deg, #ffb6c1, #ff69b4);
             clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5);
+        }
+
+        .castle-tower::after {
+            content: '';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: gold;
+            border-radius: 50%;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; transform: translateX(-50%) scale(0.8); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.2); }
         }
 
         .castle-door {
@@ -109,57 +140,110 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 100px;
-            background: linear-gradient(135deg, #db7093 0%, #c71585 100%);
-            border-radius: 10px 10px 0 0;
+            width: 90px;
+            height: 120px;
+            background: linear-gradient(135deg, #db7093 0%, #c71585 50%, #8b008b 100%);
+            border-radius: 15px 15px 0 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 2em;
-            transition: all 0.5s ease;
+            color: gold;
+            font-size: 2.5em;
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             z-index: 2;
+            box-shadow: 
+                inset 0 0 20px rgba(255, 215, 0, 0.4),
+                0 5px 15px rgba(139, 0, 139, 0.6);
+            border: 3px solid #ff69b4;
         }
 
         .castle-door.open {
-            transform: translateX(-50%) rotateY(90deg);
+            transform: translateX(-50%) rotateY(180deg) scale(0.8);
             opacity: 0;
+        }
+
+        .castle-windows {
+            position: absolute;
+            bottom: 80px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 0 80px;
+        }
+
+        .castle-window {
+            width: 25px;
+            height: 35px;
+            background: linear-gradient(135deg, #fffacd, #f0e68c);
+            border-radius: 5px;
+            box-shadow: 
+                inset 0 0 10px rgba(255, 255, 0, 0.6),
+                0 0 15px gold;
+            animation: windowGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes windowGlow {
+            0%, 100% { box-shadow: inset 0 0 10px rgba(255, 255, 0, 0.6), 0 0 15px gold; }
+            50% { box-shadow: inset 0 0 10px rgba(255, 255, 0, 0.8), 0 0 25px gold; }
         }
 
         .invitation-text {
             display: none;
             color: white;
-            font-size: 28px;
-            margin-top: 30px;
-            padding: 20px 40px;
-            background: rgba(255, 105, 180, 0.9);
-            border-radius: 15px;
-            animation: fadeIn 1s ease;
-            font-family: 'Parisienne', cursive;
+            font-size: 32px;
+            margin-top: 40px;
+            padding: 25px 50px;
+            background: linear-gradient(135deg, rgba(255, 105, 180, 0.95), rgba(219, 112, 147, 0.95));
+            border-radius: 20px;
+            animation: textEmergence 1.5s ease-out;
+            font-family: 'Dancing Script', cursive;
             text-align: center;
-            border: 2px solid white;
+            border: 3px solid gold;
+            box-shadow: 
+                0 0 40px rgba(255, 215, 0, 0.6),
+                0 20px 50px rgba(0, 0, 0, 0.4);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes textEmergence {
+            0% { 
+                opacity: 0; 
+                transform: translateY(50px) scale(0.8); 
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(-10px) scale(1.05);
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
         }
 
         .tap-instruction {
             position: absolute;
-            bottom: 50px;
+            bottom: 60px;
             left: 50%;
             transform: translateX(-50%);
-            color: white;
-            font-size: 1.4em;
+            color: gold;
+            font-size: 1.5em;
             font-family: 'Parisienne', cursive;
-            animation: pulse 2s infinite;
+            animation: instructionPulse 2s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: translateX(-50%) scale(1); opacity: 1; }
-            50% { transform: translateX(-50%) scale(1.15); opacity: 0.8; }
+        @keyframes instructionPulse {
+            0%, 100% { 
+                transform: translateX(-50%) scale(1); 
+                opacity: 1;
+                text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            }
+            50% { 
+                transform: translateX(-50%) scale(1.2); 
+                opacity: 0.8;
+                text-shadow: 0 0 30px rgba(255, 215, 0, 1);
+            }
         }
 
         /* CONTENIDO PRINCIPAL */
@@ -173,42 +257,138 @@
             display: none;
         }
 
-        /* TÍTULO */
+        /* TÍTULO MEJORADO - MIS V AÑOS */
         .header-title {
             text-align: center;
-            font-size: 3em;
-            color: #be185d;
-            margin: 30px 0 20px;
-            font-family: 'Parisienne', cursive;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 4.5em;
+            color: transparent;
+            margin: 40px 0 30px;
+            font-family: 'Dancing Script', cursive;
+            font-style: italic;
+            background: linear-gradient(135deg, #ff69b4, #db2777, #be185d, #ff1493);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: titleGradient 4s ease infinite, titleFloat 3s ease-in-out infinite;
+            text-shadow: 
+                3px 3px 0 rgba(255, 255, 255, 0.8),
+                6px 6px 0 rgba(255, 105, 180, 0.3),
+                9px 9px 0 rgba(219, 39, 119, 0.2);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0 30px;
         }
 
-        /* NOMBRE CON CORONA */
+        @keyframes titleGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateX(-50%) translateY(0px) rotate(0deg); }
+            33% { transform: translateX(-50%) translateY(-5px) rotate(0.5deg); }
+            66% { transform: translateX(-50%) translateY(-3px) rotate(-0.5deg); }
+        }
+
+        .header-title::before {
+            content: '✨';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.6em;
+            animation: sparkleLeft 2s ease-in-out infinite;
+        }
+
+        .header-title::after {
+            content: '✨';
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.6em;
+            animation: sparkleRight 2s ease-in-out infinite 0.5s;
+        }
+
+        @keyframes sparkleLeft {
+            0%, 100% { opacity: 0.5; transform: translateY(-50%) rotate(0deg) scale(1); }
+            50% { opacity: 1; transform: translateY(-50%) rotate(180deg) scale(1.3); }
+        }
+
+        @keyframes sparkleRight {
+            0%, 100% { opacity: 0.5; transform: translateY(-50%) rotate(0deg) scale(1); }
+            50% { opacity: 1; transform: translateY(-50%) rotate(-180deg) scale(1.3); }
+        }
+
+        /* NOMBRE MEJORADO CON CORONA */
         .name-section {
             text-align: center;
-            margin: 40px 0;
+            margin: 30px 0;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
         }
 
         .crown {
-            font-size: 4em;
-            margin-bottom: 10px;
-            animation: crownBounce 2s ease-in-out infinite;
+            font-size: 4.5em;
+            animation: crownSpin 8s linear infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+            margin-bottom: -10px;
         }
 
-        @keyframes crownBounce {
-            0%, 100% { transform: translateY(0px) rotate(-5deg); }
-            50% { transform: translateY(-10px) rotate(5deg); }
+        @keyframes crownSpin {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
         }
 
         .name {
-            font-size: 4em;
+            font-size: 5em;
             font-family: 'Parisienne', cursive;
             color: #db2777;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 
+                0 0 10px #fff,
+                0 0 20px #ff69b4,
+                0 0 30px #ff69b4,
+                0 0 40px #ff1493,
+                0 0 70px #ff1493,
+                0 0 80px #ff1493,
+                0 0 100px #ff69b4;
+            animation: neonPulse 2s ease-in-out infinite;
+            background: linear-gradient(135deg, #ff69b4, #db2777, #ff1493);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-top: -15px;
         }
 
-        /* SECCIONES */
+        @keyframes neonPulse {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 10px #fff,
+                    0 0 20px #ff69b4,
+                    0 0 30px #ff69b4,
+                    0 0 40px #ff1493,
+                    0 0 70px #ff1493,
+                    0 0 80px #ff1493;
+            }
+            50% { 
+                text-shadow: 
+                    0 0 5px #fff,
+                    0 0 10px #ff69b4,
+                    0 0 15px #ff69b4,
+                    0 0 20px #ff1493,
+                    0 0 35px #ff1493,
+                    0 0 40px #ff1493,
+                    0 0 50px #ff69b4;
+            }
+        }
+
+        /* SECCIONES (se mantienen igual) */
         .section {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
@@ -364,15 +544,20 @@
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .header-title {
-                font-size: 2em;
+                font-size: 3em;
             }
             
             .name {
-                font-size: 2.5em;
+                font-size: 3.5em;
             }
             
             .crown {
-                font-size: 3em;
+                font-size: 3.5em;
+            }
+            
+            .castle {
+                width: 280px;
+                height: 250px;
             }
             
             .section {
@@ -388,7 +573,7 @@
     </style>
 </head>
 <body>
-    <!-- CASTILLO ROSA -->
+    <!-- CASTILLO ROSA MEJORADO -->
     <div class="castle-container" id="castleContainer">
         <div class="castle" id="castle">
             <div class="castle-base"></div>
@@ -396,6 +581,10 @@
                 <div class="castle-tower"></div>
                 <div class="castle-tower"></div>
                 <div class="castle-tower"></div>
+            </div>
+            <div class="castle-windows">
+                <div class="castle-window"></div>
+                <div class="castle-window"></div>
             </div>
             <div class="castle-door" id="castleDoor">🚪</div>
         </div>
@@ -407,15 +596,16 @@
 
     <!-- CONTENIDO PRINCIPAL -->
     <div class="container" id="mainContent">
-        <!-- TÍTULO -->
-        <h1 class="header-title">V Años de Ailany</h1>
+        <!-- TÍTULO MEJORADO -->
+        <h1 class="header-title">Mis V Años</h1>
 
-        <!-- NOMBRE CON CORONA -->
+        <!-- NOMBRE MEJORADO CON CORONA -->
         <div class="name-section">
             <div class="crown">👑</div>
             <div class="name">Ailany</div>
         </div>
 
+        <!-- EL RESTO DEL CONTENIDO SE MANTIENE IGUAL -->
         <!-- CEREMONIA RELIGIOSA -->
         <div class="section">
             <h2>✨ Ceremonia Religiosa ✨</h2>
@@ -520,7 +710,7 @@
             children: 0
         };
 
-        // Abrir castillo
+        // Abrir castillo MEJORADO
         function openCastle() {
             const invitationText = document.getElementById('invitationText');
             const castleDoor = document.getElementById('castleDoor');
@@ -528,18 +718,22 @@
             const mainContent = document.getElementById('mainContent');
             const music = document.getElementById('backgroundMusic');
             
-            // Mostrar texto de invitación
-            invitationText.style.display = 'block';
+            // Mostrar texto de invitación con efecto mejorado
+            setTimeout(() => {
+                invitationText.style.display = 'block';
+            }, 300);
             
-            // Abrir puerta
-            castleDoor.classList.add('open');
+            // Abrir puerta con efecto mejorado
+            setTimeout(() => {
+                castleDoor.classList.add('open');
+            }, 500);
             
             // Reproducir música
             setTimeout(() => {
                 music.play().catch(e => {
                     console.log('Auto-play bloqueado:', e);
                 });
-            }, 500);
+            }, 800);
             
             // Mostrar contenido principal después de 2 segundos
             setTimeout(() => {
