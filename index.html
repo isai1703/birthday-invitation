@@ -3,68 +3,477 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Feliz Cumpleaños Aliany!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Parisienne&family=Playball&display=swap" rel="stylesheet">
+    <title>Invitación ÚNICA Ultra Lujo de Ailany</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ===== VARIABLES Y RESET ===== */
+        :root {
+            --blush-pink: #FADADD;
+            --light-pink: #f8e8e8;
+            --dark-pink: #e6b8c2;
+            --gold: #d4af37;
+            --rose-gold: #e8b4a9;
+            --neon-pink: #ff00de;
+            --neon-blue: #0066ff;
+            --neon-purple: #bc13fe;
+            --pearl-pink: #fce4ec;
+            --shadow-light: rgba(255, 255, 255, 0.5);
+            --shadow-dark: rgba(0, 0, 0, 0.1);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --rosa-principal: #ff69b4;
-            --rosa-claro: #ffb6c1;
-            --rosa-rubor: #ffd1dc;
-            --dorado: #FFD700;
-            --morado: #8a2be2;
-            --blanco: #ffffff;
+        /* ===== ESTILOS BASE ===== */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--pearl-pink) 0%, var(--blush-pink) 50%, var(--light-pink) 100%);
+            color: #333;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ffd1dc 0%, #f8c8dc 50%, #ffb6c1 100%);
-            min-height: 100vh;
-            color: #333;
-            text-align: center;
-            overflow-x: hidden;
+        .container {
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* ===== CASTILLO 3D INTERACTIVO ===== */
+        .castle-envelope {
+            width: 320px;
+            height: 380px;
+            position: relative;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+            perspective: 1000px;
+        }
+
+        .castle-envelope:hover {
+            transform: scale(1.03);
+        }
+
+        .castle-body {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #c89595, #b88585);
+            border-radius: 15px 15px 5px 5px;
+            position: relative;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .castle-towers {
+            position: absolute;
+            top: -40px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            z-index: 3;
+        }
+
+        .tower {
+            width: 60px;
+            height: 80px;
+            background: linear-gradient(135deg, #b88585, #a87575);
+            border-radius: 10px 10px 0 0;
             position: relative;
         }
 
-        /* Pantalla inicial del sobre/castillo */
-        #inicio {
+        .tower::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            width: 80px;
+            height: 30px;
+            background: linear-gradient(135deg, #a87575, #986565);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .castle-door {
+            width: 100px;
+            height: 140px;
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 10px 10px 0 0;
+            transition: transform 1.2s ease;
+            transform-origin: bottom;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--gold);
+            font-size: 28px;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 4;
+        }
+
+        .castle-door.open {
+            transform: translateX(-50%) rotateX(-110deg);
+        }
+
+        .door-knob {
+            width: 20px;
+            height: 20px;
+            background: var(--gold);
+            border-radius: 50%;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
+        }
+
+        /* ===== EFECTOS NEÓN Y ANIMACIONES ===== */
+        .invitation-text {
+            text-align: center;
+            margin: 30px 0;
+            opacity: 0;
+            transition: opacity 1s ease;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            z-index: 1;
+        }
+
+        .invitation-text.visible {
+            opacity: 1;
+        }
+
+        .neon-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: #fff;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px var(--neon-pink),
+                0 0 30px var(--neon-pink),
+                0 0 40px var(--neon-pink);
+            animation: neonGlow 1.5s ease-in-out infinite alternate;
+            margin-bottom: 20px;
+        }
+
+        @keyframes neonGlow {
+            from {
+                text-shadow: 
+                    0 0 5px #fff,
+                    0 0 10px #fff,
+                    0 0 20px var(--neon-pink),
+                    0 0 30px var(--neon-pink),
+                    0 0 40px var(--neon-pink);
+            }
+            to {
+                text-shadow: 
+                    0 0 10px #fff,
+                    0 0 20px #fff,
+                    0 0 30px var(--neon-pink),
+                    0 0 40px var(--neon-pink),
+                    0 0 50px var(--neon-pink);
+            }
+        }
+
+        /* ===== CONTENIDO DE LA INVITACIÓN ===== */
+        .invitation-content {
+            display: none;
+            width: 100%;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ===== TÍTULO PRINCIPAL - MIS V AÑOS ===== */
+        .main-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            text-align: center;
+            margin: 25px 0;
+            color: transparent;
+            background: linear-gradient(45deg, var(--rose-gold), var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow: 
+                2px 2px 0px var(--shadow-dark),
+                0 0 10px var(--shadow-light);
+            position: relative;
+            line-height: 1.2;
+        }
+
+        .main-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        /* ===== NOMBRE AILANY CON CORONA ===== */
+        .name-container {
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+            padding-top: 40px;
+        }
+
+        .crown {
+            font-size: 2.8rem;
+            color: var(--gold);
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: rotateCrown 5s infinite linear;
+            z-index: 10;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            cursor: pointer;
+        }
+
+        @keyframes rotateCrown {
+            from { transform: translateX(-50%) rotate(0deg); }
+            to { transform: translateX(-50%) rotate(360deg); }
+        }
+
+        .name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: transparent;
+            background: linear-gradient(45deg, var(--rose-gold), var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow: 
+                2px 2px 0px var(--shadow-dark),
+                0 0 15px var(--shadow-light);
+            line-height: 1.2;
+            display: block;
+        }
+
+        /* ===== SECCIONES DE CONTENIDO ===== */
+        .section {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px var(--shadow-dark);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--dark-pink);
+            margin-bottom: 15px;
+            text-align: center;
+            text-shadow: 2px 2px 0px var(--shadow-dark);
+            line-height: 1.2;
+        }
+
+        /* ===== CUENTA REGRESIVA ===== */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: linear-gradient(45deg, var(--blush-pink), var(--light-pink));
+            border-radius: 10px;
+            padding: 12px 8px;
+            min-width: 70px;
+            box-shadow: 0 5px 10px var(--shadow-dark);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+        }
+
+        .countdown-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--dark-pink);
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* ===== INFORMACIÓN DE EVENTOS ===== */
+        .event-details {
+            text-align: left;
+        }
+
+        .event-details p {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .event-details .icon {
+            margin-right: 10px;
+            font-size: 1.1rem;
+            min-width: 25px;
+        }
+
+        .address {
+            font-style: italic;
+            color: #666;
+            margin-left: 35px;
+            font-size: 0.9rem;
+        }
+
+        /* ===== BOTONES ===== */
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 8px 5px;
+            background: linear-gradient(45deg, var(--rose-gold), var(--gold));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-neon {
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        /* ===== LISTA DE REGALOS ===== */
+        .gift-suggestions ul {
+            list-style: none;
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .gift-suggestions li {
+            padding: 6px 0;
+            position: relative;
+            padding-left: 25px;
+            font-size: 0.9rem;
+        }
+
+        .gift-suggestions li:before {
+            content: '🎁';
+            position: absolute;
+            left: 0;
+        }
+
+        .thank-you {
+            margin-top: 15px;
+            font-style: italic;
+            color: var(--dark-pink);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* ===== FORMULARIO DE CONFIRMACIÓN ===== */
+        .confirmation-form {
+            display: none;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: var(--dark-pink);
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* ===== INTERFAZ DE ADMINISTRACIÓN ===== */
+        .admin-panel {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--rosa-rubor) 0%, var(--rosa-claro) 100%);
-            display: flex;
-            flex-direction: column;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
+        }
+
+        .admin-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .admin-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--dark-pink);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
             cursor: pointer;
         }
 
-        .castillo {
-            font-size: 400px;
-            animation: pulse 2s infinite;
-            filter: drop-shadow(0 0 20px var(--dorado));
-            margin-bottom: 20px;
-        }
-
-        .texto-invitacion {
-            font-family: 'Dancing Script', cursive;
-            font-size: 42px;
-            color: var(--morado);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            opacity: 0;
-            transition: opacity 1s;
-        }
-
-        /* Partículas de luz flotantes */
+        /* ===== EFECTOS VISUALES ===== */
         .particles {
             position: fixed;
             top: 0;
@@ -72,856 +481,546 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1;
+            z-index: -1;
         }
 
         .particle {
             position: absolute;
-            background: rgba(255, 255, 255, 0.8);
+            width: 3px;
+            height: 3px;
+            background: var(--gold);
             border-radius: 50%;
-            animation: floatParticle 15s infinite linear;
+            animation: float 15s infinite linear;
         }
 
-        /* Destellos dorados */
-        .sparkle {
-            position: absolute;
-            background: radial-gradient(circle, var(--dorado) 0%, transparent 70%);
-            border-radius: 50%;
-            opacity: 0;
-            animation: sparkle 3s infinite;
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
         }
 
-        /* Contenido principal */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .seccion {
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: 20px;
-            padding: 25px;
-            margin: 20px 0;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            animation: fadeInUp 1s ease-out;
-            border: 2px solid var(--rosa-principal);
-        }
-
-        .titulo-seccion {
-            font-family: 'Parisienne', cursive;
-            font-size: 32px;
-            color: var(--morado);
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-            position: relative;
-            display: inline-block;
-        }
-
-        .titulo-seccion::after {
-            content: "";
-            position: absolute;
-            bottom: -5px;
-            left: 10%;
-            width: 80%;
-            height: 2px;
-            background: linear-gradient(to right, transparent, var(--rosa-principal), transparent);
-        }
-
-        /* Título con estrellas y efecto 3D */
-        .titulo-principal {
-            font-family: 'Playball', cursive;
-            font-size: 400px;
-            margin-bottom: 100px;
-            color: var(--morado);
-            text-shadow: 
-                2px 2px 0px var(--rosa-principal),
-                4px 4px 0px rgba(0, 0, 0, 0.1),
-                0 0 15px rgba(255, 105, 180, 0.5);
-            position: relative;
-            display: inline-block;
-            padding: 0 70px;
-            animation: float 4s ease-in-out infinite;
-            z-index: 10;
-            background: linear-gradient(45deg, #ff69b4, #ffb6c1, #ff69b4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .titulo-principal::before, .titulo-principal::after {
-            content: "★";
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 250px;
-            color: var(--dorado);
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-            animation: twinkle 2s infinite alternate;
-        }
-
-        .titulo-principal::before {
-            left: 10px;
-        }
-
-        .titulo-principal::after {
-            right: 10px;
-        }
-
-        /* Corona giratoria */
-        .crown-container {
-            margin-bottom: 5px;
-            position: relative;
-            z-index: 10;
-            animation: rotateY 6s infinite linear;
-        }
-
-        .crown {
-            font-size: 70px;
-            filter: drop-shadow(0 0 15px var(--dorado));
-            background: linear-gradient(45deg, var(--dorado), #FFEC8B, #FFFACD, var(--dorado));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Nombre con efecto 3D y textura metálica */
-        .name {
-            font-family: 'Dancing Script', cursive;
-            font-size: 88px;
-            font-weight: bold;
-            margin-bottom: 100px;
-            background: linear-gradient(45deg, #ff1493, #ff69b4, #ffb6c1, #ffd700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 
-                3px 3px 0px rgba(255, 215, 0, 0.6),
-                6px 6px 0px rgba(0, 0, 0, 0.15),
-                0 0 25px rgba(255, 105, 180, 0.7);
-            position: relative;
-            z-index: 10;
-            animation: float 3s ease-in-out infinite;
-            letter-spacing: 3px;
-        }
-
-        /* Información de eventos */
-        .evento {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 15px 0;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .info-evento {
-            text-align: left;
-            flex: 1;
-        }
-
-        .boton-ubicacion {
-            background: var(--rosa-principal);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .boton-ubicacion:hover {
-            background: var(--morado);
-            transform: translateY(-3px);
-        }
-
-        /* Entretenimiento */
-        .actividad {
-            display: flex;
-            justify-content: space-between;
-            margin: 10px 0;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 10px;
-        }
-
-        /* Sugerencias de regalo */
-        .sugerencias {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .sugerencia {
-            background: var(--rosa-claro);
-            padding: 10px 15px;
-            border-radius: 50px;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        /* Formulario de confirmación */
-        .form-group {
-            margin: 15px 0;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid var(--rosa-claro);
-            border-radius: 10px;
-            font-size: 16px;
-        }
-
-        .boton-confirmar {
-            background: var(--morado);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: bold;
-            margin: 20px 0;
-            transition: all 0.3s;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-        }
-
-        .boton-confirmar:hover {
-            background: var(--rosa-principal);
-            transform: translateY(-3px);
-        }
-
-        /* Cuenta regresiva */
-        #cuenta-regresiva {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .tiempo {
-            background: var(--rosa-principal);
-            color: white;
-            padding: 15px;
-            border-radius: 15px;
-            min-width: 80px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .tiempo span {
-            display: block;
-            font-size: 32px;
-            font-weight: bold;
-        }
-
-        .tiempo .etiqueta {
-            font-size: 14px;
-            margin-top: 5px;
-        }
-
-        /* Subir fotos */
-        #subir-fotos {
-            margin-top: 20px;
-        }
-
-        #foto-input {
-            display: none;
-        }
-
-        .boton-foto {
-            background: var(--dorado);
-            color: #333;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s;
-        }
-
-        .boton-foto:hover {
-            background: #ffec8b;
-            transform: translateY(-3px);
-        }
-
-        /* Mensaje de agradecimiento */
-        .agradecimiento {
-            font-family: 'Dancing Script', cursive;
-            font-size: 150px;
-            margin: 30px 0;
-            color: var(--morado);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-
-        /* Modal de administrador */
-        .modal {
-            display: none;
+        .glow {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
+            pointer-events: none;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
         }
 
-        .modal-contenido {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        /* Animaciones */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes rotate {
-@keyframes rotateY {
-    0% { transform: rotateY(0deg); }
-    100% { transform: rotateY(360deg); }
-}
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes float {
-@keyframes floatName {
-    0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
-    25% { transform: translateY(-25px) scale(1.05) rotate(1deg); }
-    50% { transform: translateY(-15px) scale(1.03) rotate(-1deg); }
-    75% { transform: translateY(-20px) scale(1.04) rotate(0.5deg); }
-}
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes floatParticle {
-            0% { 
-                transform: translateY(100vh) rotate(0deg); 
-                opacity: 0;
-            }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { 
-                transform: translateY(-100px) rotate(360deg); 
-                opacity: 0;
-            }
-        }
-
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0); }
-            50% { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes twinkle {
-            0% { opacity: 0.5; transform: translateY(-50%) scale(0.8); }
-            100% { opacity: 1; transform: translateY(-50%) scale(1.2); }
-        }
-
-        @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .titulo-principal {
-                font-size: 250px;
-                padding: 0 200px;
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 480px) {
+            .castle-envelope {
+                width: 280px;
+                height: 340px;
             }
             
-            .titulo-principal::before, .titulo-principal::after {
-                font-size: 150px;
+            .tower {
+                width: 50px;
+                height: 70px;
             }
             
-            .name {
-                font-size: 250px;
-            }
-            
-            .crown {
-                font-size: 50px;
-            }
-            
-            .seccion {
-                padding: 20px;
-            }
-            
-            .evento {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .info-evento {
-                text-align: center;
-                margin-bottom: 100px;
-            }
-            
-            #cuenta-regresiva {
-                gap: 10px;
-            }
-            
-            .tiempo {
-                min-width: 70px;
-                padding: 10px;
-            }
-            
-            .tiempo span {
+            .castle-door {
+                width: 80px;
+                height: 120px;
                 font-size: 24px;
             }
-        }
-
-        @media (max-width: 480px) {
-            .titulo-principal {
-                font-size: 150px;
-                padding: 0 150px;
+            
+            .neon-text {
+                font-size: 2.8rem;
             }
             
-            .titulo-principal::before, .titulo-principal::after {
-                font-size: 50px;
+            .main-title {
+                font-size: 2.8rem;
             }
             
             .name {
-                font-size: 48px;
+                font-size: 3.5rem;
             }
             
             .crown {
-                font-size: 40px;
+                font-size: 2.2rem;
             }
             
-            .seccion {
-                padding: 15px;
+            .section-title {
+                font-size: 1.8rem;
             }
             
-            #cuenta-regresiva {
-                flex-wrap: wrap;
-            }
-            
-            .tiempo {
+            .countdown-item {
                 min-width: 60px;
+                padding: 10px 5px;
             }
             
-            .tiempo span {
-                font-size: 20px;
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.7rem;
+            }
+            
+            .btn {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+            }
+            
+            .event-details p {
+                flex-direction: column;
+            }
+            
+            .address {
+                margin-left: 0;
+                margin-top: 5px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Pantalla inicial del castillo -->
-    <div id="inicio">
-        <div class="castillo">🏰</div>
-        <div class="texto-invitacion">¡Estás invitado a mi fiesta!</div>
-    </div>
-
-    <!-- Partículas de luz -->
+    <!-- ===== EFECTOS VISUALES ===== -->
     <div class="particles" id="particles"></div>
+    <div class="glow"></div>
     
-    <!-- Destellos dorados -->
-    <div class="sparkles" id="sparkles"></div>
-    
-    <!-- Contenido principal (oculto inicialmente) -->
-    <div class="container" id="contenido-principal" style="display: none;">
-        <!-- Título principal -->
-        <h2 class="titulo-principal" style="font-size: 400px !important; margin: 0 !important; padding: 0 200px !important; line-height: 1 !important;">Mis V años</h2>
-        
-        <!-- Corona y nombre -->
-        <div class="crown-container">
-            <div class="crown">👑</div>
-        </div>
-        
-        <h1 class="name">Aliany</h1>
-        
-        <!-- Cuenta regresiva -->
-        <div class="seccion">
-            <h2 class="titulo-seccion">Cuenta Regresiva</h2>
-            <div id="cuenta-regresiva">
-                <div class="tiempo">
-                    <span id="dias">00</span>
-                    <div class="etiqueta">Días</div>
+    <!-- ===== CONTENEDOR PRINCIPAL ===== -->
+    <div class="container">
+        <!-- ===== CASTILLO-SOBRE INTERACTIVO ===== -->
+        <div class="castle-envelope">
+            <div class="castle-body">
+                <div class="castle-towers">
+                    <div class="tower"></div>
+                    <div class="tower"></div>
                 </div>
-                <div class="tiempo">
-                    <span id="horas">00</span>
-                    <div class="etiqueta">Horas</div>
-                </div>
-                <div class="tiempo">
-                    <span id="minutos">00</span>
-                    <div class="etiqueta">Minutos</div>
-                </div>
-                <div class="tiempo">
-                    <span id="segundos">00</span>
-                    <div class="etiqueta">Segundos</div>
+                <div class="castle-door" id="castleDoor">
+                    <i class="fas fa-gem"></i>
+                    <div class="door-knob"></div>
                 </div>
             </div>
+            
+            <!-- ===== TEXTO DE INVITACIÓN ===== -->
+            <div class="invitation-text" id="invitationText">
+                <h1 class="neon-text">¡Te invito a mi fiesta!</h1>
+            </div>
         </div>
-        
-        <!-- Ceremonia Religiosa -->
-        <div class="seccion">
-            <h2 class="titulo-seccion">Ceremonia Religiosa</h2>
-            <div class="evento">
-                <div class="info-evento">
-                    <p><strong>Fecha:</strong> 23 de Noviembre, 2025</p>
-                    <p><strong>Hora:</strong> 1:00 PM</p>
-                    <p><strong>Lugar:</strong> Iglesia del Santo Entierro o Santo Sepulcro</p>
-                    <p><strong>Dirección:</strong> 72770, Av. 8 Ote. 601, Barrio de San Miguel Tianguisnahuitl, Cholula de Rivadavia, Pue.</p>
+
+        <!-- ===== CONTENIDO DE LA INVITACIÓN ===== -->
+        <div class="invitation-content" id="invitationContent">
+            <!-- ===== TÍTULO Y NOMBRE ===== -->
+            <h1 class="main-title">Mis V años</h1>
+            
+            <div class="name-container">
+                <div class="crown" id="adminCrown">👑</div>
+                <h2 class="name">Ailany</h2>
+            </div>
+
+            <!-- ===== CUENTA REGRESIVA ===== -->
+            <section class="section">
+                <h2 class="section-title">Cuenta Regresiva</h2>
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">00</span>
+                        <span class="countdown-label">Días</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">Horas</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">Minutos</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-label">Segundos</span>
+                    </div>
                 </div>
-                <button class="boton-ubicacion" onclick="abrirUbicacion('ceremonia')">
-                    <i class="fas fa-map-marker-alt"></i> Ver Ubicación
-                </button>
-            </div>
-        </div>
-        
-        <!-- Recepción -->
-        <div class="seccion">
-            <h2 class="titulo-seccion">Recepción</h2>
-            <div class="evento">
-                <div class="info-evento">
-                    <p><strong>Fecha:</strong> 23 de Noviembre, 2025</p>
-                    <p><strong>Hora:</strong> 4:00 PM</p>
-                    <p><strong>Lugar:</strong> Salón Jardín Joss Mary</p>
-                    <p><strong>Dirección:</strong> C. Río Atoyac Sur 513, Santiago Momoxpan, Rafael Ávila Camacho (Manantiales, 72760 Heroica Puebla de Zaragoza, Pue.</p>
+            </section>
+
+            <!-- ===== CEREMONIA RELIGIOSA ===== -->
+            <section class="section">
+                <h2 class="section-title">Ceremonia Religiosa</h2>
+                <div class="event-details">
+                    <p><span class="icon">📅</span> Fecha: 23 de noviembre 2025</p>
+                    <p><span class="icon">🕰️</span> Hora: 1:00 pm</p>
+                    <p><span class="icon">📍</span> Lugar: Iglesia del Santo Entierro o Santo Sepulcro</p>
+                    <p class="address">Dirección: 72770, Av. 8 Ote. 601, Barrio de San Miguel Tianguisnahuitl, Cholula de Rivadavia, Pue</p>
+                    <a href="https://maps.app.goo.gl/MESG66t5392Zncfm8" class="btn btn-neon" target="_blank">Ver ubicación</a>
                 </div>
-                <button class="boton-ubicacion" onclick="abrirUbicacion('recepcion')">
-                    <i class="fas fa-map-marker-alt"></i> Ver Ubicación
-                </button>
-            </div>
-        </div>
-        
-        <!-- Entretenimiento -->
-        <div class="seccion">
-            <h2 class="titulo-seccion">Entretenimiento</h2>
-            <div class="actividad">
-                <div><strong>Pintacaritas:</strong> 4:30 PM</div>
-            </div>
-            <div class="actividad">
-                <div><strong>Show de Payaso:</strong> 7:00 PM</div>
-            </div>
-        </div>
-        
-</div>
-        <div class="sugerencia">Sobres (Dinero)</div>
-        <div class="sugerencia">Ropa Talla 8</div>
-        <div class="sugerencia">Tennis Talla 18</div>
-        <div class="sugerencia">Muñecas</div>
-        <div class="sugerencia">Material para Pintar</div>
-        <div class="sugerencia">Memoramas</div>
-        <div class="sugerencia">Rompecabezas</div>
-        <div class="sugerencia">Dominó</div>
-        <div class="sugerencia">Faldas y Vestidos</div>
-        <div class="sugerencia">Bolsitas</div>
-        <div class="sugerencia">Mochilitas</div>
-    </div>
-    <p style="margin-top: 15px; font-style: italic;">Agradezco de antemano tu cariño y generosidad. ¡Dios te bendiga hoy y siempre!</p>
-</div>
-                <div class="sugerencia">Sobres (Dinero)</div>
-                <div class="sugerencia">Juguetes Educativos</div>
-                <div class="sugerencia">Libros</div>
-                <div class="sugerencia">Ropa</div>
-            </div>
-            <p style="margin-top: 15px; font-style: italic;">Agradezco de antemano tu cariño y generosidad. ¡Dios te bendiga hoy y siempre!</p>
-        </div>
-        
-        <!-- Confirmación de Asistencia -->
-        <div class="seccion">
-            <h2 class="titulo-seccion">Confirmación de Asistencia</h2>
-            <p>Por favor confirma tu asistencia antes del 10 de Noviembre, 2025</p>
-            
-            <div class="form-group">
-                <label for="nombre">Nombre (mínimo 3 caracteres):</label>
-                <input type="text" id="nombre" minlength="3" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="adultos">Número de Adultos:</label>
-                <select id="adultos">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="ninos">Número de Niños:</label>
-                <select id="ninos">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-            </div>
-            
-            <button class="boton-confirmar" onclick="confirmarAsistencia()">Confirmar Asistencia</button>
-            
-            <div id="mensaje-confirmacion" style="display: none; margin-top: 15px; padding: 10px; background: #d4edda; border-radius: 10px; color: #155724;">
-                ¡Confirmación exitosa! Se ha enviado un mensaje por WhatsApp.
-            </div>
-            
-            <div id="mensaje-cancelacion" style="display: none; margin-top: 15px; padding: 10px; background: #f8d7da; border-radius: 10px; color: #721c24;">
-                Invitación cancelada. No se ha confirmado la asistencia.
-            </div>
-        </div>
-        
-        <!-- Subir Fotos -->
-        <div class="seccion">
-            <h2 class="titulo-seccion">Comparte tus Fotos</h2>
-            <p>¡Sube las fotos de la fiesta para recordar este día especial!</p>
-            <div id="subir-fotos">
-                <input type="file" id="foto-input" accept="image/*" multiple>
-                <label for="foto-input" class="boton-foto">
-                    <i class="fas fa-camera"></i> Seleccionar Fotos
-                </label>
-            </div>
-            <p style="margin-top: 10px; font-size: 14px; color: #666;">Puedes subir varias fotos a la vez</p>
-        </div>
-        
-        <!-- Agradecimiento -->
-        <div class="agradecimiento">
-            <p>¡Gracias por ser parte de este día tan especial!</p>
-            <p>Tu presencia llenará de alegría mi corazón</p>
-            <p style="margin-top: 20px;">Con todo mi cariño,</p>
-            <p style="font-size: 250px; margin-top: 10px;">Aliany</p>
+            </section>
+
+            <!-- ===== RECEPCIÓN Y CELEBRACIÓN ===== -->
+            <section class="section">
+                <h2 class="section-title">Recepción y Celebración</h2>
+                <div class="event-details">
+                    <p><span class="icon">📅</span> Fecha: 23 de noviembre de 2025</p>
+                    <p><span class="icon">🕰️</span> Hora: 4:00 pm</p>
+                    <p><span class="icon">📍</span> Lugar: Salon jardín Joss Mary</p>
+                    <p class="address">Dirección: C. Río Atoyac Sur 513, Santiago Momoxpan, Rafael Ávila Camacho (Manantiales, 72760 Heroica Puebla de Zaragoza, Pue.</p>
+                    <a href="https://maps.app.goo.gl/Uw6MZtHp4LnNYkwTA" class="btn btn-neon" target="_blank">Ver ubicación</a>
+                </div>
+            </section>
+
+            <!-- ===== ENTRETENIMIENTO PARA NIÑOS ===== -->
+            <section class="section">
+                <h2 class="section-title">Entretenimiento para los niños</h2>
+                <div class="event-details">
+                    <p><span class="icon">🎨</span> Pintacaritas: 4:30 pm</p>
+                    <p><span class="icon">🤡</span> Show del payaso: 7:00 pm</p>
+                </div>
+            </section>
+
+            <!-- ===== SUGERENCIAS DE REGALO ===== -->
+            <section class="section gift-suggestions">
+                <h2 class="section-title">Sugerencias de regalo</h2>
+                <p>Si deseas obsequiarme algo te sugiero:</p>
+                <ul>
+                    <li>Ropa soy talla 8</li>
+                    <li>Zapatos o tennis: #18</li>
+                    <li>Me gustan las muñecas</li>
+                    <li>Me gusta pintar</li>
+                    <li>Rompecabezas o memoramas</li>
+                    <li>Dominó</li>
+                    <li>Bolsitas de mano o mochilitas</li>
+                    <li>Juegos de té y cocina</li>
+                    <li>Será de manualidades o arte</li>
+                    <li>Libros para colorear o cuentos interactivos</li>
+                </ul>
+                <p>Si en todo caso tu regalo es dinero lo agradezco mucho será para mí alcancía</p>
+                <p class="thank-you">Agradezco tu cariño y generosidad Dios te bendiga hoy y siempre</p>
+            </section>
+
+            <!-- ===== CONFIRMACIÓN DE ASISTENCIA ===== -->
+            <section class="section">
+                <h2 class="section-title">Confirmación de Asistencia</h2>
+                <div class="confirmation">
+                    <p>Por favor confirma tu asistencia antes del 10 de noviembre</p>
+                    <button id="confirmBtn" class="btn">Confirmar Asistencia</button>
+                    <button id="cancelBtn" class="btn">No asistiré</button>
+                    
+                    <div class="confirmation-form" id="confirmationForm">
+                        <div class="form-group">
+                            <label for="name">Tu nombre (mínimo 3 caracteres):</label>
+                            <input type="text" id="name" minlength="3" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="adults">Número de adultos (incluyéndote):</label>
+                            <input type="number" id="adults" min="1" max="3" value="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="children">Número de niños:</label>
+                            <input type="number" id="children" min="0" max="2" value="0">
+                        </div>
+                        <button id="submitBtn" class="btn">Enviar Confirmación</button>
+                    </div>
+                    
+                    <div class="thank-you-message hidden" id="thankYouMessage">
+                        <p>¡Gracias por confirmar! Te esperamos en mi fiesta.</p>
+                    </div>
+                    
+                    <div class="cancel-message hidden" id="cancelMessage">
+                        <p>Lamentamos que no puedas asistir. ¡Gracias por avisarnos!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== RECORDATORIO DE FOTOS ===== -->
+            <section class="section">
+                <h2 class="section-title">Recuerda</h2>
+                <div class="photo-reminder">
+                    <p>No se te olvide tomar fotos en mi fiesta heee</p>
+                    <button id="photoBtn" class="btn">Agendar recordatorio de fotos</button>
+                </div>
+            </section>
+
+            <!-- ===== MENSAJE FINAL ===== -->
+            <section class="section">
+                <div class="final-message">
+                    <p>Será un día Mágico y me encantaría compartirlo contigo, ❤️con cariño Ailany❤️</p>
+                </div>
+            </section>
         </div>
     </div>
 
-    <!-- Modal de Administrador -->
-    <div id="modal-admin" class="modal">
-        <div class="modal-contenido">
-            <h2>Confirmaciones de Asistencia</h2>
-            <div id="lista-confirmaciones"></div>
-            <button onclick="cerrarModalAdmin()" style="margin-top: 20px; padding: 10px 20px; background: var(--rosa-principal); color: white; border: none; border-radius: 10px; cursor: pointer;">Cerrar</button>
+    <!-- ===== PANEL DE ADMINISTRACIÓN ===== -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-content">
+            <h2>Panel de Administración</h2>
+            <div id="adminData">
+                <p>Total de confirmaciones: <span id="totalConfirmations">0</span></p>
+                <p>Total de adultos: <span id="totalAdults">0</span></p>
+                <p>Total de niños: <span id="totalChildren">0</span></p>
+                <div id="guestList"></div>
+            </div>
+            <button class="admin-close" id="adminClose">X</button>
         </div>
     </div>
 
-    <!-- Área secreta para administrador -->
-    <div style="position: fixed; bottom: 10px; right: 10px; width: 50px; height: 50px; background: transparent; z-index: 1000;" onclick="abrirModalAdmin()"></div>
+    <!-- ===== AUDIO PARA LA CANCIÓN ===== -->
+    <audio id="audioPlayer" preload="auto">
+        <source src="golden_spanish.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
 
     <script>
-        // Elementos DOM
-        const inicio = document.getElementById('inicio');
-        const contenidoPrincipal = document.getElementById('contenido-principal');
-        const textoInvitacion = document.querySelector('.texto-invitacion');
-        const audio = new Audio('golden_spanish.mp3');
-        
-        // Variables para administrador
-        let confirmaciones = [];
-        let clicksAdmin = 0;
-        const claveAdmin = "Aliany5"; // Contraseña secreta
+        // ===== VARIABLES GLOBALES =====
+        let guestList = [];
 
-        // Inicializar partículas y destellos
-        function inicializarEfectos() {
-            const particlesContainer = document.getElementById('particles');
-            for (let i = 0; i < 30; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                const size = Math.random() * 10 + 5;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${Math.random() * 100}vw`;
-                particle.style.animationDelay = `${Math.random() * 15}s`;
-                particle.style.animationDuration = `${15 + Math.random() * 10}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-            
-            const sparklesContainer = document.getElementById('sparkles');
-            for (let i = 0; i < 15; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.classList.add('sparkle');
-                
-                const size = Math.random() * 100 + 50;
-                sparkle.style.width = `${size}px`;
-                sparkle.style.height = `${size}px`;
-                sparkle.style.left = `${Math.random() * 100}vw`;
-                sparkle.style.top = `${Math.random() * 100}vh`;
-                sparkle.style.animationDelay = `${Math.random() * 3}s`;
-                
-                sparklesContainer.appendChild(sparkle);
-            }
-        }
+        // ===== INICIALIZACIÓN AL CARGAR EL DOM =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos del DOM
+            const door = document.getElementById('castleDoor');
+            const invitationText = document.getElementById('invitationText');
+            const invitationContent = document.getElementById('invitationContent');
+            const audioPlayer = document.getElementById('audioPlayer');
+            const confirmBtn = document.getElementById('confirmBtn');
+            const cancelBtn = document.getElementById('cancelBtn');
+            const confirmationForm = document.getElementById('confirmationForm');
+            const thankYouMessage = document.getElementById('thankYouMessage');
+            const cancelMessage = document.getElementById('cancelMessage');
+            const submitBtn = document.getElementById('submitBtn');
+            const photoBtn = document.getElementById('photoBtn');
+            const adminCrown = document.getElementById('adminCrown');
+            const adminPanel = document.getElementById('adminPanel');
+            const adminClose = document.getElementById('adminClose');
 
-        // Mostrar invitación al hacer clic en el castillo
-        inicio.addEventListener('click', function() {
-            // Mostrar texto de invitación
-            textoInvitacion.style.opacity = '1';
-            
-            // Reproducir música después de 1 segundo
-            setTimeout(function() {
-                audio.play().catch(e => console.log("Error reproduciendo audio: ", e));
+            // ===== CREAR PARTÍCULAS DE LUZ =====
+            createParticles();
+
+            // ===== ANIMACIÓN DEL CASTILLO =====
+            door.addEventListener('click', function() {
+                // Abrir puerta
+                door.classList.add('open');
                 
-                // Ocultar pantalla inicial y mostrar contenido después de 2 segundos
-                setTimeout(function() {
-                    inicio.style.display = 'none';
-                    contenidoPrincipal.style.display = 'block';
-                }, 2000);
-            }, 1000);
-        });
+                // Reproducir sonido
+                audioPlayer.play().catch(error => {
+                    console.log('La reproducción automática falló: ', error);
+                    // Si falla, intentamos cargar y reproducir
+                    audioPlayer.load();
+                    audioPlayer.play();
+                });
 
-        // Cuenta regresiva
-        function actualizarCuentaRegresiva() {
-            const fechaFiesta = new Date('November 23, 2025 16:00:00').getTime();
-            const ahora = new Date().getTime();
-            const diferencia = fechaFiesta - ahora;
-            
-            if (diferencia > 0) {
-                const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-                const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-                const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-                
-                document.getElementById('dias').textContent = dias.toString().padStart(2, '0');
-                document.getElementById('horas').textContent = horas.toString().padStart(2, '0');
-                document.getElementById('minutos').textContent = minutos.toString().padStart(2, '0');
-                document.getElementById('segundos').textContent = segundos.toString().padStart(2, '0');
-            }
-        }
-        
-        setInterval(actualizarCuentaRegresiva, 1000);
-        actualizarCuentaRegresiva();
+                // Mostrar texto de invitación después de un breve retraso
+                setTimeout(() => {
+                    invitationText.classList.add('visible');
+                    
+                    // Efecto de escritura para el texto de invitación
+                    typeWriter(invitationText.querySelector('.neon-text'), "¡Te invito a mi fiesta!", 0);
+                    
+                    // Mostrar contenido de la invitación después de que termine la escritura
+                    setTimeout(() => {
+                        invitationContent.style.display = 'block';
+                    }, 2500);
+                }, 1000);
+            });
 
-        // Funciones de ubicación
-        function abrirUbicacion(tipo) {
-            let url;
-            if (tipo === 'ceremonia') {
-                url = 'https://maps.app.goo.gl/QYh5qn6YETCEhHSb9';
-            } else {
-                url = 'https://maps.app.goo.gl/khuhqNdE9yq3kdDd6';
-            }
-            window.open(url, '_blank');
-        }
-
-        // Confirmación de asistencia
-        function confirmarAsistencia() {
-            const nombre = document.getElementById('nombre').value;
-            const adultos = parseInt(document.getElementById('adultos').value);
-            const ninos = parseInt(document.getElementById('ninos').value);
-            
-            if (nombre.length < 3) {
-                alert('Por favor ingresa un nombre válido (mínimo 3 caracteres)');
-                return;
-            }
-            
-            if (adultos + ninos === 0) {
-                document.getElementById('mensaje-cancelacion').style.display = 'block';
-                document.getElementById('mensaje-confirmacion').style.display = 'none';
-                return;
-            }
-            
-            if (adultos + ninos > 4) {
-                alert('Máximo 4 personas por confirmación (adultos y niños incluidos)');
-                return;
-            }
-            
-            // Guardar confirmación
-            const confirmacion = {
-                nombre: nombre,
-                adultos: adultos,
-                ninos: ninos,
-                fecha: new Date().toLocaleString()
-            };
-            
-            confirmaciones.push(confirmacion);
-            
-            // Mostrar mensaje de confirmación
-            document.getElementById('mensaje-confirmacion').style.display = 'block';
-            document.getElementById('mensaje-cancelacion').style.display = 'none';
-            
-            // Enviar mensaje de WhatsApp
-            const mensaje = `Hola! Confirmo mi asistencia a la fiesta de Aliany.\nNombre: ${nombre}\nAdultos: ${adultos}\nNiños: ${ninos}\nTotal: ${adultos + ninos} personas`;
-            const urlWhatsApp = `https://wa.me/2221012336?text=${encodeURIComponent(mensaje)}`;
-            window.open(urlWhatsApp, '_blank');
-            
-            // Agregar al calendario (simulación)
-            alert('Evento agregado a tu calendario: Fiesta de Cumpleaños de Aliany - 23 de Noviembre, 2025');
-            
-            // Limpiar formulario
-            document.getElementById('nombre').value = '';
-            document.getElementById('adultos').value = '0';
-            document.getElementById('ninos').value = '0';
-        }
-
-        // Funciones de administrador
-        function abrirModalAdmin() {
-            clicksAdmin++;
-            if (clicksAdmin === 5) {
-                const password = prompt('Ingresa la contraseña de administrador:');
-                if (password === claveAdmin) {
-                    mostrarConfirmaciones();
-                    document.getElementById('modal-admin').style.display = 'flex';
-                    clicksAdmin = 0;
-                } else {
-                    alert('Contraseña incorrecta');
-                    clicksAdmin = 0;
+            // ===== EFECTO DE MÁQUINA DE ESCRIBIR =====
+            function typeWriter(element, text, index) {
+                if (index < text.length) {
+                    element.innerHTML = text.substring(0, index + 1);
+                    setTimeout(() => typeWriter(element, text, index + 1), 100);
                 }
             }
-        }
 
-        function cerrarModalAdmin() {
-            document.getElementById('modal-admin').style.display = 'none';
-        }
+            // ===== CUENTA REGRESIVA =====
+            function updateCountdown() {
+                const eventDate = new Date('November 23, 2025 13:00:00').getTime();
+                const now = new Date().getTime();
+                const distance = eventDate - now;
 
-        function mostrarConfirmaciones() {
-            const lista = document.getElementById('lista-confirmaciones');
-            lista.innerHTML = '';
-            
-            if (confirmaciones.length === 0) {
-                lista.innerHTML = '<p>No hay confirmaciones aún.</p>';
-                return;
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
             }
-            
-            confirmaciones.forEach(conf => {
-                const div = document.createElement('div');
-                div.style.padding = '10px';
-                div.style.borderBottom = '1px solid #eee';
-                div.innerHTML = `
-                    <p><strong>Nombre:</strong> ${conf.nombre}</p>
-                    <p><strong>Adultos:</strong> ${conf.adultos}</p>
-                    <p><strong>Niños:</strong> ${conf.ninos}</p>
-                    <p><strong>Total:</strong> ${conf.adultos + conf.ninos} personas</p>
-                    <p><strong>Fecha de confirmación:</strong> ${conf.fecha}</p>
-                `;
-                lista.appendChild(div);
-            });
-        }
 
-        // Subir fotos
-        document.getElementById('foto-input').addEventListener('change', function(e) {
-            if (e.target.files.length > 0) {
-                alert(`¡Gracias por subir ${e.target.files.length} foto(s)! Se mostrarán en la galería de la fiesta.`);
-                // Aquí normalmente se subirían las fotos a un servidor
+            setInterval(updateCountdown, 1000);
+            updateCountdown(); // Llamada inicial
+
+            // ===== CONFIRMACIÓN DE ASISTENCIA =====
+            confirmBtn.addEventListener('click', function() {
+                confirmationForm.style.display = 'block';
+                confirmBtn.style.display = 'none';
+                cancelBtn.style.display = 'none';
+            });
+
+            cancelBtn.addEventListener('click', function() {
+                if (confirm('¿Estás seguro de que no podrás asistir?')) {
+                    cancelMessage.classList.remove('hidden');
+                    confirmBtn.style.display = 'none';
+                    cancelBtn.style.display = 'none';
+                    
+                    // Enviar mensaje de WhatsApp
+                    const phoneNumber = "2221012336";
+                    const message = "Lamento informar que no podré asistir a la fiesta de Ailany. ¡Gracias por la invitación!";
+                    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+                }
+            });
+
+            submitBtn.addEventListener('click', function() {
+                const name = document.getElementById('name').value;
+                const adults = parseInt(document.getElementById('adults').value);
+                const children = parseInt(document.getElementById('children').value);
+                
+                // Validación estricta
+                if (name.length < 3) {
+                    alert('Por favor, ingresa un nombre válido (mínimo 3 caracteres)');
+                    return;
+                }
+                
+                if (adults + children > 3) {
+                    alert('El total de personas no puede ser mayor a 3 (incluyendo adultos y niños)');
+                    return;
+                }
+                
+                if (adults < 1) {
+                    alert('Debe haber al menos 1 adulto');
+                    return;
+                }
+                
+                // Guardar datos del invitado
+                const guest = {
+                    name: name,
+                    adults: adults,
+                    children: children,
+                    timestamp: new Date().toLocaleString()
+                };
+                
+                guestList.push(guest);
+                updateAdminPanel();
+                
+                // Enviar mensaje de WhatsApp
+                const phoneNumber = "2221012336";
+                const message = `¡Hola! Confirmo mi asistencia a la fiesta de Ailany. Mi nombre es ${name} y asistiré con ${adults} adultos y ${children} niños. ¡Nos vemos ahí!`;
+                window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+                
+                thankYouMessage.classList.remove('hidden');
+                confirmationForm.style.display = 'none';
+                
+                // Agregar al calendario
+                addToCalendar();
+            });
+
+            // ===== AGREGAR EVENTO AL CALENDARIO =====
+            function addToCalendar() {
+                const eventDate = new Date('November 23, 2025 13:00:00');
+                const endDate = new Date('November 23, 2025 22:00:00');
+                
+                const calendarEvent = {
+                    title: 'Fiesta de Ailany - Mis V Años',
+                    description: '¡Te invito a celebrar mis 5 años! Será un día mágico lleno de diversión.',
+                    location: 'Iglesia del Santo Entierro o Santo Sepulcro y Salon jardín Joss Mary',
+                    startTime: eventDate.toISOString(),
+                    endTime: endDate.toISOString()
+                };
+                
+                // Crear enlace para Google Calendar
+                const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&dates=${formatDateForGoogleCalendar(calendarEvent.startTime)}%2F${formatDateForGoogleCalendar(calendarEvent.endTime)}&text=${encodeURIComponent(calendarEvent.title)}&details=${encodeURIComponent(calendarEvent.description)}&location=${encodeURIComponent(calendarEvent.location)}`;
+                
+                // Abrir enlace en una nueva pestaña
+                window.open(googleCalendarUrl, '_blank');
+            }
+
+            function formatDateForGoogleCalendar(dateString) {
+                return dateString.replace(/-|:|\.\d+/g, '');
+            }
+
+            // ===== RECORDATORIO DE FOTOS =====
+            photoBtn.addEventListener('click', function() {
+                const eventDate = new Date('November 23, 2025 13:00:00');
+                const reminderDate = new Date(eventDate.getTime() - (60 * 60 * 1000)); // 1 hora antes
+                
+                const calendarEvent = {
+                    title: 'Recordatorio: Tomar fotos en la fiesta de Ailany',
+                    description: '¡No olvides tomar muchas fotos en la fiesta de Ailany! #FiestaDeAilany',
+                    location: 'Salon jardín Joss Mary',
+                    startTime: reminderDate.toISOString(),
+                    endTime: new Date(reminderDate.getTime() + (30 * 60 * 1000)).toISOString() // 30 minutos después
+                };
+                
+                // Crear enlace para Google Calendar
+                const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&dates=${formatDateForGoogleCalendar(calendarEvent.startTime)}%2F${formatDateForGoogleCalendar(calendarEvent.endTime)}&text=${encodeURIComponent(calendarEvent.title)}&details=${encodeURIComponent(calendarEvent.description)}&location=${encodeURIComponent(calendarEvent.location)}`;
+                
+                // Abrir enlace en una nueva pestaña
+                window.open(googleCalendarUrl, '_blank');
+                
+                alert('¡Recordatorio agregado! No olvides tomar muchas fotos en la fiesta.');
+            });
+
+            // ===== PANEL DE ADMINISTRACIÓN =====
+            adminCrown.addEventListener('click', function() {
+                adminPanel.style.display = 'flex';
+            });
+
+            adminClose.addEventListener('click', function() {
+                adminPanel.style.display = 'none';
+            });
+
+            function updateAdminPanel() {
+                const totalConfirmations = guestList.length;
+                const totalAdults = guestList.reduce((sum, guest) => sum + guest.adults, 0);
+                const totalChildren = guestList.reduce((sum, guest) => sum + guest.children, 0);
+                
+                document.getElementById('totalConfirmations').textContent = totalConfirmations;
+                document.getElementById('totalAdults').textContent = totalAdults;
+                document.getElementById('totalChildren').textContent = totalChildren;
+                
+                const guestListElement = document.getElementById('guestList');
+                guestListElement.innerHTML = '<h3>Lista de Invitados:</h3>';
+                
+                guestList.forEach(guest => {
+                    const guestElement = document.createElement('div');
+                    guestElement.innerHTML = `
+                        <p><strong>${guest.name}</strong> - ${guest.adults} adultos, ${guest.children} niños (${guest.timestamp})</p>
+                    `;
+                    guestListElement.appendChild(guestElement);
+                });
+            }
+
+            // ===== CREAR PARTÍCULAS DE LUZ =====
+            function createParticles() {
+                const particlesContainer = document.getElementById('particles');
+                const particleCount = 50;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    // Posición aleatoria
+                    const posX = Math.random() * 100;
+                    const posY = Math.random() * 100;
+                    particle.style.left = `${posX}%`;
+                    particle.style.top = `${posY}%`;
+                    
+                    // Tamaño aleatorio
+                    const size = Math.random() * 3 + 1;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    
+                    // Retraso de animación aleatorio
+                    const delay = Math.random() * 15;
+                    particle.style.animationDelay = `${delay}s`;
+                    
+                    particlesContainer.appendChild(particle);
+                }
             }
         });
-
-        // Inicializar efectos al cargar la página
-        window.addEventListener('load', inicializarEfectos);
     </script>
 </body>
 </html>
