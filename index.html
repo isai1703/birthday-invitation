@@ -257,97 +257,131 @@
             display: none;
         }
 
-        /* TÍTULO MEJORADO - MIS V AÑOS */
+        /* TÍTULO ESTILO IMAGEN - UNA SOLA LÍNEA */
         .header-title {
             text-align: center;
-            font-size: 4.5em;
-            color: transparent;
-            margin: 40px 0 30px;
-            font-family: 'Dancing Script', cursive;
-            font-style: italic;
-            background: linear-gradient(135deg, #ff69b4, #db2777, #be185d, #ff1493);
-            background-size: 300% 300%;
+            font-size: 2.5em;
+            color: #db2777;
+            margin: 30px 0 20px;
+            font-family: 'Parisienne', cursive;
+            font-weight: bold;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+            padding: 20px 15px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 240, 245, 0.9));
+            border-radius: 20px;
+            box-shadow: 
+                0 8px 25px rgba(219, 39, 119, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                inset 0 -2px 0 rgba(199, 21, 133, 0.2);
+            border: 2px solid rgba(255, 105, 180, 0.3);
+            text-shadow: 
+                2px 2px 0 rgba(255, 255, 255, 0.8),
+                3px 3px 0 rgba(255, 182, 193, 0.4),
+                4px 4px 0 rgba(255, 105, 180, 0.2);
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { 
+                box-shadow: 
+                    0 8px 25px rgba(219, 39, 119, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                    inset 0 -2px 0 rgba(199, 21, 133, 0.2),
+                    0 0 20px rgba(255, 105, 180, 0.3);
+            }
+            50% { 
+                box-shadow: 
+                    0 12px 35px rgba(219, 39, 119, 0.4),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+                    inset 0 -2px 0 rgba(199, 21, 133, 0.3),
+                    0 0 30px rgba(255, 105, 180, 0.5);
+            }
+        }
+
+        .title-star {
+            font-size: 1.2em;
+            animation: starTwinkle 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+            color: #ffd700;
+            text-shadow: 
+                0 0 10px rgba(255, 215, 0, 0.8),
+                0 0 20px rgba(255, 215, 0, 0.6);
+        }
+
+        @keyframes starTwinkle {
+            0%, 100% { 
+                opacity: 0.8; 
+                transform: scale(1) rotate(0deg); 
+            }
+            25% { 
+                opacity: 1; 
+                transform: scale(1.2) rotate(90deg); 
+            }
+            50% { 
+                opacity: 0.9; 
+                transform: scale(1.1) rotate(180deg); 
+            }
+            75% { 
+                opacity: 1; 
+                transform: scale(1.3) rotate(270deg); 
+            }
+        }
+
+        .title-text {
+            background: linear-gradient(135deg, #db2777, #ff1493, #ec4899);
             -webkit-background-clip: text;
             background-clip: text;
-            animation: titleGradient 4s ease infinite, titleFloat 3s ease-in-out infinite;
-            text-shadow: 
-                3px 3px 0 rgba(255, 255, 255, 0.8),
-                6px 6px 0 rgba(255, 105, 180, 0.3),
-                9px 9px 0 rgba(219, 39, 119, 0.2);
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 0 30px;
+            color: transparent;
+            font-size: 1.1em;
+            padding: 0 5px;
+            text-shadow: none;
         }
 
-        @keyframes titleGradient {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        @keyframes titleFloat {
-            0%, 100% { transform: translateX(-50%) translateY(0px) rotate(0deg); }
-            33% { transform: translateX(-50%) translateY(-5px) rotate(0.5deg); }
-            66% { transform: translateX(-50%) translateY(-3px) rotate(-0.5deg); }
-        }
-
-        .header-title::before {
-            content: '✨';
-            position: absolute;
-            left: -10px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 0.6em;
-            animation: sparkleLeft 2s ease-in-out infinite;
-        }
-
-        .header-title::after {
-            content: '✨';
-            position: absolute;
-            right: -10px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 0.6em;
-            animation: sparkleRight 2s ease-in-out infinite 0.5s;
-        }
-
-        @keyframes sparkleLeft {
-            0%, 100% { opacity: 0.5; transform: translateY(-50%) rotate(0deg) scale(1); }
-            50% { opacity: 1; transform: translateY(-50%) rotate(180deg) scale(1.3); }
-        }
-
-        @keyframes sparkleRight {
-            0%, 100% { opacity: 0.5; transform: translateY(-50%) rotate(0deg) scale(1); }
-            50% { opacity: 1; transform: translateY(-50%) rotate(-180deg) scale(1.3); }
-        }
-
-        /* NOMBRE MEJORADO CON CORONA */
+        /* NOMBRE MEJORADO - MÁS GRANDE CON CORONA SOBRE EL NOMBRE */
         .name-section {
             text-align: center;
-            margin: 30px 0;
+            margin: 20px 0;
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
+            justify-content: center;
         }
 
         .crown {
-            font-size: 4.5em;
-            animation: crownSpin 8s linear infinite;
-            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
-            margin-bottom: -10px;
+            font-size: 5em;
+            animation: crownSwing 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.9));
+            margin-bottom: -25px;
+            transform-origin: center;
+            width: auto;
+            height: auto;
+            display: block;
         }
 
-        @keyframes crownSpin {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.1); }
-            100% { transform: rotate(360deg) scale(1); }
+        @keyframes crownSwing {
+            0%, 100% { 
+                transform: rotate(-15deg) scale(1.1); 
+            }
+            25% { 
+                transform: rotate(-5deg) scale(1.1);
+            }
+            50% { 
+                transform: rotate(5deg) scale(1.1);
+            }
+            75% { 
+                transform: rotate(-5deg) scale(1.1);
+            }
         }
 
         .name {
-            font-size: 5em;
+            font-size: 5.5em;
             font-family: 'Parisienne', cursive;
             color: #db2777;
             text-shadow: 
@@ -363,7 +397,8 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-top: -15px;
+            line-height: 1;
+            margin-top: 0;
         }
 
         @keyframes neonPulse {
@@ -443,13 +478,19 @@
             box-shadow: 0 5px 15px rgba(219, 39, 119, 0.4);
         }
 
-        /* REGALOS */
+        /* REGALOS - TÍTULO CENTRADO Y TALLA 8 */
         .gift-item {
             background: #fdf2f8;
             padding: 20px;
             margin: 15px 0;
             border-radius: 15px;
             border: 2px solid #fce7f3;
+            text-align: center;
+        }
+
+        .gift-item h3 {
+            text-align: center;
+            margin-bottom: 15px;
         }
 
         .size-info {
@@ -458,6 +499,15 @@
             border-radius: 10px;
             margin: 10px 0;
             border-left: 4px solid #ec4899;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .gift-options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
         }
 
         /* BOTÓN CONFIRMACIÓN */
@@ -544,15 +594,26 @@
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .header-title {
-                font-size: 3em;
+                font-size: 1.8em;
+                padding: 15px 10px;
+                gap: 10px;
+            }
+            
+            .title-star {
+                font-size: 1em;
+            }
+            
+            .title-text {
+                font-size: 1em;
             }
             
             .name {
-                font-size: 3.5em;
+                font-size: 3.8em;
             }
             
             .crown {
-                font-size: 3.5em;
+                font-size: 4em;
+                margin-bottom: -20px;
             }
             
             .castle {
@@ -568,6 +629,23 @@
             .confirm-btn {
                 padding: 15px 30px;
                 font-size: 1.1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-title {
+                font-size: 1.5em;
+                gap: 8px;
+                padding: 12px 8px;
+            }
+            
+            .name {
+                font-size: 3.2em;
+            }
+            
+            .crown {
+                font-size: 3.5em;
+                margin-bottom: -15px;
             }
         }
     </style>
@@ -596,16 +674,19 @@
 
     <!-- CONTENIDO PRINCIPAL -->
     <div class="container" id="mainContent">
-        <!-- TÍTULO MEJORADO -->
-        <h1 class="header-title">Mis V Años</h1>
+        <!-- TÍTULO ESTILO IMAGEN - UNA SOLA LÍNEA -->
+        <h1 class="header-title">
+            <span class="title-star">✨</span>
+            <span class="title-text">Mis V Años</span>
+            <span class="title-star">✨</span>
+        </h1>
 
-        <!-- NOMBRE MEJORADO CON CORONA -->
+        <!-- NOMBRE MEJORADO - CORONA SOBRE EL NOMBRE MÁS GRANDE -->
         <div class="name-section">
             <div class="crown">👑</div>
             <div class="name">Ailany</div>
         </div>
 
-        <!-- EL RESTO DEL CONTENIDO SE MANTIENE IGUAL -->
         <!-- CEREMONIA RELIGIOSA -->
         <div class="section">
             <h2>✨ Ceremonia Religiosa ✨</h2>
@@ -634,27 +715,29 @@
             </div>
         </div>
 
-        <!-- SUGERENCIA DE REGALOS -->
+        <!-- SUGERENCIA DE REGALOS - CENTRADO Y TALLA 8 -->
         <div class="section">
             <h2>🎁 Sugerencia de Regalos 🎁</h2>
             <p style="text-align: center; margin-bottom: 20px;">Tu presencia es nuestro mejor regalo, pero si deseas obsequiar algo, aquí algunas sugerencias:</p>
 
-            <div class="gift-item">
-                <h3>👗 Ropa</h3>
-                <div class="size-info">
-                    <p><strong>Talla:</strong> 6 años</p>
-                    <p><strong>Zapatos:</strong> 18 MX</p>
+            <div class="gift-options">
+                <div class="gift-item">
+                    <h3>👗 Ropa</h3>
+                    <div class="size-info">
+                        <p><strong>Talla:</strong> 8 años</p>
+                        <p><strong>Zapatos:</strong> 18 MX</p>
+                    </div>
+                    <p>Le encantan los vestidos de princesas, ropa colorida y accesorios brillantes ✨</p>
                 </div>
-                <p>Le encantan los vestidos de princesas, ropa colorida y accesorios brillantes ✨</p>
-            </div>
 
-            <div class="gift-item">
-                <h3>🧸 Juguetes</h3>
-                <p>Sus favoritos:</p>
-                <p>• Muñecas y accesorios 👸</p>
-                <p>• Juegos de té y cocina 🍰</p>
-                <p>• Sets de manualidades y arte 🎨</p>
-                <p>• Libros para colorear y cuentos 📚</p>
+                <div class="gift-item">
+                    <h3>🧸 Juguetes</h3>
+                    <p>Sus favoritos:</p>
+                    <p>• Muñecas y accesorios 👸</p>
+                    <p>• Juegos de té y cocina 🍰</p>
+                    <p>• Sets de manualidades y arte 🎨</p>
+                    <p>• Libros para colorear y cuentos 📚</p>
+                </div>
             </div>
         </div>
 
