@@ -411,6 +411,12 @@
         }
 
         @keyframes float {
+@keyframes floatName {
+    0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+    25% { transform: translateY(-25px) scale(1.05) rotate(1deg); }
+    50% { transform: translateY(-15px) scale(1.03) rotate(-1deg); }
+    75% { transform: translateY(-20px) scale(1.04) rotate(0.5deg); }
+}
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
