@@ -3,1428 +3,955 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V Años de Ailany 👑</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Great+Vibes&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <title>Mis V Años - Ailany</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Cinzel', serif; 
-            background: linear-gradient(135deg, #ffc0e3 0%, #ffb3d9 25%, #ffa6cf 50%, #ff99c5 75%, #ff8cbb 100%); 
-            min-height: 100vh; 
-            overflow-x: hidden; 
-            position: relative; 
+        :root {
+            --blush-pink: #FADADD;
+            --rose-gold: #B76E79;
+            --gold: #D4AF37;
+            --neon-pink: #FF1493;
+            --neon-purple: #BF00FF;
+            --pastel-pink: #FFD1DC;
+            --light-gold: #F9E076;
         }
         
-        /* Partículas flotantes */
-        .particles-container { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            pointer-events: none; 
-            z-index: 1; 
-            overflow: hidden; 
-        }
-        .particle { 
-            position: absolute; 
-            font-size: 20px; 
-            opacity: 0.7; 
-            animation: floatParticle 15s infinite ease-in-out; 
-        }
-        @keyframes floatParticle { 
-            0%, 100% { 
-                transform: translateY(0) translateX(0) rotate(0deg); 
-                opacity: 0; 
-            } 
-            10% { 
-                opacity: 0.7; 
-            } 
-            90% { 
-                opacity: 0.7; 
-            } 
-            100% { 
-                transform: translateY(-100vh) translateX(50px) rotate(360deg); 
-                opacity: 0; 
-            } 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        /* Escena del Castillo */
-        .castle-scene { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100vw; 
-            height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            background: radial-gradient(circle at center, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.95)); 
-            z-index: 10000; 
-            transition: opacity 0.8s, visibility 0.8s; 
-        }
-        .castle-scene.hidden { 
-            opacity: 0; 
-            visibility: hidden; 
-            pointer-events: none; 
-        }
-        .castle-3d { 
-            perspective: 1200px; 
-            transform-style: preserve-3d; 
-            cursor: pointer; 
-            animation: castleFloat 4s ease-in-out infinite; 
-        }
-        @keyframes castleFloat { 
-            0%, 100% { 
-                transform: translateY(0px) rotateY(0deg); 
-            } 
-            50% { 
-                transform: translateY(-20px) rotateY(5deg); 
-            } 
-        }
-        
-        .castle-front { 
-            display: flex; 
-            align-items: flex-end; 
-            justify-content: center; 
-            gap: 30px; 
-            transform-style: preserve-3d; 
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--blush-pink), var(--pastel-pink));
+            color: #333;
+            min-height: 100vh;
+            overflow-x: hidden;
             position: relative;
-            height: 600px;
         }
         
-        /* Torres */
-        .tower { 
-            width: 110px; 
-            height: 470px;
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%); 
-            border: 3px solid transparent; 
-            border-image: linear-gradient(180deg, #ff006e, #00f0ff) 1; 
-            box-shadow: 0 0 30px rgba(255, 0, 110, 0.6), inset 0 0 20px rgba(0, 240, 255, 0.3); 
-            position: relative; 
-            transform-style: preserve-3d; 
-            animation: towerGlow 3s ease-in-out infinite; 
-        }
-        @keyframes towerGlow { 
-            0%, 100% { 
-                box-shadow: 0 0 30px rgba(255, 0, 110, 0.6), inset 0 0 20px rgba(0, 240, 255, 0.3); 
-            } 
-            50% { 
-                box-shadow: 0 0 50px rgba(255, 0, 110, 0.9), inset 0 0 30px rgba(0, 240, 255, 0.6); 
-            } 
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.4) 2%, transparent 10%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.4) 2%, transparent 10%),
+                radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.4) 2%, transparent 10%);
+            z-index: -1;
+            pointer-events: none;
         }
         
-        .tower-top { 
-            position: absolute; 
-            top: -65px; 
-            left: 50%; 
-            transform: translateX(-50%); 
-            width: 0; 
-            height: 0; 
-            border-left: 55px solid transparent; 
-            border-right: 55px solid transparent; 
-            border-bottom: 75px solid #ff006e; 
-            filter: drop-shadow(0 0 15px rgba(255, 0, 110, 0.8)); 
-            z-index: 2;
-        }
-        
-        .tower-flag { 
-            position: absolute; 
-            top: -100px; 
-            left: 50%; 
-            transform: translateX(-50%); 
-            width: 25px; 
-            height: 30px; 
-            background: linear-gradient(135deg, #ffd700, #ffed4e); 
-            clip-path: polygon(0 0, 100% 50%, 0 100%); 
-            animation: flagWave 2s ease-in-out infinite; 
-            z-index: 3;
-        }
-        @keyframes flagWave { 
-            0%, 100% { 
-                transform: translateX(-50%) rotate(-5deg); 
-            } 
-            50% { 
-                transform: translateX(-50%) rotate(5deg); 
-            } 
-        }
-        
-        .tower-top::after { 
-            content: ''; 
-            position: absolute; 
-            top: -55px; 
-            left: 50%; 
-            transform: translateX(-50%); 
-            width: 8px; 
-            height: 65px; 
-            background: linear-gradient(180deg, #ffd700, #ff006e); 
-            box-shadow: 0 0 10px #ffd700; 
-            z-index: 1;
-        }
-        
-        .tower-window { 
-            width: 45px; 
-            height: 55px; 
-            background: rgba(0, 240, 255, 0.4); 
-            border: 2px solid #00f0ff; 
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.8), inset 0 0 10px rgba(0, 240, 255, 0.5); 
-            margin: 50px auto; 
-            border-radius: 5px 5px 0 0; 
-            animation: windowGlow 3s ease-in-out infinite; 
-            position: relative;
-            z-index: 1;
-        }
-        @keyframes windowGlow { 
-            0%, 100% { 
-                opacity: 0.7; 
-            } 
-            50% { 
-                opacity: 1; 
-            } 
-        }
-        
-        /* Castillo principal */
-        .castle-main { 
-            width: 280px; 
-            height: 500px;
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%); 
-            border: 3px solid transparent; 
-            border-image: linear-gradient(180deg, #ff006e, #00f0ff) 1; 
-            box-shadow: 0 0 40px rgba(255, 0, 110, 0.7), inset 0 0 25px rgba(0, 240, 255, 0.4); 
-            position: relative; 
-            transform-style: preserve-3d; 
-            margin-bottom: -50px;
-        }
-        
-        .castle-battlements { 
-            position: absolute; 
-            top: -28px; 
-            left: 0; 
-            width: 100%; 
-            height: 28px; 
-            background: #1a1a2e; 
-            display: flex; 
-            justify-content: space-between; 
-            padding: 0 18px;
-        }
-        .battlement { 
-            width: 28px; 
-            height: 28px; 
-            background: #ff006e; 
-            margin: 0 7px; 
-        }
-        
-        .castle-gate { 
-            position: absolute; 
+        .castle-silhouette {
+            position: fixed;
             bottom: 0;
-            left: 50%; 
-            transform: translateX(-50%); 
-            width: 90px; 
-            height: 180px; 
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, rgba(183, 110, 121, 0.2), transparent);
+            clip-path: polygon(
+                0% 100%, 5% 70%, 10% 80%, 15% 60%, 20% 90%, 25% 50%, 
+                30% 80%, 35% 40%, 40% 70%, 45% 30%, 50% 100%, 55% 60%, 
+                60% 90%, 65% 50%, 70% 80%, 75% 40%, 80% 70%, 85% 30%, 
+                90% 60%, 95% 20%, 100% 100%
+            );
+            z-index: -1;
         }
-        .gate-arch { 
-            width: 100%; 
-            height: 70%; 
-            background: rgba(0, 240, 255, 0.2); 
-            border: 3px solid #00f0ff; 
-            border-bottom: none; 
-            border-radius: 55px 55px 0 0; 
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.8), inset 0 0 15px rgba(0, 240, 255, 0.5); 
+        
+        .invitation-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--rose-gold);
+            text-shadow: 
+                0 0 5px var(--blush-pink),
+                0 0 10px var(--neon-pink),
+                0 0 15px var(--neon-pink),
+                0 0 20px var(--neon-purple),
+                0 0 35px var(--neon-purple),
+                0 0 40px var(--neon-purple);
+            position: relative;
+            display: inline-block;
+            transform: perspective(500px) rotateX(15deg);
+            background: linear-gradient(45deg, var(--rose-gold), var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+        }
+        
+        .name-container {
+            position: relative;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .crown {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            color: var(--gold);
+            animation: rotateCrown 4s infinite linear;
+            text-shadow: 
+                0 0 10px var(--light-gold),
+                0 0 20px var(--gold);
+            z-index: 10;
+            cursor: pointer;
+            filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.3));
+            transition: all 0.3s;
+        }
+        
+        .crown:hover {
+            transform: translateX(-50%) scale(1.1);
+            text-shadow: 
+                0 0 15px var(--light-gold),
+                0 0 25px var(--gold),
+                0 0 35px var(--gold);
+        }
+        
+        @keyframes rotateCrown {
+            0% { transform: translateX(-50%) rotateY(0deg); }
+            100% { transform: translateX(-50%) rotateY(360deg); }
+        }
+        
+        .name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
+            color: var(--rose-gold);
+            text-shadow: 
+                0 0 5px var(--blush-pink),
+                0 0 10px var(--neon-pink),
+                0 0 15px var(--neon-pink),
+                0 0 20px var(--neon-purple),
+                0 0 35px var(--neon-purple),
+                0 0 40px var(--neon-purple);
+            position: relative;
+            display: inline-block;
+            transform: perspective(500px) rotateX(15deg);
+            background: linear-gradient(45deg, var(--rose-gold), var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+            margin-top: 20px;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            padding: 15px;
+            min-width: 80px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--gold);
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--rose-gold);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .countdown-label {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section::before {
+            content: "";
             position: absolute;
             top: 0;
-        }
-        .gate-door { 
-            position: absolute; 
-            bottom: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: linear-gradient(180deg, #2a2a3e 0%, #1a1a2e 100%); 
-            border: 2px solid #00f0ff; 
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.6); 
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--rose-gold), var(--gold), var(--rose-gold));
         }
         
-        .castle-window { 
-            width: 60px; 
-            height: 70px; 
-            background: rgba(0, 240, 255, 0.4); 
-            border: 2px solid #00f0ff; 
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.8), inset 0 0 10px rgba(0, 240, 255, 0.5); 
-            margin: 45px auto; 
-            border-radius: 5px 5px 0 0; 
-            animation: windowGlow 3s ease-in-out infinite; 
-            position: relative;
+        .section-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: var(--rose-gold);
+            margin-bottom: 15px;
+            text-align: center;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         
-        /* Texto sobre el castillo */
-        .neon-text { 
-            position: absolute; 
-            top: 80px;
-            left: 50%; 
-            transform: translateX(-50%); 
-            text-align: center; 
-            width: 450px; 
-            z-index: 10;
-        }
-        .neon-text h1 { 
-            font-family: 'Parisienne', cursive; 
-            font-size: 4.5em;
-            color: #fff; 
-            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff006e, 0 0 40px #ff006e, 0 0 60px #ff006e, 0 0 80px #00f0ff; 
-            animation: neonPulse 2s ease-in-out infinite; 
-            line-height: 1.2;
+        .info-item {
+            display: flex;
+            align-items: flex-start;
             margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
-        @keyframes neonPulse { 
-            0%, 100% { 
-                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff006e, 0 0 40px #ff006e, 0 0 60px #ff006e, 0 0 80px #00f0ff; 
-            } 
-            50% { 
-                text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 50px #ff006e, 0 0 70px #ff006e, 0 0 90px #ff006e, 0 0 120px #00f0ff; 
-            } 
         }
         
-        .tap-instruction { 
-            margin-top: 100px; 
-            font-size: 1.5em; 
-            color: #fff; 
-            font-family: 'Parisienne', cursive; 
-            text-shadow: 0 0 10px #ff006e; 
-            animation: pulse 2s ease-in-out infinite; 
-        }
-        @keyframes pulse { 
-            0%, 100% { 
-                opacity: 1; 
-                transform: scale(1); 
-            } 
-            50% { 
-                opacity: 0.7; 
-                transform: scale(1.1); 
-            } 
-        }
-
-        /* Escena de la Corona */
-        .crown-scene { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100vw; 
-            height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            background: radial-gradient(circle at center, rgba(255, 192, 227, 0.3), rgba(0, 0, 0, 0.8)); 
-            z-index: 9999; 
-            transition: opacity 0.8s, visibility 0.8s; 
-        }
-        .crown-scene.hidden { 
-            opacity: 0; 
-            visibility: hidden; 
-            pointer-events: none; 
-        }
-        .crown-3d { 
-            perspective: 1000px; 
-            transform-style: preserve-3d; 
-            cursor: pointer; 
-            animation: crownFloat 4s ease-in-out infinite; 
-        }
-        @keyframes crownFloat { 
-            0%, 100% { 
-                transform: translateY(0px) rotateY(0deg) scale(1); 
-            } 
-            25% { 
-                transform: translateY(-10px) rotateY(90deg) scale(1.05); 
-            } 
-            50% { 
-                transform: translateY(-5px) rotateY(180deg) scale(1); 
-            } 
-            75% { 
-                transform: translateY(-10px) rotateY(270deg) scale(1.05); 
-            } 
-        }
-        .princess-crown { 
-            width: 220px; 
-            height: 180px; 
-            position: relative; 
-            transform-style: preserve-3d; 
-        }
-        .crown-base { 
-            width: 200px; 
-            height: 50px; 
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%); 
-            border-radius: 10px; 
-            position: relative; 
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.9), inset 0 -10px 30px rgba(255, 140, 0, 0.5); 
-            display: flex; 
-            align-items: flex-end; 
-            justify-content: space-around; 
-            padding: 0 15px; 
-        }
-        .crown-point { 
-            width: 0; 
-            height: 0; 
-            border-left: 18px solid transparent; 
-            border-right: 18px solid transparent; 
-            border-bottom: 60px solid #ffd700; 
-            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8)); 
-            position: relative; 
-            animation: pointGlow 2s ease-in-out infinite; 
-        }
-        .crown-point::before { 
-            content: ''; 
-            position: absolute; 
-            top: -45px; 
-            left: -8px; 
-            width: 16px; 
-            height: 16px; 
-            background: radial-gradient(circle, #ff006e 0%, #8b0050 100%); 
-            border-radius: 50%; 
-            box-shadow: 0 0 15px rgba(255, 0, 110, 1); 
-        }
-        .crown-point:nth-child(2), .crown-point:nth-child(4) { 
-            border-bottom-width: 50px; 
-        }
-        .crown-point:nth-child(3) { 
-            border-bottom-width: 70px; 
-        }
-        @keyframes pointGlow { 
-            0%, 100% { 
-                filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8)); 
-            } 
-            50% { 
-                filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1)); 
-            } 
-        }
-        .crown-jewels { 
-            position: absolute; 
-            top: 30%; 
-            left: 50%; 
-            transform: translate(-50%, -50%); 
-            display: flex; 
-            gap: 40px; 
-        }
-        .jewel { 
-            width: 25px; 
-            height: 25px; 
-            background: radial-gradient(circle, #ff006e 0%, #8b0050 100%); 
-            border-radius: 50%; 
-            box-shadow: 0 0 20px rgba(255, 0, 110, 1), inset 0 0 10px rgba(255, 255, 255, 0.5); 
-            animation: jewelSparkle 1.5s ease-in-out infinite; 
-        }
-        .jewel:nth-child(2) { 
-            background: radial-gradient(circle, #00f0ff 0%, #008b8b 100%); 
-            box-shadow: 0 0 20px rgba(0, 240, 255, 1), inset 0 0 10px rgba(255, 255, 255, 0.5); 
-        }
-        @keyframes jewelSparkle { 
-            0%, 100% { 
-                transform: scale(1); 
-            } 
-            50% { 
-                transform: scale(1.2); 
-            } 
-        }
-        .crown-title { 
-            margin-top: 80px; 
-            font-family: 'Parisienne', cursive; 
-            font-size: 5em; 
-            color: #fff; 
-            text-shadow: 0 0 15px #fff, 0 0 30px #ff006e, 0 0 50px #ff006e, 0 0 70px #ff006e; 
-            animation: titleGlow 3s ease-in-out infinite; 
-        }
-        @keyframes titleGlow { 
-            0%, 100% { 
-                text-shadow: 0 0 15px #fff, 0 0 30px #ff006e, 0 0 50px #ff006e, 0 0 70px #ff006e; 
-            } 
-            50% { 
-                text-shadow: 0 0 25px #fff, 0 0 50px #ff006e, 0 0 80px #ff006e, 0 0 110px #ff006e; 
-            } 
-        }
-        .crown-subtitle { 
-            margin-top: 20px; 
-            font-size: 1.8em; 
-            color: #fff; 
-            font-family: 'Great Vibes', cursive; 
-            text-shadow: 0 0 10px #00f0ff; 
+        .info-icon {
+            font-size: 1.2rem;
+            margin-right: 10px;
+            color: var(--gold);
+            min-width: 25px;
         }
         
-        /* Contenido Principal */
-        .main-content { 
-            position: relative; 
-            z-index: 10; 
-            padding: 20px; 
-            transition: opacity 0.8s, visibility 0.8s; 
-        }
-        .main-content.hidden { 
-            opacity: 0; 
-            visibility: hidden; 
-        }
-        .hero-section { 
-            text-align: center; 
-            padding: 60px 20px; 
-            position: relative; 
-        }
-        .hero-crown { 
-            font-size: 6em; 
-            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1)); 
-            animation: herocrownFloat 3s ease-in-out infinite; 
-        }
-        @keyframes herocrownFloat { 
-            0%, 100% { 
-                transform: translateY(0px); 
-            } 
-            50% { 
-                transform: translateY(-15px); 
-            } 
-        }
-        .hero-name { 
-            font-family: 'Parisienne', cursive; 
-            font-size: 5em; 
-            color: #fff; 
-            text-shadow: -3px -3px 0 #ff006e, 3px -3px 0 #ff006e, -3px 3px 0 #ff006e, 3px 3px 0 #ff006e, 0 0 20px #fff, 0 0 40px #ff006e, 0 0 60px #ff006e; 
-            margin: 20px 0; 
-            animation: nameGlow 3s ease-in-out infinite; 
-        }
-        @keyframes nameGlow { 
-            0%, 100% { 
-                text-shadow: -3px -3px 0 #ff006e, 3px -3px 0 #ff006e, -3px 3px 0 #ff006e, 3px 3px 0 #ff006e, 0 0 20px #fff, 0 0 40px #ff006e, 0 0 60px #ff006e; 
-            } 
-            50% { 
-                text-shadow: -3px -3px 0 #ff006e, 3px -3px 0 #ff006e, -3px 3px 0 #ff006e, 3px 3px 0 #ff006e, 0 0 30px #fff, 0 0 60px #ff006e, 0 0 90px #ff006e; 
-            } 
-        }
-        .hero-subtitle { 
-            font-family: 'Great Vibes', cursive; 
-            font-size: 2em; 
-            color: #fff; 
-            text-shadow: 0 0 15px #00f0ff; 
+        .location-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--rose-gold), var(--gold));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            box-shadow: 
+                0 3px 8px rgba(0, 0, 0, 0.2),
+                0 0 10px rgba(183, 110, 121, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-weight: 500;
         }
         
-        /* Countdown */
-        .countdown-section { 
-            background: rgba(255, 255, 255, 0.9); 
-            border-radius: 25px; 
-            padding: 40px 30px; 
-            margin: 30px auto; 
-            max-width: 800px; 
-            box-shadow: 0 10px 40px rgba(255, 0, 110, 0.4); 
-        }
-        .countdown-section h2 { 
-            font-family: 'Parisienne', cursive; 
-            font-size: 2.5em; 
-            color: #ff006e; 
-            text-align: center; 
-            margin-bottom: 30px; 
-        }
-        .countdown { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
-            gap: 20px; 
-        }
-        .countdown-item { 
-            background: linear-gradient(135deg, #ff006e 0%, #ff4a8f 100%); 
-            border-radius: 15px; 
-            padding: 20px; 
-            text-align: center; 
-            box-shadow: 0 5px 20px rgba(255, 0, 110, 0.5); 
-        }
-        .countdown-number { 
-            display: block; 
-            font-size: 3em; 
-            color: #fff; 
-            font-weight: bold; 
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
-        }
-        .countdown-label { 
-            display: block; 
-            font-size: 1em; 
-            color: #fff; 
-            margin-top: 10px; 
-            text-transform: uppercase; 
+        .location-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 5px 12px rgba(0, 0, 0, 0.3),
+                0 0 15px rgba(183, 110, 121, 0.7);
         }
         
-        /* Detalles del Evento */
-        .event-section { 
-            background: rgba(255, 255, 255, 0.95); 
-            border-radius: 25px; 
-            padding: 40px 30px; 
-            margin: 30px auto; 
-            max-width: 900px; 
-            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.4); 
-        }
-        .event-section h2 { 
-            font-family: 'Parisienne', cursive; 
-            font-size: 2.5em; 
-            color: #00f0ff; 
-            text-align: center; 
-            margin-bottom: 25px; 
-            text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); 
-        }
-        .event-card { 
-            background: #fff; 
-            border-left: 5px solid #00f0ff; 
-            padding: 25px; 
-            border-radius: 15px; 
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); 
-        }
-        .event-card p { 
-            font-size: 1.1em; 
-            color: #333; 
-            margin: 12px 0; 
-            line-height: 1.8; 
-        }
-        .event-card strong { 
-            color: #ff006e; 
-        }
-        .location-btn { 
-            background: linear-gradient(135deg, #ba55d3 0%, #dda0dd 100%); 
-            color: #fff; 
-            border: none; 
-            padding: 15px 40px; 
-            font-size: 1.2em; 
-            border-radius: 50px; 
-            cursor: pointer; 
-            margin-top: 20px; 
-            box-shadow: 0 8px 25px rgba(186, 85, 211, 0.5); 
-            transition: all 0.3s; 
-            font-family: 'Great Vibes', cursive; 
-        }
-        .location-btn:hover { 
-            transform: translateY(-3px) scale(1.05); 
-            box-shadow: 0 12px 35px rgba(186, 85, 211, 0.7); 
-        }
-        .entertainment-schedule { 
-            margin-top: 25px; 
-            padding: 20px; 
-            background: linear-gradient(135deg, #fce7f3 0%, #fdf2f8 100%); 
-            border-radius: 15px; 
-        }
-        .entertainment-schedule h3 { 
-            font-family: 'Parisienne', cursive; 
-            font-size: 1.8em; 
-            color: #ff006e; 
-            margin-bottom: 15px; 
-        }
-        .entertainment-item { 
-            display: flex; 
-            justify-content: space-between; 
-            padding: 12px; 
-            margin: 8px 0; 
-            background: rgba(255, 255, 255, 0.8); 
-            border-left: 4px solid #00f0ff; 
-            border-radius: 8px; 
-            transition: all 0.3s; 
-        }
-        .entertainment-item:hover { 
-            transform: translateX(10px); 
-            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3); 
-        }
-        .entertainment-item span:first-child { 
-            font-weight: bold; 
-            color: #ff006e; 
+        .gift-suggestions {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
         }
         
-        /* Sección de Regalos */
-        .gift-section { 
-            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); 
-            border-radius: 25px; 
-            padding: 40px 30px; 
-            margin: 30px auto; 
-            max-width: 900px; 
-            box-shadow: 0 10px 40px rgba(255, 0, 110, 0.3); 
-        }
-        .gift-section h2 { 
-            font-family: 'Parisienne', cursive; 
-            font-size: 2.5em; 
-            color: #ff006e; 
-            text-align: center; 
-            margin-bottom: 20px; 
-        }
-        .gift-intro { 
-            text-align: center; 
-            font-size: 1.2em; 
-            color: #666; 
-            margin-bottom: 30px; 
-        }
-        .gift-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 20px; 
-        }
-        .gift-card { 
-            background: #fff; 
-            border-radius: 15px; 
-            padding: 25px; 
-            box-shadow: 0 5px 20px rgba(255, 0, 110, 0.2); 
-            transition: all 0.3s; 
-        }
-        .gift-card:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 10px 30px rgba(255, 0, 110, 0.4); 
-        }
-        .gift-card h3 { 
-            font-family: 'Parisienne', cursive; 
-            font-size: 1.8em; 
-            color: #ff006e; 
-            margin-bottom: 15px; 
-        }
-        .gift-card p, .gift-card ul { 
-            color: #555; 
-            font-size: 1.05em; 
-            line-height: 1.8; 
-        }
-        .gift-card ul { 
-            list-style: none; 
-            padding: 0; 
-        }
-        .gift-card li { 
-            margin: 8px 0; 
-            padding-left: 20px; 
-            position: relative; 
-        }
-        .gift-card li::before { 
-            content: '✨'; 
-            position: absolute; 
-            left: 0; 
-        }
-        .gift-detail { 
-            background: #fce7f3; 
-            padding: 10px; 
-            margin: 8px 0; 
-            border-radius: 8px; 
-            border-left: 4px solid #ff006e; 
+        .gift-item {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid var(--pastel-pink);
         }
         
-        /* Sección RSVP */
-        .rsvp-section { 
-            text-align: center; 
-            padding: 40px 20px; 
-        }
-        .rsvp-btn { 
-            background: linear-gradient(135deg, #ff006e 0%, #ff4a8f 100%); 
-            color: #fff; 
-            border: none; 
-            padding: 25px 60px; 
-            font-size: 1.5em; 
-            border-radius: 50px; 
-            cursor: pointer; 
-            font-family: 'Parisienne', cursive; 
-            box-shadow: 0 10px 30px rgba(255, 0, 110, 0.5); 
-            transition: all 0.3s; 
-            animation: btnPulse 2s ease-in-out infinite; 
-        }
-        @keyframes btnPulse { 
-            0%, 100% { 
-                box-shadow: 0 10px 30px rgba(255, 0, 110, 0.5); 
-            } 
-            50% { 
-                box-shadow: 0 15px 40px rgba(255, 0, 110, 0.7); 
-            } 
-        }
-        .rsvp-btn:hover { 
-            transform: translateY(-5px) scale(1.05); 
+        .confirmation-section {
+            text-align: center;
         }
         
-        /* Mensaje Final */
-        .final-message { 
-            text-align: center; 
-            padding: 40px 20px; 
-            font-size: 1.4em; 
-            color: #fff; 
-            font-family: 'Great Vibes', cursive; 
-            text-shadow: 0 0 15px rgba(255, 0, 110, 0.8); 
-        }
-        .signature { 
-            margin-top: 20px; 
-            font-size: 1.5em; 
-            color: #ffd700; 
-            text-shadow: 0 0 20px rgba(255, 215, 0, 1); 
+        .confirmation-btn {
+            background: linear-gradient(45deg, var(--rose-gold), var(--gold));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin: 10px;
         }
         
-        /* Modal RSVP */
-        .modal { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100vw; 
-            height: 100vh; 
-            background: rgba(0, 0, 0, 0.9); 
-            z-index: 10002; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            transition: opacity 0.5s, visibility 0.5s; 
-        }
-        .modal.hidden { 
-            opacity: 0; 
-            visibility: hidden; 
-            pointer-events: none; 
-        }
-        .modal-content { 
-            background: linear-gradient(135deg, #fff 0%, #fce7f3 100%); 
-            border-radius: 25px; 
-            padding: 40px; 
-            max-width: 500px; 
-            width: 90%; 
-            max-height: 90vh; 
-            overflow-y: auto; 
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); 
-            position: relative; 
-            animation: modalSlide 0.4s ease-out; 
-        }
-        @keyframes modalSlide { 
-            from { 
-                transform: translateY(-100px); 
-                opacity: 0; 
-            } 
-            to { 
-                transform: translateY(0); 
-                opacity: 1; 
-            } 
-        }
-        .modal-close { 
-            position: absolute; 
-            top: 15px; 
-            right: 20px; 
-            font-size: 2.5em; 
-            color: #999; 
-            cursor: pointer; 
-            transition: all 0.3s; 
-        }
-        .modal-close:hover { 
-            color: #ff006e; 
-            transform: rotate(90deg); 
-        }
-        .modal-content h2 { 
-            font-family: 'Parisienne', cursive; 
-            font-size: 2.5em; 
-            color: #ff006e; 
-            text-align: center; 
-            margin-bottom: 25px; 
-        }
-        .modal-content form { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 15px; 
-        }
-        .modal-content label { 
-            font-weight: 600; 
-            color: #555; 
-            font-size: 1.1em; 
-        }
-        .modal-content input, .modal-content select, .modal-content textarea { 
-            width: 100%; 
-            padding: 15px; 
-            border: 2px solid #fce7f3; 
-            border-radius: 10px; 
-            font-size: 1em; 
-            transition: all 0.3s; 
-            font-family: inherit; 
-        }
-        .modal-content input:focus, .modal-content select:focus, .modal-content textarea:focus { 
-            outline: none; 
-            border-color: #ff006e; 
-            box-shadow: 0 0 10px rgba(255, 0, 110, 0.3); 
-        }
-        .guest-count { 
-            background: #fce7f3; 
-            padding: 20px; 
-            border-radius: 15px; 
-            border-left: 4px solid #ff006e; 
-        }
-        .guest-count.hidden { 
-            display: none; 
-        }
-        .warning { 
-            color: #ff006e; 
-            font-weight: bold; 
-            margin-top: 10px; 
-            font-size: 0.95em; 
-        }
-        .error-message { 
-            background: #fee; 
-            border: 2px solid #f00; 
-            color: #c00; 
-            padding: 15px; 
-            border-radius: 10px; 
-            text-align: center; 
-            font-weight: bold; 
-            animation: shake 0.5s; 
-        }
-        @keyframes shake { 
-            0%, 100% { 
-                transform: translateX(0); 
-            } 
-            25% { 
-                transform: translateX(-10px); 
-            } 
-            75% { 
-                transform: translateX(10px); 
-            } 
-        }
-        .error-message.hidden { 
-            display: none; 
-        }
-        .submit-btn { 
-            background: linear-gradient(135deg, #ff006e 0%, #ff4a8f 100%); 
-            color: #fff; 
-            border: none; 
-            padding: 18px 40px; 
-            font-size: 1.3em; 
-            border-radius: 50px; 
-            cursor: pointer; 
-            font-family: 'Parisienne', cursive; 
-            box-shadow: 0 8px 25px rgba(255, 0, 110, 0.5); 
-            transition: all 0.3s; 
-            margin-top: 10px; 
-        }
-        .submit-btn:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 12px 35px rgba(255, 0, 110, 0.7); 
+        .confirmation-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
         
-        /* Botón de Música */
-        .music-btn { 
-            position: fixed; 
-            bottom: 30px; 
-            right: 30px; 
-            width: 70px; 
-            height: 70px; 
-            border-radius: 50%; 
-            background: linear-gradient(135deg, #ff006e 0%, #ff4a8f 100%); 
-            border: none; 
-            cursor: pointer; 
-            box-shadow: 0 8px 25px rgba(255, 0, 110, 0.6); 
-            z-index: 9998; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 2em; 
-            transition: all 0.3s; 
-            animation: musicFloat 3s ease-in-out infinite; 
-        }
-        @keyframes musicFloat { 
-            0%, 100% { 
-                transform: translateY(0px); 
-            } 
-            50% { 
-                transform: translateY(-10px); 
-            } 
-        }
-        .music-btn:hover { 
-            transform: scale(1.2); 
-            box-shadow: 0 12px 35px rgba(255, 0, 110, 0.8); 
-        }
-        .music-btn.playing { 
-            animation: musicFloat 3s ease-in-out infinite, spinMusic 2s linear infinite; 
-        }
-        @keyframes spinMusic { 
-            from { 
-                transform: rotate(0deg); 
-            } 
-            to { 
-                transform: rotate(360deg); 
-            } 
+        .confirmation-form {
+            display: none;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
         
-        /* Media Queries */
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .cancel-btn {
+            background: #ccc;
+            color: #333;
+        }
+        
+        .submit-btn {
+            background: var(--rose-gold);
+            color: white;
+        }
+        
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .final-message {
+            text-align: center;
+            font-style: italic;
+            margin-top: 30px;
+            font-size: 1.2rem;
+            color: var(--rose-gold);
+        }
+        
+        .photo-reminder {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Admin Panel Styles */
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .admin-content {
+            background: white;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 800px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--rose-gold);
+            padding-bottom: 10px;
+        }
+        
+        .admin-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--rose-gold);
+        }
+        
+        .close-admin {
+            background: var(--rose-gold);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-box {
+            background: rgba(183, 110, 121, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid var(--rose-gold);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--rose-gold);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .guests-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .guests-table th, .guests-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .guests-table th {
+            background: rgba(183, 110, 121, 0.1);
+            color: var(--rose-gold);
+        }
+        
+        /* Calendar Options */
+        .calendar-options {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .calendar-btn {
+            background: linear-gradient(45deg, var(--rose-gold), var(--gold));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+        }
+        
+        .calendar-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
         @media (max-width: 768px) {
-            .neon-text h1 { 
-                font-size: 3.5em;
+            .title {
+                font-size: 3rem;
             }
-            .neon-text { 
-                width: 350px; 
-                top: 60px;
+            
+            .name {
+                font-size: 3.5rem;
             }
-            .tower { 
-                width: 85px; 
-                height: 330px; 
+            
+            .countdown-item {
+                min-width: 70px;
+                padding: 10px;
             }
-            .castle-main { 
-                width: 190px; 
-                height: 350px; 
-                margin-bottom: -30px;
+            
+            .countdown-number {
+                font-size: 1.5rem;
             }
-            .crown-title { 
-                font-size: 3.5em; 
+            
+            .section-title {
+                font-size: 1.7rem;
             }
-            .hero-name { 
-                font-size: 3.5em; 
-            }
-            .hero-crown { 
-                font-size: 4em; 
-            }
-            .countdown { 
-                grid-template-columns: repeat(2, 1fr); 
-            }
-            .countdown-number { 
-                font-size: 2.5em; 
-            }
-            .gift-grid { 
-                grid-template-columns: 1fr; 
-            }
-            .music-btn { 
-                width: 60px; 
-                height: 60px; 
-                font-size: 1.7em; 
-                bottom: 20px; 
-                right: 20px; 
-            }
-            .modal-content { 
-                padding: 30px 20px; 
-            }
-            .tap-instruction {
-                margin-top: 70px;
+            
+            .admin-content {
+                margin: 20px;
+                padding: 15px;
             }
         }
+        
         @media (max-width: 480px) {
-            .tower { 
-                width: 75px; 
-                height: 290px; 
+            .title {
+                font-size: 2.5rem;
             }
-            .castle-main { 
-                width: 170px; 
-                height: 320px; 
-                margin-bottom: -20px;
+            
+            .name {
+                font-size: 3rem;
             }
-            .neon-text h1 { 
-                font-size: 2.8em;
+            
+            .countdown {
+                gap: 10px;
             }
-            .neon-text {
-                top: 50px;
-                width: 300px;
+            
+            .countdown-item {
+                min-width: 60px;
+                padding: 8px;
             }
-            .crown-title { 
-                font-size: 2.5em; 
+            
+            .countdown-number {
+                font-size: 1.3rem;
             }
-            .hero-name { 
-                font-size: 2.5em; 
+            
+            .form-actions {
+                flex-direction: column;
+                gap: 10px;
             }
-            .countdown-section h2 { 
-                font-size: 1.8em; 
-            }
-            .event-section h2 { 
-                font-size: 1.8em; 
-            }
-            .gift-section h2 { 
-                font-size: 1.8em; 
-            }
-            .tap-instruction {
-                margin-top: 50px;
-                font-size: 1.2em;
+            
+            .confirmation-btn, .calendar-btn {
+                width: 100%;
+                margin: 5px 0;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Partículas flotantes -->
-    <div class="particles-container" id="particles"></div>
+    <div class="castle-silhouette"></div>
+    <div class="floating-particles" id="particles"></div>
     
-    <!-- Escena del Castillo -->
-    <div class="castle-scene" id="castleScene">
-        <div class="castle-3d">
-            <div class="castle-front">
-                <div class="tower tower-left">
-                    <div class="tower-top">
-                        <div class="tower-flag"></div>
-                    </div>
-                    <div class="tower-window"></div>
-                    <div class="tower-window"></div>
-                </div>
-                <div class="castle-main">
-                    <div class="castle-battlements">
-                        <div class="battlement"></div><div class="battlement"></div><div class="battlement"></div><div class="battlement"></div><div class="battlement"></div>
-                    </div>
-                    <div class="castle-gate">
-                        <div class="gate-arch"></div>
-                        <div class="gate-door"></div>
-                    </div>
-                    <div class="castle-window"></div>
-                    <div class="castle-window"></div>
-                </div>
-                <div class="tower tower-right">
-                    <div class="tower-top">
-                        <div class="tower-flag"></div>
-                    </div>
-                    <div class="tower-window"></div>
-                    <div class="tower-window"></div>
-                </div>
-            </div>
-            <div class="neon-text"><h1>¡Te invito<br>a mi fiesta!</h1></div>
+    <div class="invitation-container">
+        <div class="header">
+            <h1 class="title">Mis V años</h1>
         </div>
-        <div class="tap-instruction">Toca el castillo para entrar</div>
-    </div>
-    
-    <!-- Escena de la Corona -->
-    <div class="crown-scene hidden" id="crownScene">
-        <div class="crown-3d">
-            <div class="princess-crown">
-                <div class="crown-base">
-                    <div class="crown-point"></div>
-                    <div class="crown-point"></div>
-                    <div class="crown-point"></div>
-                    <div class="crown-point"></div>
-                    <div class="crown-point"></div>
-                </div>
-                <div class="crown-jewels">
-                    <div class="jewel"></div>
-                    <div class="jewel"></div>
-                </div>
+        
+        <div class="name-container">
+            <div class="crown" id="adminCrown">👑</div>
+            <h2 class="name">Ailany</h2>
+        </div>
+        
+        <div class="countdown" id="countdown">
+            <div class="countdown-item">
+                <div class="countdown-number" id="days">00</div>
+                <div class="countdown-label">Días</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="hours">00</div>
+                <div class="countdown-label">Horas</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="minutes">00</div>
+                <div class="countdown-label">Minutos</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="seconds">00</div>
+                <div class="countdown-label">Segundos</div>
             </div>
         </div>
-        <div class="crown-title">¡Mis 5 Años!</div>
-        <div class="crown-subtitle">Ailany te espera</div>
-    </div>
-    
-    <!-- Contenido Principal -->
-    <div class="main-content hidden" id="mainContent">
-        <section class="hero-section">
-            <div class="hero-crown">👑</div>
-            <h1 class="hero-name">Ailany</h1>
-            <div class="hero-subtitle">Celebra mis 5 años conmigo</div>
-        </section>
         
-        <section class="countdown-section">
-            <h2>Faltan</h2>
-            <div class="countdown">
-                <div class="countdown-item">
-                    <span class="countdown-number" id="days">00</span>
-                    <span class="countdown-label">Días</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="hours">00</span>
-                    <span class="countdown-label">Horas</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="minutes">00</span>
-                    <span class="countdown-label">Minutos</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="seconds">00</span>
-                    <span class="countdown-label">Segundos</span>
-                </div>
+        <div class="section">
+            <h3 class="section-title">📅 Ceremonia Religiosa</h3>
+            <div class="info-item">
+                <span class="info-icon">🕰️</span>
+                <div>23 de Noviembre 2025 - 1:00 PM</div>
             </div>
-        </section>
-        
-        <section class="event-section">
-            <h2>Detalles del Evento</h2>
-            <div class="event-card">
-                <p><strong>Fecha:</strong> Sábado, 15 de Junio</p>
-                <p><strong>Hora:</strong> 3:00 PM - 7:00 PM</p>
-                <p><strong>Lugar:</strong> Salón de Fiestas "El Jardín Encantado"</p>
-                <p><strong>Dirección:</strong> Calle de la Alegría #123, Ciudad de los Sueños</p>
-                <p><strong>Tema:</strong> Princesas y Castillos Encantados</p>
-                
-                <div class="entertainment-schedule">
-                    <h3>Entretenimiento</h3>
-                    <div class="entertainment-item">
-                        <span>3:30 PM</span>
-                        <span>Show de Magia</span>
-                    </div>
-                    <div class="entertainment-item">
-                        <span>4:15 PM</span>
-                        <span>Piñata Sorpresa</span>
-                    </div>
-                    <div class="entertainment-item">
-                        <span>5:00 PM</span>
-                        <span>Torta y Cantos</span>
-                    </div>
-                    <div class="entertainment-item">
-                        <span>5:45 PM</span>
-                        <span>Baile con Princesas</span>
-                    </div>
-                </div>
-                
-                <button class="location-btn">Ver en Mapa</button>
+            <div class="info-item">
+                <span class="info-icon">📍</span>
+                <div>Iglesia del Santo Entierro, Av. 8 Ote. 601, Barrio de San Miguel Tianguisnahuitl, Cholula de Rivadavia, Pue.</div>
             </div>
-        </section>
+            <a href="https://maps.app.goo.gl/MESG66t5392Zncfm8" class="location-btn" target="_blank">Ver ubicación de la Ceremonia</a>
+        </div>
         
-        <section class="gift-section">
-            <h2>Mi Lista de Regalos</h2>
-            <p class="gift-intro">Tu presencia es el mejor regalo, pero si quieres hacerme un detalle, estas son algunas ideas:</p>
+        <div class="section">
+            <h3 class="section-title">🎉 Recepción y Celebración</h3>
+            <div class="info-item">
+                <span class="info-icon">🕰️</span>
+                <div>23 de Noviembre 2025 - 4:00 PM</div>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">📍</span>
+                <div>Salón Jardín Joss Mary, C. Río Atoyac Sur 513, Santiago Momoxpan, Rafael Ávila Camacho, Pue.</div>
+            </div>
+            <a href="https://maps.app.goo.gl/Uw6MZtHp4LnNYkwTA" class="location-btn" target="_blank">Ver ubicación de la Recepción</a>
             
-            <div class="gift-grid">
-                <div class="gift-card">
-                    <h3>Juguetes Creativos</h3>
-                    <ul>
-                        <li>Bloques de construcción</li>
-                        <li>Set de manualidades</li>
-                        <li>Pizarrón mágico</li>
-                        <li>Plastilina de colores</li>
-                    </ul>
+            <div style="margin-top: 15px;">
+                <h4 style="color: var(--rose-gold); margin-bottom: 10px;">Entretenimiento para niños:</h4>
+                <div class="info-item">
+                    <span class="info-icon">🎨</span>
+                    <div>Pintacaritas: 4:30 PM</div>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🤡</span>
+                    <div>Show del payaso: 7:00 PM</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3 class="section-title">🎁 Sugerencias de Regalo</h3>
+            <p style="margin-bottom: 15px;">Si deseas obsequiarme algo te sugiero:</p>
+            
+            <div class="gift-suggestions">
+                <div class="gift-item">Ropa talla 8</div>
+                <div class="gift-item">Zapatos o tennis #18</div>
+                <div class="gift-item">Muñecas</div>
+                <div class="gift-item">Material para pintar</div>
+                <div class="gift-item">Rompecabezas o memoramas</div>
+                <div class="gift-item">Dominó</div>
+                <div class="gift-item">Bolsitas de mano o mochilitas</div>
+                <div class="gift-item">Juegos de té y cocina</div>
+                <div class="gift-item">Material para manualidades o arte</div>
+                <div class="gift-item">Libros para colorear o cuentos</div>
+            </div>
+            
+            <p style="margin-top: 15px; font-style: italic;">
+                "Si en todo caso tu regalo es dinero lo agradezco mucho será para mi alcancía"
+            </p>
+            <p style="margin-top: 10px; font-style: italic;">
+                "Agradezco tu cariño y generosidad Dios te bendiga hoy y siempre"
+            </p>
+        </div>
+        
+        <div class="section confirmation-section">
+            <h3 class="section-title">✅ Confirmación de Asistencia</h3>
+            <p style="margin-bottom: 15px;">Por favor confirma tu asistencia antes del 15 de noviembre</p>
+            
+            <button class="confirmation-btn" id="confirmBtn">Confirmar Asistencia</button>
+            <button class="confirmation-btn cancel-btn" id="declineBtn">No Podré Asistir</button>
+            
+            <div class="confirmation-form" id="confirmationForm">
+                <h4 style="color: var(--rose-gold); margin-bottom: 15px;">Formulario de Confirmación</h4>
+                
+                <div class="form-group">
+                    <label for="guestName">Tu nombre (mínimo 3 caracteres):</label>
+                    <input type="text" id="guestName" required minlength="3">
                 </div>
                 
-                <div class="gift-card">
-                    <h3>Ropa y Accesorios</h3>
-                    <ul>
-                        <li>Vestidos de princesa</li>
-                        <li>Zapatos brillantes</li>
-                        <li>Accesorios para el cabello</li>
-                        <li>Chaquetas de moda</li>
-                    </ul>
+                <div class="form-group">
+                    <label for="adults">Número de adultos (incluyéndote):</label>
+                    <select id="adults" required>
+                        <option value="1">1 adulto</option>
+                        <option value="2">2 adultos</option>
+                        <option value="3">3 adultos</option>
+                    </select>
                 </div>
                 
-                <div class="gift-card">
-                    <h3>Libros y Cuentos</h3>
-                    <ul>
-                        <li>Cuentos de hadas</li>
-                        <li>Libros para colorear</li>
-                        <li>Historias de princesas</li>
-                        <li>Libros interactivos</li>
-                    </ul>
+                <div class="form-group">
+                    <label for="children">Número de niños:</label>
+                    <select id="children">
+                        <option value="0">0 niños</option>
+                        <option value="1">1 niño</option>
+                        <option value="2">2 niños</option>
+                    </select>
+                    <small style="color: #666;">Máximo 3 personas en total (adultos + niños)</small>
+                </div>
+                
+                <div class="form-actions">
+                    <button class="confirmation-btn cancel-btn" id="cancelForm">Cancelar</button>
+                    <button class="confirmation-btn submit-btn" id="submitForm">Enviar Confirmación</button>
                 </div>
             </div>
             
-            <div class="gift-detail">
-                <p><strong>Nota:</strong> Lo más importante es que vengas a celebrar conmigo. ¡Tu amistad es el regalo más valioso!</p>
+            <div class="calendar-options" id="calendarOptions">
+                <h4 style="color: var(--rose-gold); margin-bottom: 15px;">¿Deseas agregar estos eventos a tu calendario?</h4>
+                <button class="calendar-btn" id="addMainEvent">Agregar Evento Principal</button>
+                <button class="calendar-btn" id="addPhotoReminder">Recordatorio de Fotos</button>
             </div>
-        </section>
-        
-        <section class="rsvp-section">
-            <button class="rsvp-btn" id="rsvpBtn">Confirmar Asistencia</button>
-        </section>
-        
-        <section class="final-message">
-            <p>¡No puedo esperar para celebrar este día tan especial contigo!</p>
-            <p>Será una tarde mágica llena de sorpresas, diversión y muchos recuerdos bonitos.</p>
-            <div class="signature">Con amor, Ailany 💖</div>
-        </section>
-    </div>
-    
-    <!-- Modal RSVP -->
-    <div class="modal hidden" id="rsvpModal">
-        <div class="modal-content">
-            <span class="modal-close" id="modalClose">&times;</span>
-            <h2>Confirmar Asistencia</h2>
             
-            <form id="rsvpForm">
-                <div id="errorMessage" class="error-message hidden">Por favor completa todos los campos obligatorios.</div>
-                
-                <label for="guestName">Tu Nombre *</label>
-                <input type="text" id="guestName" name="guestName" required>
-                
-                <label for="guestEmail">Tu Email</label>
-                <input type="email" id="guestEmail" name="guestEmail">
-                
-                <label for="guestCount">¿Cuántos asistirán? *</label>
-                <select id="guestCount" name="guestCount" required>
-                    <option value="">Selecciona...</option>
-                    <option value="1">Solo yo</option>
-                    <option value="2">2 personas</option>
-                    <option value="3">3 personas</option>
-                    <option value="4">4 personas</option>
-                    <option value="5">5 personas o más</option>
-                </select>
-                
-                <div class="guest-count hidden" id="additionalGuests">
-                    <label for="guestNames">Nombres de los acompañantes</label>
-                    <textarea id="guestNames" name="guestNames" placeholder="Escribe los nombres de las personas que te acompañarán"></textarea>
-                </div>
-                
-                <label for="message">Mensaje para Ailany (opcional)</label>
-                <textarea id="message" name="message" placeholder="Escribe un mensaje especial para la cumpleañera..."></textarea>
-                
-                <button type="submit" class="submit-btn">Enviar Confirmación</button>
-            </form>
+            <div class="photo-reminder">
+                <p>📸 "No se te olvide tomar fotos en mi fiesta heee"</p>
+            </div>
+        </div>
+        
+        <div class="final-message">
+            <p>"Será un día Mágico y me encantaría compartirlo contigo, ❤️con cariño Ailany❤️"</p>
         </div>
     </div>
     
-    <!-- Botón de Música -->
-    <button class="music-btn" id="musicBtn">🎵</button>
-    
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-content">
+            <div class="admin-header">
+                <h2 class="admin-title">Panel de Administración</h2>
+                <button class="close-admin" id="closeAdmin">×</button>
+            </div>
+            
+            <div class="admin-stats">
+                <div class="stat-box">
+                    <div class="stat-number" id="totalGuests">0</div>
+                    <div class="stat-label">Total Invitados</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="totalAdults">0</div>
+                    <div class="stat-label">Adultos</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="totalChildren">0</div>
+                    <div class="stat-label">Niños</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="confirmedGuests">0</div>
+                    <div class="stat-label">Confirmados</div>
+                </div>
+            </div>
+            
+            <h3 style="color: var(--rose-gold); margin: 20px 0 10px;">Lista de Invitados Confirmados</h3>
+            <table class="guests-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Adultos</th>
+                        <th>Niños</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="guestsList">
+                    <!-- Las confirmaciones se agregarán aquí dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <script>
-        // Elementos del DOM
-        const castleScene = document.getElementById('castleScene');
-        const crownScene = document.getElementById('crownScene');
-        const mainContent = document.getElementById('mainContent');
-        const castle3d = document.querySelector('.castle-3d');
-        const crown3d = document.querySelector('.crown-3d');
-        const rsvpBtn = document.getElementById('rsvpBtn');
-        const rsvpModal = document.getElementById('rsvpModal');
-        const modalClose = document.getElementById('modalClose');
-        const rsvpForm = document.getElementById('rsvpForm');
-        const errorMessage = document.getElementById('errorMessage');
-        const guestCount = document.getElementById('guestCount');
-        const additionalGuests = document.getElementById('additionalGuests');
-        const musicBtn = document.getElementById('musicBtn');
-        
-        // Variables para el audio
-        let audio = null;
-        let isPlaying = false;
-        
-        // Fecha del evento (15 de junio del año actual)
-        const eventDate = new Date(new Date().getFullYear(), 5, 15); // Mes 5 = Junio
-        
-        // Si ya pasó la fecha este año, usar el próximo año
-        if (eventDate < new Date()) {
-            eventDate.setFullYear(eventDate.getFullYear() + 1);
-        }
-        
-        // Inicialización
-        document.addEventListener('DOMContentLoaded', function() {
-            // Crear partículas flotantes
-            createParticles();
-            
-            // Iniciar cuenta regresiva
-            startCountdown();
-            
-            // Configurar eventos
-            setupEventListeners();
-        });
+        // Datos de confirmaciones (en un caso real, esto vendría de un servidor)
+        let confirmations = [];
         
         // Crear partículas flotantes
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            const emojis = ['✨', '🎀', '🎉', '👑', '🎁', '💖', '💫', '🌸'];
+            const particleCount = 30;
             
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
-                particle.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
                 
-                // Posición aleatoria
+                // Tamaño aleatorio entre 3px y 8px
+                const size = Math.random() * 5 + 3;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Posición inicial aleatoria
                 particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
                 
-                // Retraso aleatorio en la animación
+                // Retraso de animación aleatorio
                 particle.style.animationDelay = `${Math.random() * 15}s`;
+                
+                // Duración de animación aleatoria
+                const duration = Math.random() * 10 + 15;
+                particle.style.animationDuration = `${duration}s`;
                 
                 particlesContainer.appendChild(particle);
             }
         }
         
-        // Configurar event listeners
-        function setupEventListeners() {
-            // Castillo - Transición a la corona
-            castle3d.addEventListener('click', function() {
-                castleScene.classList.add('hidden');
-                setTimeout(() => {
-                    crownScene.classList.remove('hidden');
-                }, 800);
-            });
+        // Cuenta regresiva
+        function updateCountdown() {
+            const eventDate = new Date('November 23, 2025 13:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = eventDate - now;
             
-            // Corona - Transición al contenido principal
-            crown3d.addEventListener('click', function() {
-                crownScene.classList.add('hidden');
-                setTimeout(() => {
-                    mainContent.classList.remove('hidden');
-                }, 800);
-            });
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
             
-            // Botón RSVP
-            rsvpBtn.addEventListener('click', function() {
-                rsvpModal.classList.remove('hidden');
-            });
-            
-            // Cerrar modal
-            modalClose.addEventListener('click', function() {
-                rsvpModal.classList.add('hidden');
-            });
-            
-            // Cerrar modal al hacer clic fuera
-            rsvpModal.addEventListener('click', function(e) {
-                if (e.target === rsvpModal) {
-                    rsvpModal.classList.add('hidden');
-                }
-            });
-            
-            // Mostrar/ocultar campo de acompañantes
-            guestCount.addEventListener('change', function() {
-                if (this.value > 1) {
-                    additionalGuests.classList.remove('hidden');
-                } else {
-                    additionalGuests.classList.add('hidden');
-                }
-            });
-            
-            // Envío del formulario RSVP
-            rsvpForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Validación básica
-                const name = document.getElementById('guestName').value;
-                const count = document.getElementById('guestCount').value;
-                
-                if (!name || !count) {
-                    errorMessage.classList.remove('hidden');
-                    return;
-                }
-                
-                // Simular envío exitoso
-                errorMessage.classList.add('hidden');
-                alert('¡Gracias por confirmar tu asistencia! Nos vemos en la fiesta.');
-                rsvpModal.classList.add('hidden');
-                rsvpForm.reset();
-                additionalGuests.classList.add('hidden');
-            });
-            
-            // Botón de música
-            musicBtn.addEventListener('click', toggleMusic);
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
         }
         
-        // Iniciar cuenta regresiva
-        function startCountdown() {
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const distance = eventDate - now;
-                
-                // Cálculos de tiempo
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                
-                // Actualizar elementos del DOM
-                document.getElementById('days').textContent = days.toString().padStart(2, '0');
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-                
-                // Si la cuenta regresiva termina
-                if (distance < 0) {
-                    clearInterval(countdownInterval);
-                    document.getElementById('countdown').innerHTML = "<h2>¡La fiesta está en marcha!</h2>";
-                }
+        // Manejo del formulario de confirmación
+        document.getElementById('confirmBtn').addEventListener('click', function() {
+            document.getElementById('confirmationForm').style.display = 'block';
+        });
+        
+        document.getElementById('declineBtn').addEventListener('click', function() {
+            if (confirm('¿Estás seguro de que no podrás asistir?')) {
+                alert('Gracias por informarnos. Lamentamos no poder contar con tu presencia. ¡Dios te bendiga!');
+                // Aquí se podría enviar un mensaje automático de agradecimiento
+            }
+        });
+        
+        document.getElementById('cancelForm').addEventListener('click', function() {
+            document.getElementById('confirmationForm').style.display = 'none';
+        });
+        
+        document.getElementById('submitForm').addEventListener('click', function() {
+            const guestName = document.getElementById('guestName').value;
+            const adults = parseInt(document.getElementById('adults').value);
+            const children = parseInt(document.getElementById('children').value);
+            
+            if (guestName.length < 3) {
+                alert('Por favor ingresa tu nombre (mínimo 3 caracteres)');
+                return;
             }
             
-            // Actualizar inmediatamente y luego cada segundo
+            if (adults + children > 3) {
+                alert('El número total de personas (adultos + niños) no puede ser mayor a 3');
+                return;
+            }
+            
+            // Guardar confirmación
+            const confirmation = {
+                name: guestName,
+                adults: adults,
+                children: children,
+                total: adults + children,
+                timestamp: new Date().toLocaleString()
+            };
+            
+            confirmations.push(confirmation);
+            
+            // Crear mensaje para WhatsApp
+            const message = `Hola, confirmo mi asistencia a la fiesta de Ailany.\nNombre: ${guestName}\nAdultos: ${adults}\nNiños: ${children}\nTotal de personas: ${adults + children}`;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/522221012336?text=${encodedMessage}`;
+            
+            // Abrir WhatsApp
+            window.open(whatsappURL, '_blank');
+            
+            // Mostrar opciones de calendario
+            document.getElementById('confirmationForm').style.display = 'none';
+            document.getElementById('calendarOptions').style.display = 'block';
+            
+            // Limpiar formulario
+            document.getElementById('guestName').value = '';
+            document.getElementById('adults').value = '1';
+            document.getElementById('children').value = '0';
+            
+            // Actualizar panel de administración
+            updateAdminPanel();
+        });
+        
+        // Funciones para agregar a calendario
+        document.getElementById('addMainEvent').addEventListener('click', function() {
+            // Crear evento para el calendario
+            const eventDate = '20251123T130000';
+            const eventEndDate = '20251123T230000';
+            const eventTitle = 'Cumpleaños de Ailany - Mis V Años';
+            const eventLocation = 'Ceremonia: Iglesia del Santo Entierro, Cholula. Recepción: Salón Jardín Joss Mary, Puebla.';
+            const eventDescription = 'Celebración del V cumpleaños de Ailany. Ceremonia a las 1:00 PM en Iglesia del Santo Entierro. Recepción a las 4:00 PM en Salón Jardín Joss Mary.';
+            
+            // Crear enlace para Google Calendar
+            const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&dates=${eventDate}/${eventEndDate}&text=${encodeURIComponent(eventTitle)}&location=${encodeURIComponent(eventLocation)}&details=${encodeURIComponent(eventDescription)}`;
+            
+            // Abrir enlace
+            window.open(googleCalendarUrl, '_blank');
+            
+            alert('Evento principal agregado a tu calendario');
+        });
+        
+        document.getElementById('addPhotoReminder').addEventListener('click', function() {
+            // Crear recordatorio para fotos
+            const eventDate = '20251123T160000';
+            const eventEndDate = '20251123T161500';
+            const eventTitle = 'Recordatorio: Fotos en el cumpleaños de Ailany';
+            const eventLocation = 'Salón Jardín Joss Mary, Puebla';
+            const eventDescription = '¡No olvides tomar fotos en la fiesta de Ailany! Será un día mágico que queremos recordar.';
+            
+            // Crear enlace para Google Calendar
+            const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&dates=${eventDate}/${eventEndDate}&text=${encodeURIComponent(eventTitle)}&location=${encodeURIComponent(eventLocation)}&details=${encodeURIComponent(eventDescription)}`;
+            
+            // Abrir enlace
+            window.open(googleCalendarUrl, '_blank');
+            
+            alert('Recordatorio de fotos agregado a tu calendario');
+        });
+        
+        // Panel de administración
+        document.getElementById('adminCrown').addEventListener('click', function() {
+            document.getElementById('adminPanel').style.display = 'block';
+            updateAdminPanel();
+        });
+        
+        document.getElementById('closeAdmin').addEventListener('click', function() {
+            document.getElementById('adminPanel').style.display = 'none';
+        });
+        
+        // Actualizar panel de administración
+        function updateAdminPanel() {
+            const totalGuests = confirmations.reduce((sum, guest) => sum + guest.total, 0);
+            const totalAdults = confirmations.reduce((sum, guest) => sum + guest.adults, 0);
+            const totalChildren = confirmations.reduce((sum, guest) => sum + guest.children, 0);
+            const confirmedGuests = confirmations.length;
+            
+            document.getElementById('totalGuests').textContent = totalGuests;
+            document.getElementById('totalAdults').textContent = totalAdults;
+            document.getElementById('totalChildren').textContent = totalChildren;
+            document.getElementById('confirmedGuests').textContent = confirmedGuests;
+            
+            // Actualizar lista de invitados
+            const guestsList = document.getElementById('guestsList');
+            guestsList.innerHTML = '';
+            
+            confirmations.forEach(guest => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${guest.name}</td>
+                    <td>${guest.adults}</td>
+                    <td>${guest.children}</td>
+                    <td>${guest.total}</td>
+                `;
+                guestsList.appendChild(row);
+            });
+        }
+        
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
             updateCountdown();
-            const countdownInterval = setInterval(updateCountdown, 1000);
-        }
-        
-        // Controlar música
-        function toggleMusic() {
-            if (!audio) {
-                // Crear elemento de audio (usando una canción libre de derechos)
-                audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
-                audio.loop = true;
-            }
-            
-            if (isPlaying) {
-                audio.pause();
-                musicBtn.classList.remove('playing');
-                musicBtn.innerHTML = '🎵';
-            } else {
-                audio.play().catch(e => {
-                    console.log('Error reproduciendo audio:', e);
-                    alert('Para escuchar la música, haz clic en cualquier parte de la página primero.');
-                });
-                musicBtn.classList.add('playing');
-                musicBtn.innerHTML = '🎶';
-            }
-            
-            isPlaying = !isPlaying;
-        }
-        
-        // Permitir reproducción de audio después de la interacción del usuario
-        document.addEventListener('click', function() {
-            if (audio && isPlaying) {
-                audio.play();
-            }
-        }, { once: true });
+            setInterval(updateCountdown, 1000);
+        });
     </script>
 </body>
 </html>
