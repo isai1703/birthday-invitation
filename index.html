@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ===== VARIABLES Y RESET ===== */
         :root {
             --blush-pink: #FADADD;
             --light-pink: #f8e8e8;
@@ -28,7 +27,6 @@
             box-sizing: border-box;
         }
 
-        /* ===== ESTILOS BASE ===== */
         body {
             font-family: 'Montserrat', sans-serif;
             background: linear-gradient(135deg, var(--pearl-pink) 0%, var(--blush-pink) 50%, var(--light-pink) 100%);
@@ -49,108 +47,210 @@
             align-items: center;
         }
 
-        /* ===== CASTILLO 3D INTERACTIVO ===== */
-        .castle-envelope {
-            width: 320px;
-            height: 380px;
-            position: relative;
-            margin-bottom: 40px;
-            cursor: pointer;
-            transition: transform 0.5s ease;
+        /* Castillo 3D con Neón */
+        .castle-container {
             perspective: 1000px;
-        }
-
-        .castle-envelope:hover {
-            transform: scale(1.03);
-        }
-
-        .castle-body {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #c89595, #b88585);
-            border-radius: 15px 15px 5px 5px;
-            position: relative;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            z-index: 2;
-        }
-
-        .castle-towers {
-            position: absolute;
-            top: -40px;
-            width: 100%;
+            margin-bottom: 50px;
             display: flex;
-            justify-content: space-between;
-            padding: 0 30px;
-            z-index: 3;
+            justify-content: center;
+            width: 100%;
         }
 
-        .tower {
-            width: 60px;
-            height: 80px;
-            background: linear-gradient(135deg, #b88585, #a87575);
-            border-radius: 10px 10px 0 0;
+        .castle-3d {
+            width: 300px;
+            height: 280px;
             position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(10deg) rotateY(-5deg);
+            transition: transform 0.5s ease;
         }
 
-        .tower::after {
-            content: '';
+        .castle-3d:hover {
+            transform: rotateX(10deg) rotateY(5deg);
+        }
+
+        .castle-base {
+            width: 240px;
+            height: 120px;
+            background: linear-gradient(45deg, #c89595, #b88585);
             position: absolute;
-            top: -20px;
-            left: -10px;
+            bottom: 0;
+            left: 30px;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transform-style: preserve-3d;
+            transform: translateZ(0);
+        }
+
+        .castle-tower {
+            width: 60px;
+            height: 150px;
+            background: linear-gradient(45deg, #c89595, #b88585);
+            position: absolute;
+            bottom: 120px;
+            border-radius: 10px 10px 0 0;
+            transform-style: preserve-3d;
+            transform: translateZ(10px);
+        }
+
+        .tower-left { left: 40px; }
+        .tower-center { 
+            left: 120px; 
+            height: 180px; 
+        }
+        .tower-right { right: 40px; }
+
+        .tower-top {
             width: 80px;
-            height: 30px;
-            background: linear-gradient(135deg, #a87575, #986565);
+            height: 40px;
+            background: linear-gradient(45deg, #b88585, #a87575);
+            position: absolute;
+            bottom: 150px;
             border-radius: 40px 40px 0 0;
+            transform-style: preserve-3d;
+            transform: translateZ(5px);
+        }
+
+        .tower-left .tower-top { left: -10px; bottom: 150px; }
+        .tower-center .tower-top { left: -10px; bottom: 180px; width: 100px; }
+        .tower-right .tower-top { left: -10px; bottom: 150px; }
+
+        .neon-line {
+            position: absolute;
+            height: 3px;
+            border-radius: 2px;
+            animation: neonPulse 2s infinite alternate;
+        }
+
+        .neon-line.pink {
+            background: var(--neon-pink);
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .neon-line.blue {
+            background: var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .tower-left .neon-line.pink,
+        .tower-right .neon-line.pink {
+            width: 60px;
+            top: 40px;
+            left: 0;
+        }
+
+        .tower-left .neon-line.blue,
+        .tower-right .neon-line.blue {
+            width: 60px;
+            top: 80px;
+            left: 0;
+        }
+
+        .tower-center .neon-line.pink {
+            width: 80px;
+            top: 50px;
+            left: -10px;
+        }
+
+        .tower-center .neon-line.blue {
+            width: 80px;
+            top: 100px;
+            left: -10px;
+        }
+
+        @keyframes neonPulse {
+            from { opacity: 0.7; }
+            to { opacity: 1; }
         }
 
         .castle-door {
-            width: 100px;
-            height: 140px;
-            background: linear-gradient(135deg, #8B4513, #A0522D);
+            width: 80px;
+            height: 110px;
+            background: linear-gradient(45deg, #8B4513, #A0522D);
             position: absolute;
             bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 110px;
             border-radius: 10px 10px 0 0;
             transition: transform 1.2s ease;
-            transform-origin: bottom;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--gold);
-            font-size: 28px;
-            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
-            z-index: 4;
+            transform-origin: left;
+            transform-style: preserve-3d;
+            transform: translateZ(15px);
+            cursor: pointer;
         }
 
         .castle-door.open {
-            transform: translateX(-50%) rotateX(-110deg);
+            transform: translateZ(15px) rotateY(-80deg);
+        }
+
+        .door-design {
+            width: 60px;
+            height: 80px;
+            border: 2px solid var(--gold);
+            position: absolute;
+            top: 15px;
+            left: 10px;
+            border-radius: 5px;
         }
 
         .door-knob {
-            width: 20px;
-            height: 20px;
+            width: 15px;
+            height: 15px;
             background: var(--gold);
             border-radius: 50%;
             position: absolute;
-            right: 15px;
+            right: 10px;
             top: 50%;
+            transform: translateZ(5px);
             box-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
         }
 
-        /* ===== EFECTOS NEÓN Y ANIMACIONES ===== */
+        .neon-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 0 20px var(--neon-pink);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .castle-door:hover .neon-glow {
+            opacity: 0.7;
+        }
+
+        .castle-walls {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .wall-left, .wall-right {
+            position: absolute;
+            width: 30px;
+            height: 100px;
+            background: linear-gradient(45deg, #b88585, #a87575);
+            bottom: 0;
+            transform-style: preserve-3d;
+        }
+
+        .wall-left {
+            left: 0;
+            transform: translateZ(-10px) rotateY(10deg);
+        }
+
+        .wall-right {
+            right: 0;
+            transform: translateZ(-10px) rotateY(-10deg);
+        }
+
+        /* Efectos de Texto */
         .invitation-text {
             text-align: center;
             margin: 30px 0;
             opacity: 0;
             transition: opacity 1s ease;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             width: 100%;
-            z-index: 1;
         }
 
         .invitation-text.visible {
@@ -190,7 +290,7 @@
             }
         }
 
-        /* ===== CONTENIDO DE LA INVITACIÓN ===== */
+        /* Contenido de la Invitación */
         .invitation-content {
             display: none;
             width: 100%;
@@ -202,7 +302,7 @@
             to { opacity: 1; }
         }
 
-        /* ===== TÍTULO PRINCIPAL - MIS V AÑOS ===== */
+        /* Títulos Principales */
         .main-title {
             font-family: 'Dancing Script', cursive;
             font-size: 3.5rem;
@@ -230,31 +330,72 @@
             background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
 
-        /* ===== NOMBRE AILANY CON CORONA ===== */
+        /* Nombre con Corona */
         .name-container {
             text-align: center;
             margin: 30px 0;
             position: relative;
-            padding-top: 40px;
+            padding-top: 60px;
         }
 
         .crown {
-            font-size: 2.8rem;
-            color: var(--gold);
             position: absolute;
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            animation: rotateCrown 5s infinite linear;
+            animation: rotateCrown 8s infinite linear;
             z-index: 10;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
             cursor: pointer;
+            width: 100px;
+            height: 60px;
+            transform-style: preserve-3d;
         }
 
         @keyframes rotateCrown {
-            from { transform: translateX(-50%) rotate(0deg); }
-            to { transform: translateX(-50%) rotate(360deg); }
+            from { transform: translateX(-50%) rotateY(0deg); }
+            to { transform: translateX(-50%) rotateY(360deg); }
         }
+
+        .crown-base {
+            position: absolute;
+            width: 100px;
+            height: 20px;
+            background: linear-gradient(45deg, var(--gold), #ffd700);
+            border-radius: 10px 10px 0 0;
+            top: 0;
+            left: 0;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
+        }
+
+        .crown-peak {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 20px solid var(--gold);
+            bottom: 20px;
+        }
+
+        .peak-1 { left: 10px; }
+        .peak-2 { left: 30px; }
+        .peak-3 { left: 50px; }
+        .peak-4 { left: 70px; }
+        .peak-5 { left: 90px; }
+
+        .crown-jewel {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--neon-pink);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-pink);
+            bottom: 10px;
+        }
+
+        .jewel-1 { left: 20px; }
+        .jewel-2 { left: 50px; }
+        .jewel-3 { left: 80px; }
 
         .name {
             font-family: 'Dancing Script', cursive;
@@ -270,7 +411,7 @@
             display: block;
         }
 
-        /* ===== SECCIONES DE CONTENIDO ===== */
+        /* Secciones de Contenido */
         .section {
             background: rgba(255, 255, 255, 0.8);
             border-radius: 15px;
@@ -290,7 +431,7 @@
             line-height: 1.2;
         }
 
-        /* ===== CUENTA REGRESIVA ===== */
+        /* Cuenta Regresiva */
         .countdown {
             display: flex;
             justify-content: center;
@@ -320,7 +461,7 @@
             color: #666;
         }
 
-        /* ===== INFORMACIÓN DE EVENTOS ===== */
+        /* Información de Eventos */
         .event-details {
             text-align: left;
         }
@@ -344,7 +485,7 @@
             font-size: 0.9rem;
         }
 
-        /* ===== BOTONES ===== */
+        /* Botones */
         .btn {
             display: inline-block;
             padding: 12px 20px;
@@ -373,7 +514,7 @@
             box-shadow: 0 0 10px var(--neon-pink);
         }
 
-        /* ===== LISTA DE REGALOS ===== */
+        /* Lista de Regalos */
         .gift-suggestions ul {
             list-style: none;
             text-align: left;
@@ -402,7 +543,7 @@
             font-size: 0.9rem;
         }
 
-        /* ===== FORMULARIO DE CONFIRMACIÓN ===== */
+        /* Formulario de Confirmación */
         .confirmation-form {
             display: none;
             max-width: 500px;
@@ -435,7 +576,14 @@
             display: none;
         }
 
-        /* ===== INTERFAZ DE ADMINISTRACIÓN ===== */
+        .calendar-links {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Panel de Administración */
         .admin-panel {
             display: none;
             position: fixed;
@@ -473,7 +621,7 @@
             cursor: pointer;
         }
 
-        /* ===== EFECTOS VISUALES ===== */
+        /* Efectos Visuales */
         .particles {
             position: fixed;
             top: 0;
@@ -522,22 +670,74 @@
                         radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
         }
 
-        /* ===== RESPONSIVE DESIGN ===== */
+        .silhouettes::before,
+        .silhouettes::after {
+            content: '';
+            position: fixed;
+            width: 200px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            z-index: -1;
+            border-radius: 50%;
+            filter: blur(10px);
+        }
+
+        .silhouettes::before {
+            top: 10%;
+            left: 5%;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        .silhouettes::after {
+            bottom: 10%;
+            right: 5%;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+        }
+
+        /* Responsive Design */
         @media (max-width: 480px) {
-            .castle-envelope {
-                width: 280px;
-                height: 340px;
+            .castle-3d {
+                width: 250px;
+                height: 230px;
             }
             
-            .tower {
+            .castle-base {
+                width: 190px;
+                height: 100px;
+                left: 30px;
+            }
+            
+            .castle-tower {
                 width: 50px;
-                height: 70px;
+                height: 120px;
+            }
+            
+            .tower-left { left: 30px; }
+            .tower-center { 
+                left: 100px; 
+                height: 140px; 
+            }
+            .tower-right { right: 30px; }
+            
+            .tower-top {
+                width: 70px;
+                height: 35px;
+            }
+            
+            .tower-left .tower-top,
+            .tower-right .tower-top {
+                bottom: 120px;
+            }
+            
+            .tower-center .tower-top {
+                bottom: 140px;
+                width: 90px;
             }
             
             .castle-door {
-                width: 80px;
-                height: 120px;
-                font-size: 24px;
+                width: 60px;
+                height: 90px;
+                left: 95px;
             }
             
             .neon-text {
@@ -553,8 +753,34 @@
             }
             
             .crown {
-                font-size: 2.2rem;
+                width: 80px;
+                height: 50px;
             }
+            
+            .crown-base {
+                width: 80px;
+            }
+            
+            .crown-peak {
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                border-bottom: 16px solid var(--gold);
+            }
+            
+            .peak-1 { left: 8px; }
+            .peak-2 { left: 24px; }
+            .peak-3 { left: 40px; }
+            .peak-4 { left: 56px; }
+            .peak-5 { left: 72px; }
+            
+            .crown-jewel {
+                width: 10px;
+                height: 10px;
+            }
+            
+            .jewel-1 { left: 16px; }
+            .jewel-2 { left: 40px; }
+            .jewel-3 { left: 64px; }
             
             .section-title {
                 font-size: 1.8rem;
@@ -586,46 +812,78 @@
                 margin-left: 0;
                 margin-top: 5px;
             }
+            
+            .calendar-links {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- ===== EFECTOS VISUALES ===== -->
+    <!-- Efectos visuales -->
     <div class="particles" id="particles"></div>
     <div class="glow"></div>
+    <div class="silhouettes"></div>
     
-    <!-- ===== CONTENEDOR PRINCIPAL ===== -->
+    <!-- Contenedor principal -->
     <div class="container">
-        <!-- ===== CASTILLO-SOBRE INTERACTIVO ===== -->
-        <div class="castle-envelope">
-            <div class="castle-body">
-                <div class="castle-towers">
-                    <div class="tower"></div>
-                    <div class="tower"></div>
+        <!-- Fase 1: Castillo 3D con neón -->
+        <div class="castle-container">
+            <div class="castle-3d">
+                <div class="castle-base"></div>
+                <div class="castle-tower tower-left">
+                    <div class="tower-top"></div>
+                    <div class="neon-line pink"></div>
+                    <div class="neon-line blue"></div>
+                </div>
+                <div class="castle-tower tower-center">
+                    <div class="tower-top"></div>
+                    <div class="neon-line pink"></div>
+                    <div class="neon-line blue"></div>
+                </div>
+                <div class="castle-tower tower-right">
+                    <div class="tower-top"></div>
+                    <div class="neon-line pink"></div>
+                    <div class="neon-line blue"></div>
                 </div>
                 <div class="castle-door" id="castleDoor">
-                    <i class="fas fa-gem"></i>
+                    <div class="door-design"></div>
                     <div class="door-knob"></div>
+                    <div class="neon-glow"></div>
                 </div>
-            </div>
-            
-            <!-- ===== TEXTO DE INVITACIÓN ===== -->
-            <div class="invitation-text" id="invitationText">
-                <h1 class="neon-text">¡Te invito a mi fiesta!</h1>
+                <div class="castle-walls">
+                    <div class="wall-left"></div>
+                    <div class="wall-right"></div>
+                </div>
             </div>
         </div>
 
-        <!-- ===== CONTENIDO DE LA INVITACIÓN ===== -->
+        <!-- Texto de invitación -->
+        <div class="invitation-text" id="invitationText">
+            <h1 class="neon-text"></h1>
+        </div>
+
+        <!-- Contenido de la invitación -->
         <div class="invitation-content" id="invitationContent">
-            <!-- ===== TÍTULO Y NOMBRE ===== -->
+            <!-- Título y nombre -->
             <h1 class="main-title">Mis V años</h1>
             
             <div class="name-container">
-                <div class="crown" id="adminCrown">👑</div>
+                <div class="crown" id="adminCrown">
+                    <div class="crown-base"></div>
+                    <div class="crown-peak peak-1"></div>
+                    <div class="crown-peak peak-2"></div>
+                    <div class="crown-peak peak-3"></div>
+                    <div class="crown-peak peak-4"></div>
+                    <div class="crown-peak peak-5"></div>
+                    <div class="crown-jewel jewel-1"></div>
+                    <div class="crown-jewel jewel-2"></div>
+                    <div class="crown-jewel jewel-3"></div>
+                </div>
                 <h2 class="name">Ailany</h2>
             </div>
 
-            <!-- ===== CUENTA REGRESIVA ===== -->
+            <!-- Cuenta regresiva -->
             <section class="section">
                 <h2 class="section-title">Cuenta Regresiva</h2>
                 <div class="countdown">
@@ -648,7 +906,7 @@
                 </div>
             </section>
 
-            <!-- ===== CEREMONIA RELIGIOSA ===== -->
+            <!-- Ceremonia religiosa -->
             <section class="section">
                 <h2 class="section-title">Ceremonia Religiosa</h2>
                 <div class="event-details">
@@ -660,7 +918,7 @@
                 </div>
             </section>
 
-            <!-- ===== RECEPCIÓN Y CELEBRACIÓN ===== -->
+            <!-- Recepción y Celebración -->
             <section class="section">
                 <h2 class="section-title">Recepción y Celebración</h2>
                 <div class="event-details">
@@ -672,7 +930,7 @@
                 </div>
             </section>
 
-            <!-- ===== ENTRETENIMIENTO PARA NIÑOS ===== -->
+            <!-- Entretenimiento para niños -->
             <section class="section">
                 <h2 class="section-title">Entretenimiento para los niños</h2>
                 <div class="event-details">
@@ -681,7 +939,7 @@
                 </div>
             </section>
 
-            <!-- ===== SUGERENCIAS DE REGALO ===== -->
+            <!-- Sugerencias de regalo -->
             <section class="section gift-suggestions">
                 <h2 class="section-title">Sugerencias de regalo</h2>
                 <p>Si deseas obsequiarme algo te sugiero:</p>
@@ -701,7 +959,7 @@
                 <p class="thank-you">Agradezco tu cariño y generosidad Dios te bendiga hoy y siempre</p>
             </section>
 
-            <!-- ===== CONFIRMACIÓN DE ASISTENCIA ===== -->
+            <!-- Confirmación de asistencia -->
             <section class="section">
                 <h2 class="section-title">Confirmación de Asistencia</h2>
                 <div class="confirmation">
@@ -727,6 +985,10 @@
                     
                     <div class="thank-you-message hidden" id="thankYouMessage">
                         <p>¡Gracias por confirmar! Te esperamos en mi fiesta.</p>
+                        <div class="calendar-links">
+                            <button id="addToCalendar" class="btn btn-neon">Agregar evento al calendario</button>
+                            <button id="photoReminder" class="btn btn-neon">Recordatorio de fotos</button>
+                        </div>
                     </div>
                     
                     <div class="cancel-message hidden" id="cancelMessage">
@@ -735,16 +997,7 @@
                 </div>
             </section>
 
-            <!-- ===== RECORDATORIO DE FOTOS ===== -->
-            <section class="section">
-                <h2 class="section-title">Recuerda</h2>
-                <div class="photo-reminder">
-                    <p>No se te olvide tomar fotos en mi fiesta heee</p>
-                    <button id="photoBtn" class="btn">Agendar recordatorio de fotos</button>
-                </div>
-            </section>
-
-            <!-- ===== MENSAJE FINAL ===== -->
+            <!-- Mensaje final -->
             <section class="section">
                 <div class="final-message">
                     <p>Será un día Mágico y me encantaría compartirlo contigo, ❤️con cariño Ailany❤️</p>
@@ -753,7 +1006,7 @@
         </div>
     </div>
 
-    <!-- ===== PANEL DE ADMINISTRACIÓN ===== -->
+    <!-- Panel de administración -->
     <div class="admin-panel" id="adminPanel">
         <div class="admin-content">
             <h2>Panel de Administración</h2>
@@ -767,21 +1020,22 @@
         </div>
     </div>
 
-    <!-- ===== AUDIO PARA LA CANCIÓN ===== -->
+    <!-- Audio para la canción -->
     <audio id="audioPlayer" preload="auto">
         <source src="golden_spanish.mp3" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
     </audio>
 
     <script>
-        // ===== VARIABLES GLOBALES =====
+        // Variables globales
         let guestList = [];
 
-        // ===== INICIALIZACIÓN AL CARGAR EL DOM =====
+        // Inicialización al cargar el DOM
         document.addEventListener('DOMContentLoaded', function() {
             // Elementos del DOM
             const door = document.getElementById('castleDoor');
             const invitationText = document.getElementById('invitationText');
+            const neonText = document.querySelector('.neon-text');
             const invitationContent = document.getElementById('invitationContent');
             const audioPlayer = document.getElementById('audioPlayer');
             const confirmBtn = document.getElementById('confirmBtn');
@@ -790,15 +1044,16 @@
             const thankYouMessage = document.getElementById('thankYouMessage');
             const cancelMessage = document.getElementById('cancelMessage');
             const submitBtn = document.getElementById('submitBtn');
-            const photoBtn = document.getElementById('photoBtn');
+            const addToCalendarBtn = document.getElementById('addToCalendar');
+            const photoReminderBtn = document.getElementById('photoReminder');
             const adminCrown = document.getElementById('adminCrown');
             const adminPanel = document.getElementById('adminPanel');
             const adminClose = document.getElementById('adminClose');
 
-            // ===== CREAR PARTÍCULAS DE LUZ =====
+            // Crear partículas de luz
             createParticles();
 
-            // ===== ANIMACIÓN DEL CASTILLO =====
+            // Animación del castillo
             door.addEventListener('click', function() {
                 // Abrir puerta
                 door.classList.add('open');
@@ -806,26 +1061,28 @@
                 // Reproducir sonido
                 audioPlayer.play().catch(error => {
                     console.log('La reproducción automática falló: ', error);
-                    // Si falla, intentamos cargar y reproducir
                     audioPlayer.load();
-                    audioPlayer.play();
+                    setTimeout(() => {
+                        audioPlayer.play().catch(e => console.log('Segundo intento falló: ', e));
+                    }, 500);
                 });
 
-                // Mostrar texto de invitación después de un breve retraso
+                // Mostrar texto de invitación
                 setTimeout(() => {
                     invitationText.classList.add('visible');
                     
-                    // Efecto de escritura para el texto de invitación
-                    typeWriter(invitationText.querySelector('.neon-text'), "¡Te invito a mi fiesta!", 0);
+                    // Efecto de escritura
+                    typeWriter(neonText, "¡Te invito a mi fiesta!", 0);
                     
-                    // Mostrar contenido de la invitación después de que termine la escritura
+                    // Mostrar contenido de la invitación
                     setTimeout(() => {
                         invitationContent.style.display = 'block';
+                        neonText.style.animation = 'neonGlow 1.5s ease-in-out infinite alternate, float 3s ease-in-out infinite';
                     }, 2500);
                 }, 1000);
             });
 
-            // ===== EFECTO DE MÁQUINA DE ESCRIBIR =====
+            // Efecto de máquina de escribir
             function typeWriter(element, text, index) {
                 if (index < text.length) {
                     element.innerHTML = text.substring(0, index + 1);
@@ -833,11 +1090,19 @@
                 }
             }
 
-            // ===== CUENTA REGRESIVA =====
+            // Cuenta regresiva
             function updateCountdown() {
                 const eventDate = new Date('November 23, 2025 13:00:00').getTime();
                 const now = new Date().getTime();
                 const distance = eventDate - now;
+
+                if (distance < 0) {
+                    document.getElementById('days').textContent = '00';
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                    return;
+                }
 
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -851,9 +1116,9 @@
             }
 
             setInterval(updateCountdown, 1000);
-            updateCountdown(); // Llamada inicial
+            updateCountdown();
 
-            // ===== CONFIRMACIÓN DE ASISTENCIA =====
+            // Confirmación de asistencia
             confirmBtn.addEventListener('click', function() {
                 confirmationForm.style.display = 'block';
                 confirmBtn.style.display = 'none';
@@ -874,7 +1139,7 @@
             });
 
             submitBtn.addEventListener('click', function() {
-                const name = document.getElementById('name').value;
+                const name = document.getElementById('name').value.trim();
                 const adults = parseInt(document.getElementById('adults').value);
                 const children = parseInt(document.getElementById('children').value);
                 
@@ -912,58 +1177,48 @@
                 
                 thankYouMessage.classList.remove('hidden');
                 confirmationForm.style.display = 'none';
-                
-                // Agregar al calendario
-                addToCalendar();
+                confirmBtn.style.display = 'none';
+                cancelBtn.style.display = 'none';
             });
 
-            // ===== AGREGAR EVENTO AL CALENDARIO =====
-            function addToCalendar() {
-                const eventDate = new Date('November 23, 2025 13:00:00');
+            // Agregar evento al calendario
+            addToCalendarBtn.addEventListener('click', function() {
+                const eventDate = new Date('November 23, 2025 16:00:00');
                 const endDate = new Date('November 23, 2025 22:00:00');
                 
                 const calendarEvent = {
                     title: 'Fiesta de Ailany - Mis V Años',
                     description: '¡Te invito a celebrar mis 5 años! Será un día mágico lleno de diversión.',
-                    location: 'Iglesia del Santo Entierro o Santo Sepulcro y Salon jardín Joss Mary',
-                    startTime: eventDate.toISOString(),
-                    endTime: endDate.toISOString()
+                    location: 'Salon jardín Joss Mary, C. Río Atoyac Sur 513, Santiago Momoxpan, Pue.',
+                    startTime: eventDate.toISOString().replace(/-|:|\.\d+/g, ''),
+                    endTime: endDate.toISOString().replace(/-|:|\.\d+/g, '')
                 };
                 
-                // Crear enlace para Google Calendar
-                const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&dates=${formatDateForGoogleCalendar(calendarEvent.startTime)}%2F${formatDateForGoogleCalendar(calendarEvent.endTime)}&text=${encodeURIComponent(calendarEvent.title)}&details=${encodeURIComponent(calendarEvent.description)}&location=${encodeURIComponent(calendarEvent.location)}`;
+                const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&dates=${calendarEvent.startTime}%2F${calendarEvent.endTime}&text=${encodeURIComponent(calendarEvent.title)}&details=${encodeURIComponent(calendarEvent.description)}&location=${encodeURIComponent(calendarEvent.location)}`;
                 
-                // Abrir enlace en una nueva pestaña
                 window.open(googleCalendarUrl, '_blank');
-            }
-
-            function formatDateForGoogleCalendar(dateString) {
-                return dateString.replace(/-|:|\.\d+/g, '');
-            }
-
-            // ===== RECORDATORIO DE FOTOS =====
-            photoBtn.addEventListener('click', function() {
-                const eventDate = new Date('November 23, 2025 13:00:00');
-                const reminderDate = new Date(eventDate.getTime() - (60 * 60 * 1000)); // 1 hora antes
-                
-                const calendarEvent = {
-                    title: 'Recordatorio: Tomar fotos en la fiesta de Ailany',
-                    description: '¡No olvides tomar muchas fotos en la fiesta de Ailany! #FiestaDeAilany',
-                    location: 'Salon jardín Joss Mary',
-                    startTime: reminderDate.toISOString(),
-                    endTime: new Date(reminderDate.getTime() + (30 * 60 * 1000)).toISOString() // 30 minutos después
-                };
-                
-                // Crear enlace para Google Calendar
-                const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&dates=${formatDateForGoogleCalendar(calendarEvent.startTime)}%2F${formatDateForGoogleCalendar(calendarEvent.endTime)}&text=${encodeURIComponent(calendarEvent.title)}&details=${encodeURIComponent(calendarEvent.description)}&location=${encodeURIComponent(calendarEvent.location)}`;
-                
-                // Abrir enlace en una nueva pestaña
-                window.open(googleCalendarUrl, '_blank');
-                
-                alert('¡Recordatorio agregado! No olvides tomar muchas fotos en la fiesta.');
+                alert('¡Evento agregado al calendario!');
             });
 
-            // ===== PANEL DE ADMINISTRACIÓN =====
+            // Recordatorio de fotos
+            photoReminderBtn.addEventListener('click', function() {
+                const reminderDate = new Date('November 24, 2025 10:00:00');
+                
+                const calendarEvent = {
+                    title: 'Recordatorio: Subir Fotos de la Fiesta de Ailany',
+                    description: '¡No olvides subir y compartir las fotos de la fiesta de Ailany! #FiestaDeAilany',
+                    location: '',
+                    startTime: reminderDate.toISOString().replace(/-|:|\.\d+/g, ''),
+                    endTime: new Date(reminderDate.getTime() + (60 * 60 * 1000)).toISOString().replace(/-|:|\.\d+/g, '')
+                };
+                
+                const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&dates=${calendarEvent.startTime}%2F${calendarEvent.endTime}&text=${encodeURIComponent(calendarEvent.title)}&details=${encodeURIComponent(calendarEvent.description)}&location=${encodeURIComponent(calendarEvent.location)}`;
+                
+                window.open(googleCalendarUrl, '_blank');
+                alert('¡Recordatorio de fotos agregado al calendario!');
+            });
+
+            // Panel de administración
             adminCrown.addEventListener('click', function() {
                 adminPanel.style.display = 'flex';
             });
@@ -984,16 +1239,23 @@
                 const guestListElement = document.getElementById('guestList');
                 guestListElement.innerHTML = '<h3>Lista de Invitados:</h3>';
                 
+                if (guestList.length === 0) {
+                    guestListElement.innerHTML += '<p>No hay confirmaciones aún.</p>';
+                    return;
+                }
+                
                 guestList.forEach(guest => {
                     const guestElement = document.createElement('div');
+                    guestElement.classList.add('guest-item');
                     guestElement.innerHTML = `
-                        <p><strong>${guest.name}</strong> - ${guest.adults} adultos, ${guest.children} niños (${guest.timestamp})</p>
+                        <p><strong>${guest.name}</strong> - ${guest.adults} adultos, ${guest.children} niños</p>
+                        <small>Confirmado: ${guest.timestamp}</small>
                     `;
                     guestListElement.appendChild(guestElement);
                 });
             }
 
-            // ===== CREAR PARTÍCULAS DE LUZ =====
+            // Crear partículas de luz
             function createParticles() {
                 const particlesContainer = document.getElementById('particles');
                 const particleCount = 50;
@@ -1002,18 +1264,15 @@
                     const particle = document.createElement('div');
                     particle.classList.add('particle');
                     
-                    // Posición aleatoria
                     const posX = Math.random() * 100;
                     const posY = Math.random() * 100;
                     particle.style.left = `${posX}%`;
                     particle.style.top = `${posY}%`;
                     
-                    // Tamaño aleatorio
                     const size = Math.random() * 3 + 1;
                     particle.style.width = `${size}px`;
                     particle.style.height = `${size}px`;
                     
-                    // Retraso de animación aleatorio
                     const delay = Math.random() * 15;
                     particle.style.animationDelay = `${delay}s`;
                     
