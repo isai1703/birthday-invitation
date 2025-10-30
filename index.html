@@ -1,81 +1,417 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitación de Ailany</title>
-<link href="https://fonts.googleapis.com/css2?family=Castoro+Script&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Invitación de Ailany — Mis V Años</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Montserrat', sans-serif; background: linear-gradient(135deg,#FADADD,#FFE4E1); color:#fff; overflow-x:hidden; text-align:center; }
-.hidden { display:none; }
-
-/* CASTILLO 3D NEON */
-#castle-container { perspective:1500px; margin:50px 0; }
-#castle {
-  width:250px; height:250px; margin:0 auto;
-  background:linear-gradient(to top,#FFB6C1,#FFC0CB);
-  transform-style:preserve-3d; transition: transform 1s; position:relative;
-  border: 3px solid #FF69B4;
-  box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493, 0 0 60px #ff69b4;
-  border-radius:10px;
-}
-.tower { position:absolute; width:50px; height:100px; background:linear-gradient(to top,#FFC0CB,#FF69B4); border-radius:5px; top:-50px; box-shadow: 0 0 15px #ff69b4; }
-.tower1 { left:-25px; transform:rotateY(15deg); }
-.tower2 { right:-25px; transform:rotateY(-15deg); }
-#castle-door {
-  width:60px; height:120px; background:#D2691E;
-  margin:60px auto 0; cursor:pointer;
-  transform-origin:left center; border-radius:0 0 5px 5px;
-  box-shadow:0 0 15px #fff,0 0 25px #ff69b4;
+/* RESET */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:"Poppins",sans-serif;
+  background: linear-gradient(180deg,#FBE8EE 0%, #FFEFF3 50%, #FFF6F8 100%);
+  color:#222;
+  -webkit-font-smoothing:antialiased;
+  text-align:center;
+  overflow-x:hidden;
+  padding:20px;
 }
 
-/* Neon luces */
-.neon-light {
-  position:absolute; width:10px; height:10px; border-radius:50%;
-  background: #fff; box-shadow:0 0 15px #fff, 0 0 25px #ff1493, 0 0 35px #ff69b4;
+/* --- CASTILLO 3D NEON --- */
+#castle-wrap{width:100%;max-width:940px;margin:18px auto 6px; perspective:1800px; position:relative;}
+#castle{
+  width:360px;height:300px;margin:0 auto; position:relative;
+  transform-style:preserve-3d; transition:transform .6s ease;
+  transform: translateZ(0);
 }
-.light1 { top:20px; left:20px; animation:blink 1.2s infinite; }
-.light2 { top:20px; right:20px; animation:blink 1.5s infinite; }
-.light3 { top:60px; left:110px; animation:blink 1.8s infinite; }
-
-@keyframes blink {
-  0%, 50%, 100% { opacity:1; }
-  25%, 75% { opacity:0.3; }
+.castle-base{
+  width:100%; height:160px; background:linear-gradient(180deg,#FFD7E0,#FFC6D8);
+  border-radius:18px; position:absolute; bottom:0; left:0;
+  box-shadow: 0 18px 40px rgba(255,20,147,0.12), inset 0 -6px 18px rgba(255,105,180,0.06);
+  border:2px solid rgba(255,105,180,0.14);
+  overflow:visible;
+}
+/* TOWERS */
+.tower{
+  width:90px; height:180px; position:absolute; top:-80px; background:linear-gradient(180deg,#FFE6ED,#FFD6E6);
+  border-radius:12px; box-shadow:0 10px 25px rgba(255,20,147,0.08); border:2px solid rgba(255,105,180,0.12);
+  transform-origin:center center;
+}
+.t1{left:-36px; transform: rotateY(10deg);}
+.t2{right:-36px; transform: rotateY(-10deg);}
+.tower-top{
+  width:0;height:0;border-left:48px solid transparent;border-right:48px solid transparent;
+  border-bottom:40px solid #FFB6C1; margin:-2px auto 0; filter:drop-shadow(0 8px 16px rgba(255,20,147,0.08));
 }
 
-/* Otros estilos existentes (texto, coronas, partículas, main content, etc.) */
-/* ... Mantén tu CSS previo aquí ... */
+/* DOOR */
+#castle-door{
+  width:120px;height:160px;background:linear-gradient(180deg,#7C3A2F,#8F3F2F);
+  margin:0 auto; position:relative; top:22px; border-radius:0 0 10px 10px;
+  transform-origin: left center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35), 0 0 22px rgba(255,105,180,0.12);
+  border:3px solid rgba(0,0,0,0.12);
+  cursor:pointer;
+}
+
+/* DOOR DETAIL */
+.door-knob{
+  width:18px;height:18px;border-radius:50%; background:linear-gradient(180deg,#FFDAB9,#FFEFD5);
+  position:absolute; right:18px; top:70px; box-shadow:0 0 12px rgba(255,215,0,0.6);
+}
+
+/* NEON LIGHTS */
+.neon-light{
+  position:absolute;width:12px;height:12px;border-radius:50%;
+  background:#fff; box-shadow:0 0 8px #fff,0 0 18px #ff8acb, 0 0 30px #ff4db0;
+  opacity:.95;
+}
+.light-1{left:28px;top:-12px; animation:blink 1.2s infinite;}
+.light-2{right:28px;top:-16px; animation:blink 1.5s infinite;}
+.light-3{left:150px;top:14px; animation:blink 1.8s infinite;}
+@keyframes blink{0%,60%,100%{opacity:1}30%{opacity:.25}}
+
+/* DEPTH & REFLECTION GLINT */
+.castle-reflection{position:absolute;left:10%;right:10%;height:6px;background:linear-gradient(90deg,rgba(255,255,255,0.15),rgba(255,255,255,0));bottom:-28px;border-radius:4px;filter:blur(8px);opacity:.6}
+
+/* Neon outline halo */
+#castle::after{
+  content:""; position:absolute; inset:-18px; border-radius:22px;
+  box-shadow:0 0 40px rgba(255,105,180,0.15), 0 0 80px rgba(255,20,147,0.08);
+  pointer-events:none;
+}
+
+/* small responsive */
+@media (max-width:520px){
+  #castle{width:260px;height:220px}
+  .tower{width:68px;height:132px}
+  #castle-door{width:92px;height:128px; top:12px}
+}
+
+/* --- INITIAL TEXT (typewriter + neon) --- */
+#initial-text{
+  margin-top:26px; font-family:"Great Vibes",cursive; font-size:34px; color:#ff2fa6;
+  opacity:0; transition:opacity .8s ease; text-shadow:0 0 8px #fff,0 0 20px #ff8acb, 0 0 36px #ff4db0;
+}
+#initial-text.visible{opacity:1}
+
+/* --- MAIN CONTENT --- */
+#main-content{max-width:920px;margin:22px auto;padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,0.06);display:none}
+#title-container{position:relative;padding:8px 0 18px}
+#title-container h1{font-family:"Great Vibes",cursive;font-size:48px;margin-bottom:6px;color:#ff5aa8;
+  text-shadow: 0 2px 6px rgba(0,0,0,.18), 0 0 8px #fff, 0 0 18px #ff7dbf, 0 0 36px #ff3ba1;}
+#title-container h2{font-size:34px;color:#fff;margin-bottom:6px;text-shadow:0 1px 6px rgba(0,0,0,.2), 0 0 14px #ffd6ea}
+#crown{width:120px;height:80px;margin:6px auto;background-size:contain;background-repeat:no-repeat;background-position:center; animation: crownFloat 6s ease-in-out infinite}
+@keyframes crownFloat{0%{transform:translateY(0) rotateY(0deg)}50%{transform:translateY(-6px) rotateY(10deg)}100%{transform:translateY(0) rotateY(0deg)}}
+
+/* floating crowns & particles */
+.floating-crown{position:absolute;background-size:contain;background-repeat:no-repeat;pointer-events:none;opacity:.85;filter:drop-shadow(0 6px 12px rgba(255,20,147,0.08))}
+.particle{position:absolute;width:8px;height:8px;border-radius:50%;background:radial-gradient(circle,#fff,#ffd6ee);pointer-events:none;filter:blur(.6px);opacity:.95}
+
+/* Countdown & sections */
+#countdown{font-weight:600;margin:8px 0 18px;font-size:18px;color:#ff2fa6}
+.section{background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:12px;margin:10px 6px;border-radius:12px;text-align:left}
+.section p{margin:6px 0;color:#222}
+.btn{display:inline-block;padding:8px 14px;border-radius:10px;background:#ff4db0;color:#fff;text-decoration:none;font-weight:600}
+.btn:active{transform:translateY(1px)}
+
+/* RSVP form */
+#rsvp-form{display:flex;flex-direction:column;gap:8px;max-width:360px;margin:10px auto}
+input,select{padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);text-align:center}
+.form-row{display:flex;gap:8px;justify-content:center}
+.small{width:48%}
+
+/* helper */
+.center{display:flex;justify-content:center;align-items:center;flex-direction:column}
+.note{font-size:13px;color:#444;margin-top:6px}
 </style>
 </head>
 <body>
 
-<div id="castle-container">
-  <div id="castle">
-    <div class="tower tower1"></div>
-    <div class="tower tower2"></div>
-    <div id="castle-door"></div>
-    <div class="neon-light light1"></div>
-    <div class="neon-light light2"></div>
-    <div class="neon-light light3"></div>
+<!-- CASTLE NEON -->
+<div id="castle-wrap" class="center">
+  <div id="castle" aria-hidden="true">
+    <div class="tower t1"><div class="tower-top"></div></div>
+    <div class="tower t2"><div class="tower-top"></div></div>
+    <div class="castle-base"></div>
+    <div id="castle-door" title="Abrir invitación">
+      <div class="door-knob" aria-hidden="true"></div>
+    </div>
+    <div class="neon-light light-1"></div>
+    <div class="neon-light light-2"></div>
+    <div class="neon-light light-3"></div>
+    <div class="castle-reflection"></div>
   </div>
 </div>
 
-<!-- Resto de tu contenido: inicial text, main-content, coronas, RSVP, countdown, etc. -->
+<!-- initial text -->
+<div id="initial-text" aria-live="polite">¡Te invito a mi fiesta!</div>
+
+<!-- MAIN CONTENT (hidden until open) -->
+<div id="main-content" role="main">
+  <div id="title-container">
+    <h1>Mis V Años</h1>
+    <h2>Ailany</h2>
+    <div id="crown" style="background-image:url('tu_corona.gif')"></div>
+  </div>
+
+  <div id="countdown" aria-live="polite">⏳ Cargando cuenta...</div>
+
+  <div class="section">
+    <strong>Ceremonia religiosa</strong>
+    <p>📅 23 de noviembre 2025 — 🕐 1:00 pm</p>
+    <p>📍 Iglesia del Santo Entierro o Santo Sepulcro</p>
+    <a class="btn" href="https://maps.app.goo.gl/MESG66t5392Zncfm8" target="_blank" rel="noreferrer">Ver ubicación</a>
+  </div>
+
+  <div class="section">
+    <strong>Recepción</strong>
+    <p>📅 23 de noviembre 2025 — 🕓 4:00 pm</p>
+    <p>📍 Salón jardín Joss Mary</p>
+    <a class="btn" href="https://maps.app.goo.gl/Uw6MZtHp4LnNYkwTA" target="_blank" rel="noreferrer">Ver ubicación</a>
+  </div>
+
+  <div class="section">
+    <strong>Entretenimiento</strong>
+    <p>🎨 Pintacaritas: 4:30 pm</p>
+    <p>🤡 Show del payaso: 7:00 pm</p>
+  </div>
+
+  <div class="section">
+    <strong>Sugerencias de regalo</strong>
+    <ul>
+      <li>Ropa (talla 8)</li>
+      <li>Zapatos / tenis (#18)</li>
+      <li>Muñecas, material de pintura, rompecabezas</li>
+      <li>Dominó, juegos de té y cocina</li>
+      <li>Libros para colorear / cuentos interactivos</li>
+      <li>Si prefieres regalar dinero, será para su alcancía</li>
+    </ul>
+  </div>
+
+  <div class="section" id="rsvp-section">
+    <strong>Confirmación de asistencia</strong>
+    <p class="note">Máx. 3 personas por confirmación (incluye adultos y niños)</p>
+    <form id="rsvp-form" aria-label="Formulario de confirmación">
+      <input name="name" placeholder="Nombre (mín 3 letras)" minlength="3" required />
+      <div class="form-row">
+        <input name="guests" type="number" min="1" max="3" placeholder="Total personas (max 3)" required class="small" />
+        <select name="kids" class="small" title="¿Traes niños?">
+          <option value="0">Niños 0</option>
+          <option value="1">Niños 1</option>
+          <option value="2">Niños 2</option>
+          <option value="3">Niños 3</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <button type="submit" class="btn">Confirmar</button>
+        <button type="button" id="no-attend" class="btn" style="background:#ccc;color:#222">No asistiré</button>
+      </div>
+    </form>
+    <p class="note">Al confirmar se abrirá WhatsApp y se agregará el evento a tu calendario móvil.</p>
+  </div>
+
+  <div class="section center">
+    <button id="photo-reminder" class="btn">Recordatorio: Tomar fotos 📸</button>
+  </div>
+
+</div>
+
+<audio id="audio" src="golden_spanish.mp3" preload="auto"></audio>
 
 <script>
-// CLICK PUERTA
+/* ELEMENTS */
 const door = document.getElementById('castle-door');
 const initialText = document.getElementById('initial-text');
 const mainContent = document.getElementById('main-content');
-function typeWriter(el,text,i=0){ if(i<text.length){ el.textContent+=text.charAt(i); setTimeout(()=>typeWriter(el,text,i+1),100); } }
+const audio = document.getElementById('audio');
+const countdownEl = document.getElementById('countdown');
+
+/* PARTICLES that follow cursor */
+const PARTICLE_COUNT = 40;
+const particles = [];
+for(let i=0;i<PARTICLE_COUNT;i++){
+  const p = document.createElement('div');
+  p.className = 'particle';
+  document.body.appendChild(p);
+  p.style.left = (Math.random()*window.innerWidth)+'px';
+  p.style.top = (Math.random()*window.innerHeight)+'px';
+  p._vx = (Math.random()-0.5)*0.2;
+  p._vy = (Math.random()-0.5)*0.2;
+  particles.push(p);
+}
+
+/* floating crowns */
+const floatingCrowns = [];
+for(let i=0;i<12;i++){
+  const el = document.createElement('div');
+  el.className = 'floating-crown';
+  const size = 26 + Math.floor(Math.random()*60);
+  el.style.width = size+'px';
+  el.style.height = Math.floor(size*0.7)+'px';
+  el.style.left = Math.random()*window.innerWidth + 'px';
+  el.style.top = Math.random()*window.innerHeight + 'px';
+  el.style.backgroundImage = "url('tu_corona.gif')";
+  el.style.opacity = 0.6 + Math.random()*0.4;
+  el.style.transform = `rotate(${Math.random()*360}deg)`;
+  document.body.appendChild(el);
+  floatingCrowns.push({el, speed:0.15 + Math.random()*0.6});
+}
+
+/* crown main (already in markup) */
+const crownMain = document.getElementById('crown');
+
+/* cursor interaction: parallax castle tilt + particles attraction */
+document.addEventListener('mousemove', (ev)=>{
+  // castle tilt
+  const wrap = document.getElementById('castle-wrap');
+  const rect = wrap.getBoundingClientRect();
+  const cx = rect.left + rect.width/2;
+  const cy = rect.top + rect.height/2;
+  const dx = (ev.clientX - cx) / rect.width;
+  const dy = (ev.clientY - cy) / rect.height;
+  const castle = document.getElementById('castle');
+  castle.style.transform = `rotateY(${dx*8}deg) rotateX(${ -dy*6 }deg) translateZ(0)`;
+
+  // particles smooth follow
+  particles.forEach(p=>{
+    let x = parseFloat(p.style.left), y = parseFloat(p.style.top);
+    x += (ev.clientX - x) * 0.04 + p._vx;
+    y += (ev.clientY - y) * 0.04 + p._vy;
+    p.style.left = x + 'px';
+    p.style.top = y + 'px';
+  });
+
+  // crowns scatter slightly
+  floatingCrowns.forEach((c, idx)=>{
+    let top = parseFloat(c.el.style.top);
+    top += c.speed + Math.sin((ev.clientX+idx*37)/100)*0.2;
+    if(top > window.innerHeight + 60) top = -80;
+    c.el.style.top = top + 'px';
+  });
+});
+
+/* animate crowns gentle float */
+(function animateCrowns(){
+  floatingCrowns.forEach((c,i)=>{
+    let x = parseFloat(c.el.style.left) || 0;
+    x += Math.sin((Date.now()+i*100)/3000)*0.2;
+    c.el.style.left = x + 'px';
+  });
+  requestAnimationFrame(animateCrowns);
+})();
+
+/* typewriter for initial text */
+function typeWriter(el, text, i=0){
+  el.textContent = '';
+  (function run(){
+    if(i<text.length){ el.textContent += text.charAt(i++); setTimeout(run, 70); }
+  })();
+}
+
+/* DOOR CLICK: open, reveal content, play audio */
 door.addEventListener('click', ()=>{
-  door.style.transform = 'rotateY(90deg)';
-  door.style.transition = 'transform 1s ease-in-out';
+  // open door (rotate)
+  door.style.transform = 'rotateY(92deg)';
+  door.style.transition = 'transform .9s cubic-bezier(.2,.9,.2,1)';
+  // text and audio
   initialText.classList.add('visible');
   typeWriter(initialText, initialText.textContent);
-  setTimeout(()=>mainContent.classList.remove('hidden'),2000);
+  setTimeout(()=>{ try{ audio.play(); }catch(e){} }, 550);
+  // reveal main content after a short delay
+  setTimeout(()=>{ mainContent.style.display = 'block'; window.scrollTo({top:document.getElementById('main-content').offsetTop-10, behavior:'smooth'}); }, 1800);
 });
+
+/* COUNTDOWN */
+const eventDate = new Date('2025-11-23T13:00:00'); // local time
+function updateCountdown(){
+  const now = new Date();
+  let diff = Math.max(0, eventDate - now);
+  const days = Math.floor(diff / (1000*60*60*24)); diff -= days*(1000*60*60*24);
+  const hours = Math.floor(diff / (1000*60*60)); diff -= hours*(1000*60*60);
+  const minutes = Math.floor(diff / (1000*60)); diff -= minutes*(1000*60);
+  const seconds = Math.floor(diff / 1000);
+  countdownEl.textContent = `⏰ ${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+setInterval(updateCountdown, 1000); updateCountdown();
+
+/* RSVP: WhatsApp + ICS calendar generation */
+document.getElementById('rsvp-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = this.name.value.trim();
+  const guests = parseInt(this.guests.value,10) || 1;
+  const kids = parseInt(this.kids.value,10) || 0;
+  if(name.length < 3 || guests < 1 || guests > 3){ alert('Por favor completa correctamente el formulario (nombre 3+ letras, 1-3 personas).'); return; }
+
+  // WhatsApp message (Mexico country code +52, number 2221012336)
+  const waNumber = '522221012336';
+  const waText = `Confirmación: ${encodeURIComponent(name)} - ${guests} personas (niños: ${kids}) - Confirmo asistencia a Ailany.`;
+  const waUrl = `https://wa.me/${waNumber}?text=${waText}`;
+  window.open(waUrl, '_blank');
+
+  // ICS file for calendar (event from 13:00 to 16:00 local)
+  const start = new Date('2025-11-23T13:00:00');
+  const end = new Date('2025-11-23T16:00:00');
+  function toICSDate(d){ return d.toISOString().replace(/-|:|\.\d+/g,''); }
+  const ics = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Invitacion Ailany//ES',
+    'BEGIN:VEVENT',
+    `DTSTART:${toICSDate(start)}`,
+    `DTEND:${toICSDate(end)}`,
+    `SUMMARY:Fiesta de Ailany — Confirmación: ${name}`,
+    `DESCRIPTION:Confirmación de asistencia de ${name}. Personas: ${guests} (niños: ${kids})`,
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\r\n');
+
+  const blob = new Blob([ics], {type:'text/calendar'});
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = `Ailany_Fiesta_${name.replace(/\s+/g,'_')}.ics`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  alert('¡Gracias! Se abrió WhatsApp y se descargó un recordatorio para tu calendario.');
+  // optionally store confirmation locally (simple)
+  const stored = JSON.parse(localStorage.getItem('confirmations')||'[]');
+  stored.push({name,guests,kids,when:(new Date()).toISOString()});
+  localStorage.setItem('confirmations', JSON.stringify(stored));
+});
+
+/* NO ASISTO */
+document.getElementById('no-attend').addEventListener('click', ()=>{
+  if(confirm('¿Estás seguro que no asistirás?')) alert('Gracias por avisar. Te mandamos un abrazo :)');
+});
+
+/* PHOTO REMINDER -> ICS (user downloads) */
+document.getElementById('photo-reminder').addEventListener('click', ()=>{
+  const now = new Date();
+  const remindStart = new Date('2025-11-23T16:30:00'); // ejemplo: 30 mins after reception start
+  const remindEnd = new Date(remindStart.getTime() + 20*60000);
+  const ics = [
+    'BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT',
+    `DTSTART:${remindStart.toISOString().replace(/-|:|\.\d+/g,'')}`,
+    `DTEND:${remindEnd.toISOString().replace(/-|:|\.\d+/g,'')}`,
+    'SUMMARY:Recordatorio: Tomar fotos en la fiesta de Ailany',
+    'DESCRIPTION:No se te olvide tomar fotos y subirlas. ¡Gracias!',
+    'END:VEVENT','END:VCALENDAR'
+  ].join('\r\n');
+  const blob = new Blob([ics], {type:'text/calendar'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'Recordatorio_fotos_Ailany.ics'; document.body.appendChild(a); a.click(); a.remove();
+  alert('Recordatorio agregado a tu calendario (archivo descargado).');
+});
+
+/* small accessibility: if user presses Enter on door, also trigger */
+door.tabIndex = 0;
+door.addEventListener('keydown', (ev)=>{ if(ev.key==='Enter' || ev.key===' ') door.click(); });
+
 </script>
+
 </body>
 </html>
