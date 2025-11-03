@@ -1,856 +1,413 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V Años de Ailany 👑</title>
-    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Great+Vibes&family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Montserrat', sans-serif; 
-            background: linear-gradient(135deg, #FADADD 0%, #f8c8d5 25%, #f5b6cd 50%, #f2a4c5 75%, #ef92bd 100%); 
-            min-height: 100vh; 
-            overflow-x: hidden; 
-            color: #333;
-        }
-        
-        .particles-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
-        .particle { position: absolute; font-size: 20px; opacity: 0.7; animation: floatParticle 15s infinite ease-in-out; }
-        @keyframes floatParticle { 
-            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; } 
-            10% { opacity: 0.7; } 
-            90% { opacity: 0.7; } 
-            100% { transform: translateY(-100vh) translateX(50px) rotate(360deg); opacity: 0; } 
-        }
-        
-        .castle-scene { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle at center, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.95)); z-index: 10000; transition: opacity 0.8s, visibility 0.8s; }
-        .castle-scene.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-        .castle-3d { perspective: 1200px; transform-style: preserve-3d; cursor: pointer; animation: castleFloat 4s ease-in-out infinite; }
-        @keyframes castleFloat { 0%, 100% { transform: translateY(0px) rotateY(0deg); } 50% { transform: translateY(-20px) rotateY(5deg); } }
-        
-        .castle-front { display: flex; align-items: flex-end; justify-content: center; gap: 30px; transform-style: preserve-3d; position: relative; height: 600px; }
-        .tower { width: 110px; height: 470px; background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%); border: 3px solid transparent; border-image: linear-gradient(180deg, #ff006e, #00f0ff) 1; box-shadow: 0 0 30px rgba(255, 0, 110, 0.6), inset 0 0 20px rgba(0, 240, 255, 0.3); position: relative; transform-style: preserve-3d; animation: towerGlow 3s ease-in-out infinite; }
-        @keyframes towerGlow { 0%, 100% { box-shadow: 0 0 30px rgba(255, 0, 110, 0.6), inset 0 0 20px rgba(0, 240, 255, 0.3); } 50% { box-shadow: 0 0 50px rgba(255, 0, 110, 0.9), inset 0 0 30px rgba(0, 240, 255, 0.6); } }
-        
-        .tower-top { position: absolute; top: -65px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 55px solid transparent; border-right: 55px solid transparent; border-bottom: 75px solid #ff006e; filter: drop-shadow(0 0 15px rgba(255, 0, 110, 0.8)); z-index: 2; }
-        .tower-flag { position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 25px; height: 30px; background: linear-gradient(135deg, #ffd700, #ffed4e); clip-path: polygon(0 0, 100% 50%, 0 100%); animation: flagWave 2s ease-in-out infinite; z-index: 3; }
-        @keyframes flagWave { 0%, 100% { transform: translateX(-50%) rotate(-5deg); } 50% { transform: translateX(-50%) rotate(5deg); } }
-        .tower-top::after { content: ''; position: absolute; top: -55px; left: 50%; transform: translateX(-50%); width: 8px; height: 65px; background: linear-gradient(180deg, #ffd700, #ff006e); box-shadow: 0 0 10px #ffd700; z-index: 1; }
-        .tower-window { width: 45px; height: 55px; background: rgba(0, 240, 255, 0.4); border: 2px solid #00f0ff; box-shadow: 0 0 15px rgba(0, 240, 255, 0.8), inset 0 0 10px rgba(0, 240, 255, 0.5); margin: 50px auto; border-radius: 5px 5px 0 0; animation: windowGlow 3s ease-in-out infinite; position: relative; z-index: 1; }
-        @keyframes windowGlow { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
-        
-        .castle-main { width: 280px; height: 500px; background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%); border: 3px solid transparent; border-image: linear-gradient(180deg, #ff006e, #00f0ff) 1; box-shadow: 0 0 40px rgba(255, 0, 110, 0.7), inset 0 0 25px rgba(0, 240, 255, 0.4); position: relative; transform-style: preserve-3d; margin-bottom: -50px; }
-        .castle-battlements { position: absolute; top: -28px; left: 0; width: 100%; height: 28px; background: #1a1a2e; display: flex; justify-content: space-between; padding: 0 18px; }
-        .battlement { width: 28px; height: 28px; background: #ff006e; margin: 0 7px; }
-        .castle-gate { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 90px; height: 180px; }
-        .gate-arch { width: 100%; height: 70%; background: rgba(0, 240, 255, 0.2); border: 3px solid #00f0ff; border-bottom: none; border-radius: 55px 55px 0 0; box-shadow: 0 0 20px rgba(0, 240, 255, 0.8), inset 0 0 15px rgba(0, 240, 255, 0.5); position: absolute; top: 0; }
-        .gate-door { position: absolute; bottom: 0; width: 100%; height: 100%; background: linear-gradient(180deg, #2a2a3e 0%, #1a1a2e 100%); border: 2px solid #00f0ff; box-shadow: 0 0 15px rgba(0, 240, 255, 0.6); transform-origin: right; transition: transform 1.2s ease-in-out; cursor: pointer; }
-        .gate-door.open { transform: rotateY(-75deg); }
-        .castle-window { width: 60px; height: 70px; background: rgba(0, 240, 255, 0.4); border: 2px solid #00f0ff; box-shadow: 0 0 15px rgba(0, 240, 255, 0.8), inset 0 0 10px rgba(0, 240, 255, 0.5); margin: 45px auto; border-radius: 5px 5px 0 0; animation: windowGlow 3s ease-in-out infinite; position: relative; }
-        
-        .neon-text { position: absolute; top: 50px; left: 50%; transform: translateX(-50%); text-align: center; width: 100%; max-width: 800px; z-index: 10; }
-        .neon-text h1 { font-family: 'Parisienne', cursive; font-size: 3.8em; color: #fff; text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff006e, 0 0 40px #ff006e, 0 0 60px #ff006e, 0 0 80px #00f0ff; animation: neonPulse 2s ease-in-out infinite; line-height: 1.2; margin-bottom: 10px; letter-spacing: 2px; padding: 0 20px; overflow: hidden; }
-        .neon-text h1 .typewriter { display: inline-block; border-right: 3px solid #fff; animation: blink 0.7s step-end infinite; white-space: nowrap; overflow: hidden; }
-        @keyframes blink { 0%, 100% { border-color: transparent; } 50% { border-color: #fff; } }
-        @keyframes neonPulse { 0%, 100% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff006e, 0 0 40px #ff006e, 0 0 60px #ff006e, 0 0 80px #00f0ff; } 50% { text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 50px #ff006e, 0 0 70px #ff006e, 0 0 90px #ff006e, 0 0 120px #00f0ff; } }
-        .invitation-text { font-family: 'Great Vibes', cursive; font-size: 2.2em; color: #fff; text-shadow: 0 0 10px #ff006e; margin-top: 20px; padding: 0 20px; line-height: 1.3; }
-        .tap-instruction { margin-top: 100px; font-size: 1.5em; color: #fff; font-family: 'Parisienne', cursive; text-shadow: 0 0 10px #ff006e; animation: pulse 2s ease-in-out infinite; padding: 0 20px; }
-        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.1); } }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Invitación Ailany — Mis V Años</title>
+<link href="https://fonts.googleapis.com/css2?family=Castoro+Script&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg1:#FDECF0; --bg2:#FFEFF2;
+    --neon-pink:#ff5aa7; --neon-rose:#ff2e9e; --gold:#EBC48A;
+    --glass: rgba(255,255,255,0.08);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:'Montserrat',sans-serif;background:linear-gradient(180deg,var(--bg1),var(--bg2));color:#231; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:920px;margin:0 auto;padding:18px;}
+  /* ---------- CASTILLO NEON ---------- */
+  #castle-wrap{perspective:1600px;display:flex;justify-content:center;align-items:center;height:330px;position:relative;pointer-events:auto}
+  .castle{
+    width:320px;height:260px;position:relative;transform-style:preserve-3d;border-radius:14px;
+    background:linear-gradient(180deg,#FFD7E8,#FFEAF2); border:3px solid rgba(255,90,167,0.12);
+    box-shadow:0 8px 30px rgba(255,90,167,0.08), inset 0 -20px 40px rgba(255,255,255,0.15);
+    overflow:visible;
+  }
+  /* towers */
+  .tower{position:absolute;width:80px;height:160px;top:-80px; background:linear-gradient(180deg,#FFD1E8,#FFB6DB); border-radius:10px; box-shadow:0 6px 22px rgba(255,45,158,0.14); transform-origin:center}
+  .tower.left{left:-36px; transform:rotateY(15deg) translateZ(-10px)}
+  .tower.right{right:-36px; transform:rotateY(-15deg) translateZ(-10px)}
+  .roof{position:absolute;top:-110px;left:50%;transform:translateX(-50%);width:120px;height:60px;background:linear-gradient(180deg,#FFB6D0,#FF95C8);border-radius:8px 8px 0 0;box-shadow:0 6px 18px rgba(255,45,158,0.12)}
+  /* neon lines */
+  .neon-line{position:absolute;height:4px;width:70%;left:15%;top:20px;background:transparent;box-shadow:0 0 10px var(--neon-pink);border-radius:4px;opacity:0.9;}
+  .neon-dot{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--neon-rose);box-shadow:0 0 16px var(--neon-rose),0 0 30px var(--neon-pink)}
+  .nd1{left:18px;top:8px}.nd2{right:18px;top:8px}.nd3{left:48%;top:40px}
+  /* puerta */
+  #castle-door{width:120px;height:160px;background:linear-gradient(180deg,#7C4331,#A35A3E);border-radius:10px;margin:0 auto;position:relative;top:70px;cursor:pointer;transform-origin:left center;box-shadow:0 8px 24px rgba(0,0,0,0.25),0 0 32px rgba(255,90,167,0.12)}
+  #castle-door:after{content:"";position:absolute;right:10px;top:18px;width:16px;height:16px;border-radius:50%;background:#FFDAB3;box-shadow:0 0 10px #FFDAB3}
+  /* door open state handled in JS via transform */
+  /* ---------- INITIAL TEXT ---------- */
+  #initial-text{font-family:'Castoro Script',cursive;font-size:34px;color:var(--neon-pink);text-align:center;margin-top:14px;opacity:0;transition:opacity .8s, transform .8s}
+  #initial-text.visible{opacity:1; transform:translateY(-6px)}
+  .neon-3d{ text-shadow:0 0 6px #fff, 0 0 14px var(--neon-pink), 0 0 26px var(--neon-rose);}
 
-        .luxury-crown-container { position: relative; width: 100%; height: 200px; display: flex; justify-content: center; align-items: center; margin-bottom: 30px; z-index: 10; perspective: 1000px; }
-        .luxury-crown { position: relative; width: 320px; height: 180px; transform-style: preserve-3d; cursor: pointer; }
-        .luxury-crown.assembled { animation: crownRotation 15s infinite linear; }
-        @keyframes crownRotation { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
-        .crown-3d { position: absolute; width: 100%; height: 100%; transform-style: preserve-3d; }
-        
-        .crown-piece { position: absolute; opacity: 0; transition: all 1s ease-out; }
-        .crown-piece.animate { opacity: 1; }
-        
-        .crown-base { bottom: 0; left: 50%; transform: translateX(-50%) translateY(200px); width: 250px; height: 25px; background: linear-gradient(135deg, #ffd700 0%, #ffcc33 20%, #ffbf00 40%, #ffd700 60%, #ffcc33 80%, #ffbf00 100%); border-radius: 12px; box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.6), inset 0 5px 15px rgba(255, 255, 255, 0.7), inset 0 -5px 15px rgba(139, 69, 19, 0.3); z-index: 10; filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)); }
-        .crown-base.animate { transform: translateX(-50%) translateY(0); }
-        
-        .crown-point { bottom: 25px; width: 40px; height: 120px; background: linear-gradient(135deg, #ffd700 0%, #ffcc33 20%, #ffbf00 40%, #ffd700 60%, #ffcc33 80%, #ffbf00 100%); border-radius: 20px 20px 0 0; box-shadow: 0 0 15px rgba(255, 215, 0, 0.8), inset 0 5px 15px rgba(255, 255, 255, 0.7), inset 0 -5px 15px rgba(139, 69, 19, 0.3); z-index: 9; transform-origin: bottom center; border: 1px solid rgba(255, 255, 255, 0.5); }
-        .crown-point.center { left: 50%; transform: translateX(-50%) translateY(-300px) scale(0); height: 150px; width: 45px; z-index: 11; }
-        .crown-point.center.animate { transform: translateX(-50%) translateY(0) scale(1); }
-        .crown-point.left { left: 85px; transform: translateX(-50%) translateX(-300px) rotate(-15deg) scale(0); }
-        .crown-point.left.animate { transform: translateX(-50%) translateX(0) rotate(-15deg) scale(1); }
-        .crown-point.right { right: 85px; transform: translateX(50%) translateX(300px) rotate(15deg) scale(0); }
-        .crown-point.right.animate { transform: translateX(50%) translateX(0) rotate(15deg) scale(1); }
-        .crown-point.left-side { left: 40px; transform: translateX(-50%) translateX(-400px) rotate(-30deg) scale(0); height: 100px; }
-        .crown-point.left-side.animate { transform: translateX(-50%) translateX(0) rotate(-30deg) scale(1); }
-        .crown-point.right-side { right: 40px; transform: translateX(50%) translateX(400px) rotate(30deg) scale(0); height: 100px; }
-        .crown-point.right-side.animate { transform: translateX(50%) translateX(0) rotate(30deg) scale(1); }
-        
-        .crown-jewel { position: absolute; width: 25px; height: 25px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 215, 0, 0.8) 30%, rgba(184, 134, 11, 0.7) 70%); box-shadow: 0 0 15px rgba(255, 215, 0, 0.8), inset 0 2px 5px rgba(255, 255, 255, 0.9); z-index: 12; animation: jewelSparkle 3s ease-in-out infinite; border: 1px solid rgba(255, 255, 255, 0.8); transform: scale(0); transition: transform 0.8s ease-out 1.5s; }
-        .crown-jewel.animate { transform: scale(1); }
-        @keyframes jewelSparkle { 0%, 100% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.8), inset 0 2px 5px rgba(255, 255, 255, 0.9); } 50% { box-shadow: 0 0 25px rgba(255, 215, 0, 1), inset 0 2px 8px rgba(255, 255, 255, 1); } }
-        .jewel-center { top: 20px; left: 50%; transform: translateX(-50%) scale(0); width: 30px; height: 30px; background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 20, 147, 0.8) 30%, rgba(199, 21, 133, 0.7) 70%); }
-        .jewel-left { top: 40px; left: 85px; }
-        .jewel-right { top: 40px; right: 85px; }
-        .jewel-left-side { top: 50px; left: 40px; }
-        .jewel-right-side { top: 50px; right: 40px; }
-        
-        .crown-magic-particles { position: absolute; width: 10px; height: 10px; background: #ffd700; border-radius: 50%; opacity: 0; box-shadow: 0 0 10px #ffd700; }
-        @keyframes magicParticle { 0% { opacity: 1; transform: translate(0, 0) scale(1); } 100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0); } }
-        
-        .crown-neon-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 350px; height: 200px; background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.4) 0%, rgba(255, 215, 0, 0.3) 30%, rgba(255, 215, 0, 0.2) 60%, transparent 80%); border-radius: 50%; filter: blur(20px); z-index: 1; animation: neonGlow 5s ease-in-out infinite; }
-        @keyframes neonGlow { 0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); } }
+/* ---------- MAIN CARD ---------- */
+#main-content{margin-top:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px;border-radius:14px;backdrop-filter: blur(6px); box-shadow:0 8px 30px rgba(0,0,0,0.06); display:none; position:relative; overflow:hidden}
+.header{position:relative;padding:16px 8px}
+.title{font-family:'Castoro Script',cursive;font-size:42px;margin:6px 0;color:#ffeef7; text-align:center; cursor:pointer}
+.title .shine{display:block;font-size:14px;color:rgba(255,255,255,0.6); margin-top:-6px}
+.name{font-family:'Castoro Script',cursive;font-size:56px;margin:0;color:#fff;text-align:center; text-shadow:0 6px 22px rgba(0,0,0,0.25), 0 0 18px rgba(255,200,210,0.18)}
+/* metallic look for titles */
+.title, .name{background:linear-gradient(90deg,#FFDDE6,#FFE9F0 50%,#FFE5D5); -webkit-background-clip:text; background-clip:text; color:transparent}
 
-        .crown-scene { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle at center, rgba(255, 192, 227, 0.3), rgba(0, 0, 0, 0.8)); z-index: 9999; transition: opacity 0.8s, visibility 0.8s; }
-        .crown-scene.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-        .text-container { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        .crown-title { font-family: 'Parisienne', cursive; font-size: 7.5em; color: #fff; text-shadow: 0 0 15px #fff, 0 0 30px #ff006e, 0 0 50px #ff006e, 0 0 70px #ff006e, 0 5px 15px rgba(0, 0, 0, 0.3), -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff; animation: titleGlow 3s ease-in-out infinite; background: linear-gradient(135deg, #ffb7d5 0%, #ff8fb9 50%, #ff69a5 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; position: relative; margin-bottom: 30px; line-height: 1.1; letter-spacing: 3px; }
-        .crown-title::before, .crown-title::after { content: '✧'; position: absolute; top: 50%; transform: translateY(-50%); font-size: 1.2em; color: #ffd700; text-shadow: 0 0 10px #ffd700; animation: sparkle 2s ease-in-out infinite alternate; }
-        .crown-title::before { left: -50px; }
-        .crown-title::after { right: -50px; }
-        @keyframes sparkle { 0% { opacity: 0.5; transform: translateY(-50%) scale(0.8); } 100% { opacity: 1; transform: translateY(-50%) scale(1.2); } }
-        @keyframes titleGlow { 0%, 100% { text-shadow: 0 0 15px #fff, 0 0 30px #ff006e, 0 0 50px #ff006e, 0 0 70px #ff006e, 0 5px 15px rgba(0, 0, 0, 0.3), -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff; } 50% { text-shadow: 0 0 25px #fff, 0 0 50px #ff006e, 0 0 80px #ff006e, 0 0 110px #ff006e, 0 8px 25px rgba(0, 0, 0, 0.4), -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff; } }
-        .crown-subtitle { margin-top: 20px; font-size: 3.5em; color: #fff; font-family: 'Great Vibes', cursive; text-shadow: 0 0 15px #00f0ff, 0 5px 10px rgba(0, 0, 0, 0.3); letter-spacing: 2px; }
+/* crown SVG container centered above name */
+#crown-main{width:140px;height:80px;margin:6px auto;display:flex;align-items:center;justify-content:center;transform-origin:center;animation:crownFloat 6s ease-in-out infinite}
+@keyframes crownFloat{0%{transform:translateY(0) rotateX(0)}50%{transform:translateY(-8px) rotateX(2deg)}100%{transform:translateY(0)}}
 
-        .main-content { position: relative; z-index: 10; padding: 20px; transition: opacity 0.8s, visibility 0.8s; background: linear-gradient(135deg, #FADADD 0%, #f8c8d5 25%, #f5b6cd 50%, #f2a4c5 75%, #ef92bd 100%); min-height: 100vh; }
-        .main-content.hidden { opacity: 0; visibility: hidden; }
-        .hero-section { text-align: center; padding: 60px 20px; position: relative; background: radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%); border-radius: 20px; margin: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .hero-crown { font-size: 6em; filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1)); animation: herocrownFloat 3s ease-in-out infinite; cursor: pointer; margin-bottom: 20px; }
-        @keyframes herocrownFloat { 0%, 100% { transform: translateY(0px) rotate(-5deg); } 50% { transform: translateY(-15px) rotate(5deg); } }
-        .hero-name { font-family: 'Dancing Script', cursive; font-size: 5em; color: #fff; text-shadow: -2px -2px 0 #ff006e, 2px -2px 0 #ff006e, -2px 2px 0 #ff006e, 2px 2px 0 #ff006e, 0 0 20px #fff, 0 0 40px #ff006e, 0 0 60px #ff006e; margin: 20px 0; animation: nameGlow 3s ease-in-out infinite; background: linear-gradient(135deg, #ffb7d5 0%, #ff8fb9 50%, #ff69a5 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; position: relative; display: inline-block; }
-        @keyframes nameGlow { 0%, 100% { text-shadow: -2px -2px 0 #ff006e, 2px -2px 0 #ff006e, -2px 2px 0 #ff006e, 2px 2px 0 #ff006e, 0 0 20px #fff, 0 0 40px #ff006e, 0 0 60px #ff006e; } 50% { text-shadow: -2px -2px 0 #ff006e, 2px -2px 0 #ff006e, -2px 2px 0 #ff006e, 2px 2px 0 #ff006e, 0 0 30px #fff, 0 0 60px #ff006e, 0 0 90px #ff006e; } }
-        .hero-subtitle { font-family: 'Great Vibes', cursive; font-size: 2em; color: #fff; text-shadow: 0 0 15px #00f0ff; }
-        
-        .countdown-section { background: rgba(255, 255, 255, 0.9); border-radius: 25px; padding: 40px 30px; margin: 30px auto; max-width: 800px; box-shadow: 0 10px 40px rgba(255, 0, 110, 0.4); border: 2px solid rgba(255, 215, 0, 0.5); }
-        .countdown-section h2 { font-family: 'Parisienne', cursive; font-size: 2.5em; color: #ff006e; text-align: center; margin-bottom: 30px; text-shadow: 0 0 10px rgba(255, 0, 110, 0.3); }
-        .countdown { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 20px; }
-        .countdown-item { background: linear-gradient(135deg, #ff006e 0%, #ff4a8f 100%); border-radius: 15px; padding: 20px; text-align: center; box-shadow: 0 5px 20px rgba(255, 0, 110, 0.5); border: 1px solid rgba(255, 255, 255, 0.3); }
-        .countdown-number { display: block; font-size: 3em; color: #fff; font-weight: bold; text-shadow: 0 0 10px rgba(0, 0, 0, 0.3); }
-        .countdown-label { display: block; font-size: 1em; color: #fff; margin-top: 10px; text-transform: uppercase; }
-        
-        .event-section { background: rgba(255, 255, 255, 0.95); border-radius: 25px; padding: 40px 30px; margin: 30px auto; max-width: 900px; box-shadow: 0 10px 40px rgba(0, 240, 255, 0.4); border: 2px solid rgba(0, 240, 255, 0.3); }
-        .event-section h2 { font-family: 'Parisienne', cursive; font-size: 2.5em; color: #00f0ff; text-align: center; margin-bottom: 25px; text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); }
-        .event-card { background: #fff; border-left: 5px solid #00f0ff; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); }
-        .event-card p { font-size: 1.1em; color: #333; margin: 12px 0; line-height: 1.8; }
-        .event-card strong { color: #ff006e; }
-        .location-btn { background: linear-gradient(135deg, #ba55d3 0%, #dda0dd 100%); color: #fff; border: none; padding: 15px 40px; font-size: 1.2em; border-radius: 50px; cursor: pointer; margin-top: 20px; box-shadow: 0 8px 25px rgba(186, 85, 211, 0.5); transition: all 0.3s; font-family: 'Great Vibes', cursive; text-decoration: none; display: inline-block; }
-        .location-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 12px 35px rgba(186, 85, 211, 0.7); }
-        .entertainment-schedule { margin-top: 25px; padding: 20px; background: linear-gradient(135deg, #fce7f3 0%, #fdf2f8 100%); border-radius: 15px; border-left: 4px solid #ff006e; }
-        .entertainment-schedule h3 { font-family: 'Parisienne', cursive; font-size: 1.8em; color: #ff006e; margin-bottom: 15px; }
-        .entertainment-item { display: flex; justify-content: space-between; padding: 12px; margin: 8px 0; background: rgba(255, 255, 255, 0.8); border-left: 4px solid #00f0ff; border-radius: 8px; transition: all 0.3s; }
-        .entertainment-item:hover { transform: translateX(10px); box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3); }
-        .entertainment-item span:first-child { font-weight: bold; color: #ff006e; }
-        
-        .gift-section { background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); border-radius: 25px; padding: 40px 30px; margin: 30px auto; max-width: 900px; box-shadow: 0 10px 40px rgba(255, 0, 110, 0.3); border: 2px solid rgba(255, 0, 110, 0.2); }
-        .gift-section h2 { font-family: 'Parisienne', cursive; font-size: 2.5em; color: #ff006e; text-align: center; margin-bottom: 20px; }
-        .gift-intro { text-align: center; font-size: 1.2em; color: #666; margin-bottom: 30px; }
-        .gift-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .gift-card { background: #fff; border-radius: 15px; padding: 25px; box-shadow: 0 5px 20px rgba(255, 0, 110, 0.2); transition: all 0.3s; border: 1px solid rgba(255, 0, 110, 0.1); }
-        .gift-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(255, 0, 110, 0.4); }
-        .gift-card h3 { font-family: 'Parisienne', cursive; font-size: 1.8em; color: #ff006e; margin-bottom: 15px; }
-        .gift-card p, .gift-card ul { color: #555; font-size: 1.05em; line-height: 1.8; }
-        .gift-card ul { list-style: none; padding: 0; }
-        .gift-card li { margin: 8px 0; padding-left: 20px; position: relative; }
-        .gift-card li::before { content: '✨'; position: absolute; left: 0; }
-        .gift-detail { background: #fce7f3; padding: 10px; margin: 8px 0; border-radius: 8px; border-left: 4px solid #ff006e; font-style: italic; text-align: center; }
-        
-        .photos-section { background: rgba(255, 255, 255, 0.95); border-radius: 25px; padding: 40px 30px; margin: 30px auto; max-width: 900px; box-shadow: 0 10px 40px rgba(255, 0, 110, 0.4); border: 2px solid rgba(255, 0, 110, 0.3); text-align: center; }
-        .photos-section h2 { font-family: 'Parisienne', cursive; font-size: 2.5em; color: #ff006e; margin-bottom: 20px; text-shadow: 0 0 10px rgba(255, 0, 110, 0.3); }
-        .photos-section p { font-size: 1.2em; color: #555; margin-bottom: 25px; line-height: 1.8; }
-        .photo-reminder-btn { background: linear-gradient(135deg, #00f0ff 0%, #00b8d4 100%); color: #fff; border: none; padding: 18px 45px; font-size: 1.3em; border-radius: 50px; cursor: pointer; box-shadow: 0 8px 25px rgba(0, 240, 255, 0.5); transition: all 0.3s; font-family: 'Great Vibes', cursive; }
-        .photo-reminder-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 12px 35px rgba(0, 240, 255, 0.7); }
-        
-        input[type="file"] { display: none; }
-        
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); display: none; justify-content: center; align-items: center; z-index: 10001; backdrop-filter: blur(5px); }
-        .modal-overlay.active { display: flex; }
-        .modal-content { background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); border-radius: 25px; padding: 40px; max-width: 500px; width: 90%; box-shadow: 0 20px 60px rgba(255, 0, 110, 0.6); border: 3px solid rgba(255, 0, 110, 0.3); position: relative; animation: modalSlideIn 0.4s ease-out; }
-        @keyframes modalSlideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .modal-content h2 { font-family: 'Parisienne', cursive; font-size: 2.5em; color: #ff006e; text-align: center; margin-bottom: 25px; text-shadow: 0 0 10px rgba(255, 0, 110, 0.3); }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-size: 1.1em; color: #333; margin-bottom: 8px; font-weight: 500; }
-        .form-group input, .form-group select { width: 100%; padding: 12px; border: 2px solid rgba(255, 0, 110, 0.3); border-radius: 10px; font-size: 1em; transition: all 0.3s; background: #fff; }
-        .form-group input:focus, .form-group select:focus { outline: none; border-color: #ff006e; box-shadow: 0 0 10px rgba(255, 0, 110, 0.3); }
-        .form-error { color: #d32f2f; font-size: 0.9em; margin-top: 5px; display: none; }
-        .form-buttons { display: flex; gap: 15px; margin-top: 30px; }
-        .btn-confirm, .btn-decline { flex: 1; padding: 15px; border: none; border-radius: 50px; font-size: 1.2em; cursor: pointer; font-family: 'Great Vibes', cursive; transition: all 0.3s; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); }
-        .btn-confirm { background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%); color: #fff; }
-        .btn-confirm:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(76, 175, 80, 0.5); }
-        .btn-decline { background: linear-gradient(135deg, #f44336 0%, #e57373 100%); color: #fff; }
-        .btn-decline:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(244, 67, 54, 0.5); }
-        .btn-confirm:disabled, .btn-decline:disabled { opacity: 0.5; cursor: not-allowed; }
-        
-        .admin-panel { position: fixed; top: 0; right: -400px; width: 400px; height: 100vh; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); box-shadow: -5px 0 30px rgba(255, 0, 110, 0.6); z-index: 10002; transition: right 0.4s ease-out; overflow-y: auto; padding: 30px; border-left: 3px solid #ff006e; }
-        .admin-panel.active { right: 0; }
-        .admin-close { position: absolute; top: 20px; right: 20px; background: #ff006e; border: none; color: #fff; width: 40px; height: 40px; border-radius: 50%; font-size: 1.5em; cursor: pointer; box-shadow: 0 5px 15px rgba(255, 0, 110, 0.5); transition: all 0.3s; }
-        .admin-close:hover { transform: rotate(90deg) scale(1.1); }
-        .admin-panel h2 { font-family: 'Parisienne', cursive; font-size: 2.5em; color: #ffd700; text-align: center; margin-bottom: 30px; text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); }
-        .admin-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 30px; }
-        .stat-card { background: rgba(255, 0, 110, 0.2); border: 2px solid #ff006e; border-radius: 15px; padding: 20px; text-align: center; }
-        .stat-number { font-size: 2.5em; color: #ffd700; font-weight: bold; display: block; text-shadow: 0 0 10px rgba(255, 215, 0, 0.8); }
-        .stat-label { font-size: 1em; color: #fff; margin-top: 5px; }
-        .admin-list { background: rgba(0, 240, 255, 0.1); border: 2px solid #00f0ff; border-radius: 15px; padding: 20px; }
-        .admin-list h3 { font-family: 'Parisienne', cursive; font-size: 1.8em; color: #00f0ff; margin-bottom: 15px; text-shadow: 0 0 10px rgba(0, 240, 255, 0.8); }
-        .guest-item { background: rgba(255, 255, 255, 0.1); border-left: 4px solid #ffd700; padding: 15px; margin-bottom: 10px; border-radius: 8px; }
-        .guest-name { font-size: 1.2em; color: #fff; font-weight: bold; margin-bottom: 5px; }
-        .guest-details { font-size: 0.9em; color: #ddd; }
-        
-        .rsvp-section { text-align: center; padding: 40px 20px; }
-        .rsvp-btn { background: linear-gradient(135deg, #ff006e 0%, #ff4a8f 100%); color: #fff; border: none; padding: 25px 60px; font-size: 1.5em; border-radius: 50px; cursor: pointer; font-family: 'Parisienne', cursive; box-shadow: 0 10px 30px rgba(255, 0, 110, 0.5); transition: all 0.3s; animation: btnPulse 2s ease-in-out infinite; }
-        @keyframes btnPulse { 0%, 100% { box-shadow: 0 10px 30px rgba(255, 0, 110, 0.5); } 50% { box-shadow: 0 15px 40px rgba(255, 0, 110, 0.7); } }
-        .rsvp-btn:hover { transform: translateY(-5px) scale(1.05); }
-        
-        .final-message { text-align: center; padding: 40px 20px; font-size: 1.4em; color: #fff; font-family: 'Great Vibes', cursive; text-shadow: 0 0 15px rgba(255, 0, 110, 0.8); background: rgba(255, 255, 255, 0.2); border-radius: 20px; margin: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .signature { margin-top: 20px; font-size: 1.5em; color: #ffd700; text-shadow: 0 0 20px rgba(255, 215, 0, 1); }
-        
-        .music-btn { position: fixed; bottom: 30px; right: 30px; width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, #ff006e 0%, #ff4a8f 100%); border: none; cursor: pointer; box-shadow: 0 8px 25px rgba(255, 0, 110, 0.6); z-index: 9998; display: flex; align-items: center; justify-content: center; font-size: 2em; transition: all 0.3s; animation: musicFloat 3s ease-in-out infinite; }
-        @keyframes musicFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
-        .music-btn:hover { transform: scale(1.2); box-shadow: 0 12px 35px rgba(255, 0, 110, 0.8); }
-        .music-btn.playing { animation: musicFloat 3s ease-in-out infinite, spinMusic 2s linear infinite; }
-        @keyframes spinMusic { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+/* background halo */
+.halo{position:absolute;left:50%;top:10%;transform:translateX(-50%);width:80%;height:260px;border-radius:50%; background: radial-gradient(circle at 50% 40%, rgba(255,182,193,0.22), rgba(255,182,193,0.06) 50%, transparent 60%);filter:blur(24px);pointer-events:none;}
 
-        @media (max-width: 768px) {
-            .neon-text h1 { font-size: 3em; }
-            .neon-text { top: 40px; }
-            .tower { width: 85px; height: 330px; }
-            .castle-main { width: 190px; height: 350px; margin-bottom: -30px; }
-            .luxury-crown { width: 250px; height: 140px; }
-            .crown-base { width: 200px; }
-            .crown-point { width: 32px; height: 95px; }
-            .crown-point.center { height: 120px; width: 36px; }
-            .crown-point.left-side, .crown-point.right-side { height: 80px; }
-            .crown-jewel { width: 20px; height: 20px; }
-            .crown-title { font-size: 5.5em; }
-            .crown-title::before, .crown-title::after { font-size: 0.9em; }
-            .crown-title::before { left: -30px; }
-            .crown-title::after { right: -30px; }
-            .crown-subtitle { font-size: 2.8em; }
-            .hero-name { font-size: 3.5em; }
-            .hero-crown { font-size: 4em; }
-            .countdown { grid-template-columns: repeat(2, 1fr); }
-            .countdown-number { font-size: 2.5em; }
-            .gift-grid { grid-template-columns: 1fr; }
-            .music-btn { width: 60px; height: 60px; font-size: 1.7em; bottom: 20px; right: 20px; }
-            .tap-instruction { margin-top: 70px; }
-            .admin-panel { width: 100%; right: -100%; }
-            .modal-content { padding: 30px 20px; }
-            .form-buttons { flex-direction: column; }
-        }
-        @media (max-width: 480px) {
-            .tower { width: 75px; height: 290px; }
-            .castle-main { width: 170px; height: 320px; margin-bottom: -20px; }
-            .neon-text h1 { font-size: 2.5em; }
-            .neon-text { top: 30px; }
-            .invitation-text { font-size: 1.8em; }
-            .luxury-crown { width: 200px; height: 110px; }
-            .crown-base { width: 160px; }
-            .crown-point { width: 25px; height: 75px; }
-            .crown-point.center { height: 95px; width: 28px; }
-            .crown-point.left-side, .crown-point.right-side { height: 65px; }
-            .crown-jewel { width: 16px; height: 16px; }
-            .crown-title { font-size: 4em; }
-            .crown-title::before, .crown-title::after { font-size: 0.7em; }
-            .crown-title::before { left: -20px; }
-            .crown-title::after { right: -20px; }
-            .crown-subtitle { font-size: 2.2em; }
-            .hero-name { font-size: 2.5em; }
-            .countdown-section h2 { font-size: 1.8em; }
-            .event-section h2 { font-size: 1.8em; }
-            .gift-section h2 { font-size: 1.8em; }
-            .tap-instruction { margin-top: 50px; font-size: 1.2em; }
-        }
-    </style>
+/* countdown */
+#countdown{font-weight:700;font-size:18px;text-align:center;margin:10px 0;color:#3b2430;text-shadow:0 0 6px rgba(255,90,167,0.08)}
+
+/* info blocks */
+.info-grid{display:grid;grid-template-columns:1fr;gap:10px;margin:12px 0}
+.info-card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+.info-card p{margin:6px 0;color:#3b2430}
+.link-btn{display:inline-block;padding:8px 12px;background:linear-gradient(90deg,var(--neon-pink),var(--neon-rose));color:#fff;border-radius:10px;text-decoration:none;font-weight:600}
+
+/* gifts */
+#gifts ul{list-style: none;padding-left:0; text-align:left}
+#gifts li{margin:6px 0;padding-left:14px; position:relative}
+#gifts li:before{content:"🎁";position:absolute;left:0}
+
+/* RSVP */
+#rsvp form{display:flex;flex-direction:column;gap:8px;align-items:center;margin-top:6px}
+#rsvp input[type="text"], #rsvp input[type="number"]{padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);width:80%;max-width:360px}
+#rsvp button{padding:10px 14px;border-radius:10px;border:none;background:linear-gradient(90deg,var(--neon-pink),var(--neon-rose));color:#fff;font-weight:700;cursor:pointer}
+#rsvp .btn-secondary{background:transparent;border:1px solid rgba(0,0,0,0.06);color:#333}
+
+/* photos button */
+#photos .btn{margin-top:10px}
+
+/* floating crowns and particles */
+.floating-crown{position:absolute;opacity:0.85;pointer-events:none;filter:drop-shadow(0 6px 12px rgba(255,90,167,0.12));transition:transform .2s linear}
+.particle{position:absolute;border-radius:50%;pointer-events:none;opacity:0.95;mix-blend-mode:screen}
+
+/* admin panel */
+#admin-panel{position:fixed;right:12px;top:12px;background:#fff;padding:10px;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,0.12);display:none;z-index:9999;color:#111}
+#admin-panel h4{margin:0 0 8px 0}
+
+/* responsive */
+@media(min-width:720px){
+  .info-grid{grid-template-columns:1fr 1fr}
+}
+</style>
 </head>
 <body>
-    <div class="particles-container" id="particles"></div>
-    
-    <div class="castle-scene" id="castleScene">
-        <div class="castle-3d">
-            <div class="castle-front">
-                <div class="tower tower-left">
-                    <div class="tower-top"><div class="tower-flag"></div></div>
-                    <div class="tower-window"></div>
-                    <div class="tower-window"></div>
-                </div>
-                <div class="castle-main">
-                    <div class="castle-battlements">
-                        <div class="battlement"></div><div class="battlement"></div><div class="battlement"></div><div class="battlement"></div><div class="battlement"></div>
-                    </div>
-                    <div class="castle-gate">
-                        <div class="gate-arch"></div>
-                        <div class="gate-door" id="gateDoor"></div>
-                    </div>
-                    <div class="castle-window"></div>
-                    <div class="castle-window"></div>
-                </div>
-                <div class="tower tower-right">
-                    <div class="tower-top"><div class="tower-flag"></div></div>
-                    <div class="tower-window"></div>
-                    <div class="tower-window"></div>
-                </div>
-            </div>
-            <div class="neon-text">
-                <h1><span class="typewriter" id="typewriterText"></span></h1>
-                <div class="invitation-text">Una celebración mágica en mi reino de fantasía</div>
-            </div>
-        </div>
-        <div class="tap-instruction">Toca la puerta del castillo para abrir la invitación</div>
+<div class="wrap">
+
+  <!-- CASTILLO NEON -->
+  <div id="castle-wrap">
+    <div class="castle" id="castle">
+      <div class="tower left"></div>
+      <div class="tower right"></div>
+      <div class="roof"></div>
+      <div class="neon-line" style="top:18px"></div>
+      <div class="neon-dot nd1"></div>
+      <div class="neon-dot nd2"></div>
+      <div class="neon-dot nd3"></div>
+      <div id="castle-door" aria-label="Puerta interactiva"></div>
     </div>
-    
-    <div class="crown-scene hidden" id="crownScene">
-        <div class="luxury-crown-container">
-            <div class="luxury-crown" id="adminCrown">
-                <div class="crown-neon-glow"></div>
-                <div class="crown-3d" id="crownPieces">
-                    <div class="crown-piece crown-base"></div>
-                    <div class="crown-piece crown-point center"></div>
-                    <div class="crown-piece crown-point left"></div>
-                    <div class="crown-piece crown-point right"></div>
-                    <div class="crown-piece crown-point left-side"></div>
-                    <div class="crown-piece crown-point right-side"></div>
-                    <div class="crown-piece crown-jewel jewel-center"></div>
-                    <div class="crown-piece crown-jewel jewel-left"></div>
-                    <div class="crown-piece crown-jewel jewel-right"></div>
-                    <div class="crown-piece crown-jewel jewel-left-side"></div>
-                    <div class="crown-piece crown-jewel jewel-right-side"></div>
-                </div>
-            </div>
-        </div>
-        <div class="text-container">
-            <div class="crown-title">Mis V Años</div>
-            <div class="crown-subtitle">Ailany te espera</div>
-        </div>
+  </div>
+
+  <!-- Texto inicial typewriter -->
+  <div id="initial-text" aria-live="polite">¡Te invito a mi fiesta!</div>
+
+  <!-- MAIN CONTENT (oculto hasta abrir puerta) -->
+  <div id="main-content">
+    <div class="halo"></div>
+    <div class="header">
+      <div class="title neon-3d" id="title">Mis V Años <span class="shine">— Fiesta de Ailany</span></div>
+      <div class="name" id="name">Ailany</div>
+
+      <!-- corona principal (SVG) -->
+      <div id="crown-main" aria-hidden="true">
+        <!-- simple stylized crown SVG -->
+        <svg id="svg-crown" width="140" height="80" viewBox="0 0 140 80" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="#FFD7D6"/>
+              <stop offset="1" stop-color="#FFB6E0"/>
+            </linearGradient>
+            <radialGradient id="gem" cx="50%" cy="30%" r="60%">
+              <stop offset="0" stop-color="#fff"/>
+              <stop offset="1" stop-color="#FF9AC9"/>
+            </radialGradient>
+          </defs>
+          <g id="crown-shape" transform="translate(0,6)">
+            <path d="M8 60 L28 28 L48 54 L70 20 L92 54 L112 28 L132 60 Z" fill="url(#g1)" stroke="#FFC1E0" stroke-width="2" />
+            <circle cx="28" cy="28" r="6" fill="url(#gem)"/>
+            <circle cx="70" cy="20" r="7" fill="url(#gem)"/>
+            <circle cx="112" cy="28" r="6" fill="url(#gem)"/>
+          </g>
+        </svg>
+      </div>
     </div>
-    
-    <div class="main-content hidden" id="mainContent">
-        <section class="hero-section">
-            <div class="hero-crown" id="heroCrown">👑</div>
-            <h1 class="hero-name">Ailany</h1>
-            <div class="hero-subtitle">Celebra mis 5 años conmigo</div>
-        </section>
-        
-        <section class="countdown-section">
-            <h2>Faltan para mi fiesta</h2>
-            <div class="countdown">
-                <div class="countdown-item"><span class="countdown-number" id="days">00</span><span class="countdown-label">Días</span></div>
-                <div class="countdown-item"><span class="countdown-number" id="hours">00</span><span class="countdown-label">Horas</span></div>
-                <div class="countdown-item"><span class="countdown-number" id="minutes">00</span><span class="countdown-label">Minutos</span></div>
-                <div class="countdown-item"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">Segundos</span></div>
-            </div>
-        </section>
-        
-        <section class="event-section">
-            <h2>📅 Ceremonia Religiosa</h2>
-            <div class="event-card">
-                <p><strong>Fecha:</strong> 23 de Noviembre 2025</p>
-                <p><strong>Hora:</strong> 1:00 PM</p>
-                <p><strong>Lugar:</strong> Iglesia del Santo Entierro</p>
-                <p><strong>Dirección:</strong> 72770, Av. 8 Ote. 601, Barrio de San Miguel Tianguisnahuitl, Cholula de Rivadavia, Pue.</p>
-                <a href="https://maps.app.goo.gl/MESG66t5392Zncfm8" class="location-btn" target="_blank">Ver ubicación de la Ceremonia</a>
-            </div>
-        </section>
-        
-        <section class="event-section">
-            <h2>🎉 Recepción y Celebración</h2>
-            <div class="event-card">
-                <p><strong>Fecha:</strong> 23 de Noviembre 2025</p>
-                <p><strong>Hora:</strong> 4:00 PM</p>
-                <p><strong>Lugar:</strong> Salón Jardín Joss Mary</p>
-                <p><strong>Dirección:</strong> C. Río Atoyac Sur 513, Santiago Momoxpan, Rafael Ávila Camacho (Manantiales, 72760 Heroica Puebla de Zaragoza, Pue.</p>
-                <div class="entertainment-schedule">
-                    <h3>Entretenimiento para niños</h3>
-                    <div class="entertainment-item"><span>4:30 PM</span><span>Pintacaritas</span></div>
-                    <div class="entertainment-item"><span>7:00 PM</span><span>Show del payaso</span></div>
-                </div>
-                <a href="https://maps.app.goo.gl/Uw6MZtHp4LnNYkwTA" class="location-btn" target="_blank">Ver ubicación de la Recepción</a>
-            </div>
-        </section>
-        
-        <section class="gift-section">
-            <h2>🎁 Mi Lista de Regalos</h2>
-            <p class="gift-intro">Si deseas obsequiarme algo te sugiero:</p>
-            <div class="gift-grid">
-                <div class="gift-card">
-                    <h3>Ropa y Calzado</h3>
-                    <ul><li>Ropa talla 8</li><li>Zapatos o tennis #18</li></ul>
-                </div>
-                <div class="gift-card">
-                    <h3>Juguetes</h3>
-                    <ul><li>Muñecas</li><li>Juegos de té y cocina</li></ul>
-                </div>
-                <div class="gift-card">
-                    <h3>Materiales Educativos</h3>
-                    <ul><li>Material para pintar</li><li>Rompecabezas o memoramas</li><li>Dominó</li><li>Material para manualidades o arte</li><li>Libros para colorear o cuentos</li></ul>
-                </div>
-                <div class="gift-card">
-                    <h3>Accesorios</h3>
-                    <ul><li>Bolsitas de mano o mochilitas</li></ul>
-                </div>
-            </div>
-            <div class="gift-detail">
-                <p><strong>Nota:</strong> "Si en todo caso tu regalo es dinero lo agradezco mucho será para mi alcancía"</p>
-                <p>"Agradezco tu cariño y generosidad Dios te bendiga hoy y siempre"</p>
-            </div>
-        </section>
-        
-        <section class="photos-section">
-            <h2>📷 No se te olvide...</h2>
-            <p>Captura los mejores momentos de mi fiesta. Toca el botón para agregar un recordatorio.</p>
-            <input type="file" id="photoInput" accept="image/*" capture="environment">
-            <button class="photo-reminder-btn" id="photoReminderBtn">📷 Abrir Cámara / Recordatorio</button>
-        </section>
-        
-        <section class="rsvp-section">
-            <button class="rsvp-btn" id="rsvpBtn">Confirmar Asistencia</button>
-        </section>
-        
-        <section class="final-message">
-            <p>¡No puedo esperar para celebrar este día tan especial contigo!</p>
-            <p>Será una tarde mágica llena de sorpresas, diversión y muchos recuerdos bonitos.</p>
-            <p>"Será un día Mágico y me encantaría compartirlo contigo"</p>
-            <div class="signature">Con amor, Ailany 💖</div>
-        </section>
+
+    <div id="countdown" aria-live="polite">⏳ Cargando cuenta regresiva...</div>
+
+    <!-- Event info -->
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>📖 Ceremonia religiosa</h3>
+        <p><strong>Fecha:</strong> 23 de noviembre 2025</p>
+        <p><strong>Hora:</strong> 1:00 PM</p>
+        <p><strong>Lugar:</strong> Iglesia del Santo Entierro o Santo Sepulcro</p>
+        <a class="link-btn" href="https://maps.app.goo.gl/MESG66t5392Zncfm8" target="_blank" rel="noopener">Ver ubicación</a>
+      </div>
+
+      <div class="info-card">
+        <h3>🎉 Recepción</h3>
+        <p><strong>Fecha:</strong> 23 de noviembre 2025</p>
+        <p><strong>Hora:</strong> 4:00 PM</p>
+        <p><strong>Lugar:</strong> Salón Jardín Joss Mary</p>
+        <a class="link-btn" href="https://maps.app.goo.gl/Uw6MZtHp4LnNYkwTA" target="_blank" rel="noopener">Ver ubicación</a>
+      </div>
     </div>
-    
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-content">
-            <h2>✨ Confirma tu Asistencia</h2>
-            <form id="rsvpForm">
-                <div class="form-group">
-                    <label for="guestName">Nombre completo *</label>
-                    <input type="text" id="guestName" required minlength="3">
-                    <div class="form-error" id="nameError">El nombre debe tener mínimo 3 caracteres</div>
-                </div>
-                <div class="form-group">
-                    <label for="adults">Adultos</label>
-                    <select id="adults" required>
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="children">Niños</label>
-                    <select id="children" required>
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                    <div class="form-error" id="totalError">El total no puede exceder 4 personas</div>
-                </div>
-                <div class="form-buttons">
-                    <button type="button" class="btn-confirm" id="btnConfirm">✅ Asistiré</button>
-                    <button type="button" class="btn-decline" id="btnDecline">❌ No Asistiré</button>
-                </div>
-            </form>
-        </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>👧 Entretenimiento</h3>
+        <p>🎨 Pintacaritas: 4:30 PM</p>
+        <p>🤡 Show del payaso: 7:00 PM</p>
+      </div>
+
+      <div class="info-card" id="gifts">
+        <h3>🎁 Sugerencias de regalo</h3>
+        <ul>
+          <li>Ropa - talla 8</li>
+          <li>Zapatos / tennis - #18</li>
+          <li>Muñecas, pintura, rompecabezas, memoramas</li>
+          <li>Dominó, juegos de té y cocina</li>
+          <li>Libros para colorear o cuentos interactivos</li>
+          <li>Si tu regalo es dinero, lo agradeceré; será para mi alcancía 💖</li>
+        </ul>
+      </div>
     </div>
-    
-    <div class="admin-panel" id="adminPanel">
-        <button class="admin-close" id="adminClose">×</button>
-        <h2>👑 Panel Admin</h2>
-        <div class="admin-stats">
-            <div class="stat-card"><span class="stat-number" id="totalGuests">0</span><span class="stat-label">Confirmados</span></div>
-            <div class="stat-card"><span class="stat-number" id="totalAdults">0</span><span class="stat-label">Adultos</span></div>
-            <div class="stat-card"><span class="stat-number" id="totalChildren">0</span><span class="stat-label">Niños</span></div>
-            <div class="stat-card"><span class="stat-number" id="totalPeople">0</span><span class="stat-label">Total</span></div>
+
+    <!-- RSVP -->
+    <div id="rsvp" class="info-card" style="margin-top:12px;">
+      <h3>✅ Confirma tu asistencia</h3>
+      <form id="rsvp-form" autocomplete="off">
+        <input name="name" type="text" placeholder="Nombre (mín 3 letras)" required minlength="3" />
+        <input name="guests" type="number" placeholder="Total personas (máx 3)" required min="1" max="3" />
+        <div style="display:flex;gap:8px;justify-content:center">
+          <button type="submit">Confirmar</button>
+          <button type="button" class="btn-secondary" id="no-attend">No asistiré</button>
         </div>
-        <div class="admin-list">
-            <h3>Lista de Invitados</h3>
-            <div id="guestList"></div>
-        </div>
+      </form>
     </div>
-    
-    <button class="music-btn" id="musicBtn">🎵</button>
-    
-    <script>
-        const castleScene = document.getElementById('castleScene');
-        const crownScene = document.getElementById('crownScene');
-        const mainContent = document.getElementById('mainContent');
-        const gateDoor = document.getElementById('gateDoor');
-        const musicBtn = document.getElementById('musicBtn');
-        const modalOverlay = document.getElementById('modalOverlay');
-        const rsvpBtn = document.getElementById('rsvpBtn');
-        const adminCrown = document.getElementById('adminCrown');
-        const heroCrown = document.getElementById('heroCrown');
-        const adminPanel = document.getElementById('adminPanel');
-        const adminClose = document.getElementById('adminClose');
-        const photoReminderBtn = document.getElementById('photoReminderBtn');
-        const photoInput = document.getElementById('photoInput');
-        
-        let audio = null;
-        let isPlaying = false;
-        let clickCount = 0;
-        let clickTimer = null;
-        const guests = [];
-        
-        const eventDate = new Date(2025, 10, 23, 16, 0, 0);
-        const whatsappNumber = '522221012336';
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
-            startCountdown();
-            setupEventListeners();
-        });
-        
-        function createParticles() {
-            const container = document.getElementById('particles');
-            const emojis = ['✨', '🎀', '🎉', '👑', '🎁', '💖', '💫', '🌸'];
-            for (let i = 0; i < 30; i++) {
-                const p = document.createElement('div');
-                p.classList.add('particle');
-                p.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-                p.style.left = Math.random() * 100 + '%';
-                p.style.top = Math.random() * 100 + '%';
-                p.style.animationDelay = Math.random() * 15 + 's';
-                container.appendChild(p);
-            }
-        }
-        
-        function typewriterEffect(text, element, speed = 100) {
-            let i = 0;
-            element.textContent = '';
-            const interval = setInterval(() => {
-                if (i < text.length) {
-                    element.textContent += text.charAt(i);
-                    i++;
-                } else {
-                    clearInterval(interval);
-                    element.style.borderRight = 'none';
-                }
-            }, speed);
-        }
-        
-        function createMagicParticles(container, count = 20) {
-            for (let i = 0; i < count; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'crown-magic-particles';
-                const angle = (Math.PI * 2 * i) / count;
-                const distance = 50 + Math.random() * 100;
-                particle.style.setProperty('--tx', `${Math.cos(angle) * distance}px`);
-                particle.style.setProperty('--ty', `${Math.sin(angle) * distance}px`);
-                particle.style.left = '50%';
-                particle.style.top = '50%';
-                particle.style.animation = `magicParticle ${0.8 + Math.random() * 0.4}s ease-out ${i * 0.05}s`;
-                container.appendChild(particle);
-                
-                setTimeout(() => particle.remove(), 1500);
-            }
-        }
-        
-        function assembleCrown() {
-            const crownContainer = document.querySelector('.luxury-crown');
-            const pieces = document.querySelectorAll('.crown-piece');
-            
-            createMagicParticles(crownContainer);
-            
-            pieces.forEach((piece, index) => {
-                setTimeout(() => {
-                    piece.classList.add('animate');
-                }, index * 150);
-            });
-            
-            setTimeout(() => {
-                crownContainer.classList.add('assembled');
-            }, pieces.length * 150 + 500);
-        }
-        
-        function setupEventListeners() {
-            gateDoor.addEventListener('click', function() {
-                this.classList.add('open');
-                
-                const typewriterText = document.getElementById('typewriterText');
-                typewriterEffect('¡Te invito a mi fiesta!', typewriterText, 80);
-                
-                if (!audio) {
-                    audio = new Audio('golden_spanish.mp3');
-                    audio.loop = true;
-                    audio.play().then(() => {
-                        musicBtn.classList.add('playing');
-                        musicBtn.innerHTML = '🎶';
-                        isPlaying = true;
-                    }).catch(e => console.log('Audio bloqueado:', e));
-                } else if (!isPlaying) {
-                    audio.play();
-                    musicBtn.classList.add('playing');
-                    musicBtn.innerHTML = '🎶';
-                    isPlaying = true;
-                }
-                
-                setTimeout(() => {
-                    castleScene.classList.add('hidden');
-                    setTimeout(() => {
-                        crownScene.classList.remove('hidden');
-                        assembleCrown();
-                    }, 500);
-                    setTimeout(() => {
-                        crownScene.classList.add('hidden');
-                        setTimeout(() => mainContent.classList.remove('hidden'), 800);
-                    }, 6000);
-                }, 6000);
-            });
-            
-            musicBtn.addEventListener('click', toggleMusic);
-            rsvpBtn.addEventListener('click', () => modalOverlay.classList.add('active'));
-            adminClose.addEventListener('click', () => adminPanel.classList.remove('active'));
-            
-            adminCrown.addEventListener('click', handleAdminAccess);
-            heroCrown.addEventListener('click', handleAdminAccess);
-            
-            document.getElementById('btnConfirm').addEventListener('click', handleConfirm);
-            document.getElementById('btnDecline').addEventListener('click', handleDecline);
-            
-            document.getElementById('guestName').addEventListener('input', validateForm);
-            document.getElementById('adults').addEventListener('change', validateForm);
-            document.getElementById('children').addEventListener('change', validateForm);
-            
-            photoReminderBtn.addEventListener('click', handlePhotoButton);
-        }
-        
-        function handlePhotoButton() {
-            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                photoInput.click();
-                
-                photoInput.onchange = function() {
-                    if (this.files && this.files[0]) {
-                        alert('📸 ¡Foto capturada! Se ha agregado un recordatorio a tu calendario.');
-                        downloadPhotoReminder();
-                    }
-                };
-            } else {
-                downloadPhotoReminder();
-                alert('📅 Recordatorio agregado a tu calendario para compartir fotos después del evento.');
-            }
-        }
-        
-        function handleAdminAccess() {
-            clickCount++;
-            if (clickTimer) clearTimeout(clickTimer);
-            
-            if (clickCount === 3) {
-                adminPanel.classList.add('active');
-                updateAdminPanel();
-                clickCount = 0;
-            }
-            
-            clickTimer = setTimeout(() => { clickCount = 0; }, 2000);
-        }
-        
-        function validateForm() {
-            const name = document.getElementById('guestName').value.trim();
-            const adults = parseInt(document.getElementById('adults').value);
-            const children = parseInt(document.getElementById('children').value);
-            const total = adults + children;
-            
-            const nameError = document.getElementById('nameError');
-            const totalError = document.getElementById('totalError');
-            const btnConfirm = document.getElementById('btnConfirm');
-            const btnDecline = document.getElementById('btnDecline');
-            
-            let isValid = true;
-            
-            if (name.length < 3) {
-                nameError.style.display = 'block';
-                isValid = false;
-            } else {
-                nameError.style.display = 'none';
-            }
-            
-            if (total > 4 || total === 0) {
-                totalError.style.display = 'block';
-                totalError.textContent = total === 0 ? 'Debe haber al menos 1 persona' : 'El total no puede exceder 4 personas';
-                isValid = false;
-            } else {
-                totalError.style.display = 'none';
-            }
-            
-            btnConfirm.disabled = !isValid;
-            btnDecline.disabled = !isValid;
-            
-            return isValid;
-        }
-        
-        function handleConfirm() {
-            if (!validateForm()) return;
-            
-            const name = document.getElementById('guestName').value.trim();
-            const adults = parseInt(document.getElementById('adults').value);
-            const children = parseInt(document.getElementById('children').value);
-            const total = adults + children;
-            
-            guests.push({ name, adults, children, total, attending: true });
-            
-            const message = `✨ *XV Años de Ailany* 👑\n\nNombre: ${name}\n✅ ¡Confirmo mi asistencia!\nAdultos: ${adults}\nNiños: ${children}\nTotal: ${total} personas`;
-            
-            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
-            
-            downloadCalendarEvent();
-            downloadPhotoReminder();
-            
-            alert('¡Gracias por confirmar! 🎉\n\nSe han descargado 2 archivos de calendario:\n1. Evento principal (23 nov, 4:00 PM)\n2. Recordatorio de fotos (25 nov, 12:00 PM)');
-            
-            resetForm();
-        }
-        
-        function handleDecline() {
-            if (!validateForm()) return;
-            
-            const name = document.getElementById('guestName').value.trim();
-            
-            guests.push({ name, adults: 0, children: 0, total: 0, attending: false });
-            
-            const message = `✨ *XV Años de Ailany* 👑\n\nNombre: ${name}\n❌ INVITACIÓN CANCELADA\nLamentablemente no podré asistir`;
-            
-            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
-            
-            alert('Gracias por tu respuesta. 💖\n\nEsperaremos verte en otra ocasión.');
-            
-            resetForm();
-        }
-        
-        function resetForm() {
-            document.getElementById('rsvpForm').reset();
-            modalOverlay.classList.remove('active');
-        }
-        
-        function downloadCalendarEvent() {
-            const icsContent = `BEGIN:VCALENDAR
+
+    <!-- Photos -->
+    <div id="photos" class="info-card">
+      <h3>📸 Recordatorio de fotos</h3>
+      <p>No se te olvide tomar fotos en mi fiesta heee</p>
+      <button id="photo-reminder" class="btn">Agregar recordatorio al calendario</button>
+      <div style="margin-top:8px;font-size:13px;color:#333">También puedes subir fotos luego (función disponible)</div>
+    </div>
+
+  </div> <!-- end main-content -->
+
+</div> <!-- end wrap -->
+
+<!-- admin panel -->
+<div id="admin-panel">
+  <h4>Panel Admin</h4>
+  <div id="admin-list">No hay confirmaciones aún</div>
+  <button id="export-csv">Exportar CSV</button>
+</div>
+
+<!-- audio (pon golden_spanish.mp3 en la misma carpeta si quieres sonido) -->
+<audio id="bg-audio" src="golden_spanish.mp3" preload="auto"></audio>
+
+<script>
+/* ---------- Helpers & state ---------- */
+const door = document.getElementById('castle-door');
+const initialText = document.getElementById('initial-text');
+const mainContent = document.getElementById('main-content');
+const audio = document.getElementById('bg-audio');
+const title = document.getElementById('title');
+const nameEl = document.getElementById('name');
+const countdownEl = document.getElementById('countdown');
+const adminPanel = document.getElementById('admin-panel');
+const adminList = document.getElementById('admin-list');
+
+let confirmations = []; // almacenará objetos {name, guests, date}
+
+/* ---------- Particles & floating crowns (SVG clones) ---------- */
+const particleCount = 40;
+for(let i=0;i<particleCount;i++){
+  const p = document.createElement('div');
+  p.className='particle';
+  const size = 4 + Math.random()*8;
+  p.style.width = p.style.height = size + 'px';
+  p.style.left = Math.random()*window.innerWidth + 'px';
+  p.style.top = Math.random()*window.innerHeight + 'px';
+  p.style.background = `radial-gradient(circle,#fff, ${i%2? 'rgba(255,150,200,0.6)':'rgba(255,200,240,0.5)'})`;
+  document.body.appendChild(p);
+}
+/* floating crowns as small svg clones */
+const crownSVG = document.getElementById('svg-crown').outerHTML;
+const crownCount = 12;
+const floating = [];
+for(let i=0;i<crownCount;i++){
+  const el = document.createElement('div');
+  el.className = 'floating-crown';
+  const s = 24 + Math.random()*46;
+  el.style.width = s+'px'; el.style.height = (s*0.6)+'px';
+  el.style.left = Math.random()*(window.innerWidth-60)+'px';
+  el.style.top = Math.random()*window.innerHeight+'px';
+  el.style.opacity = 0.25 + Math.random()*0.6;
+  el.innerHTML = crownSVG;
+  document.body.appendChild(el);
+  floating.push({el, speed:0.2 + Math.random()*0.6});
+}
+function animateFloating(){ floating.forEach(f=>{ let t = parseFloat(f.el.style.top); t += f.speed; if(t > window.innerHeight+60) t = -60; f.el.style.top = t+'px'; f.el.style.transform = `rotate(${Math.sin(t/60)*8}deg)`; }); requestAnimationFrame(animateFloating); }
+animateFloating();
+
+/* particles follow cursor mildly */
+document.addEventListener('mousemove', e=>{
+  document.querySelectorAll('.particle').forEach((p,i)=>{
+    const x = parseFloat(p.style.left), y = parseFloat(p.style.top);
+    p.style.left = (x + (e.clientX - x) * (0.02 + (i%5)*0.005)) + 'px';
+    p.style.top  = (y + (e.clientY - y) * (0.02 + (i%5)*0.005)) + 'px';
+  });
+});
+
+/* ---------- Door interaction & typewriter ---------- */
+function typeWriter(el,text,i=0){
+  el.textContent = '';
+  (function step(){
+    if(i < text.length){ el.textContent += text.charAt(i++); setTimeout(step,80); } else { audio.play().catch(()=>{}); }
+  })();
+}
+door.addEventListener('click', ()=>{
+  door.style.transform = 'rotateY(90deg)';
+  door.style.transition = 'transform 1s cubic-bezier(.2,.9,.3,1)';
+  initialText.classList.add('visible');
+  typeWriter(initialText, initialText.textContent);
+  setTimeout(()=>{ mainContent.style.display='block'; // reveal
+    // brief entrance animation
+    mainContent.style.opacity=0; mainContent.style.transform='translateY(8px)';
+    requestAnimationFrame(()=>{ mainContent.style.transition='opacity .8s, transform .8s'; mainContent.style.opacity=1; mainContent.style.transform='translateY(0)'; });
+  },1400);
+});
+
+/* ---------- Crown assemble effect (simple) ---------- */
+const crownMain = document.getElementById('crown-main');
+(function crownAssemble(){
+  // tiny particle burst then show crown (visual only)
+  crownMain.style.opacity=0; crownMain.style.transform='scale(.6)';
+  setTimeout(()=>{ crownMain.style.transition='opacity 900ms cubic-bezier(.2,.9,.3,1), transform 900ms'; crownMain.style.opacity=1; crownMain.style.transform='scale(1)'; }, 2200);
+})();
+
+/* ---------- Countdown ---------- */
+const eventDate = new Date("November 23, 2025 13:00:00").getTime();
+function updateCountdown(){
+  const now = Date.now();
+  const diff = eventDate - now;
+  if(diff <= 0){ countdownEl.textContent = "¡Hoy es la fiesta! 🎉"; return; }
+  const d = Math.floor(diff/(1000*60*60*24));
+  const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const m = Math.floor((diff%(1000*60*60))/(1000*60));
+  const s = Math.floor((diff%(1000*60))/1000);
+  countdownEl.textContent = `⏰ ${d}d ${h}h ${m}m ${s}s`;
+}
+updateCountdown(); setInterval(updateCountdown,1000);
+
+/* ---------- RSVP handling: WhatsApp + ICS calendar ---------- */
+const rsvpForm = document.getElementById('rsvp-form');
+rsvpForm.addEventListener('submit', function(ev){
+  ev.preventDefault();
+  const name = this.name.value.trim();
+  const guests = parseInt(this.guests.value,10);
+  if(!name || name.length<3){ alert('Ingresa tu nombre (mínimo 3 letras)'); return; }
+  if(!guests || guests<1 || guests>3){ alert('Ingresa total de personas (1-3)'); return; }
+
+  // Save locally (in memory) and update admin view
+  confirmations.push({name, guests, date:new Date().toISOString()});
+  adminList.innerText = confirmations.map((c,i)=>`${i+1}. ${c.name} — ${c.guests} personas`).join('\n');
+
+  // WhatsApp prefilled message (Mexico country code 52)
+  const phone = '522221012336';
+  const waMsg = `Confirmaci%C3%B3n%20de%20asistencia%20-%20Ailany%0ANombre:%20${encodeURIComponent(name)}%0APersonas:%20${guests}`;
+  window.open(`https://wa.me/${phone}?text=${waMsg}`, '_blank');
+
+  // Create ICS for event (add to guest calendar)
+  const start = new Date("November 23, 2025 13:00:00");
+  const end = new Date("November 23, 2025 16:00:00");
+  function toICSDate(d){ return d.toISOString().replace(/-|:|\.\d+/g,''); }
+  const ics =
+`BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//XV Años Ailany//ES
 BEGIN:VEVENT
-UID:${Date.now()}@ailany-xv.com
-DTSTAMP:${formatDateICS(new Date())}
-DTSTART:${formatDateICS(new Date(2025, 10, 23, 16, 0, 0))}
-DTEND:${formatDateICS(new Date(2025, 10, 23, 22, 0, 0))}
-SUMMARY:XV Años de Ailany 👑
-DESCRIPTION:Recepción y Celebración de los XV Años de Ailany
-LOCATION:Salón Jardín Joss Mary, C. Río Atoyac Sur 513, Santiago Momoxpan
-BEGIN:VALARM
-TRIGGER:-PT1H
-ACTION:DISPLAY
-DESCRIPTION:La fiesta de Ailany comienza en 1 hora
-END:VALARM
+DTSTART:${toICSDate(start)}
+DTEND:${toICSDate(end)}
+SUMMARY:Fiesta de Ailany - Confirmada
+DESCRIPTION:Asistencia confirmada por ${name} — ${guests} personas. Iglesia: Iglesia del Santo Entierro. Recepción: Salón Jardín Joss Mary.
+LOCATION:Iglesia del Santo Entierro / Salón Jardín Joss Mary
 END:VEVENT
 END:VCALENDAR`;
-            
-            downloadICS(icsContent, 'quinceanos-ailany-evento.ics');
-        }
-        
-        function downloadPhotoReminder() {
-            const icsContent = `BEGIN:VCALENDAR
+  const blob = new Blob([ics], {type:'text/calendar'});
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'AilanyFiesta.ics';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  alert('¡Gracias! Se ha enviado la confirmación por WhatsApp y se descargó un archivo .ics para tu calendario.');
+  this.reset();
+});
+
+/* ---------- No asistiré ---------- */
+document.getElementById('no-attend').addEventListener('click', ()=>{
+  if(confirm('¿Confirmas que NO asistirás?')){ alert('Gracias por avisar. Te mandamos un abrazo.'); }
+});
+
+/* ---------- Photo reminder: create ICS reminder for photos ---------- */
+document.getElementById('photo-reminder').addEventListener('click', ()=>{
+  const now = new Date();
+  // set reminder same day at 3:30pm (example) as the photo reminder — user can edit
+  const remindStart = new Date("November 23, 2025 15:30:00");
+  const remindEnd = new Date("November 23, 2025 16:00:00");
+  function toICS(d){ return d.toISOString().replace(/-|:|\.\d+/g,''); }
+  const ics =
+`BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//XV Años Ailany//ES
 BEGIN:VEVENT
-UID:${Date.now() + 1}@ailany-xv.com
-DTSTAMP:${formatDateICS(new Date())}
-DTSTART:${formatDateICS(new Date(2025, 10, 25, 12, 0, 0))}
-DTEND:${formatDateICS(new Date(2025, 10, 25, 12, 30, 0))}
-SUMMARY:📷 Compartir fotos - XV Años Ailany
-DESCRIPTION:No olvides compartir las fotos de la fiesta de Ailany 💖
-BEGIN:VALARM
-TRIGGER:-PT0M
-ACTION:DISPLAY
-DESCRIPTION:¡Comparte tus fotos de la fiesta de Ailany!
-END:VALARM
+DTSTART:${toICS(remindStart)}
+DTEND:${toICS(remindEnd)}
+SUMMARY:Recordatorio - Tomar fotos en la fiesta de Ailany
+DESCRIPTION:No olvides tomar fotos en la fiesta 📸
 END:VEVENT
 END:VCALENDAR`;
-            
-            downloadICS(icsContent, 'quinceanos-ailany-fotos.ics');
-        }
-        
-        function formatDateICS(date) {
-            const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const day = String(date.getDate()).padStart(2, '0');
-            const hours = String(date.getHours()).padStart(2, '0');
-            const minutes = String(date.getMinutes()).padStart(2, '0');
-            const seconds = String(date.getSeconds()).padStart(2, '0');
-            return `${year}${month}${day}T${hours}${minutes}${seconds}`;
-        }
-        
-        function downloadICS(content, filename) {
-            const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = filename;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-        
-        function updateAdminPanel() {
-            const attending = guests.filter(g => g.attending);
-            const totalAdults = attending.reduce((sum, g) => sum + g.adults, 0);
-            const totalChildren = attending.reduce((sum, g) => sum + g.children, 0);
-            const totalPeople = totalAdults + totalChildren;
-            
-            document.getElementById('totalGuests').textContent = attending.length;
-            document.getElementById('totalAdults').textContent = totalAdults;
-            document.getElementById('totalChildren').textContent = totalChildren;
-            document.getElementById('totalPeople').textContent = totalPeople;
-            
-            const guestList = document.getElementById('guestList');
-            guestList.innerHTML = '';
-            
-            if (attending.length === 0) {
-                guestList.innerHTML = '<p style="color: #ddd; text-align: center; padding: 20px;">No hay confirmaciones aún</p>';
-            } else {
-                attending.forEach(guest => {
-                    const item = document.createElement('div');
-                    item.className = 'guest-item';
-                    item.innerHTML = `
-                        <div class="guest-name">${guest.name}</div>
-                        <div class="guest-details">Adultos: ${guest.adults} | Niños: ${guest.children} | Total: ${guest.total}</div>
-                    `;
-                    guestList.appendChild(item);
-                });
-            }
-        }
-        
-        function startCountdown() {
-            function update() {
-                const now = new Date().getTime();
-                const distance = eventDate - now;
-                
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                
-                document.getElementById('days').textContent = days.toString().padStart(2, '0');
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-                
-                if (distance < 0) {
-                    clearInterval(interval);
-                    document.querySelector('.countdown-section h2').textContent = '¡La fiesta está en marcha!';
-                    document.querySelector('.countdown').innerHTML = '<div style="text-align: center; font-size: 1.5em; color: #ff006e;">¡Disfruta la celebración!</div>';
-                }
-            }
-            
-            update();
-            const interval = setInterval(update, 1000);
-        }
-        
-        function toggleMusic() {
-            if (!audio) {
-                audio = new Audio('golden_spanish.mp3');
-                audio.loop = true;
-            }
-            
-            if (isPlaying) {
-                audio.pause();
-                musicBtn.classList.remove('playing');
-                musicBtn.innerHTML = '🎵';
-            } else {
-                audio.play().catch(e => console.log('Error:', e));
-                musicBtn.classList.add('playing');
-                musicBtn.innerHTML = '🎶';
-            }
-            
-            isPlaying = !isPlaying;
-        }
-    </script>
+  const blob = new Blob([ics], {type:'text/calendar'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'RecordatorioFotos.ics'; document.body.appendChild(a); a.click(); a.remove();
+  alert('Recordatorio descargado. Ábrelo para añadirlo a tu calendario.');
+});
+
+/* ---------- Admin hidden: triple click title to toggle ---------- */
+let clicks=0;
+title.addEventListener('click', ()=>{
+  clicks++; setTimeout(()=>{ clicks=0 },600);
+  if(clicks===3){ adminPanel.style.display = adminPanel.style.display==='block' ? 'none' : 'block'; }
+});
+
+/* ---------- Export CSV (admin) ---------- */
+document.getElementById('export-csv').addEventListener('click', ()=>{
+  if(!confirmations.length){ alert('No hay confirmaciones'); return; }
+  const rows = [['Nombre','Personas','Fecha']];
+  confirmations.forEach(c=>rows.push([c.name,c.guests,c.date]));
+  const csv = rows.map(r=>r.map(cell=>`"${(cell+'').replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob([csv], {type:'text/csv'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'confirmaciones.csv'; document.body.appendChild(a); a.click(); a.remove();
+});
+
+/* ---------- small accessibility: allow Enter to open door via keyboard ---------- */
+door.setAttribute('tabindex','0');
+door.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') door.click(); });
+
+</script>
 </body>
 </html>
